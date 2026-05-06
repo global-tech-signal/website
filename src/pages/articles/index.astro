@@ -1,0 +1,36 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import ArticleCard from "../../components/ui/ArticleCard.astro";
+import SearchForm from "../../components/ui/SearchForm.astro";
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
+
+const currentPage: number | null = +Astro.url.searchParams.get('page')! || 1;
+
+const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
+  .sort((a:CollectionEntry<'blog'>, b:CollectionEntry<'blog'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+---
+
+<MainLayout title="Tech News & Insights | GlobalTechSignal" description="AI, SaaS, automation, CRM and startup engineering — covered by the GlobalTechSignal newsroom.">
+	<main class="space-y-20">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
+                <div class="mx-auto max-w-screen-md text-center lg:mb-16 mb-8">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent"></span>
+                        Tech News & Insights
+                    </span>
+                    <h2 class="mb-4 text-3xl lg:text-5xl tracking-tight font-extrabold">The GlobalTechSignal Newsroom</h2>
+                    <p class="font-light sm:text-xl text-dark/70">Daily coverage of AI, SaaS, automation, CRM systems and startup engineering — written by builders for builders.</p>
+                </div> 
+                <br>
+                <SearchForm />
+                <br>
+                <div class="grid gap-8 lg:grid-cols-2">
+                    {allBlogArticles.map(article => (
+                        <ArticleCard article={article} />
+                    ))}
+                </div>  
+            </div>
+	</main>
+</MainLayout>

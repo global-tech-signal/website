@@ -1,0 +1,232 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Card from "../components/ui/Card.astro";
+import ServiceCard from "../components/ui/ServiceCard.astro";
+
+import c1 from "../assets/pics/card-pic1.png";
+import c2 from "../assets/pics/card-pic2.png";
+import c3 from "../assets/pics/card-pic3.png";
+import c4 from "../assets/pics/card-pic4.png";
+import c5 from "../assets/pics/card-pic5.png";
+import c6 from "../assets/pics/card-pic6.png";
+
+const services = [
+  {
+    id: "ai-automation",
+    index: 1,
+    titleTop: "AI",
+    titleBottom: "Automation",
+    img: c1,
+    alt: "AI Automation",
+    description:
+      "We use LLMs, agents and workflow tooling to automate repetitive operations: lead qualification, document processing, support triage, internal copilots and back-office tasks. The goal is fewer manual steps, faster cycles, and a leaner team.",
+    benefits: [
+      "Hours saved per week per employee",
+      "Faster lead and ticket response times",
+      "Reduced manual data entry and errors",
+      "AI copilots tailored to your workflows",
+    ],
+    cta: "Automate a workflow",
+  },
+  {
+    id: "crm",
+    index: 2,
+    titleTop: "CRM",
+    titleBottom: "Systems",
+    img: c2,
+    alt: "CRM Systems",
+    description:
+      "Custom CRM platforms and deep integrations with HubSpot, Salesforce and Pipedrive — built around how your business actually sells. Pipelines, automations, scoring and reporting that match your real funnel.",
+    benefits: [
+      "Pipelines that match your real sales process",
+      "Automated lead routing and follow-up",
+      "Clean data and dashboards leadership trust",
+      "Native integrations with your stack",
+    ],
+    cta: "Design my CRM",
+  },
+  {
+    id: "saas",
+    index: 3,
+    titleTop: "SaaS",
+    titleBottom: "Development",
+    img: c3,
+    alt: "SaaS Development",
+    description:
+      "End-to-end SaaS engineering: architecture, multi-tenant data models, billing, auth, dashboards, APIs and DevOps. We build SaaS products founders can actually scale and maintain.",
+    benefits: [
+      "Production-grade architecture from day one",
+      "Multi-tenant data, billing and auth",
+      "CI/CD, monitoring and observability",
+      "Code your team can own and extend",
+    ],
+    cta: "Build my SaaS",
+  },
+  {
+    id: "workflow",
+    index: 1,
+    titleTop: "Workflow",
+    titleBottom: "Automation",
+    img: c4,
+    alt: "Workflow Automation",
+    description:
+      "Connect the tools you already use — CRM, email, billing, ops — into one automated workflow. We build with Zapier, n8n, Make, custom APIs and serverless functions, depending on what fits.",
+    benefits: [
+      "Single source of truth across tools",
+      "Automated handoffs between teams",
+      "Reliable, observable workflows",
+      "Faster onboarding for new hires",
+    ],
+    cta: "Automate my ops",
+  },
+  {
+    id: "websites",
+    index: 2,
+    titleTop: "Custom",
+    titleBottom: "Websites",
+    img: c5,
+    alt: "Custom Websites",
+    description:
+      "High-performance marketing sites and product surfaces built with modern stacks (Astro, Next.js, Tailwind). Fast, SEO-friendly, and wired into your CRM and analytics from launch.",
+    benefits: [
+      "Excellent Core Web Vitals out of the box",
+      "Tight CRM and analytics integration",
+      "SEO-ready content architecture",
+      "Easy for your team to update",
+    ],
+    cta: "Plan my site",
+  },
+  {
+    id: "lead-management",
+    index: 3,
+    titleTop: "Lead Management",
+    titleBottom: "Systems",
+    img: c6,
+    alt: "Lead Management Systems",
+    description:
+      "Capture, enrich, score and route leads automatically — from web form to closed deal. Purpose-built for service businesses where speed-to-lead and follow-up discipline drive revenue.",
+    benefits: [
+      "Speed-to-lead measured in seconds",
+      "Automatic enrichment and scoring",
+      "Round-robin or rules-based routing",
+      "Clear pipeline visibility for leadership",
+    ],
+    cta: "Capture more leads",
+  },
+];
+
+const industries = [
+  {
+    name: "Roofing",
+    description: "Lead intake, dispatch and CRM systems built for high-volume residential and commercial roofing teams.",
+  },
+  {
+    name: "Clinics",
+    description: "Scheduling, intake and reminder platforms that cut no-shows and free up front-desk time.",
+  },
+  {
+    name: "Construction",
+    description: "Project, vendor and document workflows connected into one system the field actually uses.",
+  },
+  {
+    name: "Real Estate",
+    description: "Lead enrichment, scoring and follow-up automations for brokerages and investment firms.",
+  },
+];
+---
+
+<MainLayout
+  title="Engineering Services | GlobalTechSignal"
+  description="AI automation, CRM systems, SaaS development, custom business software and lead management — engineered by GlobalTechSignal."
+>
+  <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark mb-6">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>
+        Engineering Services
+      </span>
+      <h1 class="mb-4 text-4xl font-medium leading-tight tracking-tight md:text-6xl">
+        Software, AI and automation <br/> built for <span class="text-accent">operational impact</span>.
+      </h1>
+      <p class="text-lg font-normal leading-7 text-dark/70 mt-6">
+        We design and ship custom CRM systems, SaaS platforms, AI automations and lead management software for modern businesses.
+      </p>
+    </div>
+
+    <div class="space-y-24">
+      {services.map((service) => (
+        <div id={service.id} class="service-item scroll-mt-32">
+          <div class="mb-12">
+            <ServiceCard
+              index={service.index}
+              titleTop={service.titleTop}
+              titleBottom={service.titleBottom}
+              img={service.img}
+              alt={service.alt}
+              link={"#" + service.id}
+            />
+          </div>
+          <div class="grid md:grid-cols-2 gap-10 px-4">
+            <div>
+              <h3 class="text-2xl font-medium mb-4">What we deliver</h3>
+              <p class="mb-6 text-dark/80">{service.description}</p>
+              <a href="/#contact" class="inline-flex items-center px-8 py-4 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium">
+                {service.cta}
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+            <div class="bg-gray rounded-2xl p-8 border border-dark/5">
+              <h3 class="text-2xl font-medium mb-4">Outcomes</h3>
+              <ul class="space-y-4">
+                {service.benefits.map((benefit) => (
+                  <li class="flex items-start">
+                    <svg class="mr-2 w-5 h-5 mt-1 text-accent" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-32">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight">Industries we serve</h2>
+        <p class="text-dark/70 mt-3 max-w-2xl mx-auto">Engineering and automation tailored to operational realities — not generic agency playbooks.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {industries.map((industry) => (
+          <div class="p-8 bg-white rounded-2xl border border-dark/10 hover:border-accent transition-colors">
+            <h3 class="text-xl font-medium mb-2">{industry.name}</h3>
+            <p class="text-dark/70 text-sm leading-6">{industry.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-24 text-center">
+      <Card>
+        <div class="p-10 md:p-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-tight">Need custom software for your business?</h2>
+          <p class="mb-10 text-lg max-w-2xl mx-auto text-dark/70">
+            Tell us about your CRM, SaaS or AI automation project. We usually reply within one business day.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#contact" class="inline-flex items-center justify-center px-10 py-5 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium text-lg">
+              Book a Demo
+            </a>
+            <a href="/#contact" class="inline-flex items-center justify-center px-10 py-5 bg-white text-dark border border-dark/20 rounded-xl hover:bg-dark hover:text-white transition-colors font-medium text-lg">
+              Start a Project
+            </a>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </div>
+</MainLayout>

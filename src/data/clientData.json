@@ -1,0 +1,38 @@
+[
+    {
+        "index": 1,
+        "name": "Daniel Park",
+        "role": "Founder, RoofPilot",
+        "comment": "GlobalTechSignal rebuilt our lead intake and CRM in six weeks. Response times dropped from hours to minutes and our crews are booked solid. Their AI automation work paid for itself in the first month."
+    },
+    {
+        "index": 2,
+        "name": "Sara Mitchell",
+        "role": "COO, NorthCare Clinics",
+        "comment": "They shipped a SaaS scheduling and reminders platform across 11 locations. No-shows are down 27% and our front-desk team finally stopped drowning in spreadsheets."
+    },
+    {
+        "index": 3,
+        "name": "Alicia Romero",
+        "role": "VP Sales, Apex Realty",
+        "comment": "Their team automated lead enrichment, scoring and pipeline syncing across our CRM and email tools. We doubled qualified opportunities without adding a single rep."
+    },
+    {
+        "index": 4,
+        "name": "Marcus Lee",
+        "role": "CTO, BuildIQ",
+        "comment": "Solid engineers. They architected our multi-tenant SaaS, set up CI/CD and observability, and handed us code we actually want to maintain. Highly recommended for serious software work."
+    },
+    {
+        "index": 5,
+        "name": "Priya Patel",
+        "role": "Operations Lead, ConstructPro",
+        "comment": "We used to manage everything in 9 different tools. They built a custom workflow automation layer that connects them all. Operationally, it changed how we run the company."
+    },
+    {
+        "index": 6,
+        "name": "Jonas Becker",
+        "role": "Founder, SignalAI",
+        "comment": "GlobalTechSignal feels like an extension of our team — fast, technical, and focused on outcomes. They ship AI features that actually move metrics."
+    }
+]

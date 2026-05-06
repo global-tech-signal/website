@@ -1,0 +1,32 @@
+[
+    {
+        "title": "MVP Sprint",
+        "description": "A focused 4–6 week build to ship a usable v1 of your product or automation",
+        "price": 9500,
+        "devCount": "1–2 engineers",
+        "support": "30 days",
+        "update": "Bug-fix included",
+        "action": "Start a Project",
+        "link": "/#contact"
+    },
+    {
+        "title": "Growth Engagement",
+        "description": "Ongoing engineering for SaaS, CRM and AI automation roadmaps",
+        "price": 7500,
+        "devCount": "Dedicated team",
+        "support": "Monthly",
+        "update": "Continuous delivery",
+        "action": "Book a Demo",
+        "link": "/#contact"
+    },
+    {
+        "title": "Enterprise Build",
+        "description": "End-to-end design and delivery of mission-critical platforms",
+        "price": 25000,
+        "devCount": "Full squad",
+        "support": "Custom SLA",
+        "update": "Quarterly roadmaps",
+        "action": "Talk to Engineering",
+        "link": "/#contact"
+    }
+]

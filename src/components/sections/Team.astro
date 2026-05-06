@@ -1,0 +1,92 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import TeamCard from "../ui/TeamCard.astro";
+import Section from "./Section.astro";
+
+const description =
+  "The engineers and operators behind GlobalTechSignal — building AI, SaaS and automation systems for modern businesses.";
+
+// Team images
+import p1 from "../../assets/team/t1.png";
+import p2 from "../../assets/team/t2.png";
+import p3 from "../../assets/team/t3.png";
+import p4 from "../../assets/team/t4.png";
+import p5 from "../../assets/team/t5.png";
+import p6 from "../../assets/team/t6.png";
+
+const team = [
+  {
+    pic: p1,
+    name: "John Smith",
+    role: "Founder & CEO",
+    description:
+      "10+ years building software for high-growth startups. Sets product and engineering direction at GlobalTechSignal.",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p2,
+    name: "Jane Doe",
+    role: "Head of Engineering",
+    description:
+      "Leads delivery on SaaS, CRM and AI automation projects. Strong on system design, DevOps and quality.",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p3,
+    name: "Michael Brown",
+    role: "AI & Automation Lead",
+    description:
+      "Designs LLM-powered workflows, agents and integrations that replace repetitive operations work.",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p4,
+    name: "Emily Johnson",
+    role: "SaaS Product Engineer",
+    description:
+      "Full-stack engineer focused on multi-tenant SaaS, billing, dashboards and customer-facing features.",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p5,
+    name: "Brian Williams",
+    role: "CRM & Integrations Engineer",
+    description:
+      "Builds custom CRMs and integrates HubSpot, Salesforce, Zapier and internal tools into one clean stack.",
+    link: "https://linkedin.com",
+  },
+  {
+    pic: p6,
+    name: "Sarah Kim",
+    role: "Tech Editor",
+    description:
+      "Curates global tech news and engineering insights for the GlobalTechSignal newsroom.",
+    link: "https://linkedin.com",
+  },
+];
+---
+
+<Section id="about">
+  <div class="mt-[140px]">
+    <SectionTitle sectionTitle="Team" description={description} />
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-2 gap-10"
+    >
+      {
+        team.map((member, index) => (
+          <TeamCard
+            key={index}
+            pic={member.pic}
+            name={member.name}
+            role={member.role}
+            description={member.description}
+            link={member.link}
+          />
+        ))
+      }
+    </div>
+    <div class="flex justify-end mt-10">
+      <button class="btn-primary">See all team</button>
+    </div>
+  </div>
+</Section>

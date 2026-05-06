@@ -1,0 +1,86 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import ServiceCard from "../ui/ServiceCard.astro";
+import Section from "./Section.astro";
+
+import c1 from "../../assets/pics/card-pic1.png";
+import c2 from "../../assets/pics/card-pic2.png";
+import c3 from "../../assets/pics/card-pic3.png";
+import c4 from "../../assets/pics/card-pic4.png";
+import c5 from "../../assets/pics/card-pic5.png";
+import c6 from "../../assets/pics/card-pic6.png";
+
+const cards = [
+  {
+    index: 1,
+    titleTop: "AI",
+    titleBottom: "Automation",
+    img: c1,
+    alt: "AI Automation",
+    link: "/services#ai-automation",
+  },
+  {
+    index: 2,
+    titleTop: "CRM",
+    titleBottom: "Systems",
+    img: c2,
+    alt: "CRM Systems",
+    link: "/services#crm",
+  },
+  {
+    index: 3,
+    titleTop: "SaaS",
+    titleBottom: "Development",
+    img: c3,
+    alt: "SaaS Development",
+    link: "/services#saas",
+  },
+  {
+    index: 1,
+    titleTop: "Workflow",
+    titleBottom: "Automation",
+    img: c4,
+    alt: "Workflow Automation",
+    link: "/services#workflow",
+  },
+  {
+    index: 2,
+    titleTop: "Custom",
+    titleBottom: "Websites",
+    img: c5,
+    alt: "Custom Websites",
+    link: "/services#websites",
+  },
+  {
+    index: 3,
+    titleTop: "Lead Management",
+    titleBottom: "Systems",
+    img: c6,
+    alt: "Lead Management Systems",
+    link: "/services#lead-management",
+  },
+];
+
+const description =
+  "Engineering services that drive automation, operational efficiency, and predictable revenue growth for modern businesses.";
+---
+
+<Section id="services">
+  <div class="mt-[140px] mb-5">
+    <SectionTitle sectionTitle="Services" description={description} />
+    <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-10">
+      {
+        cards.map((card) => (
+          <ServiceCard
+            index={card.index}
+            titleTop={card.titleTop}
+            titleBottom={card.titleBottom}
+            img={card.img}
+            alt={card.alt}
+            link={card.link}
+          />
+        ))
+      }
+    </div>
+  </div>
+</Section>
