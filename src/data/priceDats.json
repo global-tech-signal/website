@@ -7,7 +7,7 @@
         "support": "30 days",
         "update": "Bug-fix included",
         "action": "Start a Project",
-        "link": "/#contact"
+        "link": "/contact"
     },
     {
         "title": "Growth Engagement",
@@ -17,7 +17,7 @@
         "support": "Monthly",
         "update": "Continuous delivery",
         "action": "Book a Demo",
-        "link": "/#contact"
+        "link": "/contact"
     },
     {
         "title": "Enterprise Build",
@@ -27,6 +27,6 @@
         "support": "Custom SLA",
         "update": "Quarterly roadmaps",
         "action": "Talk to Engineering",
-        "link": "/#contact"
+        "link": "/contact"
     }
 ]
