@@ -1,0 +1,132 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import larrow from "../assets/icon3.svg";
+
+const caseStudies = [
+  {
+    id: "ai-lead-routing-roofing",
+    title: "AI-Powered Lead Routing & CRM Workflow",
+    client: "Regional Roofing Company",
+    summary:
+      "We shipped an AI-powered lead routing and CRM workflow that cut response time from hours to minutes and increased booked inspections by 38%.",
+    challenge:
+      "The company relied on manual lead assignment and spreadsheet tracking. Response times averaged 4–6 hours, and leads were frequently lost between reps.",
+    solution:
+      "We built an automated intake pipeline that scores and routes inbound leads to the nearest available rep in under 60 seconds — integrated with their CRM, calendar, and notification stack.",
+    results: [
+      "Response time reduced from hours to under 2 minutes",
+      "Booked inspections up 38%",
+      "Lead leakage eliminated",
+      "Zero added headcount",
+    ],
+    tags: ["AI Automation", "CRM", "Lead Management"],
+  },
+  {
+    id: "saas-scheduling-clinic",
+    title: "SaaS Scheduling Platform with Automated Intake",
+    client: "Multi-Location Clinic Group",
+    summary:
+      "We built a SaaS scheduling platform with automated reminders and intake, reducing no-shows by 27% and saving the front-desk team 15+ hours per week.",
+    challenge:
+      "Five clinic locations used different scheduling tools and manual reminder calls. No-shows were costing the group $40K+ per month in lost revenue.",
+    solution:
+      "We designed a unified scheduling platform with SMS/email reminders, digital intake forms, and real-time availability sync across all locations.",
+    results: [
+      "No-shows reduced by 27%",
+      "Front-desk team saved 15+ hours/week",
+      "Patient intake time cut in half",
+      "Unified dashboard for all 5 locations",
+    ],
+    tags: ["SaaS", "Automation", "Healthcare"],
+  },
+  {
+    id: "lead-enrichment-real-estate",
+    title: "Automated Lead Enrichment & Pipeline Syncing",
+    client: "B2B Real-Estate Firm",
+    summary:
+      "We automated lead enrichment and pipeline syncing across CRM and email tools, doubling qualified opportunities without adding headcount.",
+    challenge:
+      "The sales team spent hours manually researching leads and copying data between CRM, email sequences, and spreadsheets. Qualified pipeline was stagnant.",
+    solution:
+      "We built a lead enrichment engine that pulls firmographic and intent data at ingestion, scores leads, and syncs pipeline state across CRM and email tools in real time.",
+    results: [
+      "Qualified opportunities doubled",
+      "Manual research hours eliminated",
+      "CRM and email always in sync",
+      "No additional headcount required",
+    ],
+    tags: ["AI Automation", "CRM", "Lead Management"],
+  },
+];
+---
+
+<MainLayout
+  title="Case Studies | GlobalTechSignal"
+  description="Real engineering work — AI automation, SaaS systems and CRM platforms shipped to production for growing businesses."
+>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
+    <div class="relative flex flex-col items-center">
+      <div class="row items-center py-5 md:pb-20 md:pt-10">
+        <div class="text-center space-y-8 max-w-3xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark">
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
+            Case Studies
+          </span>
+          <h1 class="text-4xl font-medium leading-tight md:text-6xl tracking-tight">
+            Real work, <span class="text-accent">real results</span>.
+          </h1>
+          <p class="text-lg font-normal leading-7 text-dark/70">
+            AI automation, SaaS systems and CRM platforms shipped to production for growing businesses. Here's what we built — and the outcomes it delivered.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-12 mt-10">
+      {caseStudies.map((study) => (
+        <article id={study.id} class="p-8 md:p-12 bg-dark text-white rounded-[30px]">
+          <div class="flex flex-wrap gap-2 mb-4">
+            {study.tags.map((tag) => (
+              <span class="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-green">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium mb-2">{study.title}</h2>
+          <p class="text-white/60 text-sm mb-6">Client: {study.client}</p>
+          <p class="text-white/80 text-lg mb-8">{study.summary}</p>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-green font-medium mb-2">Challenge</h3>
+              <p class="text-white/70">{study.challenge}</p>
+            </div>
+            <div>
+              <h3 class="text-green font-medium mb-2">Solution</h3>
+              <p class="text-white/70">{study.solution}</p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-green font-medium mb-3">Results</h3>
+            <ul class="grid sm:grid-cols-2 gap-3">
+              {study.results.map((result) => (
+                <li class="flex items-start gap-2 text-white/80">
+                  <span class="mt-1.5 w-2 h-2 rounded-full bg-green shrink-0"></span>
+                  {result}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center mt-16">
+      <a href="/#contact" class="px-8 py-4 bg-dark hover:bg-accent text-white rounded-xl text-base font-medium transition-colors inline-block">
+        Start your project
+      </a>
+    </div>
+  </div>
+</MainLayout>
