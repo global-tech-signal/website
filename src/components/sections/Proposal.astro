@@ -1,17 +1,14 @@
 ---
-import { Image } from "astro:assets";
 import Card from "../ui/Card.astro";
 import Section from "./Section.astro";
-
-import propImg from "../../assets/pics/proposal-pic.png";
 ---
 
 <Section>
   <Card>
     <div
-      class="flex bg-[#F3F3F3] rounded-[45px] p-[60px] relative mt-[123px] mb-[163px]"
+      class="flex bg-[#F3F3F3] rounded-[45px] p-8 sm:p-[60px] relative mt-[123px] overflow-hidden"
     >
-      <div class="w-full md:w-[40%] flex flex-col gap-[26px]">
+      <div class="w-full md:w-[50%] flex flex-col gap-[26px]">
         <h2 class="text-3xl font-medium">Need custom software for your business?</h2>
         <p>
           From AI automation and CRM systems to full SaaS platforms, our engineering team turns ideas into production-grade software.
@@ -21,15 +18,64 @@ import propImg from "../../assets/pics/proposal-pic.png";
           <a href="/contact" class="btn-secondary text-center">Start a Project</a>
         </div>
       </div>
-      <picture
-        class="hidden md:flex absolute right-[-10%] lg:right-0 top-[-15%] h-[450px] items-center justify-center"
-      >
-        <Image
-          src={propImg}
-          alt="This is an illustration"
-          class="hidden md:flex lg:h-full lg:w-auto"
-        />
-      </picture>
+
+      <!-- Decorative floating cards -->
+      <div class="hidden md:flex absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 w-[340px] lg:w-[400px] h-[320px]">
+        <!-- Background accent glow -->
+        <div class="absolute inset-0 rounded-[32px] bg-accent/5 blur-2xl"></div>
+
+        <!-- Card 1 — top-left -->
+        <div class="proposal-float-card absolute top-0 left-0 bg-dark text-white rounded-2xl p-5 w-[170px] shadow-[0px_4px_0px_#191a23] border border-dark/80 z-10">
+          <span class="text-accent text-2xl font-extrabold leading-none">40%</span>
+          <p class="text-[11px] text-white/60 mt-1 leading-snug">Faster time-to-market with our engineering process</p>
+        </div>
+
+        <!-- Card 2 — center-right -->
+        <div class="proposal-float-card absolute top-[60px] right-0 bg-white rounded-2xl p-5 w-[180px] shadow-[0px_4px_0px_#191a23] border border-dark z-20" style="animation-delay: 0.5s;">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            <span class="text-[11px] font-medium uppercase tracking-wider text-dark/60">Stack</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[10px] px-2 py-1 rounded-full bg-dark text-white">AI / LLM</span>
+            <span class="text-[10px] px-2 py-1 rounded-full bg-dark text-white">SaaS</span>
+            <span class="text-[10px] px-2 py-1 rounded-full bg-dark text-white">CRM</span>
+            <span class="text-[10px] px-2 py-1 rounded-full bg-[#F3F3F3] text-dark border border-dark/10">APIs</span>
+          </div>
+        </div>
+
+        <!-- Card 3 — bottom-left -->
+        <div class="proposal-float-card absolute bottom-[10px] left-[10px] bg-accent text-white rounded-2xl p-5 w-[200px] shadow-[0px_4px_0px_#191a23] border border-accent z-30" style="animation-delay: 1s;">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center justify-center h-9 w-9 rounded-full bg-white/20">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <span class="text-lg font-extrabold leading-none">98.9%</span>
+              <p class="text-[10px] text-white/70 leading-tight">Avg. uptime across client platforms</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 — bottom-right -->
+        <div class="proposal-float-card absolute bottom-0 right-[5px] bg-dark text-white rounded-2xl p-4 w-[150px] shadow-[0px_4px_0px_#191a23] border border-dark/80 z-10" style="animation-delay: 1.5s;">
+          <span class="text-[11px] text-white/50 uppercase tracking-wider">Projects</span>
+          <span class="block text-2xl font-extrabold mt-1 leading-none">50+</span>
+          <span class="text-[10px] text-white/40 mt-0.5">shipped & scaling</span>
+        </div>
+      </div>
     </div>
   </Card>
 </Section>
+
+<style>
+  @keyframes proposal-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .proposal-float-card {
+    animation: proposal-float 4s ease-in-out infinite;
+  }
+</style>

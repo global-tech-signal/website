@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import decorForm from "../../assets/pics/contact-pic.png";
 ---
 
 <div
@@ -68,9 +66,63 @@ import decorForm from "../../assets/pics/contact-pic.png";
     <button type="submit" name="submit" class="btn-primary w-full">Send</button>
     <p id="contact-status" class="mt-4 text-center text-sm hidden"></p>
   </form>
-  <picture class="absolute right-[-25%] top-[2%] bottom-[2%] hidden lg:block">
-    <Image src={decorForm} alt="decor" />
-  </picture>
+
+  <!-- Decorative side panel -->
+  <div class="absolute right-8 top-[5%] bottom-[5%] w-[320px] hidden lg:flex flex-col items-center justify-center gap-5">
+    <!-- Accent glow -->
+    <div class="absolute inset-0 rounded-[32px] bg-accent/5 blur-3xl"></div>
+
+    <!-- Response time card -->
+    <div class="form-float-card relative bg-dark text-white rounded-2xl p-5 w-full shadow-[0px_4px_0px_#191a23] border border-dark/80">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center h-10 w-10 rounded-full bg-accent/20 shrink-0">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold leading-none">&lt; 24h</span>
+          <p class="text-[11px] text-white/50 mt-0.5">Average response time</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- What happens next card -->
+    <div class="form-float-card relative bg-white rounded-2xl p-5 w-full shadow-[0px_4px_0px_#191a23] border border-dark" style="animation-delay: 0.6s;">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="h-2 w-2 rounded-full bg-accent"></span>
+        <span class="text-[11px] font-medium uppercase tracking-wider text-dark/50">What happens next</span>
+      </div>
+      <ol class="space-y-2.5">
+        <li class="flex items-start gap-2.5">
+          <span class="flex items-center justify-center h-5 w-5 rounded-full bg-dark text-white text-[10px] font-bold shrink-0 mt-0.5">1</span>
+          <span class="text-[12px] text-dark/80 leading-snug">We review your request & prep questions</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="flex items-center justify-center h-5 w-5 rounded-full bg-dark text-white text-[10px] font-bold shrink-0 mt-0.5">2</span>
+          <span class="text-[12px] text-dark/80 leading-snug">30-min discovery call to scope the project</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="flex items-center justify-center h-5 w-5 rounded-full bg-dark text-white text-[10px] font-bold shrink-0 mt-0.5">3</span>
+          <span class="text-[12px] text-dark/80 leading-snug">You get a detailed proposal within 48h</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Trust badge -->
+    <div class="form-float-card relative bg-accent text-white rounded-2xl p-4 w-full shadow-[0px_4px_0px_#191a23] border border-accent" style="animation-delay: 1.2s;">
+      <div class="flex items-center gap-3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <div>
+          <span class="text-sm font-bold leading-none">No obligation</span>
+          <p class="text-[10px] text-white/70 mt-0.5">Free consultation · NDA available</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <style>
   .form-checkbox {
@@ -100,6 +152,14 @@ import decorForm from "../../assets/pics/contact-pic.png";
 
   .form-checkbox:checked:before {
     transform: scale(0.6);
+  }
+
+  @keyframes form-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .form-float-card {
+    animation: form-float 4s ease-in-out infinite;
   }
 </style>
 
