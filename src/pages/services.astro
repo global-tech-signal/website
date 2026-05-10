@@ -1,25 +1,14 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Card from "../components/ui/Card.astro";
-import ServiceCard from "../components/ui/ServiceCard.astro";
-
-import c1 from "../assets/pics/card-pic1.png";
-import c2 from "../assets/pics/card-pic2.png";
-import c3 from "../assets/pics/card-pic3.png";
-import c4 from "../assets/pics/card-pic4.png";
-import c5 from "../assets/pics/card-pic5.png";
-import c6 from "../assets/pics/card-pic6.png";
 
 const services = [
   {
     id: "ai-automation",
-    index: 1,
-    titleTop: "AI",
-    titleBottom: "Automation",
-    img: c1,
-    alt: "AI Automation",
+    num: "01",
+    title: "AI Automation",
+    tagline: "Replace repetitive operations with intelligent agents.",
     description:
-      "We use LLMs, agents and workflow tooling to automate repetitive operations: lead qualification, document processing, support triage, internal copilots and back-office tasks. The goal is fewer manual steps, faster cycles, and a leaner team.",
+      "We use LLMs, agents and workflow tooling to automate repetitive operations: lead qualification, document processing, support triage, internal copilots and back-office tasks. Fewer manual steps, faster cycles, leaner teams.",
     benefits: [
       "Hours saved per week per employee",
       "Faster lead and ticket response times",
@@ -30,11 +19,9 @@ const services = [
   },
   {
     id: "crm",
-    index: 2,
-    titleTop: "CRM",
-    titleBottom: "Systems",
-    img: c2,
-    alt: "CRM Systems",
+    num: "02",
+    title: "CRM Systems",
+    tagline: "Pipelines built around how your team actually sells.",
     description:
       "Custom CRM platforms and deep integrations with HubSpot, Salesforce and Pipedrive — built around how your business actually sells. Pipelines, automations, scoring and reporting that match your real funnel.",
     benefits: [
@@ -47,11 +34,9 @@ const services = [
   },
   {
     id: "saas",
-    index: 3,
-    titleTop: "SaaS",
-    titleBottom: "Development",
-    img: c3,
-    alt: "SaaS Development",
+    num: "03",
+    title: "SaaS Development",
+    tagline: "Production-grade SaaS, from MVP to multi-tenant scale.",
     description:
       "End-to-end SaaS engineering: architecture, multi-tenant data models, billing, auth, dashboards, APIs and DevOps. We build SaaS products founders can actually scale and maintain.",
     benefits: [
@@ -64,11 +49,9 @@ const services = [
   },
   {
     id: "workflow",
-    index: 1,
-    titleTop: "Workflow",
-    titleBottom: "Automation",
-    img: c4,
-    alt: "Workflow Automation",
+    num: "04",
+    title: "Workflow Automation",
+    tagline: "One automated flow across the tools you already use.",
     description:
       "Connect the tools you already use — CRM, email, billing, ops — into one automated workflow. We build with Zapier, n8n, Make, custom APIs and serverless functions, depending on what fits.",
     benefits: [
@@ -81,11 +64,9 @@ const services = [
   },
   {
     id: "websites",
-    index: 2,
-    titleTop: "Custom",
-    titleBottom: "Websites",
-    img: c5,
-    alt: "Custom Websites",
+    num: "05",
+    title: "Custom Websites",
+    tagline: "Fast, SEO-ready sites wired into your stack.",
     description:
       "High-performance marketing sites and product surfaces built with modern stacks (Astro, Next.js, Tailwind). Fast, SEO-friendly, and wired into your CRM and analytics from launch.",
     benefits: [
@@ -98,11 +79,9 @@ const services = [
   },
   {
     id: "lead-management",
-    index: 3,
-    titleTop: "Lead Management",
-    titleBottom: "Systems",
-    img: c6,
-    alt: "Lead Management Systems",
+    num: "06",
+    title: "Lead Management Systems",
+    tagline: "From web form to closed deal — automatically.",
     description:
       "Capture, enrich, score and route leads automatically — from web form to closed deal. Purpose-built for service businesses where speed-to-lead and follow-up discipline drive revenue.",
     benefits: [
@@ -116,54 +95,18 @@ const services = [
 ];
 
 const industries = [
-  {
-    name: "Roofing",
-    description: "Lead intake, dispatch and CRM systems built for high-volume residential and commercial roofing teams.",
-  },
-  {
-    name: "Clinics",
-    description: "Scheduling, intake and reminder platforms that cut no-shows and free up front-desk time.",
-  },
-  {
-    name: "Construction",
-    description: "Project, vendor and document workflows connected into one system the field actually uses.",
-  },
-  {
-    name: "Real Estate",
-    description: "Lead enrichment, scoring and follow-up automations for brokerages and investment firms.",
-  },
-  {
-    name: "Legal",
-    description: "Client intake, case management and document automation for law firms and legal ops teams.",
-  },
-  {
-    name: "Insurance",
-    description: "Policy quoting, claims intake and agent CRM workflows built for speed and compliance.",
-  },
-  {
-    name: "Home Services",
-    description: "HVAC, plumbing and electrical companies — dispatching, estimates and customer follow-up automated end-to-end.",
-  },
-  {
-    name: "E-Commerce",
-    description: "Order workflows, inventory sync and customer retention automations for DTC and B2B brands.",
-  },
-  {
-    name: "Logistics",
-    description: "Fleet tracking, delivery scheduling and partner coordination systems that scale with volume.",
-  },
-  {
-    name: "Finance",
-    description: "Client onboarding, compliance workflows and portfolio reporting for advisors and fintech startups.",
-  },
-  {
-    name: "Education",
-    description: "Enrollment, student management and communication platforms for schools and edtech products.",
-  },
-  {
-    name: "Agencies",
-    description: "Project management, client portals and reporting dashboards for marketing and creative agencies.",
-  },
+  "Roofing",
+  "Clinics",
+  "Construction",
+  "Real Estate",
+  "Legal",
+  "Insurance",
+  "Home Services",
+  "E-Commerce",
+  "Logistics",
+  "Finance",
+  "Education",
+  "Agencies",
 ];
 ---
 
@@ -172,7 +115,8 @@ const industries = [
   description="AI automation, CRM systems, SaaS development, custom business software and lead management — engineered by GlobalTechSignal."
 >
   <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
+    <!-- Hero -->
+    <div class="text-center mb-14 max-w-3xl mx-auto">
       <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark mb-6">
         <span class="w-2 h-2 rounded-full bg-accent"></span>
         Engineering Services
@@ -181,86 +125,101 @@ const industries = [
         Software, AI and automation <br/> built for <span class="text-accent">operational impact</span>.
       </h1>
       <p class="text-lg font-normal leading-7 text-dark/70 mt-6">
-        We design and ship custom CRM systems, SaaS platforms, AI automations and lead management software for modern businesses.
+        Custom CRM systems, SaaS platforms, AI automations and lead management software — engineered for modern businesses.
       </p>
     </div>
 
-    <div class="space-y-24">
-      {services.map((service) => (
-        <div id={service.id} class="service-item scroll-mt-32">
-          <div class="mb-12">
-            <ServiceCard
-              index={service.index}
-              titleTop={service.titleTop}
-              titleBottom={service.titleBottom}
-              img={service.img}
-              alt={service.alt}
-              link={"#" + service.id}
-              largeText={true}
-              mediumIcon={true}
-            />
-          </div>
-          <div class="grid md:grid-cols-2 gap-10 px-4">
-            <div>
-              <h3 class="text-2xl font-medium mb-4">What we deliver</h3>
-              <p class="mb-6 text-dark/80">{service.description}</p>
-              <a href="/contact" class="inline-flex items-center px-8 py-4 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium">
+    <!-- Service quick-nav -->
+    <nav class="mb-20 sticky top-4 z-30">
+      <div class="mx-auto max-w-fit flex flex-wrap justify-center gap-2 p-2 rounded-full bg-white/70 backdrop-blur-md border border-dark/10 shadow-[0px_2px_0px_rgba(0,0,0,0.06)]">
+        {services.map((s) => (
+          <a
+            href={`#${s.id}`}
+            class="text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-full text-dark/70 hover:text-white hover:bg-dark transition-colors"
+          >
+            {s.title}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <!-- Services list -->
+    <div class="space-y-16 md:space-y-24">
+      {services.map((service, i) => (
+        <section id={service.id} class="scroll-mt-32 group">
+          <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
+            <!-- Index column -->
+            <div class={`md:col-span-4 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+              <div class="flex md:flex-col items-baseline md:items-start gap-4 md:gap-2">
+                <span class="text-5xl md:text-7xl font-extrabold text-accent leading-none">{service.num}</span>
+                <div class="h-px md:w-16 w-full bg-dark/10 md:mt-3"></div>
+              </div>
+              <h2 class="mt-3 md:mt-6 text-3xl md:text-4xl font-medium tracking-tight">{service.title}</h2>
+              <p class="mt-3 text-dark/60">{service.tagline}</p>
+              <a href="/contact" class="mt-6 inline-flex items-center gap-2 text-dark font-medium border-b border-dark/30 pb-1 hover:text-accent hover:border-accent transition-colors">
                 {service.cta}
-                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                 </svg>
               </a>
             </div>
-            <div class="bg-gray rounded-2xl p-8 border border-dark/5">
-              <h3 class="text-2xl font-medium mb-4">Outcomes</h3>
-              <ul class="space-y-4">
+
+            <!-- Content column -->
+            <div class={`md:col-span-8 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
+              <p class="text-dark/80 text-lg leading-8 mb-8">{service.description}</p>
+              <ul class="grid sm:grid-cols-2 gap-3">
                 {service.benefits.map((benefit) => (
-                  <li class="flex items-start">
-                    <svg class="mr-2 w-5 h-5 mt-1 text-accent" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span>{benefit}</span>
+                  <li class="flex items-start gap-3 p-4 rounded-xl bg-gray/60 border border-dark/5">
+                    <span class="flex items-center justify-center h-5 w-5 rounded-full bg-accent/10 mt-0.5 shrink-0">
+                      <svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </span>
+                    <span class="text-sm text-dark/80 leading-snug">{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </div>
+        </section>
       ))}
     </div>
 
-    <div class="mt-32">
-      <div class="text-center mb-12">
+    <!-- Industries -->
+    <div class="mt-28">
+      <div class="text-center mb-10">
         <h2 class="text-3xl md:text-4xl font-medium tracking-tight">Industries we serve</h2>
-        <p class="text-dark/70 mt-3 max-w-2xl mx-auto">Engineering and automation tailored to operational realities — not generic agency playbooks.</p>
+        <p class="text-dark/60 mt-3 max-w-xl mx-auto">Engineering tailored to operational realities — not generic agency playbooks.</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
         {industries.map((industry) => (
-          <div class="p-8 bg-white rounded-2xl border border-dark/10 hover:border-accent transition-colors">
-            <h3 class="text-xl font-medium mb-2">{industry.name}</h3>
-            <p class="text-dark/70 text-sm leading-6">{industry.description}</p>
-          </div>
+          <span class="text-sm px-4 py-2 rounded-full bg-white border border-dark/10 text-dark/80 hover:border-accent hover:text-accent transition-colors cursor-default">
+            {industry}
+          </span>
         ))}
       </div>
     </div>
 
-    <div class="mt-24 text-center">
-      <Card>
-        <div class="p-10 md:p-16">
-          <h2 class="text-3xl md:text-4xl font-medium mb-6 tracking-tight">Need custom software for your business?</h2>
-          <p class="mb-10 text-lg max-w-2xl mx-auto text-dark/70">
+    <!-- CTA -->
+    <div class="mt-24">
+      <div class="relative overflow-hidden rounded-[36px] bg-dark text-white p-10 md:p-16 text-center">
+        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative">
+          <h2 class="text-3xl md:text-4xl font-medium mb-5 tracking-tight">Need custom software for your business?</h2>
+          <p class="mb-8 text-lg max-w-2xl mx-auto text-white/70">
             Tell us about your CRM, SaaS or AI automation project. We usually reply within one business day.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" class="inline-flex items-center justify-center px-10 py-5 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium text-lg">
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">
               Book a Demo
             </a>
-            <a href="/contact" class="inline-flex items-center justify-center px-10 py-5 bg-white text-dark border border-dark/20 rounded-xl hover:bg-dark hover:text-white transition-colors font-medium text-lg">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">
               Start a Project
             </a>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   </div>
 </MainLayout>
