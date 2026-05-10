@@ -1,84 +1,105 @@
 ---
 import SectionTitle from "../ui/SectionTitle.astro";
-import ServiceCard from "../ui/ServiceCard.astro";
 import Section from "./Section.astro";
-
-import c1 from "../../assets/pics/card-pic1.png";
-import c2 from "../../assets/pics/card-pic2.png";
-import c3 from "../../assets/pics/card-pic3.png";
-import c4 from "../../assets/pics/card-pic4.png";
-import c5 from "../../assets/pics/card-pic5.png";
-import c6 from "../../assets/pics/card-pic6.png";
 
 const cards = [
   {
-    index: 1,
-    titleTop: "AI",
-    titleBottom: "Automation",
-    img: c1,
-    alt: "AI Automation",
+    num: "01",
+    title: "AI Automation",
+    description: "LLM workflows, document processing and internal copilots that replace repetitive operations work.",
     link: "/services#ai-automation",
+    variant: "dark",
   },
   {
-    index: 2,
-    titleTop: "CRM",
-    titleBottom: "Systems",
-    img: c2,
-    alt: "CRM Systems",
+    num: "02",
+    title: "CRM Systems",
+    description: "Custom CRMs and HubSpot/Salesforce integrations built around your real sales pipeline.",
     link: "/services#crm",
+    variant: "accent",
   },
   {
-    index: 3,
-    titleTop: "SaaS",
-    titleBottom: "Development",
-    img: c3,
-    alt: "SaaS Development",
+    num: "03",
+    title: "SaaS Development",
+    description: "End-to-end product engineering — multi-tenant architecture, billing, auth and dashboards.",
     link: "/services#saas",
+    variant: "light",
   },
   {
-    index: 1,
-    titleTop: "Workflow",
-    titleBottom: "Automation",
-    img: c4,
-    alt: "Workflow Automation",
+    num: "04",
+    title: "Workflow Automation",
+    description: "Connect CRM, email, billing and ops into one automated flow with Zapier, n8n or custom APIs.",
     link: "/services#workflow",
+    variant: "light",
   },
   {
-    index: 2,
-    titleTop: "Custom",
-    titleBottom: "Websites",
-    img: c5,
-    alt: "Custom Websites",
+    num: "05",
+    title: "Custom Websites",
+    description: "High-performance Astro & Next.js sites wired into your CRM and analytics from launch.",
     link: "/services#websites",
+    variant: "accent",
   },
   {
-    index: 3,
-    titleTop: "Lead Management",
-    titleBottom: "Systems",
-    img: c6,
-    alt: "Lead Management Systems",
+    num: "06",
+    title: "Lead Management",
+    description: "Capture, score and route leads automatically — from web form to closed deal.",
     link: "/services#lead-management",
+    variant: "dark",
   },
 ];
+
+const variantStyles = {
+  dark: "bg-dark text-white",
+  accent: "bg-accent text-white",
+  light: "bg-gray text-dark",
+};
+
+const arrowStyles = {
+  dark: "border-white/20 text-white group-hover:bg-white group-hover:text-dark",
+  accent: "border-white/20 text-white group-hover:bg-white group-hover:text-accent",
+  light: "border-dark/20 text-dark group-hover:bg-dark group-hover:text-white",
+};
 
 const description =
   "Engineering services that drive automation, operational efficiency, and predictable revenue growth for modern businesses.";
 ---
 
-<Section id="services">
+<Section id="services" class="mb-15">
   <div class="mt-[140px] mb-5">
     <SectionTitle sectionTitle="Services" description={description} />
-    <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       {
         cards.map((card) => (
-          <ServiceCard
-            index={card.index}
-            titleTop={card.titleTop}
-            titleBottom={card.titleBottom}
-            img={card.img}
-            alt={card.alt}
-            link={card.link}
-          />
+          <a
+            href={card.link}
+            class:list={[
+              "group relative flex flex-col justify-between p-7 sm:p-8 rounded-[28px] min-h-[220px] border border-dark/10 shadow-[0px_4px_0px_#191a23] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0px_8px_0px_#191a23]",
+              variantStyles[card.variant as keyof typeof variantStyles],
+            ]}
+          >
+            <div class="flex items-start justify-between">
+              <span class="text-sm font-mono opacity-50">{card.num}</span>
+              <span
+                class:list={[
+                  "inline-flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-300 group-hover:rotate-[-45deg]",
+                  arrowStyles[card.variant as keyof typeof arrowStyles],
+                ]}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
+            </div>
+            <div class="mt-auto">
+              <h3 class="text-xl font-extrabold tracking-tight mb-2">{card.title}</h3>
+              <p class:list={[
+                "text-sm leading-relaxed",
+                card.variant === "light" ? "text-dark/60" : "text-white/70",
+              ]}>
+                {card.description}
+              </p>
+            </div>
+          </a>
         ))
       }
     </div>
