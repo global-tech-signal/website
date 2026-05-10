@@ -1,0 +1,212 @@
+---
+import Section from "./Section.astro";
+
+const services = [
+  {
+    num: "01",
+    title: "AI Automation",
+    tag: "Featured",
+    description:
+      "Replace repetitive operations work with intelligent agents that integrate with your existing stack — saving hours every day.",
+    bullets: [
+      "Custom GPT & LLM workflows",
+      "Document & data automation",
+      "Internal AI copilots",
+    ],
+    link: "/services#ai-automation",
+    variant: "featured", // dark with green accent
+    span: "lg:col-span-2",
+  },
+  {
+    num: "02",
+    title: "CRM Systems",
+    description:
+      "Custom CRMs your sales team will actually use — built around your pipeline, not a SaaS template.",
+    bullets: ["Pipeline & deal tracking", "Sales automation", "Reporting dashboards"],
+    link: "/services#crm",
+    variant: "light",
+    span: "lg:col-span-1",
+  },
+  {
+    num: "03",
+    title: "SaaS Development",
+    description:
+      "End-to-end product engineering for B2B SaaS — from MVP to multi-tenant scale.",
+    bullets: ["Multi-tenant architecture", "Billing & auth", "Admin & analytics"],
+    link: "/services#saas",
+    variant: "outline",
+    span: "lg:col-span-1",
+  },
+  {
+    num: "04",
+    title: "Workflow Automation",
+    description:
+      "Connect tools, eliminate manual handoffs, and orchestrate processes across your business.",
+    bullets: ["API & no-code integrations", "Event-driven pipelines", "Internal tooling"],
+    link: "/services#workflow",
+    variant: "light",
+    span: "lg:col-span-1",
+  },
+  {
+    num: "05",
+    title: "Custom Websites",
+    description:
+      "High-performance marketing sites engineered for conversion, SEO and brand.",
+    bullets: ["Astro & Next.js builds", "CMS integration", "Core Web Vitals first"],
+    link: "/services#websites",
+    variant: "dark",
+    span: "lg:col-span-1",
+  },
+  {
+    num: "06",
+    title: "Lead Management Systems",
+    tag: "End-to-end",
+    description:
+      "Capture, qualify and route leads automatically — turning your website into a predictable revenue channel.",
+    bullets: [
+      "Smart lead capture & scoring",
+      "Routing & follow-up automation",
+      "Attribution & analytics",
+    ],
+    link: "/services#lead-management",
+    variant: "green",
+    span: "lg:col-span-3",
+  },
+];
+
+const variantClasses = {
+  featured:
+    "bg-dark text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  dark: "bg-dark text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  green: "bg-green text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  light: "bg-gray text-black border-dark shadow-[0px_5px_0px_#191a23]",
+  outline: "bg-white text-black border-dark shadow-[0px_5px_0px_#191a23]",
+};
+---
+
+<Section id="services">
+  <div class="mt-[140px] mb-5">
+    <!-- Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+      <div class="flex flex-col gap-5 max-w-2xl">
+        <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+          <span class="h-2 w-2 rounded-full bg-green"></span>
+          What we do
+        </span>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+          Engineering services that
+          <span class="greenhead">move the needle</span>
+        </h2>
+      </div>
+      <p class="lg:max-w-sm text-base sm:text-lg text-dark/80">
+        Automation, custom software and growth systems for modern businesses — built to ship fast and scale predictably.
+      </p>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
+      {
+        services.map((s) => (
+          <a
+            href={s.link}
+            class:list={[
+              "service-card group relative flex flex-col justify-between p-7 sm:p-9 rounded-[36px] border min-h-[320px] transition-all duration-300 hover:-translate-y-1",
+              s.span,
+              variantClasses[s.variant as keyof typeof variantClasses],
+            ]}
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span
+                  class:list={[
+                    "text-sm font-mono opacity-70",
+                  ]}
+                >
+                  {s.num}
+                </span>
+                {s.tag && (
+                  <span
+                    class:list={[
+                      "text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full border",
+                      s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                        ? "border-white/30 text-white/90"
+                        : "border-current/30",
+                    ]}
+                  >
+                    {s.tag}
+                  </span>
+                )}
+              </div>
+              <span
+                class:list={[
+                  "service-arrow inline-flex h-10 w-10 items-center justify-center rounded-full border transition-transform duration-300 group-hover:rotate-[-45deg]",
+                  s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                    ? "border-white/30 text-white"
+                    : "border-dark/30 text-dark",
+                ]}
+                aria-hidden="true"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4">
+              <h3
+                class:list={[
+                  "font-extrabold leading-tight tracking-tight",
+                  s.variant === "featured"
+                    ? "text-3xl sm:text-4xl lg:text-5xl"
+                    : s.variant === "green"
+                      ? "text-3xl sm:text-4xl"
+                      : "text-2xl sm:text-3xl",
+                ]}
+              >
+                {s.title}
+              </h3>
+              <p
+                class:list={[
+                  "text-sm sm:text-base max-w-xl",
+                  s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                    ? "text-white/75"
+                    : "text-current/80",
+                ]}
+              >
+                {s.description}
+              </p>
+              <ul
+                class:list={[
+                  "mt-2 flex flex-wrap gap-2",
+                ]}
+              >
+                {s.bullets.map((b) => (
+                  <li
+                    class:list={[
+                      "text-xs sm:text-sm px-3 py-1.5 rounded-full border",
+                      s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                        ? "border-white/20 text-white/85 bg-white/5"
+                        : "border-dark/20 text-dark bg-dark/[0.03]",
+                    ]}
+                  >
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<style>
+  .service-card {
+    will-change: transform;
+  }
+  .service-card:hover {
+    box-shadow: 0px 10px 0px #191a23;
+  }
+</style>
