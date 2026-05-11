@@ -31,7 +31,7 @@
   :root {
     /* Brand palette */
     --red: #e53935; /* primary brand red — logo / accent / text / small surfaces */
-    --red-soft: #e8a0a0; /* dusty rose-red — for larger backgrounds, easy on eyes */
+    --red-soft: #e53935; /* dusty rose-red — for larger backgrounds, easy on eyes */
     --accent: #e53935;
     --black: rgb(0, 0, 0);
     --dark: #0f1115; /* near-black for surfaces */
