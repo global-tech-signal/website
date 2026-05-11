@@ -74,7 +74,7 @@ const caseStudies = [
             Case Studies
           </span>
           <h1 class="text-4xl font-medium leading-tight md:text-6xl tracking-tight">
-            Real work, <span class="text-accent">real results</span>.
+            Real work, <span class="redhead">real results</span>
           </h1>
           <p class="text-lg font-normal leading-7 text-dark/70">
             AI automation, SaaS systems and CRM platforms shipped to production for growing businesses. Here's what we built — and the outcomes it delivered.
@@ -88,7 +88,7 @@ const caseStudies = [
         <article id={study.id} class="p-8 md:p-12 bg-dark text-white rounded-[30px]">
           <div class="flex flex-wrap gap-2 mb-4">
             {study.tags.map((tag) => (
-              <span class="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-green">
+              <span class="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-red">
                 {tag}
               </span>
             ))}
@@ -99,21 +99,21 @@ const caseStudies = [
 
           <div class="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 class="text-green font-medium mb-2">Challenge</h3>
+              <h3 class="text-red font-medium mb-2">Challenge</h3>
               <p class="text-white/70">{study.challenge}</p>
             </div>
             <div>
-              <h3 class="text-green font-medium mb-2">Solution</h3>
+              <h3 class="text-red font-medium mb-2">Solution</h3>
               <p class="text-white/70">{study.solution}</p>
             </div>
           </div>
 
           <div class="mt-8">
-            <h3 class="text-green font-medium mb-3">Results</h3>
+            <h3 class="text-red font-medium mb-3">Results</h3>
             <ul class="grid sm:grid-cols-2 gap-3">
               {study.results.map((result) => (
                 <li class="flex items-start gap-2 text-white/80">
-                  <span class="mt-1.5 w-2 h-2 rounded-full bg-green shrink-0"></span>
+                  <span class="mt-1.5 w-2 h-2 rounded-full bg-red shrink-0"></span>
                   {result}
                 </li>
               ))}

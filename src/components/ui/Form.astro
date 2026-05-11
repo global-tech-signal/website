@@ -145,7 +145,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--green);
+    background: var(--red);
     transform: scale(0);
     transition: transform 0.1s ease-in-out;
   }
@@ -183,7 +183,7 @@
 
       if (res.ok) {
         status.textContent = "Message sent! We'll get back to you soon.";
-        status.className = 'mt-4 text-center text-sm text-green';
+        status.className = 'mt-4 text-center text-sm text-red';
         form.reset();
       } else {
         status.textContent = json.error || 'Something went wrong.';

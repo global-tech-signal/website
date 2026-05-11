@@ -38,7 +38,7 @@
 
       if (res.ok) {
         status.textContent = 'Subscribed! Welcome to Tech Signal.';
-        status.className = 'mt-3 text-center text-sm text-green';
+        status.className = 'mt-3 text-center text-sm text-red';
         form.reset();
       } else {
         status.textContent = json.error || 'Something went wrong.';

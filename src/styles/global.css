@@ -29,13 +29,16 @@
   }
 
   :root {
-    /* Re-mapped to a more technical / SaaS-y palette with a subtle red accent */
-    --green: #ef4444; /* primary accent — subtle red */
-    --accent: #ef4444;
+    /* Brand palette */
+    --red: #e53935; /* primary brand red — logo / accent / text / small surfaces */
+    --red-soft: #e8a0a0; /* dusty rose-red — for larger backgrounds, easy on eyes */
+    --accent: #e53935;
     --black: rgb(0, 0, 0);
     --dark: #0f1115; /* near-black for surfaces */
     --gray: #f5f6f7;
     --white: #ffffff;
+    /* Deprecated alias — prefer --red */
+    --green: var(--red);
   }
 
   /* @layer base {
@@ -106,25 +109,27 @@
       @apply bg-dark text-white rounded-lg px-[35px] py-5 transition-all duration-200;
     }
     .btn-primary:hover {
-      @apply bg-green text-black transform scale-105;
+      @apply bg-red text-white transform scale-105;
     }
 
     .btn-secondary {
       @apply bg-transparent text-black px-[35px] py-5 rounded-lg border border-solid border-black transition-all duration-200;
     }
     .btn-secondary:hover {
-      @apply bg-black text-white border-green transform scale-105;
+      @apply bg-black text-white border-red transform scale-105;
     }
 
     .btn-tertiary {
-      @apply bg-green text-black rounded-lg px-[35px] py-5 transition-all duration-200;
+      @apply bg-red text-white rounded-lg px-[35px] py-5 transition-all duration-200;
     }
     .btn-tertiary:hover {
       @apply bg-white text-black transform scale-105;
     }
 
+    /* Inline highlight pill — soft red background reads easier on eyes */
+    .redhead,
     .greenhead {
-      @apply bg-green text-black rounded-[7px] px-[7px];
+      @apply bg-red-soft text-white rounded-[7px] px-[7px];
     }
 
     .whitehead {

@@ -18,13 +18,17 @@ export default {
         medium: 500,
       },
       colors: {
-        green: "var(--green)",
+        red: "var(--red)",
+        "red-soft": "var(--red-soft)",
+        brand: "var(--red)",
         black: "var(--black)",
         dark: "var(--dark)",
         gray: "var(--gray)",
         white: "var(--white)",
         accent: "var(--accent)",
         signal: "var(--accent)",
+        // Deprecated alias kept temporarily — prefer `red` / `red-soft`
+        green: "var(--red)",
       },
     },
   },

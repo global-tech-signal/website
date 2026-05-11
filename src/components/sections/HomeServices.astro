@@ -14,7 +14,7 @@ const services = [
       "Internal AI copilots",
     ],
     link: "/services#ai-automation",
-    variant: "featured", // dark with green accent
+    variant: "featured", // dark with red accent
     span: "lg:col-span-2",
   },
   {
@@ -69,7 +69,7 @@ const services = [
       "Attribution & analytics",
     ],
     link: "/services#lead-management",
-    variant: "green",
+    variant: "red",
     span: "lg:col-span-3",
   },
 ];
@@ -78,7 +78,7 @@ const variantClasses = {
   featured:
     "bg-dark text-white border-dark shadow-[0px_5px_0px_#191a23]",
   dark: "bg-dark text-white border-dark shadow-[0px_5px_0px_#191a23]",
-  green: "bg-green text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  red: "bg-red-soft text-white border-dark shadow-[0px_5px_0px_#191a23]",
   light: "bg-gray text-black border-dark shadow-[0px_5px_0px_#191a23]",
   outline: "bg-white text-black border-dark shadow-[0px_5px_0px_#191a23]",
 };
@@ -90,12 +90,12 @@ const variantClasses = {
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
       <div class="flex flex-col gap-5 max-w-2xl">
         <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
-          <span class="h-2 w-2 rounded-full bg-green"></span>
+          <span class="h-2 w-2 rounded-full bg-red"></span>
           What we do
         </span>
         <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
           Engineering services that
-          <span class="greenhead">move the needle</span>
+          <span class="text-accent">move the needle</span>
         </h2>
       </div>
       <p class="lg:max-w-sm text-base sm:text-lg text-dark/80">
@@ -128,7 +128,7 @@ const variantClasses = {
                   <span
                     class:list={[
                       "text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full border",
-                      s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                      s.variant === "featured" || s.variant === "dark" || s.variant === "red"
                         ? "border-white/30 text-white/90"
                         : "border-current/30",
                     ]}
@@ -140,7 +140,7 @@ const variantClasses = {
               <span
                 class:list={[
                   "service-arrow inline-flex h-10 w-10 items-center justify-center rounded-full border transition-transform duration-300 group-hover:rotate-[-45deg]",
-                  s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                  s.variant === "featured" || s.variant === "dark" || s.variant === "red"
                     ? "border-white/30 text-white"
                     : "border-dark/30 text-dark",
                 ]}
@@ -159,7 +159,7 @@ const variantClasses = {
                   "font-extrabold leading-tight tracking-tight",
                   s.variant === "featured"
                     ? "text-3xl sm:text-4xl lg:text-5xl"
-                    : s.variant === "green"
+                    : s.variant === "red"
                       ? "text-3xl sm:text-4xl"
                       : "text-2xl sm:text-3xl",
                 ]}
@@ -169,7 +169,7 @@ const variantClasses = {
               <p
                 class:list={[
                   "text-sm sm:text-base max-w-xl",
-                  s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                  s.variant === "featured" || s.variant === "dark" || s.variant === "red"
                     ? "text-white/75"
                     : "text-current/80",
                 ]}
@@ -185,7 +185,7 @@ const variantClasses = {
                   <li
                     class:list={[
                       "text-xs sm:text-sm px-3 py-1.5 rounded-full border",
-                      s.variant === "featured" || s.variant === "dark" || s.variant === "green"
+                      s.variant === "featured" || s.variant === "dark" || s.variant === "red"
                         ? "border-white/20 text-white/85 bg-white/5"
                         : "border-dark/20 text-dark bg-dark/[0.03]",
                     ]}

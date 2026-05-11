@@ -1,17 +1,89 @@
 ---
-import Accordion from "../ui/Accordion.astro";
 import SectionTitle from "../ui/SectionTitle.astro";
 import Section from "./Section.astro";
 
-const description = "How we deliver AI, SaaS and automation projects — from discovery to launch.";
+const description =
+  "How we deliver AI, SaaS and automation projects — from discovery to launch.";
+
+const steps = [
+  {
+    index: 1,
+    title: "Discovery",
+    description:
+      "We start with a focused discovery session to map your operations, lead funnel, and tech stack. The goal: identify where AI, automation, or custom software will create the highest leverage for your business.",
+  },
+  {
+    index: 2,
+    title: "Architecture",
+    description:
+      "Our engineers design a clean, scalable architecture for your CRM, SaaS, or automation system — covering data models, integrations, infrastructure, and security from day one.",
+  },
+  {
+    index: 3,
+    title: "Build",
+    description:
+      "We build in short iterations with weekly demos. You get working software early, see progress visually, and steer priorities as we go — no black-box delivery.",
+  },
+  {
+    index: 4,
+    title: "Automate",
+    description:
+      "We layer in AI workflows, lead routing, notifications, and back-office automations so your team spends time on revenue work, not repetitive clicks.",
+  },
+  {
+    index: 5,
+    title: "Launch",
+    description:
+      "We ship to production with monitoring, analytics, and rollout support. Your team is trained and your systems are observable from day one.",
+  },
+  {
+    index: 6,
+    title: "Improve",
+    description:
+      "After launch we keep optimizing — tuning automations, expanding features, and shipping new modules as your business and metrics evolve.",
+  },
+];
 ---
 
 <Section id="process">
   <div class="mt-[140px]">
-    <SectionTitle
-      sectionTitle="How We Build"
-      description={description}
-    />
-    <Accordion />
+    <SectionTitle sectionTitle="How We Build" description={description} />
+
+    {/* Timeline — left-aligned line with cards to the right */}
+    <div class="relative pl-12 sm:pl-16 md:pl-20">
+      {/* Vertical line */}
+      <div class="absolute left-[22px] sm:left-[30px] md:left-[38px] top-0 bottom-0 w-px bg-dark/20" aria-hidden="true" />
+
+      <div class="flex flex-col gap-10">
+        {
+          steps.map((step, i) => (
+            <div class="relative">
+              {/* Dot on the line */}
+              <span
+                class="absolute -left-12 sm:-left-16 md:-left-20 top-7 flex h-11 w-11 items-center justify-center rounded-full bg-dark text-white text-sm font-bold border-4 border-white z-10"
+              >
+                {step.index}
+              </span>
+
+              {/* Connector dash from dot to card */}
+              <div class="absolute -left-[2px] sm:-left-[18px] md:-left-[34px] top-[30px] w-[10px] sm:w-[18px] md:w-[26px] h-px bg-dark/20" aria-hidden="true" />
+
+              {/* Card */}
+              <div class="group rounded-[24px] border border-dark bg-gray p-7 sm:p-9 shadow-[0px_4px_0px_#191a23] transition-all duration-300 hover:-translate-y-1">
+                <span class="text-xs font-mono text-dark/50 uppercase tracking-widest">
+                  Step {step.index}
+                </span>
+                <h3 class="mt-2 text-xl sm:text-2xl font-extrabold tracking-tight">
+                  {step.title}
+                </h3>
+                <p class="mt-3 text-dark/70 text-sm sm:text-base leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </Section>
