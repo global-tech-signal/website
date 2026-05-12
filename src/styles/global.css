@@ -170,3 +170,26 @@
   font-size: 1.4rem;
   font-weight: bold;
 }
+
+.content strong,
+.content b {
+  font-weight: 700;
+  color: inherit;
+}
+
+.content ul {
+  list-style-type: disc;
+  margin: 16px 0;
+  padding-left: 1.5rem;
+}
+
+.content ol {
+  list-style-type: decimal;
+  margin: 16px 0;
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin: 6px 0;
+  font-size: 1.1rem;
+}
