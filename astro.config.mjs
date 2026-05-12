@@ -9,6 +9,5 @@ export default defineConfig({
   site: 'https://globaltechsignal.com',
   //site: 'http://localhost:4321',
   integrations: [tailwind(), sitemap()],
-  output: 'static',
   adapter: netlify(),
 });

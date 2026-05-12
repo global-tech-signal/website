@@ -1,25 +1,20 @@
 ---
-export const prerender = false;
-
 import MainLayout from "../../layouts/MainLayout.astro";
 import Tags from "../../components/ui/Tags.astro";
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { formatDate } from "../../utils";
 
 import "../../styles/global.css";
 
-const { slug } = Astro.params;
-
-if(slug === undefined) {
-  throw new Error('Slug is required');
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  return allPosts.map((entry) => ({
+    params: { slug: entry.id.replace(/\.md$/, '') },
+    props: { entry },
+  }));
 }
 
-const entry = await getEntry('blog', slug);
-
-if(entry === undefined) {
-  return Astro.redirect('/404');
-}
-
+const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
