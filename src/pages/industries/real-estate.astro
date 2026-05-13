@@ -1,0 +1,548 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Section from "../../components/sections/Section.astro";
+import SectionTitle from "../../components/ui/SectionTitle.astro";
+---
+
+<MainLayout
+  title="CRM & Automation for Real Estate — GlobalTechSignal"
+  description="Close more deals, automate follow-ups, and manage your pipeline effortlessly. Custom CRM and automation solutions built for real estate teams."
+>
+  <!-- ═══════════════════════════════════════════ HERO ═══════════════════════════════════════════ -->
+  <section class="bg-dark text-white overflow-hidden">
+    <div class="max-w-[1280px] mx-auto px-5 pt-20 pb-28 md:pt-28 md:pb-36">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <!-- Left: copy -->
+        <div class="space-y-6 text-center md:text-left">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-white/80 backdrop-blur">
+            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+            Real Estate &middot; CRM &middot; Automation
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">
+            Stop Losing Leads.<br />
+            <span class="text-accent">Automate Your<br class="hidden sm:block" /> Real Estate CRM.</span>
+          </h1>
+          <p class="text-lg leading-relaxed text-white/60 max-w-lg mx-auto md:mx-0">
+            Purpose-built CRM and workflow automation that helps agents and brokerages capture every lead, nurture prospects automatically, and close deals faster.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+            <a href="#lead-form" class="px-8 py-4 bg-accent hover:bg-white hover:text-dark rounded-xl text-center text-white text-base font-semibold transition-all duration-200 shadow-[0px_4px_0px_rgba(229,57,53,.4)]">
+              Get a Free Consultation
+            </a>
+            <a href="#features" class="px-8 py-4 bg-white/5 hover:bg-white/15 rounded-xl text-center text-white border border-white/10 text-base font-medium transition-all duration-200">
+              See How It Works
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: floating dashboard mockup -->
+        <div class="relative flex justify-center md:justify-end">
+          <div class="relative w-full max-w-[420px]">
+            <!-- Glow -->
+            <div class="absolute -inset-6 rounded-[40px] bg-accent/10 blur-3xl"></div>
+
+            <!-- Main card -->
+            <div class="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-[28px] p-6 space-y-4">
+              <!-- Mini pipeline header -->
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-semibold text-white/90">Live Pipeline</span>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-accent/20 text-accent font-medium">12 Active Deals</span>
+              </div>
+
+              <!-- Notification cards -->
+              <div class="re-float-card bg-dark/60 border border-white/10 rounded-2xl p-4 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-white truncate">New Lead — Zillow</p>
+                  <p class="text-xs text-white/40">Auto-assigned to Sarah · 3s ago</p>
+                </div>
+                <span class="shrink-0 w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+              </div>
+
+              <div class="re-float-card bg-dark/60 border border-white/10 rounded-2xl p-4 flex items-center gap-3" style="animation-delay:.3s">
+                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-green-400" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-white truncate">Follow-up Sent</p>
+                  <p class="text-xs text-white/40">Drip email #2 · automated</p>
+                </div>
+              </div>
+
+              <div class="re-float-card bg-dark/60 border border-white/10 rounded-2xl p-4 flex items-center gap-3" style="animation-delay:.6s">
+                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-blue-400" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-white truncate">Showing Booked</p>
+                  <p class="text-xs text-white/40">Tomorrow at 2:00 PM · 3 bed</p>
+                </div>
+              </div>
+
+              <div class="re-float-card bg-accent/90 border border-accent rounded-2xl p-4 flex items-center gap-3" style="animation-delay:.9s">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-white" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-bold text-white truncate">Deal Closed — $425K</p>
+                  <p class="text-xs text-white/70">Commission logged ✓</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 md:mt-20">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <span class="text-3xl sm:text-4xl font-extrabold text-accent">2x</span>
+          <p class="text-xs text-white/50 mt-1">Avg. conversion lift</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <span class="text-3xl sm:text-4xl font-extrabold text-white">&lt;2m</span>
+          <p class="text-xs text-white/50 mt-1">Lead response time</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <span class="text-3xl sm:text-4xl font-extrabold text-white">8h+</span>
+          <p class="text-xs text-white/50 mt-1">Saved per agent / week</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+          <span class="text-3xl sm:text-4xl font-extrabold text-white">50+</span>
+          <p class="text-xs text-white/50 mt-1">CRM projects shipped</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ PAIN POINTS ═══════════════════════════════════════ -->
+  <Section id="pain-points">
+    <div class="pt-28 pb-20 md:pt-15 md:pb-32">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            The problem
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            Sound <span class="text-accent">familiar?</span>
+          </h2>
+        </div>
+        <p class="max-w-md text-dark/60">Challenges real estate teams face every day without proper CRM and automation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 pb-2">
+        <div class="bg-gray rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] group hover:-translate-y-1 transition-transform duration-300">
+          <span class="text-3xl font-extrabold text-dark/5 group-hover:text-accent/10 transition-colors">01</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Leads Slipping Through&nbsp;Cracks</h3>
+          <p class="text-dark/60 leading-relaxed text-sm">Inquiries from Zillow, Realtor.com, your website, and social media land in different inboxes. Hot prospects go cold before anyone follows up.</p>
+        </div>
+        <div class="bg-dark text-white rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] group hover:-translate-y-1 transition-transform duration-300">
+          <span class="text-3xl font-extrabold text-white/5 group-hover:text-accent/20 transition-colors">02</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Hours Wasted on Manual&nbsp;Tasks</h3>
+          <p class="text-white/60 leading-relaxed text-sm">Copying data between spreadsheets, sending the same emails over and over, and manually updating listing statuses eats into selling time.</p>
+        </div>
+        <div class="bg-gray rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] group hover:-translate-y-1 transition-transform duration-300">
+          <span class="text-3xl font-extrabold text-dark/5 group-hover:text-accent/10 transition-colors">03</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">No Visibility Across Your&nbsp;Team</h3>
+          <p class="text-dark/60 leading-relaxed text-sm">Agents work in silos. Managers can't see pipeline status, and deals get duplicated or neglected — no single source of truth.</p>
+        </div>
+        <div class="bg-accent text-white rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] group hover:-translate-y-1 transition-transform duration-300">
+          <span class="text-3xl font-extrabold text-white/10 group-hover:text-white/20 transition-colors">04</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Generic Tools That Don't&nbsp;Fit</h3>
+          <p class="text-white/80 leading-relaxed text-sm">Off-the-shelf CRMs weren't built for real estate — property stages, showing schedules, commission splits, and MLS integrations are missing.</p>
+        </div>
+        <div class="bg-dark text-white rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] group hover:-translate-y-1 transition-transform duration-300">
+          <span class="text-3xl font-extrabold text-white/5 group-hover:text-accent/20 transition-colors">05</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Can't Measure What's&nbsp;Working</h3>
+          <p class="text-white/60 leading-relaxed text-sm">You don't know which lead sources convert, which agents perform best, or where deals stall in your pipeline.</p>
+        </div>
+        <div class="bg-gray rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] group hover:-translate-y-1 transition-transform duration-300">
+          <span class="text-3xl font-extrabold text-dark/5 group-hover:text-accent/10 transition-colors">06</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Inconsistent Client&nbsp;Communication</h3>
+          <p class="text-dark/60 leading-relaxed text-sm">Buyers and sellers expect fast, personalized updates. Without automation, response times suffer and clients feel ignored.</p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ════════════════════════════════════════ FEATURES ════════════════════════════════════════ -->
+  <Section id="features">
+    <div class="pb-20 md:pb-32">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            What you get
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            Built for <span class="text-accent">real estate</span>
+          </h2>
+        </div>
+        <p class="max-w-md text-dark/60">Everything your team needs to capture, nurture, and close — on autopilot.</p>
+      </div>
+
+      <!-- Bento grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 pb-2">
+        <!-- Feature 1 — wide -->
+        <div class="lg:col-span-2 bg-dark text-white rounded-2xl p-6 md:p-8 border border-dark shadow-[0px_4px_0px_#191a23] relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          <span class="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold mb-4">Core</span>
+          <h3 class="text-xl sm:text-2xl font-bold mb-3">Lead Capture & Routing</h3>
+          <p class="text-white/60 leading-relaxed max-w-xl mb-5 text-sm">Automatically pull leads from Zillow, Realtor.com, Facebook Ads, your website, and more into one pipeline. Round-robin or rule-based assignment ensures every lead gets an owner instantly.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-white/10 text-white/70">Multi-source aggregation</span>
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-white/10 text-white/70">Instant assignment</span>
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-white/10 text-white/70">Duplicate detection</span>
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-accent/20 text-accent">Zillow + MLS ready</span>
+          </div>
+        </div>
+
+        <!-- Feature 2 — narrow -->
+        <div class="bg-accent text-white rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold mb-4">Automation</span>
+            <h3 class="text-xl font-bold mb-3">Automated Follow-Ups</h3>
+            <p class="text-white/80 leading-relaxed mb-5 text-sm">Drip email sequences, SMS reminders, and task triggers fire automatically. Speed-to-lead goes from hours to seconds.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-white/20 text-white/90">Email & SMS drips</span>
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-white/20 text-white/90">Behavior triggers</span>
+          </div>
+        </div>
+
+        <!-- Feature 3 — narrow -->
+        <div class="bg-gray rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-dark/10 text-dark text-xs font-semibold mb-4">Pipeline</span>
+            <h3 class="text-xl font-bold mb-3">Deal Management</h3>
+            <p class="text-dark/60 leading-relaxed mb-5 text-sm">Visual Kanban tailored to real estate stages — inquiry → showing → offer → contract → closed. Drag-and-drop with full audit trails.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-dark text-white">Custom stages</span>
+            <span class="text-[11px] px-3 py-1.5 rounded-full bg-dark text-white">Commission splits</span>
+          </div>
+        </div>
+
+        <!-- Feature 4 — wide -->
+        <div class="lg:col-span-2 bg-dark text-white rounded-2xl p-6 md:p-8 border border-dark shadow-[0px_4px_0px_#191a23] relative overflow-hidden">
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+          <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+            <div class="max-w-md">
+              <span class="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold mb-4">Analytics</span>
+              <h3 class="text-xl sm:text-2xl font-bold mb-3">Reporting & Dashboards</h3>
+              <p class="text-white/60 leading-relaxed text-sm">Real-time dashboards showing lead source ROI, agent performance, conversion rates, and revenue forecasts. Know exactly where your business stands.</p>
+            </div>
+            <div class="flex flex-row md:flex-col gap-3 shrink-0">
+              <div class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-center">
+                <span class="text-xl font-extrabold text-accent">ROI</span>
+                <p class="text-[10px] text-white/40 mt-0.5">per lead source</p>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-center">
+                <span class="text-xl font-extrabold text-white">#1</span>
+                <p class="text-[10px] text-white/40 mt-0.5">agent ranking</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ═══════════════════════════════════════ TESTIMONIALS ═══════════════════════════════════════ -->
+  <Section id="testimonials">
+    <div class="pb-20 md:pb-32">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            Social proof
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            Trusted by <span class="text-accent">real estate</span> teams
+          </h2>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-dark p-6 md:p-10 border border-dark shadow-[0px_4px_0px_#191a23] mb-2">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+          <div class="relative">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="text-accent/30 mb-4"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-white/80 leading-relaxed mb-8">"We went from losing 40% of our web leads to responding within 2 minutes. Our conversion rate <span class="text-accent font-semibold">doubled in 3 months</span>. This CRM paid for itself in the first week."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center text-sm font-bold text-accent">MR</div>
+              <div>
+                <p class="text-sm font-semibold text-white">Michael Rodriguez</p>
+                <p class="text-xs text-white/40">Broker, Summit Realty Group</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="text-accent/30 mb-4"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-white/80 leading-relaxed mb-8">"The automated drip campaigns alone saved each agent <span class="text-accent font-semibold">8+ hours per week</span>. Now they focus on showings and closing instead of chasing follow-ups."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center text-sm font-bold text-accent">JT</div>
+              <div>
+                <p class="text-sm font-semibold text-white">Jessica Torres</p>
+                <p class="text-xs text-white/40">Team Lead, Prestige Properties</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="text-accent/30 mb-4"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-white/80 leading-relaxed mb-8">"Finally a CRM that understands real estate. The pipeline stages match our actual workflow, and the <span class="text-accent font-semibold">commission tracking eliminated spreadsheet headaches</span> entirely."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center text-sm font-bold text-accent">DK</div>
+              <div>
+                <p class="text-sm font-semibold text-white">David Kim</p>
+                <p class="text-xs text-white/40">Owner, Keystone Real Estate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ═══════════════════════════════════════════ FAQ ═══════════════════════════════════════════ -->
+  <Section id="faq">
+    <div class="pb-20 md:pb-20">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            FAQ
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            Got <span class="text-accent">questions?</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="space-y-4 pb-2">
+        <details class="group bg-gray rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 md:px-8 py-5 font-bold text-base md:text-lg">
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:block text-2xl text-dark/10 group-open:text-accent/30 transition-colors">01</span>
+              How long does it take to set up the CRM?
+            </div>
+            <div class="bg-white w-9 h-9 flex justify-center items-center rounded-full border border-dark shrink-0 ml-4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-dark group-open:rotate-180 transition-transform duration-300" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="px-6 md:px-8 pb-6 text-dark/70 leading-relaxed text-sm border-t border-dark/10 pt-4 sm:ml-12">
+            Most real estate teams are fully onboarded within 2–4 weeks. This includes data migration, custom pipeline setup, automation configuration, and team training. Simple setups can go live in as little as 5 business days.
+          </div>
+        </details>
+        <details class="group bg-gray rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 md:px-8 py-5 font-bold text-base md:text-lg">
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:block text-2xl text-dark/10 group-open:text-accent/30 transition-colors">02</span>
+              Can it integrate with Zillow, Realtor.com, and MLS?
+            </div>
+            <div class="bg-white w-9 h-9 flex justify-center items-center rounded-full border border-dark shrink-0 ml-4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-dark group-open:rotate-180 transition-transform duration-300" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="px-6 md:px-8 pb-6 text-dark/70 leading-relaxed text-sm border-t border-dark/10 pt-4 sm:ml-12">
+            Yes. We build direct integrations with Zillow, Realtor.com, Redfin, Facebook/Instagram Lead Ads, Google Ads, and most MLS systems via RETS/RESO Web API. Leads flow directly into your pipeline automatically.
+          </div>
+        </details>
+        <details class="group bg-gray rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 md:px-8 py-5 font-bold text-base md:text-lg">
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:block text-2xl text-dark/10 group-open:text-accent/30 transition-colors">03</span>
+              Do you build custom or use off-the-shelf software?
+            </div>
+            <div class="bg-white w-9 h-9 flex justify-center items-center rounded-full border border-dark shrink-0 ml-4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-dark group-open:rotate-180 transition-transform duration-300" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="px-6 md:px-8 pb-6 text-dark/70 leading-relaxed text-sm border-t border-dark/10 pt-4 sm:ml-12">
+            We build custom CRM systems tailored to your specific workflow. Everything — pipeline stages, automation rules, reporting — is designed around how your team actually works. You own the system entirely.
+          </div>
+        </details>
+        <details class="group bg-gray rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 md:px-8 py-5 font-bold text-base md:text-lg">
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:block text-2xl text-dark/10 group-open:text-accent/30 transition-colors">04</span>
+              What does pricing look like?
+            </div>
+            <div class="bg-white w-9 h-9 flex justify-center items-center rounded-full border border-dark shrink-0 ml-4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-dark group-open:rotate-180 transition-transform duration-300" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="px-6 md:px-8 pb-6 text-dark/70 leading-relaxed text-sm border-t border-dark/10 pt-4 sm:ml-12">
+            Pricing depends on team size, integrations needed, and automation complexity. Most real estate CRM projects start at $5,000 for initial build with optional monthly support. Book a free consultation to get a tailored quote.
+          </div>
+        </details>
+        <details class="group bg-gray rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 md:px-8 py-5 font-bold text-base md:text-lg">
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:block text-2xl text-dark/10 group-open:text-accent/30 transition-colors">05</span>
+              Will my team need technical skills?
+            </div>
+            <div class="bg-white w-9 h-9 flex justify-center items-center rounded-full border border-dark shrink-0 ml-4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-dark group-open:rotate-180 transition-transform duration-300" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="px-6 md:px-8 pb-6 text-dark/70 leading-relaxed text-sm border-t border-dark/10 pt-4 sm:ml-12">
+            Not at all. We design intuitive interfaces that any agent can learn in minutes, plus provide onboarding sessions and docs. Automations run in the background — your team just sees results.
+          </div>
+        </details>
+        <details class="group bg-gray rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 md:px-8 py-5 font-bold text-base md:text-lg">
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:block text-2xl text-dark/10 group-open:text-accent/30 transition-colors">06</span>
+              Can you migrate from our current CRM?
+            </div>
+            <div class="bg-white w-9 h-9 flex justify-center items-center rounded-full border border-dark shrink-0 ml-4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-dark group-open:rotate-180 transition-transform duration-300" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <div class="px-6 md:px-8 pb-6 text-dark/70 leading-relaxed text-sm border-t border-dark/10 pt-4 sm:ml-12">
+            Absolutely. We handle full data migration from Follow Up Boss, kvCORE, HubSpot, Salesforce, spreadsheets, or any system with export capabilities. No leads or history are lost.
+          </div>
+        </details>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ═══════════════════════════════════════ LEAD FORM ═══════════════════════════════════════ -->
+  <Section id="lead-form">
+    <div class="pb-28  md:pb-10">
+      <div class="bg-dark rounded-2xl p-6 md:p-10 lg:p-12 border border-dark shadow-[0px_4px_0px_#191a23] relative overflow-hidden">
+        <!-- Glow -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <!-- Left: value props -->
+          <div class="text-white space-y-6">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              Free consultation
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight">
+              Let's build your <span class="text-accent">real estate CRM</span>
+            </h2>
+            <p class="text-white/60 leading-relaxed max-w-md">Tell us about your brokerage and we'll show you exactly how CRM automation can transform your operations.</p>
+
+            <div class="space-y-4 pt-4">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <p class="text-white/70 text-sm">Free 30-min strategy call with an engineer</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <p class="text-white/70 text-sm">Custom workflow audit for your brokerage</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <p class="text-white/70 text-sm">No commitment — just expert advice</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div class="bg-white rounded-2xl p-6 md:p-8">
+            <form id="re-lead-form" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="re-name" class="block text-sm font-medium text-dark mb-2">Full Name*</label>
+                  <input type="text" id="re-name" name="name" required placeholder="John Smith" class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors" />
+                </div>
+                <div>
+                  <label for="re-email" class="block text-sm font-medium text-dark mb-2">Business Email*</label>
+                  <input type="email" id="re-email" name="email" required placeholder="john@realty.com" class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="re-company" class="block text-sm font-medium text-dark mb-2">Brokerage</label>
+                  <input type="text" id="re-company" name="company" placeholder="Summit Realty" class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors" />
+                </div>
+                <div>
+                  <label for="re-team-size" class="block text-sm font-medium text-dark mb-2">Team Size</label>
+                  <select id="re-team-size" name="team_size" class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors bg-white">
+                    <option value="">Select...</option>
+                    <option value="solo">Solo Agent</option>
+                    <option value="2-5">2–5 Agents</option>
+                    <option value="6-20">6–20 Agents</option>
+                    <option value="20+">20+ Agents</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="re-challenge" class="block text-sm font-medium text-dark mb-2">Biggest Challenge*</label>
+                <textarea id="re-challenge" name="challenge" required rows="3" placeholder="E.g., We're losing leads from Zillow because no one follows up fast enough..." class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors resize-none"></textarea>
+              </div>
+              <input type="hidden" name="source" value="real-estate-landing" />
+              <button type="submit" class="w-full px-8 py-4 bg-accent hover:bg-dark text-white rounded-xl text-base font-semibold transition-all duration-200 shadow-[0px_4px_0px_rgba(229,57,53,.4)] hover:shadow-[0px_4px_0px_#191a23]">
+                Book My Free Consultation
+              </button>
+              <p class="text-center text-xs text-dark/40">No commitment. We typically respond within 1 business day.</p>
+              <p id="re-lead-status" class="mt-3 text-center text-sm hidden"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <script>
+    const form = document.getElementById('re-lead-form') as HTMLFormElement;
+    const status = document.getElementById('re-lead-status') as HTMLParagraphElement;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        const json = await res.json();
+
+        if (res.ok) {
+          status.textContent = 'Thank you! We\'ll reach out within 1 business day.';
+          status.className = 'mt-3 text-center text-sm text-green-600';
+          status.classList.remove('hidden');
+          form.reset();
+        } else {
+          status.textContent = json.error || 'Something went wrong. Please try again.';
+          status.className = 'mt-3 text-center text-sm text-red-500';
+          status.classList.remove('hidden');
+        }
+      } catch {
+        status.textContent = 'Network error. Please try again.';
+        status.className = 'mt-3 text-center text-sm text-red-500';
+        status.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Book My Free Consultation';
+      }
+    });
+  </script>
+</MainLayout>
+
+<style>
+  @keyframes re-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .re-float-card {
+    animation: re-float 4s ease-in-out infinite;
+  }
+</style>
