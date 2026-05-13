@@ -481,10 +481,10 @@ import SectionTitle from "../../components/ui/SectionTitle.astro";
                 </div>
               </div>
               <div>
-                <label for="re-challenge" class="block text-sm font-medium text-dark mb-2">Biggest Challenge*</label>
-                <textarea id="re-challenge" name="challenge" required rows="3" placeholder="E.g., We're losing leads from Zillow because no one follows up fast enough..." class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors resize-none"></textarea>
+                <label for="re-message" class="block text-sm font-medium text-dark mb-2">Biggest Challenge*</label>
+                <textarea id="re-message" name="message" required rows="3" placeholder="E.g., We're losing leads from Zillow because no one follows up fast enough..." class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors resize-none"></textarea>
               </div>
-              <input type="hidden" name="source" value="real-estate-landing" />
+              <input type="hidden" name="checkbox1" value="on" />
               <button type="submit" class="w-full px-8 py-4 bg-accent hover:bg-dark text-white rounded-xl text-base font-semibold transition-all duration-200 shadow-[0px_4px_0px_rgba(229,57,53,.4)] hover:shadow-[0px_4px_0px_#191a23]">
                 Book My Free Consultation
               </button>
@@ -509,9 +509,19 @@ import SectionTitle from "../../components/ui/SectionTitle.astro";
       status.classList.add('hidden');
 
       try {
+        const fd = new FormData(form);
+        // Compose extra fields into the message so the API receives everything
+        const company = fd.get('company')?.toString().trim();
+        const teamSize = fd.get('team_size')?.toString().trim();
+        let msg = fd.get('message')?.toString() || '';
+        if (company) msg += `\n\nBrokerage: ${company}`;
+        if (teamSize) msg += `\nTeam size: ${teamSize}`;
+        msg += '\n\n[Source: Real Estate Landing Page]';
+        fd.set('message', msg);
+
         const res = await fetch('/api/contact', {
           method: 'POST',
-          body: new FormData(form),
+          body: fd,
         });
         const json = await res.json();
 
