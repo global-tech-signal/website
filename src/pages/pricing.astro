@@ -7,9 +7,21 @@ import Card from "../components/ui/Card.astro";
 <MainLayout title="Pricing | GlobalTechSignal" description="CRM, automation and custom solution packages for real estate and service businesses.">
 	<main class="space-y-20">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
-            <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Packages built around your business</h2>
-                <p class="mb-5 font-light text-gray-500 sm:text-xl">Pick the package that fits where you are — from a starter CRM setup to a fully custom enterprise solution.</p>
+            <div class="relative flex flex-col items-center">
+                <div class="row items-center py-5 md:pb-20 md:pt-10">
+                    <div class="text-center space-y-8 max-w-3xl mx-auto">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark">
+                            <span class="w-2 h-2 rounded-full bg-accent"></span>
+                            Pricing
+                        </span>
+                        <h1 class="text-4xl font-medium leading-tight md:text-6xl tracking-tight">
+                            Packages built around <span class="redhead">your business</span>
+                        </h1>
+                        <p class="text-lg font-normal leading-7 text-dark/70">
+                            Pick the package that fits where you are — from a starter CRM setup to a fully custom enterprise solution.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
                 {
