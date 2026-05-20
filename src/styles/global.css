@@ -193,3 +193,33 @@
   margin: 6px 0;
   font-size: 1.1rem;
 }
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 1rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.content thead {
+  background-color: #f5f6f7;
+}
+
+.content th,
+.content td {
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.content th {
+  font-weight: 600;
+  color: #0f1115;
+}
+
+.content tr:nth-child(even) {
+  background-color: #f9fafb;
+}
