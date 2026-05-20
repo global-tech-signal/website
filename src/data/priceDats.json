@@ -1,32 +1,56 @@
 [
     {
-        "title": "MVP Sprint",
-        "description": "A focused 4–6 week build to ship a usable v1 of your product or automation",
-        "price": 9500,
-        "devCount": "1–2 engineers",
-        "support": "30 days",
-        "update": "Bug-fix included",
-        "action": "Start a Project",
-        "link": "/contact"
+        "name": "Starter CRM Setup",
+        "price_usd": 2500,
+        "starting_from": true,
+        "best_for": "Small teams getting started",
+        "features": [
+            "CRM setup & configuration",
+            "Lead pipeline management",
+            "Contact management",
+            "Dashboard setup",
+            "Basic workflow automation",
+            "Email templates",
+            "Property management setup",
+            "Lead capture forms"
+        ]
     },
     {
-        "title": "Growth Engagement",
-        "description": "Ongoing engineering for SaaS, CRM and AI automation roadmaps",
-        "price": 7500,
-        "devCount": "Dedicated team",
-        "support": "Monthly",
-        "update": "Continuous delivery",
-        "action": "Book a Demo",
-        "link": "/contact"
+        "name": "Growth Automation",
+        "price_usd": 5000,
+        "starting_from": true,
+        "best_for": "Growing businesses",
+        "features": [
+            "Everything in Starter",
+            "Workflow automation",
+            "Dashboard reporting",
+            "Lead routing",
+            "Calendar integrations",
+            "Analytics & reporting",
+            "AI automation workflows",
+            "AI chatbot",
+            "Knowledge base integration",
+            "Third-party integrations"
+        ],
+        "badge": "Most Popular"
     },
     {
-        "title": "Enterprise Build",
-        "description": "End-to-end design and delivery of mission-critical platforms",
-        "price": 25000,
-        "devCount": "Full squad",
-        "support": "Custom SLA",
-        "update": "Quarterly roadmaps",
-        "action": "Talk to Engineering",
-        "link": "/contact"
+        "name": "Enterprise Custom Solution",
+        "price_usd": 10000,
+        "starting_from": true,
+        "best_for": "Teams needing custom operations",
+        "features": [
+            "Fully custom CRM",
+            "AI chatbot",
+            "Custom AI knowledge base",
+            "Advanced dashboards",
+            "API integrations",
+            "Custom reporting",
+            "Dedicated support",
+            "Scalable architecture",
+            "Advanced automation workflows",
+            "Custom AI agents",
+            "Multi-system integrations"
+        ]
     }
 ]
