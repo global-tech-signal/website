@@ -10,7 +10,7 @@ const menuitems = [
   { href: '/contact', label: 'Contact' },
 ];
 
-const navButton = { href: '/contact', label: 'Start a Project' };
+const navButton = { href: 'https://calendly.com/abrar-globaltechsignal/30min', label: 'Book a Demo' };
 ---
 
 <div class="mt-20">
@@ -52,6 +52,8 @@ const navButton = { href: '/contact', label: 'Start a Project' };
               <a 
                 class="mobile-nav-link px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" 
                 href={navButton.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-close-menu="true"
               >
                 <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
@@ -63,7 +65,7 @@ const navButton = { href: '/contact', label: 'Start a Project' };
 
       <div>
         <div class="hidden lg:flex items-center gap-4">
-          <a class="px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" href={navButton.href}>
+          <a class="px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" href={navButton.href} target="_blank" rel="noopener noreferrer">
             <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
           </a>
         </div>
