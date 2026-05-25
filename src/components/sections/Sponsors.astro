@@ -1,36 +1,44 @@
 ---
 import { Image } from "astro:assets";
 import s1 from "../../assets/company/company-logo1.svg";
-import s2 from "../../assets/company/company-logo2.svg";
 import s3 from "../../assets/company/company-logo3.svg";
 import s4 from "../../assets/company/company-logo4.svg";
-import s5 from "../../assets/company/company-logo5.svg";
 import s6 from "../../assets/company/company-logo6.svg";
 import Section from "./Section.astro";
 
-const sponsors = [
-  { logo: s6, alt: "Amazon logo" },
-  { logo: s5, alt: "Dribble logo" },
-  { logo: s4, alt: "HubSpot logo" },
-  { logo: s3, alt: "Notion logo" },
-  { logo: s2, alt: "Netflix logo" },
-  { logo: s1, alt: "Zoom logo" },
+const logoTools = [
+  { logo: s4, alt: "HubSpot" },
+  { logo: s3, alt: "Notion" },
+  { logo: s1, alt: "Zoom" },
+  { logo: s6, alt: "AWS" },
+];
+
+const textTools = [
+  "Stripe",
+  "Slack",
+  "OpenAI",
+  "Make",
+  "Zapier",
+  "Salesforce",
+  "Google Cloud",
+  "Twilio",
 ];
 ---
 
 <Section id="sponsors">
-  <div class="flex-row items-center">
-  <p class="text-center text-sm uppercase tracking-widest text-dark/60 mb-6">Trusted by teams shipping modern software</p>
-  <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6">
-    {
-      sponsors.map((sponsor) => {
-        return (
-          <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
-            <Image src={sponsor.logo} class="h-12 w-auto mx-auto" alt={sponsor.alt} loading="lazy" />
-          </div>
-        );
-      })
-    }
+  <div class="flex-col items-center">
+    <p class="text-center text-sm uppercase tracking-widest text-dark/60 mb-5">Platforms we integrate with</p>
+    <div class="flex justify-center gap-8 items-center flex-wrap mb-6">
+      {logoTools.map((tool) => (
+        <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
+          <Image src={tool.logo} class="h-10 w-auto mx-auto" alt={tool.alt} loading="lazy" />
+        </div>
+      ))}
+    </div>
+    <div class="flex justify-center gap-3 flex-wrap">
+      {textTools.map((tool) => (
+        <span class="px-4 py-2 rounded-full border border-dark/10 text-sm font-medium text-dark/70">{tool}</span>
+      ))}
+    </div>
   </div>
-  </div> 
 </Section>
