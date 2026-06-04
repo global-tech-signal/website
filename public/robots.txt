@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://globaltechsignal.com/sitemap-index.xml
+LLMs: https://globaltechsignal.com/llms.txt
