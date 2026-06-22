@@ -1,0 +1,763 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const calendlyUrl = "https://calendly.com/abrar-globaltechsignal/30min";
+const videoId = "LN4MF_uRBHg";
+
+const fragmentedSystems = [
+  { num: "01", label: "Spreadsheets", note: "Versioned chaos" },
+  { num: "02", label: "Email", note: "Buried threads" },
+  { num: "03", label: "Chat Apps", note: "Lost context" },
+  { num: "04", label: "Documents", note: "Out of sync" },
+  { num: "05", label: "Employee Memory", note: "Walks out the door" },
+];
+
+const hiddenCosts = [
+  {
+    num: "01",
+    title: "Missed Leads",
+    desc: "Prospects slip through without a system to capture them.",
+    variant: "light",
+  },
+  {
+    num: "02",
+    title: "Forgotten Follow-Ups",
+    desc: "No reminders means no second chances.",
+    variant: "dark",
+  },
+  {
+    num: "03",
+    title: "Slow Response Times",
+    desc: "Manual routing kills your speed-to-lead.",
+    variant: "light",
+  },
+  {
+    num: "04",
+    title: "Lost Deals",
+    desc: "Deals stall in pipelines nobody can see.",
+    variant: "red",
+  },
+  {
+    num: "05",
+    title: "Frustrated Customers",
+    desc: "Inconsistent experiences drive customers away.",
+    variant: "dark",
+  },
+];
+
+const crmFeatures = [
+  { label: "Leads", icon: "users" },
+  { label: "Customers", icon: "heart" },
+  { label: "Deals", icon: "trending" },
+  { label: "Tasks", icon: "check" },
+  { label: "Communications", icon: "chat" },
+  { label: "Team Activity", icon: "pulse" },
+];
+
+const beforeItems = [
+  "Manual Tracking",
+  "Missed Opportunities",
+  "No Visibility",
+  "Inconsistent Processes",
+];
+const afterItems = [
+  "Centralized Data",
+  "Automated Follow-Ups",
+  "Real-Time Visibility",
+  "Scalable Growth",
+];
+
+const automationSteps = [
+  { num: 1, title: "New Lead", desc: "Captured from any source — web, ads, referral." },
+  { num: 2, title: "Assigned Automatically", desc: "Routed to the right rep in under 60 seconds." },
+  { num: 3, title: "Notification Sent", desc: "Slack, email and mobile — instantly." },
+  { num: 4, title: "Follow-Up Scheduled", desc: "Sequences trigger themselves on cadence." },
+  { num: 5, title: "Deal Tracked", desc: "Pipeline updates without anyone touching a sheet." },
+];
+
+const aiFeatures = [
+  { title: "Summarize Meetings", desc: "Auto-transcribe and extract action items." },
+  { title: "Draft Emails", desc: "Personalized replies in your tone of voice." },
+  { title: "Analyze Conversations", desc: "Spot sentiment, objections and intent." },
+  { title: "Identify At-Risk Deals", desc: "Flag stalled opportunities before they close-lost." },
+  { title: "Recommend Next Actions", desc: "Suggest the highest-leverage next move." },
+];
+
+const services = [
+  {
+    num: "01",
+    title: "CRM Implementation",
+    description:
+      "We design and deploy the CRM platform that matches how your team actually sells.",
+    items: ["HubSpot", "Salesforce", "Pipedrive", "Custom CRM"],
+    variant: "dark",
+    span: "lg:col-span-2",
+  },
+  {
+    num: "02",
+    title: "Workflow Automation",
+    description:
+      "Connect the tools you already use into one automated flow — no manual handoffs.",
+    items: ["Lead Routing", "Task Automation", "Follow-Up Automation", "Pipeline Automation"],
+    variant: "light",
+    span: "lg:col-span-1",
+  },
+  {
+    num: "03",
+    title: "AI Enablement",
+    description:
+      "Embed AI assistants and intelligence into every layer of your revenue stack.",
+    items: ["AI Assistants", "Meeting Summaries", "Lead Qualification", "Opportunity Insights"],
+    variant: "red",
+    span: "lg:col-span-3",
+  },
+];
+
+const variantClasses = {
+  dark: "bg-dark text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  red: "bg-red-soft text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  light: "bg-gray text-black border-dark shadow-[0px_5px_0px_#191a23]",
+  outline: "bg-white text-black border-dark shadow-[0px_5px_0px_#191a23]",
+};
+---
+
+<MainLayout
+  title="Outgrowing Spreadsheets? Why Growing Businesses Need a CRM | Global Tech Signal"
+  description="Learn why spreadsheets become a bottleneck as businesses grow and how CRM, automation, and AI help businesses scale efficiently."
+>
+  <main class="space-y-40 md:space-y-56 mb-24 pt-8 md:pt-12 overflow-x-clip">
+    <!-- ===== SECTION 1: HERO ===== -->
+    <section class="relative px-4 mx-auto max-w-screen-xl lg:px-6">
+      <!-- Background decorative glow -->
+      <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-accent/[0.06] blur-3xl pointer-events-none"></div>
+      <div class="absolute top-40 -right-32 w-[400px] h-[400px] rounded-full bg-accent/[0.04] blur-3xl pointer-events-none"></div>
+
+      <div class="relative grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left -->
+        <div class="flex flex-col gap-8 md:gap-10">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-white text-xs font-medium text-dark shadow-[0px_2px_0px_rgba(0,0,0,0.06)] w-fit">
+            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+            <span class="font-mono uppercase tracking-widest">Solutions · CRM</span>
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight">
+            Outgrowing<br/>
+            <span class="text-accent">Spreadsheets?</span>
+          </h1>
+          <p class="text-lg font-normal leading-8 text-dark/70 max-w-lg">
+            As your business grows, spreadsheets become harder to manage, visibility disappears, and opportunities start falling through the cracks.
+          </p>
+
+          <!-- Flow Diagram -->
+          <div class="relative py-2">
+            <div class="absolute inset-0 bg-accent/5 blur-3xl rounded-full pointer-events-none"></div>
+            <div class="relative flex flex-col sm:flex-row sm:flex-wrap items-center sm:items-stretch gap-3 sm:gap-0">
+              <div class="px-4 py-3 rounded-xl bg-white border border-dark text-dark text-xs font-bold uppercase tracking-widest font-mono shadow-[0px_4px_0px_#191a23]">Lead</div>
+              <div class="flex sm:flex-row flex-col items-center sm:mx-3">
+                <div class="sm:w-8 w-px sm:h-px h-6 bg-dark/20"></div>
+                <svg class="w-4 h-4 text-red sm:-ml-1 rotate-90" fill="currentColor" viewBox="0 0 24 24"><path d="M12 16l-6-6h12l-6 6z"/></svg>
+              </div>
+              <div class="px-4 py-3 rounded-xl bg-white border border-dark text-red text-xs font-bold uppercase tracking-widest font-mono shadow-[0px_4px_0px_#191a23]">No Follow-Up</div>
+              <div class="flex sm:flex-row flex-col items-center sm:mx-3">
+                <div class="sm:w-8 w-px sm:h-px h-6 bg-dark/20"></div>
+                <svg class="w-4 h-4 text-red sm:-ml-1 rotate-[-90deg]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 16l-6-6h12l-6 6z"/></svg>
+              </div>
+              <div class="px-4 py-3 rounded-xl bg-red-soft border border-dark text-white text-xs font-bold uppercase tracking-widest font-mono shadow-[0px_4px_0px_#191a23]">Lost Deal</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-dark hover:bg-accent text-white rounded-xl text-base font-medium transition-all duration-300 text-center hover:-translate-y-0.5 shadow-[0px_4px_0px_#191a23] hover:shadow-[0px_6px_0px_#191a23]">
+              Book a CRM Assessment
+            </a>
+            <a href="#video" class="px-8 py-4 bg-white hover:bg-dark hover:text-white text-dark border border-dark/20 rounded-xl text-base font-medium transition-colors text-center inline-flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              Watch the Video
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Video with frame -->
+        <div id="video" class="relative">
+          <!-- Floating accent card -->
+          <div class="rounded-[28px] overflow-hidden border border-dark bg-dark shadow-[0px_5px_0px_#191a23]">
+            <div class="aspect-video">
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="Why Growing Businesses Outgrow Spreadsheets"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="w-full h-full"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+          <p class="text-center text-xs font-mono uppercase tracking-widest text-dark/40 mt-4">Why Growing Businesses Outgrow Spreadsheets</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: THE PROBLEM ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <!-- Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">The Problem</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            Growth creates
+            <span class="text-accent">complexity</span>.
+          </h2>
+        </div>
+        <p class="lg:max-w-sm text-base sm:text-lg text-dark/80">
+          As teams grow, customer information becomes fragmented across systems — and visibility disappears.
+        </p>
+      </div>
+
+      <!-- Bento: fragmented systems -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {fragmentedSystems.map((sys, i) => (
+          <div class={`group relative p-7 rounded-[28px] border border-dark transition-all duration-300 hover:-translate-y-1 shadow-[0px_4px_0px_#191a23] ${i % 2 === 0 ? 'bg-white' : 'bg-gray'}`}>
+            <div class="flex items-start justify-between mb-6">
+              <span class="text-sm font-mono text-dark/40">{sys.num}</span>
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dark/20 text-dark transition-transform duration-300 group-hover:rotate-[-45deg]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </span>
+            </div>
+            <h3 class="text-2xl font-extrabold tracking-tight text-dark mb-2">{sys.label}</h3>
+            <p class="text-sm text-dark/60">{sys.note}</p>
+          </div>
+        ))}
+        <!-- Result card: fragmentation -->
+        <div class="group relative p-7 rounded-[28px] border border-dark bg-red-soft text-white shadow-[0px_4px_0px_#191a23] transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-white/10 blur-2xl"></div>
+          <div class="relative">
+            <div class="flex items-start justify-between mb-6">
+              <span class="text-sm font-mono text-white/60">=</span>
+              <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-extrabold tracking-tight mb-2">Fragmented Data</h3>
+            <p class="text-sm text-white/80">Inconsistent processes. Zero visibility.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: HIDDEN COST ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">The Hidden Cost</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            Opportunities are falling through the
+            <span class="text-accent">cracks</span>.
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mb-20">
+        {hiddenCosts.map((cost) => (
+          <div class={`group relative p-6 rounded-[24px] border transition-all duration-300 hover:-translate-y-1 ${variantClasses[cost.variant as keyof typeof variantClasses]}`}>
+            <div class="flex items-center justify-between mb-6">
+              <span class={`text-xs font-mono ${cost.variant === 'light' ? 'text-dark/40' : 'text-white/50'}`}>{cost.num}</span>
+              <span class={`flex h-9 w-9 items-center justify-center rounded-full ${cost.variant === 'light' ? 'bg-red/10 text-red' : 'bg-white/15 text-white'}`}>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+                </svg>
+              </span>
+            </div>
+            <h3 class={`text-lg font-extrabold tracking-tight mb-2 ${cost.variant === 'light' ? 'text-dark' : 'text-white'}`}>{cost.title}</h3>
+            <p class={`text-sm leading-snug ${cost.variant === 'light' ? 'text-dark/60' : 'text-white/70'}`}>{cost.desc}</p>
+          </div>
+        ))}
+      </div>
+
+   </section>
+
+    <!-- ===== SECTION 4: WHAT IS A CRM ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="space-y-7 order-2 lg:order-1">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">The Solution</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            A CRM is your business
+            <span class="text-accent">operating system</span>.
+          </h2>
+          <p class="text-lg text-dark/70 leading-relaxed">
+            One unified platform that centralizes every customer interaction, deal and task — making your team faster, more accountable and more visible to leadership.
+          </p>
+          <div class="grid grid-cols-2 gap-3">
+            {crmFeatures.map((feature) => (
+              <div class="group flex items-center gap-3 p-4 rounded-2xl bg-gray border border-dark/10 hover:border-dark transition-all duration-300 hover:-translate-y-0.5">
+                <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-accent/10 shrink-0 group-hover:bg-accent transition-colors">
+                  <svg class="w-4 h-4 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </span>
+                <span class="text-sm font-medium text-dark">{feature.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Dashboard mockup -->
+        <div class="order-1 lg:order-2 relative lg:pt-6">
+          <!-- Floating metric card -->
+          <div class="hidden lg:block absolute -top-2 -right-4 z-20 bg-white text-dark rounded-2xl p-4 w-[160px] shadow-[0px_4px_0px_#191a23] border border-dark hero-float-card">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-2 h-2 rounded-full bg-green-500"></span>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-dark/60">Pipeline</span>
+            </div>
+            <span class="text-2xl font-extrabold leading-none">+38%</span>
+            <p class="text-[10px] text-dark/50 mt-1">vs. last quarter</p>
+          </div>
+
+          <div class="rounded-[28px] border border-dark bg-dark text-white shadow-[0px_5px_0px_#191a23] overflow-hidden">
+            <!-- Window bar -->
+            <div class="flex items-center justify-between px-5 py-3 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-red"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+              </div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-white/40">CRM Dashboard</span>
+              <div class="w-12"></div>
+            </div>
+            <!-- Body -->
+            <div class="p-6 space-y-5">
+              <!-- Metric tiles -->
+              <div class="grid grid-cols-3 gap-3">
+                <div class="p-4 bg-white/[0.04] rounded-xl border border-white/10">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-white/40 block mb-1">Open Deals</span>
+                  <span class="text-xl font-extrabold text-white block">$284K</span>
+                  <span class="text-[10px] text-green-400">↗ 12%</span>
+                </div>
+                <div class="p-4 bg-white/[0.04] rounded-xl border border-white/10">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-white/40 block mb-1">Win Rate</span>
+                  <span class="text-xl font-extrabold text-green-400 block">68%</span>
+                  <span class="text-[10px] text-green-400">↗ 8%</span>
+                </div>
+                <div class="p-4 bg-white/[0.04] rounded-xl border border-white/10">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-white/40 block mb-1">Tasks Due</span>
+                  <span class="text-xl font-extrabold text-accent block">12</span>
+                  <span class="text-[10px] text-white/40">today</span>
+                </div>
+              </div>
+
+              <!-- Pipeline bar -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-white/40">Pipeline Stages</span>
+                  <span class="text-[10px] text-white/40">28 deals</span>
+                </div>
+                <div class="flex gap-1 h-3 rounded-full overflow-hidden">
+                  <div class="bg-accent" style="width:30%"></div>
+                  <div class="bg-yellow-400" style="width:30%"></div>
+                  <div class="bg-blue-400" style="width:20%"></div>
+                  <div class="bg-green-400" style="width:20%"></div>
+                </div>
+                <div class="grid grid-cols-4 gap-1 mt-2">
+                  <span class="text-[9px] text-white/50">New</span>
+                  <span class="text-[9px] text-white/50">Qualified</span>
+                  <span class="text-[9px] text-white/50">Proposal</span>
+                  <span class="text-[9px] text-white/50">Won</span>
+                </div>
+              </div>
+
+              <!-- Activity rows -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between p-3 rounded-lg bg-white/[0.04] border border-white/10">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                    <span class="text-xs text-white/80">Acme Corp · Proposal sent</span>
+                  </div>
+                  <span class="text-[10px] text-white/40">2m</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-white/[0.04] border border-white/10">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                    <span class="text-xs text-white/80">Lead routed to Sarah K.</span>
+                  </div>
+                  <span class="text-[10px] text-white/40">5m</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: BEFORE VS AFTER ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="text-center mb-14 max-w-3xl mx-auto">
+        <span class="inline-flex items-center gap-2 text-sm font-medium mb-5">
+          <span class="h-2 w-2 rounded-full bg-red"></span>
+          <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Transformation</span>
+        </span>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+          Before CRM <span class="text-accent">vs</span> After CRM
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <!-- Before -->
+        <div class="relative p-8 lg:p-10 rounded-[32px] bg-gray border border-dark shadow-[0px_5px_0px_#191a23] overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-red/10 blur-2xl"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between mb-8">
+              <span class="text-xs font-mono uppercase tracking-widest text-red">Before</span>
+              <span class="text-3xl">😩</span>
+            </div>
+            <h3 class="text-2xl font-extrabold tracking-tight text-dark mb-6">Manual Chaos</h3>
+            <div class="space-y-3">
+              {beforeItems.map((item) => (
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-dark/10">
+                  <span class="flex items-center justify-center h-7 w-7 rounded-full bg-red/10 shrink-0">
+                    <svg class="w-3.5 h-3.5 text-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                  </span>
+                  <span class="text-sm font-medium text-dark/80">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- After -->
+        <div class="relative p-8 lg:p-10 rounded-[32px] bg-dark text-white border border-dark shadow-[0px_5px_0px_#191a23] overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-accent/20 blur-2xl"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between mb-8">
+              <span class="text-xs font-mono uppercase tracking-widest text-accent">After</span>
+              <span class="text-3xl">🚀</span>
+            </div>
+            <h3 class="text-2xl font-extrabold tracking-tight text-white mb-6">Engineered Systems</h3>
+            <div class="space-y-3">
+              {afterItems.map((item) => (
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/10">
+                  <span class="flex items-center justify-center h-7 w-7 rounded-full bg-accent shrink-0">
+                    <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                    </svg>
+                  </span>
+                  <span class="text-sm font-medium text-white">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: AUTOMATION ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <!-- Left: Text -->
+        <div class="lg:sticky lg:top-32 space-y-7">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Automation</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            Automation eliminates
+            <span class="text-accent">manual work</span>.
+          </h2>
+          <p class="text-lg text-dark/70 leading-relaxed max-w-lg">
+            One workflow replaces dozens of repetitive tasks — and runs perfectly every single time. No human required, no missed steps, no dropped balls.
+          </p>
+
+          <!-- Bottom statement -->
+          <div class="pt-4 space-y-1">
+            <p class="text-dark/40 text-sm font-mono uppercase tracking-widest">No spreadsheets.</p>
+            <p class="text-dark/40 text-sm font-mono uppercase tracking-widest">No manual reminders.</p>
+            <p class="text-accent text-base font-extrabold uppercase tracking-widest mt-2">No missed opportunities.</p>
+          </div>
+
+          <!-- Stat card -->
+          <div class="mt-6 inline-flex flex-col p-6 rounded-2xl bg-dark text-white border border-dark shadow-[0px_4px_0px_#191a23]">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-white/50">Time saved</span>
+            <span class="text-4xl font-extrabold text-accent mt-1">15+ hrs</span>
+            <span class="text-sm text-white/60 mt-1">per team member, weekly</span>
+          </div>
+        </div>
+
+        <!-- Right: Timeline workflow -->
+        <div class="relative pl-12 sm:pl-16">
+          <div class="absolute left-[22px] sm:left-[30px] top-0 bottom-0 w-px bg-dark/20" aria-hidden="true"></div>
+          <div class="flex flex-col gap-6">
+            {automationSteps.map((step, i) => (
+              <div class="relative">
+                <span class={`absolute -left-12 sm:-left-16 top-6 flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold border-4 border-white z-10 ${i === automationSteps.length - 1 ? 'bg-accent text-white' : 'bg-dark text-white'}`}>
+                  {step.num}
+                </span>
+                <div class="absolute -left-[2px] sm:-left-[18px] top-[28px] w-[10px] sm:w-[18px] h-px bg-dark/20" aria-hidden="true"></div>
+                <div class={`group rounded-[20px] border border-dark p-5 sm:p-6 shadow-[0px_4px_0px_#191a23] transition-all duration-300 hover:-translate-y-1 ${i === 0 ? 'bg-accent/10' : i === automationSteps.length - 1 ? 'bg-dark text-white' : 'bg-gray'}`}>
+                  <span class={`text-[10px] font-mono uppercase tracking-widest ${i === automationSteps.length - 1 ? 'text-white/50' : 'text-dark/50'}`}>
+                    Step {step.num}
+                  </span>
+                  <h3 class={`mt-1.5 text-lg sm:text-xl font-extrabold tracking-tight ${i === automationSteps.length - 1 ? 'text-white' : 'text-dark'}`}>
+                    {step.title}
+                  </h3>
+                  <p class={`mt-1.5 text-sm leading-relaxed ${i === automationSteps.length - 1 ? 'text-white/70' : 'text-dark/70'}`}>
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 8: SERVICES (Bento) ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">How We Help</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            From spreadsheets to
+            <span class="text-accent">systems</span>.
+          </h2>
+        </div>
+        <p class="lg:max-w-sm text-base sm:text-lg text-dark/80">
+          Three core engagements — pick where to start, or combine them into a full operations transformation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
+        {services.map((s) => (
+          <div class={`group relative flex flex-col justify-between p-7 sm:p-9 rounded-[36px] border min-h-[320px] transition-all duration-300 hover:-translate-y-1 ${s.span} ${variantClasses[s.variant as keyof typeof variantClasses]}`}>
+            <div class="flex items-start justify-between gap-4">
+              <span class={`text-sm font-mono ${s.variant === 'light' ? 'text-dark/40' : 'text-white/60'}`}>{s.num}</span>
+              <span class={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-transform duration-300 group-hover:rotate-[-45deg] ${s.variant === 'light' ? 'border-dark/30 text-dark' : 'border-white/30 text-white'}`}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </span>
+            </div>
+            <div class="mt-10 flex flex-col gap-4">
+              <h3 class={`font-extrabold leading-tight tracking-tight ${s.variant === 'red' ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'}`}>
+                {s.title}
+              </h3>
+              <p class={`text-sm sm:text-base max-w-xl ${s.variant === 'light' ? 'text-dark/70' : 'text-white/75'}`}>
+                {s.description}
+              </p>
+              <ul class="mt-2 flex flex-wrap gap-2">
+                {s.items.map((item) => (
+                  <li class={`text-xs sm:text-sm px-3 py-1.5 rounded-full border ${s.variant === 'light' ? 'border-dark/20 text-dark bg-dark/[0.03]' : 'border-white/20 text-white/85 bg-white/5'}`}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+    <!-- ===== SECTION 7: AI ENABLEMENT ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="space-y-7">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-white text-xs font-medium text-dark shadow-[0px_2px_0px_rgba(0,0,0,0.06)] w-fit">
+            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+            <span class="font-mono uppercase tracking-widest">AI Layer</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            The next
+            <span class="text-accent">evolution</span>.
+          </h2>
+          <p class="text-lg text-dark/70 leading-relaxed mb-2">
+            AI integrated directly into your CRM transforms how your team works — surfacing insights and automating decisions in real time.
+          </p>
+          <div class="space-y-3">
+            {aiFeatures.map((feature, i) => (
+              <div class="group flex items-start gap-4 p-4 rounded-2xl bg-gray border border-dark/10 hover:border-dark transition-all duration-300 hover:-translate-y-0.5">
+                <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-dark text-white shrink-0 font-mono text-xs">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h4 class="text-base font-extrabold text-dark tracking-tight">{feature.title}</h4>
+                  <p class="text-sm text-dark/60 mt-0.5">{feature.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- AI Assistant mockup -->
+        <div class="relative lg:pt-6">
+          <!-- Floating badge -->
+          <div class="hidden lg:block absolute -top-2 -left-4 z-20 bg-accent text-white rounded-2xl px-4 py-3 shadow-[0px_4px_0px_#191a23] border border-dark hero-float-card">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5L5.7 20.8 8 13.6 2 9.2h7.6L12 2z"/></svg>
+              <span class="text-xs font-extrabold uppercase tracking-widest">AI Live</span>
+            </div>
+          </div>
+
+          <div class="rounded-[28px] border border-dark bg-dark text-white shadow-[0px_5px_0px_#191a23] overflow-hidden">
+            <div class="flex items-center justify-between px-5 py-3 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-red"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+              </div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-white/40">AI Assistant</span>
+              <div class="w-12"></div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="p-4 bg-white/[0.04] rounded-2xl border-l-2 border-accent">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-[10px] font-extrabold">AI</div>
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-accent">Risk Alert</span>
+                </div>
+                <p class="text-sm text-white/80 leading-relaxed">Deal "<span class="font-medium text-white">Acme Corp</span>" hasn't been contacted in 5 days. Engagement pattern suggests <span class="text-accent">at-risk</span>. Schedule a check-in call.</p>
+              </div>
+              <div class="p-4 bg-white/[0.04] rounded-2xl border-l-2 border-green-400">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-green-400">Suggested Action</span>
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-[10px] px-2 py-1 rounded-full bg-white/10 text-white">Schedule call</span>
+                  <span class="text-white/30">→</span>
+                  <span class="text-[10px] px-2 py-1 rounded-full bg-white/10 text-white">Draft email</span>
+                  <span class="text-white/30">→</span>
+                  <span class="text-[10px] px-2 py-1 rounded-full bg-white/10 text-white">Update stage</span>
+                </div>
+              </div>
+              <div class="p-4 bg-white/[0.04] rounded-2xl border-l-2 border-blue-400">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-blue-400">Meeting Summary</span>
+                </div>
+                <ul class="space-y-1 text-xs text-white/70">
+                  <li>• Budget approved: <span class="text-white font-medium">$50K</span></li>
+                  <li>• Timeline: <span class="text-white font-medium">Q3 2026</span></li>
+                  <li>• Decision maker: <span class="text-white font-medium">VP Operations</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ===== SECTION 9: FINAL CTA ===== -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="relative overflow-hidden rounded-[45px] bg-dark text-white p-10 md:p-16 lg:p-20 border border-dark shadow-[0px_5px_0px_#191a23]">
+        <!-- Background glows -->
+        <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-accent/10 blur-3xl"></div>
+        <!-- Grid pattern -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="relative grid lg:grid-cols-5 gap-10 items-center">
+          <div class="lg:col-span-3 space-y-6">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 text-xs font-medium text-white w-fit">
+              <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span class="font-mono uppercase tracking-widest">Get Started</span>
+            </span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
+              Growth shouldn't create
+              <span class="text-accent">chaos</span>.
+            </h2>
+            <div class="space-y-2 max-w-xl">
+              <p class="text-lg text-white/70 leading-relaxed">
+                The companies that scale successfully are not working harder.
+              </p>
+              <p class="text-lg text-white font-medium">
+                They are building better systems.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-all duration-300 font-medium hover:-translate-y-0.5 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">
+                Book a CRM Assessment
+              </a>
+              <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">
+                Schedule Discovery Call
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: floating stats stack -->
+          <div class="lg:col-span-2 hidden lg:flex flex-col gap-5 absolute right-0">
+            <!-- Card 1: Response Time -->
+            <div class="self-end bg-white text-dark rounded-xl p-3 w-[140px] shadow-[0px_3px_0px_#191a23] border border-dark hero-float-card">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[8px] font-mono uppercase tracking-wider text-dark/60">Response</span>
+                <span class="flex items-center justify-center h-5 w-5 rounded-full bg-accent/10">
+                  <svg class="w-2.5 h-2.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </span>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-xl font-extrabold leading-none">&lt;2</span>
+                <span class="text-[10px] font-mono text-dark/60">min</span>
+              </div>
+              <p class="text-[9px] text-dark/50 mt-0.5">From hours to minutes</p>
+            </div>
+
+            <!-- Card 2: Booked Meetings -->
+            <div class="self-start ml-3 bg-accent text-white rounded-xl p-3 w-[140px] shadow-[0px_3px_0px_#191a23] border border-dark hero-float-card" style="animation-delay: 0.8s;">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[8px] font-mono uppercase tracking-wider text-white/80">Meetings</span>
+                <span class="flex items-center justify-center h-5 w-5 rounded-full bg-white/20">
+                  <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"/></svg>
+                </span>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-xl font-extrabold leading-none">+38%</span>
+              </div>
+              <p class="text-[9px] text-white/70 mt-0.5">After CRM rollout</p>
+            </div>
+
+            <!-- Card 3: Hours Saved -->
+            <div class="self-end bg-white/[0.06] backdrop-blur text-white rounded-xl p-3 w-[140px] shadow-[0px_3px_0px_rgba(0,0,0,0.4)] border border-white/30 hero-float-card" style="animation-delay: 1.6s;">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[8px] font-mono uppercase tracking-wider text-white/60">Hours Saved</span>
+                <span class="flex items-center justify-center h-5 w-5 rounded-full bg-accent/20">
+                  <svg class="w-2.5 h-2.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </span>
+              </div>
+              <div class="flex items-baseline gap-1">
+                <span class="text-xl font-extrabold text-accent leading-none">15+</span>
+                <span class="text-[10px] font-mono text-white/60">/wk</span>
+              </div>
+              <p class="text-[9px] text-white/50 mt-0.5">Per team member</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br/><br/><br/><br/><br/>
+  </main>
+</MainLayout>
+
+<style>
+  @keyframes hero-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .hero-float-card {
+    animation: hero-float 4s ease-in-out infinite;
+  }
+</style>
