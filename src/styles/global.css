@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ----------------------------------------------------------------------------
+ * Heading line-height override.
+ *
+ * Most hero / large section headings on the site use `leading-[1.05]` against
+ * font-extrabold text-6xl/7xl. At that size 1.05 makes adjacent lines visually
+ * touch (descenders kiss the next line's caps). 1.15 keeps the headline tight
+ * and impactful while restoring proper line separation.
+ *
+ * Placed AFTER `@tailwind utilities` so it wins over Tailwind's generated rule
+ * via source order (same selector specificity).
+ * --------------------------------------------------------------------------*/
+.leading-\[1\.05\] {
+  line-height: 1.15;
+}
+
 @layer base {
   @font-face {
     font-family: "Grotesk";
