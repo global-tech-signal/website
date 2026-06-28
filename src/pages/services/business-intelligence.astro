@@ -1,0 +1,353 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Section from "../../components/sections/Section.astro";
+
+const system = {
+  label: "Business System · Intelligence",
+  blurb:
+    "Dashboards and reporting that leadership can actually trust — in real time, not after a week of spreadsheet wrangling.",
+  long:
+    "If reporting takes days, decisions slow down to match. Business Intelligence is the layer of Operational Intelligence that turns the data flowing through your business systems into live, trusted, shared visibility — so revenue, retention and operational KPIs are reported once, owned by someone, and used to make calls instead of audited after the fact.",
+};
+
+const broken = [
+  { t: "Monday morning spreadsheets", d: "Someone exports CRM, joins with finance, pivots in Excel — every week, every leader, every report." },
+  { t: "Three dashboards, three numbers", d: "Sales has one ARR figure. Finance has another. The board sees a third. Nobody knows which is right." },
+  { t: "Lagging instead of leading", d: "Your reports show what happened last quarter. They don't tell you what's about to break this one." },
+  { t: "Self-service that nobody uses", d: "You bought a BI tool. Three people log in. Everyone else still asks the data team for a screenshot." },
+];
+
+const ship = [
+  { t: "Executive dashboards in real time", d: "Revenue, pipeline, retention and cash — one source, refreshed live, owned by one team." },
+  { t: "Operational KPIs and SLAs", d: "The metrics teams actually run on: cycle times, conversion, first-response, throughput — visible at the workflow." },
+  { t: "Revenue and pipeline analytics", d: "Conversion funnels, velocity, attribution, win/loss — the layer above CRM dashboards that explains why." },
+  { t: "Data warehousing & semantic layer", d: "A modeled, governed truth layer so every chart, BI tool and AI agent pulls from the same definitions." },
+  { t: "Self-service reporting that gets used", d: "Curated explore surfaces, clear ownership, simple metric definitions — BI built for the non-analyst." },
+  { t: "Alerting and anomaly detection", d: "The dashboard tells you when something changed — you don't have to refresh it to find out." },
+];
+
+const stack = ["BigQuery", "Snowflake", "Postgres", "dbt", "Looker", "Metabase", "Mode", "Tableau", "Power BI", "Hex", "Fivetran", "Airbyte"];
+
+const layer = {
+  desc: "Business Intelligence sits at the top of the Operational Intelligence stack — it's how the operating model becomes legible. Without it, every other layer flies blind.",
+};
+
+const ladder = [
+  { name: "Operational Assessment", duration: "60 min · Free", desc: "Map where leadership is flying blind — and which numbers should be live but aren't.", href: "/contact?type=operational-assessment" },
+  { name: "Workflow Audit", duration: "2 weeks", desc: "Deep dive on a single reporting workflow — pipeline, retention, finance — and what it costs to keep manual.", href: "/contact?type=workflow-audit" },
+  { name: "Executive Strategy Session", duration: "Half day", desc: "Align leadership on the 5–10 numbers that actually drive the business — and the system that delivers them.", href: "/contact?type=executive-strategy" },
+];
+
+const industries = [
+  { name: "Finance", href: "/industries/finance" },
+  { name: "Agencies", href: "/industries/agencies" },
+  { name: "E-Commerce", href: "/industries/ecommerce" },
+  { name: "Logistics", href: "/industries/logistics" },
+  { name: "Insurance", href: "/industries/insurance" },
+  { name: "Education", href: "/industries/education" },
+];
+
+const faqs = [
+  { q: "Do you build dashboards or pick a BI tool?", a: "Both. We start with the questions leadership needs answered, then pick the simplest tool that answers them well — Metabase, Looker, Power BI, Tableau or Hex. The tool is usually less important than the data model, definitions and ownership underneath it." },
+  { q: "We already have a BI tool nobody uses. Can you fix that?", a: "Usually yes. The most common cause isn't the tool — it's missing semantic definitions, scattered ownership and no curated paths for non-analysts. We re-model, re-design and re-introduce." },
+  { q: "How is this different from a data engineering project?", a: "Data engineering builds pipes. BI in our sense is the discipline of turning pipes into decisions — modeling, definitions, dashboards, alerting, ownership and adoption. We do the engineering when needed, but the engineering is in service of the decisions." },
+  { q: "Can you make our existing reports faster?", a: "Usually yes — most slow reporting comes from un-modeled data, not slow tools. We model what's needed, push transformations upstream, and the reports stop taking a week." },
+];
+---
+
+<MainLayout
+  title="Business Intelligence — Dashboards, Reporting & Data Warehousing | GlobalTechSignal"
+  description="Real-time dashboards, operational KPIs, revenue analytics and trustworthy reporting. Part of the Operational Intelligence operating model."
+>
+  <Section id="sys-hero">
+    <div class="pt-10 pb-20">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-7">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-gray text-xs font-mono uppercase tracking-widest text-dark">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            {system.label}
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            One source of truth. <span class="text-accent">Live</span>. Shared.
+          </h1>
+          <p class="text-lg text-dark/70 leading-relaxed max-w-2xl">{system.blurb}</p>
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a href="/contact?type=operational-assessment" class="px-8 py-4 bg-dark hover:bg-accent rounded-xl text-center text-white text-base font-medium transition-colors">Operational Assessment</a>
+            <a href="#what-you-ship" class="px-8 py-4 bg-white hover:bg-dark hover:text-white rounded-xl text-center text-dark border border-dark/20 text-base font-medium transition-colors inline-flex items-center justify-center gap-2">
+              See what you ship
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="absolute inset-0 bg-accent/5 blur-3xl rounded-[45px]"></div>
+            <div class="relative grid grid-cols-2 gap-3">
+              <div class="sys-float-card col-span-2 p-5 rounded-2xl bg-dark text-white border border-dark shadow-[0px_4px_0px_#191a23]" style="animation-delay:0s;">
+                <div class="font-mono text-[11px] text-white/50 mb-1">ARR · LIVE</div>
+                <div class="text-3xl font-extrabold">$4.82M</div>
+                <div class="text-xs text-accent mt-1">+12.4% MoM</div>
+              </div>
+              <div class="sys-float-card p-4 rounded-2xl bg-accent text-white border border-accent shadow-[0px_4px_0px_#191a23]" style="animation-delay:.15s;">
+                <div class="font-mono text-[10px] text-white/70 mb-1">WIN RATE</div>
+                <div class="text-xl font-extrabold">34%</div>
+              </div>
+              <div class="sys-float-card p-4 rounded-2xl bg-white border border-dark/10 shadow-[0px_4px_0px_#191a23]" style="animation-delay:.3s;">
+                <div class="font-mono text-[10px] text-dark/50 mb-1">NET RETENTION</div>
+                <div class="text-xl font-extrabold">118%</div>
+              </div>
+              <div class="sys-float-card col-span-2 p-4 rounded-2xl bg-white border border-dark/10 shadow-[0px_4px_0px_#191a23]" style="animation-delay:.45s;">
+                <div class="font-mono text-[10px] text-dark/50 mb-2">PIPELINE BY STAGE</div>
+                <div class="flex items-end gap-1 h-12">
+                  {[40, 65, 80, 55, 30].map((h) => (
+                    <div class="flex-1 bg-accent rounded-t" style={`height:${h}%`}></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-definition">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-gray border border-dark/10 p-8 md:p-14 overflow-hidden">
+        <div class="absolute top-0 right-0 h-48 w-48 bg-accent/10 rounded-bl-[120px]"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-4">
+            <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What it is</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              The system leadership <span class="text-accent">decides</span> from.
+            </h2>
+          </div>
+          <div class="lg:col-span-8">
+            <p class="text-xl md:text-2xl leading-[1.4] text-dark font-medium">{system.long}</p>
+            <div class="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark text-white text-xs font-mono uppercase tracking-widest">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+              Part of Operational Intelligence
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-broken">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What breaks without it</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          The four symptoms of <span class="text-accent">flying blind</span>.
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {broken.map((b, i) => (
+          <div class="rounded-[24px] bg-white border border-dark/10 p-6 shadow-[0px_4px_0px_#191a23]">
+            <span class="font-mono text-xs text-red mb-3 block">0{i + 1}</span>
+            <h3 class="text-lg font-extrabold tracking-tight mb-2">{b.t}</h3>
+            <p class="text-sm text-dark/70 leading-relaxed">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="what-you-ship">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 mb-12">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What you ship</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+            Six things a real BI layer <span class="text-accent">does</span>.
+          </h2>
+        </div>
+        <div class="lg:col-span-7">
+          <p class="text-lg text-dark/70 leading-relaxed">
+            We don't deliver "a Looker project." We ship modeled data, defined metrics, owned dashboards and the discipline that keeps them trustworthy week after week.
+          </p>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {ship.map((s, i) => (
+          <div class={`rounded-[24px] p-7 border border-dark shadow-[0px_4px_0px_#191a23] ${i === 0 ? 'bg-accent text-white' : i === 3 ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
+            <span class={`font-mono text-xs ${i === 0 || i === 3 ? 'text-white/60' : 'text-dark/50'} mb-3 block`}>{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="text-xl font-extrabold tracking-tight mb-2">{s.t}</h3>
+            <p class={`text-sm leading-relaxed ${i === 0 || i === 3 ? 'text-white/80' : 'text-dark/70'}`}>{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-layer">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-dark text-white p-8 md:p-14 overflow-hidden border border-dark shadow-[0px_5px_0px_#191a23]">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-white/50">Where it fits</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              The <span class="text-accent">closing layer</span> of Operational Intelligence.
+            </h2>
+            <p class="mt-5 text-base text-white/70 leading-relaxed">{layer.desc}</p>
+            <a href="/operational-intelligence" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-white transition-colors">
+              See the full operating model
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="grid grid-cols-5 gap-2">
+              {["Capture", "Connect", "Automate", "Intelligence", "Optimize"].map((n, i) => (
+                <div class={`p-3 rounded-xl text-center border ${(i === 3 || i === 4) ? 'bg-accent text-white border-accent' : 'bg-white/5 text-white/50 border-white/10'}`}>
+                  <div class="font-mono text-[10px] mb-1 opacity-70">0{i + 1}</div>
+                  <div class="text-xs font-bold">{n}</div>
+                </div>
+              ))}
+            </div>
+            <p class="mt-4 text-xs font-mono uppercase tracking-widest text-white/40 text-center">Business Intelligence primarily lives in Intelligence + Optimize</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-stack">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Stack</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+            Warehouses, models, <span class="text-accent">dashboards</span>.
+          </h2>
+          <p class="mt-5 text-base text-dark/70 leading-relaxed">
+            Platforms we use most often inside BI engagements. We pick what fits your scale and your team — not what we wish you'd standardize on.
+          </p>
+        </div>
+        <div class="lg:col-span-7">
+          <div class="flex flex-wrap gap-2.5">
+            {stack.map((s, i) => (
+              <span class={`inline-flex items-center px-4 py-2.5 rounded-full text-sm font-medium border ${i % 3 === 0 ? 'bg-dark text-white border-dark' : i % 3 === 1 ? 'bg-accent text-white border-accent' : 'bg-white text-dark border-dark/15'}`}>{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-industries">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Where it lands hardest</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          Industries where BI <span class="text-accent">earns the budget</span>.
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {industries.map((ind) => (
+          <a href={ind.href} class="group flex items-center justify-between p-5 rounded-2xl bg-gray border border-dark/10 hover:border-dark hover:bg-white transition-all">
+            <span class="text-base font-extrabold tracking-tight">{ind.name}</span>
+            <svg class="w-4 h-4 text-dark/30 group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-ladder">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-gray border border-dark/10 p-8 md:p-14 overflow-hidden">
+        <div class="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-dark/50">How to start</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              Three ways to engage on <span class="text-accent">business intelligence</span>.
+            </h2>
+            <p class="mt-5 text-base text-dark/70 leading-relaxed">
+              Each entry point produces a concrete artifact you can act on — with or without us.
+            </p>
+            <a href="/assessments" class="mt-7 inline-flex items-center gap-2 px-6 py-3 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium text-sm">
+              See all assessments
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="lg:col-span-7 space-y-3">
+            {ladder.map((l, idx) => (
+              <a href={l.href} class="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-dark/10 hover:border-dark hover:-translate-y-0.5 transition-all duration-300">
+                <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-dark text-white text-xs font-mono shrink-0">{String(idx + 1).padStart(2, '0')}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="text-lg font-extrabold tracking-tight">{l.name}</h3>
+                    <span class="text-[11px] font-mono uppercase tracking-widest text-dark/50">{l.duration}</span>
+                  </div>
+                  <p class="mt-1 text-sm text-dark/70 leading-relaxed">{l.desc}</p>
+                </div>
+                <svg class="w-5 h-5 text-dark/30 group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-faq">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">FAQ</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">Business Intelligence, answered.</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-5">
+        {faqs.map((f) => (
+          <details class="group rounded-2xl bg-gray border border-dark/10 p-6 open:bg-white open:border-dark/30 transition-all">
+            <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+              <span class="text-lg font-extrabold tracking-tight text-dark">{f.q}</span>
+              <span class="shrink-0 mt-1 h-7 w-7 rounded-full bg-dark text-white flex items-center justify-center group-open:bg-accent transition-colors">
+                <svg class="w-3.5 h-3.5 group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-base text-dark/70 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-cta">
+    <div class="pb-28">
+      <div class="relative rounded-[32px] bg-dark text-white p-10 md:p-16 text-center overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative max-w-2xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-widest text-white/70 mb-6">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+            Start with the numbers
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+            Turn reporting from a <span class="text-accent">weekly burden</span> into a live signal.
+          </h2>
+          <p class="text-lg text-white/70 mb-8">
+            Book a free Operational Assessment. We map the numbers leadership needs live, the ones currently faked in spreadsheets, and the path between them.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact?type=operational-assessment" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Operational Assessment</a>
+            <a href="/scorecard" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Take the Scorecard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</MainLayout>
+
+<style>
+  @keyframes sys-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .sys-float-card { animation: sys-float 5s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .sys-float-card { animation: none; }
+  }
+</style>

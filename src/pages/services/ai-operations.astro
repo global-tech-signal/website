@@ -1,0 +1,354 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Section from "../../components/sections/Section.astro";
+
+const system = {
+  label: "Business System · AI",
+  blurb:
+    "AI agents and copilots embedded inside the workflows your business already runs — so AI removes operational work instead of producing more dashboards.",
+  long:
+    "Most AI projects fail because they're built as demos, not systems. AI Operations is the layer of Operational Intelligence that embeds AI inside business workflows — qualifying leads, processing documents, summarizing meetings, drafting communications, surfacing operational insight — so it produces measurable outcomes inside the operating model instead of decks full of promise.",
+};
+
+const broken = [
+  { t: "AI pilots that never ship", d: "Six months in, you have an impressive demo and no production workflow. Nothing in the business actually changed." },
+  { t: "AI as a chatbot bolted on", d: "An assistant in the corner of the app that doesn't know your customers, your data or your process." },
+  { t: "Hallucinations and no guardrails", d: "An agent confidently makes things up. There's no eval suite, no version control, no human-in-the-loop." },
+  { t: "Tool sprawl with no ROI", d: "Eight different AI subscriptions across teams. Nobody can tell you what any of them moved." },
+];
+
+const ship = [
+  { t: "AI copilots trained on your SOPs", d: "Internal assistants that know your processes, your tone, your customers — grounded in your real data, not a public model's guesses." },
+  { t: "LLM workflows for documents & tickets", d: "Classification, extraction, summarization and routing for the high-volume text work your team currently does by hand." },
+  { t: "Lead qualification & support triage", d: "Agents that score inbound, summarize history, suggest next actions and escalate when a human is actually needed." },
+  { t: "Operational intelligence & next-best-actions", d: "AI that watches your business systems and surfaces the meeting, deal, ticket or risk that matters most right now." },
+  { t: "Evaluation, guardrails & governance", d: "Eval suites, prompt versioning, human-in-the-loop checkpoints — so the agent's behavior is measurable and improvable." },
+  { t: "Embedded inside the tools you use", d: "AI lands inside Slack, your CRM, your support tool — not as another tab nobody opens." },
+];
+
+const stack = ["OpenAI", "Anthropic", "Azure OpenAI", "Gemini", "LangChain", "LlamaIndex", "Pinecone", "Weaviate", "Supabase Vector", "Vercel AI SDK", "Mistral", "Replicate"];
+
+const layer = {
+  desc: "AI Operations sit in the Intelligence layer of the Operational Intelligence stack — but they only produce value when wired through Connect and Automate. AI without operational plumbing is theater.",
+};
+
+const ladder = [
+  { name: "AI Readiness Assessment", duration: "90 min", desc: "Where AI will actually move business metrics in your operation — and where it won't. Output: ranked use cases + a real ROI estimate.", href: "/contact?type=ai-readiness" },
+  { name: "Workflow Audit", duration: "2 weeks", desc: "Deep dive on a single workflow where AI is a serious lever — qualification, support, document processing — with a build plan.", href: "/contact?type=workflow-audit" },
+  { name: "Operational Assessment", duration: "60 min · Free", desc: "Map the operating model first — so AI lands inside real systems, not as another isolated experiment.", href: "/contact?type=operational-assessment" },
+];
+
+const industries = [
+  { name: "Insurance", href: "/industries/insurance" },
+  { name: "Legal", href: "/industries/legal" },
+  { name: "Finance", href: "/industries/finance" },
+  { name: "Real Estate", href: "/industries/real-estate" },
+  { name: "Clinics", href: "/industries/clinics" },
+  { name: "Agencies", href: "/industries/agencies" },
+];
+
+const faqs = [
+  { q: "Do we need to be 'AI-ready' to start?", a: "No, and most teams aren't. We start with the operational problem; AI gets introduced only where it produces a measurable outcome. If the underlying data and workflows need fixing first, we say so — that's usually the higher-ROI move." },
+  { q: "Which models do you use?", a: "Whichever fits the task — OpenAI, Anthropic, Azure-hosted, open-source via Mistral or Llama, depending on cost, latency, privacy and capability. We're model-agnostic; the model is the cheapest part of an AI workflow." },
+  { q: "How do you handle hallucinations?", a: "Three ways: retrieval grounding (the agent answers from your data, not its memory), structured outputs (typed responses, not free text where it matters), and evals + human-in-the-loop on consequential actions. We don't ship agents into production without all three." },
+  { q: "Will this replace our team?", a: "In practice, no — it removes the highest-volume, lowest-judgment work and gives your team more capacity for what actually requires humans. The teams we work with do more, not fewer, things after." },
+];
+---
+
+<MainLayout
+  title="AI Operations — AI Agents, Copilots & LLM Workflows | GlobalTechSignal"
+  description="AI agents and copilots embedded inside business systems that remove operational work — qualified, documented, governed. Part of the Operational Intelligence operating model."
+>
+  <Section id="sys-hero">
+    <div class="pt-10 pb-20">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-7">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-gray text-xs font-mono uppercase tracking-widest text-dark">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            {system.label}
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            AI that <span class="text-accent">removes work</span>. Not AI that adds dashboards.
+          </h1>
+          <p class="text-lg text-dark/70 leading-relaxed max-w-2xl">{system.blurb}</p>
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a href="/contact?type=ai-readiness" class="px-8 py-4 bg-dark hover:bg-accent rounded-xl text-center text-white text-base font-medium transition-colors">AI Readiness Assessment</a>
+            <a href="#what-you-ship" class="px-8 py-4 bg-white hover:bg-dark hover:text-white rounded-xl text-center text-dark border border-dark/20 text-base font-medium transition-colors inline-flex items-center justify-center gap-2">
+              See what you ship
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="absolute inset-0 bg-accent/5 blur-3xl rounded-[45px]"></div>
+            <div class="relative p-6 rounded-[28px] bg-dark text-white border border-dark shadow-[0px_4px_0px_#191a23]">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-white/50">Triage Agent · Live</span>
+              </div>
+              <div class="space-y-3 text-sm">
+                <div class="sys-float-card p-3 rounded-xl bg-white/5 border border-white/10" style="animation-delay:0s;">
+                  <div class="text-[10px] font-mono text-white/40 mb-1">INBOUND TICKET #2841</div>
+                  <div class="text-white/90">"Login not working after I changed my email…"</div>
+                </div>
+                <div class="sys-float-card flex items-center gap-2 p-3 rounded-xl bg-accent/20 border border-accent/30" style="animation-delay:.15s;">
+                  <span class="text-[10px] font-mono text-accent">CLASSIFIED</span>
+                  <span class="text-xs text-white">Account · Auth · L2</span>
+                </div>
+                <div class="sys-float-card p-3 rounded-xl bg-white/5 border border-white/10" style="animation-delay:.3s;">
+                  <div class="text-[10px] font-mono text-white/40 mb-1">SUGGESTED REPLY</div>
+                  <div class="text-white/80 text-xs">"Hi Sam — your email change re-issued a token. Click the link…"</div>
+                </div>
+                <div class="sys-float-card flex items-center justify-between p-3 rounded-xl bg-accent text-white" style="animation-delay:.45s;">
+                  <span class="text-[10px] font-mono opacity-80">CONFIDENCE</span>
+                  <span class="text-sm font-bold">94% · auto-send eligible</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-definition">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-gray border border-dark/10 p-8 md:p-14 overflow-hidden">
+        <div class="absolute top-0 right-0 h-48 w-48 bg-accent/10 rounded-bl-[120px]"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-4">
+            <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What it is</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              AI as a <span class="text-accent">production system</span>. Not a demo.
+            </h2>
+          </div>
+          <div class="lg:col-span-8">
+            <p class="text-xl md:text-2xl leading-[1.4] text-dark font-medium">{system.long}</p>
+            <div class="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark text-white text-xs font-mono uppercase tracking-widest">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+              Part of Operational Intelligence
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-broken">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What breaks without it</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          The four symptoms of <span class="text-accent">AI without ROI</span>.
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {broken.map((b, i) => (
+          <div class="rounded-[24px] bg-white border border-dark/10 p-6 shadow-[0px_4px_0px_#191a23]">
+            <span class="font-mono text-xs text-red mb-3 block">0{i + 1}</span>
+            <h3 class="text-lg font-extrabold tracking-tight mb-2">{b.t}</h3>
+            <p class="text-sm text-dark/70 leading-relaxed">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="what-you-ship">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 mb-12">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What you ship</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+            Six things real AI Operations <span class="text-accent">does</span>.
+          </h2>
+        </div>
+        <div class="lg:col-span-7">
+          <p class="text-lg text-dark/70 leading-relaxed">
+            We don't sell "an AI project." We ship grounded agents, instrumented evals, embedded copilots and operational governance — and we measure them against business KPIs, not benchmark scores.
+          </p>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {ship.map((s, i) => (
+          <div class={`rounded-[24px] p-7 border border-dark shadow-[0px_4px_0px_#191a23] ${i === 0 ? 'bg-accent text-white' : i === 3 ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
+            <span class={`font-mono text-xs ${i === 0 || i === 3 ? 'text-white/60' : 'text-dark/50'} mb-3 block`}>{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="text-xl font-extrabold tracking-tight mb-2">{s.t}</h3>
+            <p class={`text-sm leading-relaxed ${i === 0 || i === 3 ? 'text-white/80' : 'text-dark/70'}`}>{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-layer">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-dark text-white p-8 md:p-14 overflow-hidden border border-dark shadow-[0px_5px_0px_#191a23]">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-white/50">Where it fits</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              The <span class="text-accent">intelligence layer</span> — grounded in the rest.
+            </h2>
+            <p class="mt-5 text-base text-white/70 leading-relaxed">{layer.desc}</p>
+            <a href="/operational-intelligence" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-white transition-colors">
+              See the full operating model
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="grid grid-cols-5 gap-2">
+              {["Capture", "Connect", "Automate", "Intelligence", "Optimize"].map((n, i) => (
+                <div class={`p-3 rounded-xl text-center border ${i === 3 ? 'bg-accent text-white border-accent' : 'bg-white/5 text-white/50 border-white/10'}`}>
+                  <div class="font-mono text-[10px] mb-1 opacity-70">0{i + 1}</div>
+                  <div class="text-xs font-bold">{n}</div>
+                </div>
+              ))}
+            </div>
+            <p class="mt-4 text-xs font-mono uppercase tracking-widest text-white/40 text-center">AI Operations live in Intelligence — wired through every other layer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-stack">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Stack</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+            Models, frameworks, <span class="text-accent">retrieval</span>.
+          </h2>
+          <p class="mt-5 text-base text-dark/70 leading-relaxed">
+            Models and frameworks we use most often inside AI workflows. We pick what fits the task, the cost target and the data-residency constraints — not what's loudest this month.
+          </p>
+        </div>
+        <div class="lg:col-span-7">
+          <div class="flex flex-wrap gap-2.5">
+            {stack.map((s, i) => (
+              <span class={`inline-flex items-center px-4 py-2.5 rounded-full text-sm font-medium border ${i % 3 === 0 ? 'bg-dark text-white border-dark' : i % 3 === 1 ? 'bg-accent text-white border-accent' : 'bg-white text-dark border-dark/15'}`}>{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-industries">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Where it lands hardest</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          Industries where AI Operations <span class="text-accent">produce real ROI</span>.
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {industries.map((ind) => (
+          <a href={ind.href} class="group flex items-center justify-between p-5 rounded-2xl bg-gray border border-dark/10 hover:border-dark hover:bg-white transition-all">
+            <span class="text-base font-extrabold tracking-tight">{ind.name}</span>
+            <svg class="w-4 h-4 text-dark/30 group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-ladder">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-gray border border-dark/10 p-8 md:p-14 overflow-hidden">
+        <div class="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-dark/50">How to start</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              Three ways to engage on <span class="text-accent">AI Operations</span>.
+            </h2>
+            <p class="mt-5 text-base text-dark/70 leading-relaxed">
+              Each entry point produces a concrete artifact you can act on — with or without us.
+            </p>
+            <a href="/assessments" class="mt-7 inline-flex items-center gap-2 px-6 py-3 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium text-sm">
+              See all assessments
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="lg:col-span-7 space-y-3">
+            {ladder.map((l, idx) => (
+              <a href={l.href} class="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-dark/10 hover:border-dark hover:-translate-y-0.5 transition-all duration-300">
+                <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-dark text-white text-xs font-mono shrink-0">{String(idx + 1).padStart(2, '0')}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="text-lg font-extrabold tracking-tight">{l.name}</h3>
+                    <span class="text-[11px] font-mono uppercase tracking-widest text-dark/50">{l.duration}</span>
+                  </div>
+                  <p class="mt-1 text-sm text-dark/70 leading-relaxed">{l.desc}</p>
+                </div>
+                <svg class="w-5 h-5 text-dark/30 group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-faq">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">FAQ</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">AI Operations, answered.</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-5">
+        {faqs.map((f) => (
+          <details class="group rounded-2xl bg-gray border border-dark/10 p-6 open:bg-white open:border-dark/30 transition-all">
+            <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+              <span class="text-lg font-extrabold tracking-tight text-dark">{f.q}</span>
+              <span class="shrink-0 mt-1 h-7 w-7 rounded-full bg-dark text-white flex items-center justify-center group-open:bg-accent transition-colors">
+                <svg class="w-3.5 h-3.5 group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-base text-dark/70 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-cta">
+    <div class="pb-28">
+      <div class="relative rounded-[32px] bg-dark text-white p-10 md:p-16 text-center overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative max-w-2xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-widest text-white/70 mb-6">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+            Start with one use case
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+            Find the AI workflow that <span class="text-accent">actually pays back</span>.
+          </h2>
+          <p class="text-lg text-white/70 mb-8">
+            Book an AI Readiness Assessment. We map where AI is a real lever in your operation, where it isn't, and what to build first.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact?type=ai-readiness" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">AI Readiness Assessment</a>
+            <a href="/scorecard" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Take the Scorecard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</MainLayout>
+
+<style>
+  @keyframes sys-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .sys-float-card { animation: sys-float 5s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .sys-float-card { animation: none; }
+  }
+</style>

@@ -1,0 +1,358 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Section from "../../components/sections/Section.astro";
+
+const system = {
+  label: "Business System · Customer",
+  blurb:
+    "One source of truth for every customer interaction — from first touch through onboarding, support and renewal.",
+  long:
+    "When customer information lives across CRM, support tools, chat, email and spreadsheets, nobody owns the relationship and every team starts the conversation from zero. Customer Systems is the layer of Operational Intelligence that unifies the customer record, automates onboarding and retention, and gives every team — sales, support, success, finance — the same view of the same customer.",
+};
+
+const broken = [
+  { t: "Five tools, five truths", d: "Sales sees one version of the customer. Support sees another. Finance sees a third. None of them line up." },
+  { t: "Onboarding goes off a cliff", d: "Closed-won fires the celebration emoji — then the customer hears nothing for two weeks." },
+  { t: "Churn signals get noticed late", d: "Support tickets, usage drops and renewal risk all live in different tools. Nobody connects the dots." },
+  { t: "Every conversation restarts", d: "Customer has to explain their setup again every time they talk to a different team." },
+];
+
+const ship = [
+  { t: "Unified customer record", d: "One canonical profile, enriched from CRM, product, support and finance — updated in real time." },
+  { t: "Onboarding automation", d: "Templated journeys per segment — emails, in-app, tasks, milestones — that adapt to what the customer actually does." },
+  { t: "Support & success operations", d: "Ticket routing, SLAs, escalations and customer-health scoring built around how your team actually services accounts." },
+  { t: "Retention & renewal workflows", d: "Renewal cycles, expansion plays and risk-account interventions surfaced before they become churn." },
+  { t: "Customer health scoring", d: "A live composite signal — usage, support, engagement, NPS — visible per account, alertable per threshold." },
+  { t: "Cross-team handoffs that don't drop", d: "Sales → onboarding → support → renewal as one observable journey instead of four silos." },
+];
+
+const stack = ["HubSpot Service", "Salesforce Service Cloud", "Zendesk", "Intercom", "Front", "Gainsight", "Segment", "Customer.io", "Mixpanel", "Amplitude", "Slack Connect", "Custom CDPs"];
+
+const layer = {
+  desc: "Customer Systems span the full Operational Intelligence stack — they require captured signals, connected tools, automated journeys, intelligent scoring and optimized handoffs.",
+};
+
+const ladder = [
+  { name: "Operational Assessment", duration: "60 min · Free", desc: "Map where the customer experience is breaking — across sales, support, success and finance.", href: "/contact?type=operational-assessment" },
+  { name: "Workflow Audit", duration: "2 weeks", desc: "Deep dive on a single customer-facing workflow — onboarding, support, renewal — that's costing you accounts.", href: "/contact?type=workflow-audit" },
+  { name: "Executive Strategy Session", duration: "Half day", desc: "Align leadership on the customer journey you want to deliver — and the system that makes it real.", href: "/contact?type=executive-strategy" },
+];
+
+const industries = [
+  { name: "Clinics", href: "/industries/clinics" },
+  { name: "Education", href: "/industries/education" },
+  { name: "Finance", href: "/industries/finance" },
+  { name: "Insurance", href: "/industries/insurance" },
+  { name: "E-Commerce", href: "/industries/ecommerce" },
+  { name: "Agencies", href: "/industries/agencies" },
+];
+
+const faqs = [
+  { q: "Is this a CDP project?", a: "A CDP (customer data platform) is often part of it — but Customer Systems is the discipline around the data, not the product. We design the customer record, the journeys built on top of it, and the workflows your teams actually run inside the tools they already use." },
+  { q: "Do we need new tools?", a: "Usually not at first. Most teams have more tools than they're using well. We start by unifying the record across what you already have. New tools come in only when an existing one is genuinely the blocker." },
+  { q: "Can this work for B2B and B2C?", a: "Yes — the patterns are different (account-level vs person-level, longer cycles vs higher volume) but the principle is the same: one customer, one record, one connected journey." },
+  { q: "How do you measure success?", a: "Usually a mix of time-to-value, NPS or CSAT, support deflection, renewal rate and net retention. We pick the 2–3 that matter most to your business and instrument them from day one." },
+];
+---
+
+<MainLayout
+  title="Customer Systems — Unified Customer Record, Onboarding & Retention | GlobalTechSignal"
+  description="One source of truth for every customer interaction. Unified records, onboarding automation, support ops and retention workflows. Part of the Operational Intelligence operating model."
+>
+  <Section id="sys-hero">
+    <div class="pt-10 pb-20">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-7">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-gray text-xs font-mono uppercase tracking-widest text-dark">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            {system.label}
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            One customer. <span class="text-accent">One record</span>. Every team.
+          </h1>
+          <p class="text-lg text-dark/70 leading-relaxed max-w-2xl">{system.blurb}</p>
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a href="/contact?type=operational-assessment" class="px-8 py-4 bg-dark hover:bg-accent rounded-xl text-center text-white text-base font-medium transition-colors">Operational Assessment</a>
+            <a href="#what-you-ship" class="px-8 py-4 bg-white hover:bg-dark hover:text-white rounded-xl text-center text-dark border border-dark/20 text-base font-medium transition-colors inline-flex items-center justify-center gap-2">
+              See what you ship
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="absolute inset-0 bg-accent/5 blur-3xl rounded-[45px]"></div>
+            <div class="relative p-6 rounded-[28px] bg-white border border-dark shadow-[0px_4px_0px_#191a23]">
+              <div class="flex items-center gap-3 pb-4 border-b border-dark/10">
+                <div class="h-10 w-10 rounded-full bg-accent text-white flex items-center justify-center font-bold">A</div>
+                <div>
+                  <div class="font-extrabold text-base">Acme Co.</div>
+                  <div class="text-xs text-dark/50">Customer · 14 months</div>
+                </div>
+                <span class="ml-auto px-2 py-1 rounded-full bg-accent/10 text-accent text-[10px] font-mono uppercase tracking-widest">Healthy</span>
+              </div>
+              <div class="space-y-3 pt-4">
+                <div class="sys-float-card flex items-center justify-between p-3 rounded-xl bg-gray" style="animation-delay:0s;">
+                  <span class="text-xs font-mono text-dark/60">SALES</span>
+                  <span class="text-xs font-semibold">3 closed · $48k ARR</span>
+                </div>
+                <div class="sys-float-card flex items-center justify-between p-3 rounded-xl bg-gray" style="animation-delay:.15s;">
+                  <span class="text-xs font-mono text-dark/60">SUPPORT</span>
+                  <span class="text-xs font-semibold">2 open · avg 4h</span>
+                </div>
+                <div class="sys-float-card flex items-center justify-between p-3 rounded-xl bg-gray" style="animation-delay:.3s;">
+                  <span class="text-xs font-mono text-dark/60">USAGE</span>
+                  <span class="text-xs font-semibold">+18% MoM</span>
+                </div>
+                <div class="sys-float-card flex items-center justify-between p-3 rounded-xl bg-dark text-white" style="animation-delay:.45s;">
+                  <span class="text-xs font-mono text-white/60">RENEWAL</span>
+                  <span class="text-xs font-semibold">82 days · expansion ready</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-definition">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-gray border border-dark/10 p-8 md:p-14 overflow-hidden">
+        <div class="absolute top-0 right-0 h-48 w-48 bg-accent/10 rounded-bl-[120px]"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-4">
+            <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What it is</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              The system that owns the <span class="text-accent">relationship</span>.
+            </h2>
+          </div>
+          <div class="lg:col-span-8">
+            <p class="text-xl md:text-2xl leading-[1.4] text-dark font-medium">{system.long}</p>
+            <div class="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark text-white text-xs font-mono uppercase tracking-widest">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+              Part of Operational Intelligence
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-broken">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What breaks without it</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          The four symptoms of <span class="text-accent">customer fragmentation</span>.
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {broken.map((b, i) => (
+          <div class="rounded-[24px] bg-white border border-dark/10 p-6 shadow-[0px_4px_0px_#191a23]">
+            <span class="font-mono text-xs text-red mb-3 block">0{i + 1}</span>
+            <h3 class="text-lg font-extrabold tracking-tight mb-2">{b.t}</h3>
+            <p class="text-sm text-dark/70 leading-relaxed">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="what-you-ship">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 mb-12">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">What you ship</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+            Six things a real customer system <span class="text-accent">does</span>.
+          </h2>
+        </div>
+        <div class="lg:col-span-7">
+          <p class="text-lg text-dark/70 leading-relaxed">
+            We don't deliver "a CDP." We ship the unified record, the journeys built on top of it, and the operational discipline that keeps the data trustworthy.
+          </p>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {ship.map((s, i) => (
+          <div class={`rounded-[24px] p-7 border border-dark shadow-[0px_4px_0px_#191a23] ${i === 0 ? 'bg-accent text-white' : i === 3 ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
+            <span class={`font-mono text-xs ${i === 0 || i === 3 ? 'text-white/60' : 'text-dark/50'} mb-3 block`}>{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="text-xl font-extrabold tracking-tight mb-2">{s.t}</h3>
+            <p class={`text-sm leading-relaxed ${i === 0 || i === 3 ? 'text-white/80' : 'text-dark/70'}`}>{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-layer">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-dark text-white p-8 md:p-14 overflow-hidden border border-dark shadow-[0px_5px_0px_#191a23]">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-white/50">Where it fits</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              A system that <span class="text-accent">spans all five layers</span>.
+            </h2>
+            <p class="mt-5 text-base text-white/70 leading-relaxed">{layer.desc}</p>
+            <a href="/operational-intelligence" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-white transition-colors">
+              See the full operating model
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="grid grid-cols-5 gap-2">
+              {["Capture", "Connect", "Automate", "Intelligence", "Optimize"].map((n, i) => (
+                <div class="p-3 rounded-xl text-center border bg-accent/80 text-white border-accent">
+                  <div class="font-mono text-[10px] mb-1 opacity-70">0{i + 1}</div>
+                  <div class="text-xs font-bold">{n}</div>
+                </div>
+              ))}
+            </div>
+            <p class="mt-4 text-xs font-mono uppercase tracking-widest text-white/40 text-center">Customer Systems touch every layer of the model</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-stack">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Stack</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+            Tools we <span class="text-accent">unify</span>, not replace.
+          </h2>
+          <p class="mt-5 text-base text-dark/70 leading-relaxed">
+            Customer-facing platforms we connect into one operational record. The goal is one view per customer — not one tool per team.
+          </p>
+        </div>
+        <div class="lg:col-span-7">
+          <div class="flex flex-wrap gap-2.5">
+            {stack.map((s, i) => (
+              <span class={`inline-flex items-center px-4 py-2.5 rounded-full text-sm font-medium border ${i % 3 === 0 ? 'bg-dark text-white border-dark' : i % 3 === 1 ? 'bg-accent text-white border-accent' : 'bg-white text-dark border-dark/15'}`}>{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-industries">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Where it lands hardest</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          Industries where customer systems <span class="text-accent">defend retention</span>.
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {industries.map((ind) => (
+          <a href={ind.href} class="group flex items-center justify-between p-5 rounded-2xl bg-gray border border-dark/10 hover:border-dark hover:bg-white transition-all">
+            <span class="text-base font-extrabold tracking-tight">{ind.name}</span>
+            <svg class="w-4 h-4 text-dark/30 group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-ladder">
+    <div class="pb-24">
+      <div class="relative rounded-[32px] bg-gray border border-dark/10 p-8 md:p-14 overflow-hidden">
+        <div class="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono uppercase tracking-widest text-dark/50">How to start</span>
+            <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+              Three ways to engage on <span class="text-accent">customer systems</span>.
+            </h2>
+            <p class="mt-5 text-base text-dark/70 leading-relaxed">
+              Each entry point produces a concrete artifact you can act on — with or without us.
+            </p>
+            <a href="/assessments" class="mt-7 inline-flex items-center gap-2 px-6 py-3 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium text-sm">
+              See all assessments
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="lg:col-span-7 space-y-3">
+            {ladder.map((l, idx) => (
+              <a href={l.href} class="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-dark/10 hover:border-dark hover:-translate-y-0.5 transition-all duration-300">
+                <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-dark text-white text-xs font-mono shrink-0">{String(idx + 1).padStart(2, '0')}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="text-lg font-extrabold tracking-tight">{l.name}</h3>
+                    <span class="text-[11px] font-mono uppercase tracking-widest text-dark/50">{l.duration}</span>
+                  </div>
+                  <p class="mt-1 text-sm text-dark/70 leading-relaxed">{l.desc}</p>
+                </div>
+                <svg class="w-5 h-5 text-dark/30 group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-faq">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">FAQ</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">Customer Systems, answered.</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-5">
+        {faqs.map((f) => (
+          <details class="group rounded-2xl bg-gray border border-dark/10 p-6 open:bg-white open:border-dark/30 transition-all">
+            <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+              <span class="text-lg font-extrabold tracking-tight text-dark">{f.q}</span>
+              <span class="shrink-0 mt-1 h-7 w-7 rounded-full bg-dark text-white flex items-center justify-center group-open:bg-accent transition-colors">
+                <svg class="w-3.5 h-3.5 group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-base text-dark/70 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sys-cta">
+    <div class="pb-28">
+      <div class="relative rounded-[32px] bg-dark text-white p-10 md:p-16 text-center overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative max-w-2xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-widest text-white/70 mb-6">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+            Start with one record
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+            Give every team the <span class="text-accent">same customer</span>.
+          </h2>
+          <p class="text-lg text-white/70 mb-8">
+            Book a free Operational Assessment. We map where your customer record is fragmented today and design the path to one source of truth.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact?type=operational-assessment" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Operational Assessment</a>
+            <a href="/scorecard" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Take the Scorecard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</MainLayout>
+
+<style>
+  @keyframes sys-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .sys-float-card { animation: sys-float 5s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .sys-float-card { animation: none; }
+  }
+</style>

@@ -12,12 +12,12 @@ const menuitems: MenuItem[] = [
     label: 'Business Systems',
     children: [
       { href: '/operational-intelligence', label: 'Operational Intelligence', description: 'The category — and how the six systems fit together.' },
-      { href: '/services#revenue-systems', label: 'Revenue Systems', description: 'CRM, sales automation & lead management built around how you sell.' },
-      { href: '/services#operations-systems', label: 'Operations Systems', description: 'Connected workflows that eliminate manual handoffs.' },
-      { href: '/services#customer-systems', label: 'Customer Systems', description: 'One source of truth for every customer interaction.' },
-      { href: '/services#business-intelligence', label: 'Business Intelligence', description: 'Dashboards & reporting leadership can actually trust.' },
-      { href: '/services#ai-operations', label: 'AI Operations', description: 'AI agents and copilots that remove operational work.' },
-      { href: '/services#digital-experience', label: 'Digital Experience', description: 'Web & product surfaces wired into your business systems.' },
+      { href: '/services/revenue-systems', label: 'Revenue Systems', description: 'CRM, sales automation & lead management built around how you sell.' },
+      { href: '/services/operations-systems', label: 'Operations Systems', description: 'Connected workflows that eliminate manual handoffs.' },
+      { href: '/services/customer-systems', label: 'Customer Systems', description: 'One source of truth for every customer interaction.' },
+      { href: '/services/business-intelligence', label: 'Business Intelligence', description: 'Dashboards & reporting leadership can actually trust.' },
+      { href: '/services/ai-operations', label: 'AI Operations', description: 'AI agents and copilots that remove operational work.' },
+      { href: '/services/digital-experience', label: 'Digital Experience', description: 'Web & product surfaces wired into your business systems.' },
     ],
   },
   {
@@ -99,8 +99,8 @@ const navButton = { href: '/contact', label: 'Operational Assessment' };
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                       </svg>
                     </button>
-                    <DropdownItems class="lg:absolute lg:top-full lg:left-0 lg:mt-3 lg:w-72 lg:bg-white lg:rounded-2xl lg:border lg:border-zinc-200 lg:shadow-[0px_4px_0px_#191a23] lg:p-2 lg:z-50">
-                      <ul class="flex flex-col gap-1">
+                    <DropdownItems class={`lg:absolute lg:top-full lg:left-0 lg:mt-3 lg:bg-white lg:rounded-2xl lg:border lg:border-zinc-200 lg:shadow-[0px_4px_0px_#191a23] lg:p-2 lg:z-50 ${item.children.length > 8 ? 'lg:w-[36rem]' : 'lg:w-72'}`}>
+                      <ul class={`flex flex-col gap-1 ${item.children.length > 8 ? 'lg:grid lg:grid-cols-2 lg:gap-x-2' : ''}`}>
                         {item.children.map((child) => (
                           <li>
                             <a
