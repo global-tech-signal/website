@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Agencies — GlobalTechSignal"
+  metaDescription="Client lifecycle, project profitability, utilization and retention in one connected system. Built for marketing, creative and consulting agencies."
+  industryName="Agencies"
+  eyebrow="Agencies · Client & Project Operations"
+  heroTitleLead="Stop running the agency on heroics."
+  heroTitleAccent="Run it on a connected system."
+  heroIntro="New business, project management, time tracking, financials and client reporting shouldn't be 8 disconnected tools and a Slack channel. We design a connected operations system that takes a client from pitch to onboarded to retained — with live utilization, project profitability and clear next steps for every account."
+  feedTitle="Live Agency Pulse"
+  feedBadge="14 Active Engagements"
+  feedItems={[
+    { tone: "blue", icon: "briefcase", title: "New Lead — Mid-market SaaS", subtitle: "Qualified · routed to New Business" },
+    { tone: "amber", icon: "doc", title: "Proposal Sent — $48K project", subtitle: "DocuSign opened · followed up" },
+    { tone: "accent", icon: "check", title: "Project Kicked Off — Q4 Brand", subtitle: "Team staffed · client portal live" },
+    { tone: "highlight", icon: "money", title: "Retainer Renewed — $14K / mo", subtitle: "Upsell logged · CSAT 9/10" },
+  ]}
+  stats={[
+    { value: "+19%", label: "Project margin", highlight: true },
+    { value: "+8pt", label: "Utilization rate" },
+    { value: "<48h", label: "Pitch turnaround" },
+    { value: "100%", label: "Time captured" },
+  ]}
+  painDescription="Where agencies burn margin, burn out teams and lose retainers."
+  painItems={[
+    { title: "New business is account managers' side hustle", description: "Leads land in someone's inbox. Proposals get built ad-hoc. Half the qualified pipeline never sees a follow-up." },
+    { title: "Time tracking is a Friday lie", description: "Designers and strategists fill out timesheets on Fridays from memory. Utilization and project margin are guesses." },
+    { title: "Project profitability is a guess until close", description: "Scope creep happens, hours are over, and you find out the retainer made $200/hr instead of $400/hr — too late to fix." },
+    { title: "Client reports are hand-built every month", description: "Account managers stitch reports from 6 platforms into a Google Slide. It's nobody's favorite Tuesday." },
+    { title: "Retainers churn quietly", description: "The CSAT signal exists in client meetings, but nothing operational triggers an intervention until renewal time." },
+    { title: "Leadership flies blind on capacity", description: "Who's overbooked? Who has bench time next month? Capacity planning happens in someone's head." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="modern agencies"
+  featuresDescription="Sits on HubSpot, ClickUp, Asana, Harvest, Forecast, Productive, NetSuite — connects new business, delivery and finance."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "New business",
+      title: "Lead → proposal → won flow",
+      description: "Inbound, referral and outbound leads land in one pipeline with proposal templates, scoping logic, win/loss tracking and auto-handoff to delivery.",
+      chips: [{ label: "Templated SOWs" }, { label: "Win/loss tracking" }, { label: "Pricing engine" }, { label: "Auto-handoff", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Delivery",
+      title: "Frictionless time capture",
+      description: "Pull billable hours from calendar, tools and project activity. Team reviews and approves instead of reconstructing on Friday.",
+      chips: [{ label: "Calendar + tools" }, { label: "Daily approval" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Client",
+      title: "Auto client reports",
+      description: "Monthly performance reports auto-assemble from ad platforms, analytics and project tools. Account managers add commentary, not slides.",
+      chips: [{ label: "Multi-platform" }, { label: "White-labeled" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Insight",
+      title: "Utilization & profitability dashboards",
+      description: "Live utilization, project margin, retainer health, account CSAT and capacity outlook — partners see the agency on one screen.",
+      chips: [{ label: "Utilization live" }, { label: "Project margin live" }, { label: "Retainer health", highlight: true }],
+      stats: [{ value: "Util %", label: "live" }, { value: "Margin", label: "per project" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Agency-friendly,"
+  processTitleAccent="real adoption."
+  processDescription="Sequenced so account, delivery and finance teams actually use it."
+  processSteps={[
+    { title: "Audit the stack", description: "We map every tool you use, every place data lives, every manual handoff your team does." },
+    { title: "Wire the spine", description: "New business, delivery and finance tied into one operations layer — no rip-and-replace." },
+    { title: "Pilot one team", description: "Launch with one practice or one team first. Iron out edges before agency-wide rollout." },
+    { title: "Roll out & train", description: "Account managers, delivery, finance and partners each get role-based onboarding." },
+  ]}
+  testimonialsTitleAccent="agency"
+  testimonials={[
+    { initials: "LV", name: "Leah Vance", role: "Managing Director, Slate & Salt", quoteBefore: "We were winning work and losing margin. With live project profitability ", highlight: "we lifted margin 19% in two quarters", quoteAfter: " — same client base, better operating discipline." },
+    { initials: "OK", name: "Owen Kapoor", role: "COO, Northbloom Creative", quoteBefore: "Timesheets were a Friday lie and utilization was guesswork. Now ", highlight: "we capture 97% of billable activity automatically", quoteAfter: " — utilization is up 8 points without burnout." },
+    { initials: "SD", name: "Sara Davis", role: "Partner, Cipher Marketing", quoteBefore: "Account managers spent days on monthly client reports. Now ", highlight: "monthly reports assemble in minutes", quoteAfter: " — AMs spend that time on strategy and retention." },
+  ]}
+  faqs={[
+    { question: "Do you replace HubSpot / ClickUp / Asana / Harvest?", answer: "Usually no — we wrap them. We integrate with your existing CRM, PM and time tool to fix the seams between new business, delivery and finance. For larger agencies we sometimes consolidate onto a custom spine." },
+    { question: "Can you support project + retainer + product mixed business models?", answer: "Yes. We model project work, ongoing retainers, productized services and one-off engagements with distinct profitability rules and renewal mechanics." },
+    { question: "How does pricing / scoping logic work?", answer: "We build a pricing engine that mirrors your scoping math — by role, by hour, by package — so proposals are fast, consistent and margin-aware before the SOW goes out." },
+    { question: "Will the team actually fill in time?", answer: "We design time capture to be passive: pulled from calendar, tools and project events, with a quick daily review. Designers don't fill timesheets — they approve them." },
+    { question: "How long to go live?", answer: "Most agency rollouts are 6–12 weeks: 2 weeks discovery, 4–8 weeks build, 2 weeks pilot. Multi-office or large headcount agencies skew longer." },
+    { question: "What does it cost?", answer: "Agency operations builds typically range $12K–$50K depending on stack, headcount and scope. We scope after the operational assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="agency operations system"
+  formDescription="Tell us about your agency, your stack and where margin or capacity is leaking. We'll show you what a connected operations layer looks like."
+  formChallengePlaceholder="E.g., Timesheets are a Friday lie, project profitability is a guess until close, and monthly client reports eat days of AM time..."
+  formCompanyLabel="Agency"
+  formCompanyPlaceholder="Slate & Salt"
+  formTeamSizeLabel="Agency Size"
+  formTeamSizeOptions={[
+    { value: "1-10", label: "1–10" },
+    { value: "11-30", label: "11–30" },
+    { value: "31-75", label: "31–75" },
+    { value: "75+", label: "75+" },
+  ]}
+  formSourceTag="Agencies Landing Page"
+/>

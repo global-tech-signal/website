@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Clinics & Medical Practices — GlobalTechSignal"
+  metaDescription="Fewer no-shows, faster intake, cleaner billing. A connected operations system for clinics — intake, scheduling, recall, billing and patient communication in one place."
+  industryName="Clinics"
+  eyebrow="Clinics · Patient Operations Systems"
+  heroTitleLead="Stop fighting your software."
+  heroTitleAccent="Run the practice on a connected system."
+  heroIntro="Front desks shouldn't bounce between an EHR, a scheduling tool, a billing portal, a recall spreadsheet and a SMS app. We design a connected operations system that wraps your EHR — intake, scheduling, reminders, recall, billing follow-up and patient communication — so the practice runs itself and staff stop firefighting."
+  feedTitle="Live Patient Operations"
+  feedBadge="38 Visits Today"
+  feedItems={[
+    { tone: "accent", icon: "stethoscope", title: "New Patient Registered", subtitle: "Intake form pre-filled · routed to Dr. Patel" },
+    { tone: "blue", icon: "calendar", title: "Appointment Confirmed", subtitle: "SMS reply YES · 2:30 PM follow-up" },
+    { tone: "amber", icon: "message", title: "Recall Reminder Sent", subtitle: "12-month checkup · 28 patients" },
+    { tone: "highlight", icon: "money", title: "Claim Paid — $1,420", subtitle: "Auto-posted · A/R closed" },
+  ]}
+  stats={[
+    { value: "32%", label: "Fewer no-shows", highlight: true },
+    { value: "5m", label: "Avg. patient intake" },
+    { value: "12h+", label: "Saved per FTE / week" },
+    { value: "97%", label: "Recall completion" },
+  ]}
+  painDescription="What clinic admins and providers fight every day without a connected operations layer."
+  painItems={[
+    { title: "No-shows wreck the schedule", description: "Patients forget appointments, reminders go to old phone numbers, and the schedule has gaps the front desk scrambles to fill." },
+    { title: "Intake takes 20 minutes per patient", description: "Paper forms, retyping into the EHR, missed insurance details — and the waiting room backs up." },
+    { title: "Recall lives in a spreadsheet", description: "The hygienist or admin manually flags who's due, sends emails when they have time, and revenue leaves on the table." },
+    { title: "Billing follow-up is a black hole", description: "Denied claims, unpaid balances and statements aren't tracked anywhere central — A/R quietly grows past 90 days." },
+    { title: "Patient communication is one-way", description: "Confirmations, prep instructions, post-op care and rebooking all happen ad-hoc — by phone, fax or paper handout." },
+    { title: "Leadership can't see the practice", description: "Production by provider, chair utilization, recall completion, payer mix — you only see it once a month from the bookkeeper." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="modern clinics"
+  featuresDescription="Wraps your EHR (Dentrix, Eaglesoft, Open Dental, athena, Practice Fusion) — doesn't replace it."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Patient",
+      title: "Digital intake & scheduling",
+      description: "Online booking, SMS-confirmable appointments and digital intake forms that flow straight into the EHR — pre-checked for insurance eligibility before the patient walks in.",
+      chips: [{ label: "Online booking" }, { label: "SMS confirm" }, { label: "eligibility check", highlight: true }, { label: "HIPAA-safe" }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Recall",
+      title: "Automated recall engine",
+      description: "Hygiene recalls, post-op follow-ups and condition-based reminders fire automatically based on EHR data — no more spreadsheet runs.",
+      chips: [{ label: "Smart cadence" }, { label: "Multi-channel" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Billing",
+      title: "Claim & A/R workflow",
+      description: "Denials, unpaid balances and aging are tracked in a real workflow — the biller has a daily worklist instead of report runs.",
+      chips: [{ label: "Denial worklist" }, { label: "Patient statements" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Insight",
+      title: "Practice dashboards",
+      description: "Production per provider, chair utilization, recall completion, payer mix and A/R aging — real-time, on one screen, with daily/weekly digests for owners.",
+      chips: [{ label: "Production per provider" }, { label: "Chair utilization" }, { label: "Payer mix" }, { label: "A/R aging", highlight: true }],
+      stats: [{ value: "Today", label: "production live" }, { value: "AR", label: "aging tracked" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="HIPAA-safe rollout, "
+  processTitleAccent="zero EHR disruption."
+  processDescription="A pragmatic path your front desk and providers actually adopt."
+  processSteps={[
+    { title: "Map the visit", description: "We shadow front desk, providers and billing to map every step from inquiry to paid claim." },
+    { title: "Design the wrap", description: "Workflows around your EHR — not a replacement. BAA-signed, HIPAA-compliant infrastructure." },
+    { title: "Pilot one provider", description: "We launch with one provider or one location first. Iron out edge cases before scaling." },
+    { title: "Roll out & train", description: "Role-based training for front desk, hygiene, providers and billing. Quick-reference cards on every workstation." },
+  ]}
+  testimonialsTitleAccent="clinics"
+  testimonials={[
+    { initials: "LP", name: "Dr. Laura Park", role: "Owner, Bayside Dental", quoteBefore: "Our no-show rate was 22% and we'd burned out two admins trying to fix it. After GTS built the recall and reminder system, ", highlight: "no-shows dropped to 7% in three months", quoteAfter: " — that's two more producing hours per provider per week." },
+    { initials: "JA", name: "Jamal Adeyemi", role: "Practice Manager, Northshore Pediatrics", quoteBefore: "Intake used to mean 20 minutes of paperwork before a 15-minute visit. With the digital intake flow ", highlight: "we doubled morning throughput", quoteAfter: " without adding staff." },
+    { initials: "MV", name: "Dr. Marcos Velez", role: "Owner, ClearSky Family Medicine", quoteBefore: "We were leaving money on the table in denials we never followed up on. GTS built a denial worklist on top of our PM system and ", highlight: "we recovered $48K in A/R in the first 90 days", quoteAfter: "." },
+  ]}
+  faqs={[
+    { question: "Do you replace our EHR?", answer: "No. We wrap your EHR (Dentrix, Eaglesoft, Open Dental, athena, Practice Fusion, Kareo, etc.) and integrate via API or HL7. Providers keep documenting where they always have." },
+    { question: "Is it HIPAA-compliant?", answer: "Yes. We sign BAAs, encrypt PHI in transit and at rest, run on HIPAA-eligible infrastructure (AWS / GCP), and provide audit logging. Access is role-based and SSO-friendly." },
+    { question: "Can patients book online without exposing the full schedule?", answer: "Yes. Online booking shows only the slots, providers and visit types you allow. Buffers, lunch and emergency holds stay protected." },
+    { question: "What about insurance eligibility and benefits?", answer: "We integrate with eligibility services (Change Healthcare, Availity, Eligible) so coverage is checked before the appointment, not at the front desk while the patient waits." },
+    { question: "How long to go live?", answer: "Most clinic rollouts are 6–10 weeks: 2 weeks discovery, 4–6 weeks build, 2 weeks pilot and training. Multi-location operations skew longer." },
+    { question: "What does it cost?", answer: "Practice operations builds typically start around $10K–$30K depending on EHR, locations and providers. Monthly support and hosting is scoped after the assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="clinic operations system"
+  formDescription="Tell us about your practice, your EHR and where the front desk is losing hours. We'll show you exactly how to wrap a connected system around it."
+  formChallengePlaceholder="E.g., Our no-show rate is killing us and the front desk spends 2 hours a day on reminder calls..."
+  formCompanyLabel="Practice"
+  formCompanyPlaceholder="Bayside Dental"
+  formTeamSizeLabel="Practice Size"
+  formTeamSizeOptions={[
+    { value: "solo", label: "Solo provider" },
+    { value: "2-5", label: "2–5 providers" },
+    { value: "6-15", label: "6–15 providers" },
+    { value: "15+", label: "15+ providers / multi-location" },
+  ]}
+  formSourceTag="Clinics Landing Page"
+/>

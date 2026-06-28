@@ -1,0 +1,633 @@
+---
+import MainLayout from "./MainLayout.astro";
+import Section from "../components/sections/Section.astro";
+
+export interface FeedItem {
+  tone: 'accent' | 'highlight' | 'blue' | 'amber' | 'red' | 'neutral';
+  icon: 'bolt' | 'check' | 'calendar' | 'shield' | 'message' | 'chart' | 'money' | 'truck' | 'doc' | 'home' | 'stethoscope' | 'wrench' | 'scale' | 'package' | 'briefcase' | 'cap';
+  title: string;
+  subtitle: string;
+}
+
+export interface StatItem { value: string; label: string; highlight?: boolean; }
+export interface PainItem { title: string; description: string; }
+export interface FeatureChip { label: string; highlight?: boolean; }
+export interface FeatureItem {
+  size: 'wide' | 'narrow';
+  tone: 'dark' | 'accent' | 'gray';
+  tag: string;
+  title: string;
+  description: string;
+  chips: FeatureChip[];
+  stats?: Array<{ value: string; label: string }>;
+}
+export interface ProcessStep { title: string; description: string; }
+export interface Testimonial { initials: string; name: string; role: string; quoteBefore: string; highlight: string; quoteAfter: string; }
+export interface FaqItem { question: string; answer: string; }
+
+export interface Props {
+  metaTitle: string;
+  metaDescription: string;
+
+  // Hero copy
+  industryName: string;
+  eyebrow: string;
+  heroTitleLead: string;
+  heroTitleAccent: string;
+  heroIntro: string;
+  heroCtaPrimaryLabel?: string;
+  heroCtaPrimaryHref?: string;
+  heroCtaSecondaryLabel?: string;
+  heroCtaSecondaryHref?: string;
+
+  // Hero feed
+  feedTitle: string;
+  feedBadge: string;
+  feedItems: FeedItem[];
+
+  // Stats
+  stats: StatItem[];
+
+  // Pain points
+  painEyebrow?: string;
+  painDescription: string;
+  painItems: PainItem[];
+
+  // Features
+  featuresEyebrow?: string;
+  featuresTitleLead: string;
+  featuresTitleAccent: string;
+  featuresDescription: string;
+  features: FeatureItem[];
+
+  // Process (optional)
+  processEyebrow?: string;
+  processTitleLead?: string;
+  processTitleAccent?: string;
+  processDescription?: string;
+  processSteps?: ProcessStep[];
+
+  // Testimonials
+  testimonialsTitleLead?: string;
+  testimonialsTitleAccent: string;
+  testimonials: Testimonial[];
+
+  // FAQ
+  faqs: FaqItem[];
+
+  // Lead form
+  formTitleLead: string;
+  formTitleAccent: string;
+  formDescription: string;
+  formChallengePlaceholder: string;
+  formCompanyLabel?: string;
+  formCompanyPlaceholder?: string;
+  formTeamSizeLabel?: string;
+  formTeamSizeOptions?: Array<{ value: string; label: string }>;
+  formSourceTag: string;
+}
+
+const {
+  metaTitle,
+  metaDescription,
+  industryName,
+  eyebrow,
+  heroTitleLead,
+  heroTitleAccent,
+  heroIntro,
+  heroCtaPrimaryLabel = "Operational Assessment",
+  heroCtaPrimaryHref = "#lead-form",
+  heroCtaSecondaryLabel = "See real outcomes",
+  heroCtaSecondaryHref = "/case-studies",
+  feedTitle,
+  feedBadge,
+  feedItems,
+  stats,
+  painEyebrow = "The problem",
+  painDescription,
+  painItems,
+  featuresEyebrow = "What you get",
+  featuresTitleLead,
+  featuresTitleAccent,
+  featuresDescription,
+  features,
+  processEyebrow = "How it works",
+  processTitleLead,
+  processTitleAccent,
+  processDescription,
+  processSteps,
+  testimonialsTitleLead = "Trusted by",
+  testimonialsTitleAccent,
+  testimonials,
+  faqs,
+  formTitleLead,
+  formTitleAccent,
+  formDescription,
+  formChallengePlaceholder,
+  formCompanyLabel = "Company",
+  formCompanyPlaceholder = "Acme Inc.",
+  formTeamSizeLabel = "Team Size",
+  formTeamSizeOptions = [
+    { value: "1-5", label: "1–5" },
+    { value: "6-20", label: "6–20" },
+    { value: "21-100", label: "21–100" },
+    { value: "100+", label: "100+" },
+  ],
+  formSourceTag,
+} = Astro.props;
+
+const slug = industryName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+// Tone-to-class mappings for feed cards
+const feedTone = {
+  accent: { bg: 'bg-white border border-dark/10', iconBg: 'bg-accent/10', iconText: 'text-accent', dot: 'bg-green-500' },
+  highlight: { bg: 'bg-accent text-white', iconBg: 'bg-white/20', iconText: 'text-white', dot: 'bg-white' },
+  blue: { bg: 'bg-white border border-dark/10', iconBg: 'bg-blue-100', iconText: 'text-blue-600', dot: 'bg-blue-500' },
+  amber: { bg: 'bg-white border border-dark/10', iconBg: 'bg-amber-100', iconText: 'text-amber-600', dot: 'bg-amber-500' },
+  red: { bg: 'bg-white border border-dark/10', iconBg: 'bg-red/10', iconText: 'text-red', dot: 'bg-red' },
+  neutral: { bg: 'bg-white border border-dark/10', iconBg: 'bg-dark/5', iconText: 'text-dark', dot: 'bg-dark/40' },
+};
+
+// Pain card backgrounds — cycle 4 styles
+const painBg = [
+  { wrap: 'bg-gray', num: 'text-dark/5 group-hover:text-accent/10', title: 'text-dark', body: 'text-dark/60' },
+  { wrap: 'bg-dark text-white', num: 'text-white/5 group-hover:text-accent/20', title: 'text-white', body: 'text-white/60' },
+  { wrap: 'bg-gray', num: 'text-dark/5 group-hover:text-accent/10', title: 'text-dark', body: 'text-dark/60' },
+  { wrap: 'bg-accent text-white', num: 'text-white/10 group-hover:text-white/20', title: 'text-white', body: 'text-white/80' },
+  { wrap: 'bg-dark text-white', num: 'text-white/5 group-hover:text-accent/20', title: 'text-white', body: 'text-white/60' },
+  { wrap: 'bg-gray', num: 'text-dark/5 group-hover:text-accent/10', title: 'text-dark', body: 'text-dark/60' },
+];
+---
+
+<MainLayout title={metaTitle} description={metaDescription}>
+  <!-- HERO -->
+  <Section id={`${slug}-hero`}>
+    <div class="relative flex flex-col-reverse items-center md:flex-row pt-10 pb-10" id="hero">
+      <div class="items-center py-5 md:w-6/12 md:pb-20 md:pt-10">
+        <div class="text-left space-y-3">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark">
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
+            {eyebrow}
+          </span>
+          <h1 class="text-4xl font-medium leading-tight md:text-6xl text-center md:text-left tracking-tight">
+            {heroTitleLead} <span class="redhead">{heroTitleAccent}</span>
+          </h1>
+          <p class="mt-6 mb-12 text-lg font-normal leading-7 sm:mb-12 text-center md:text-left md:pr-12 text-dark/70">
+            {heroIntro}
+          </p>
+          <div class="w-full flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center">
+            <a href={heroCtaPrimaryHref} class="px-8 py-4 bg-dark hover:bg-accent rounded-xl text-center text-white text-base font-medium transition-colors">
+              {heroCtaPrimaryLabel}
+            </a>
+            <a href={heroCtaSecondaryHref} class="px-8 py-4 bg-white hover:bg-dark hover:text-white rounded-xl text-center text-dark border border-dark/20 text-base font-medium transition-colors inline-flex items-center gap-2">
+              {heroCtaSecondaryLabel}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live operational feed mockup -->
+      <div class="flex items-center justify-center w-full max-w-[280px] sm:max-w-[360px] md:max-w-none md:w-6/12 md:pb-20 pt-5 md:pt-10 mx-auto md:mx-0">
+        <div class="w-full space-y-3">
+          <div class="bg-gray border border-dark/10 rounded-2xl p-5 space-y-3">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm font-semibold text-dark">{feedTitle}</span>
+              <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-accent/10 text-accent font-medium">{feedBadge}</span>
+            </div>
+            {feedItems.map((item, i) => {
+              const t = feedTone[item.tone];
+              const delay = `${i * 0.3}s`;
+              const baseClass = item.tone === 'highlight'
+                ? `ind-float-card ${t.bg} rounded-xl p-3 flex items-center gap-3`
+                : `ind-float-card ${t.bg} rounded-xl p-3 flex items-center gap-3 shadow-sm`;
+              return (
+                <div class={baseClass} style={`animation-delay:${delay}`}>
+                  <div class={`w-9 h-9 rounded-full ${t.iconBg} flex items-center justify-center shrink-0`}>
+                    {item.icon === 'bolt' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    )}
+                    {item.icon === 'check' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    )}
+                    {item.icon === 'calendar' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    )}
+                    {item.icon === 'shield' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    )}
+                    {item.icon === 'message' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    )}
+                    {item.icon === 'chart' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    )}
+                    {item.icon === 'money' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    )}
+                    {item.icon === 'truck' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    )}
+                    {item.icon === 'doc' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    )}
+                    {item.icon === 'home' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    )}
+                    {item.icon === 'stethoscope' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M4 4v6a4 4 0 0 0 8 0V4"/><path d="M8 14v3a4 4 0 0 0 8 0v-2"/><circle cx="18" cy="13" r="2"/></svg>
+                    )}
+                    {item.icon === 'wrench' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    )}
+                    {item.icon === 'scale' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 9h14M5 9l-3 7h6l-3-7zM19 9l-3 7h6l-3-7z"/></svg>
+                    )}
+                    {item.icon === 'package' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    )}
+                    {item.icon === 'briefcase' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    )}
+                    {item.icon === 'cap' && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class={t.iconText} stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    )}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class={`text-sm font-${item.tone === 'highlight' ? 'bold' : 'medium'} ${item.tone === 'highlight' ? 'text-white' : 'text-dark'} truncate`}>{item.title}</p>
+                    <p class={`text-xs ${item.tone === 'highlight' ? 'text-white/70' : 'text-dark/40'}`}>{item.subtitle}</p>
+                  </div>
+                  {item.tone === 'accent' && <span class={`shrink-0 w-2 h-2 rounded-full ${t.dot} animate-pulse`}></span>}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pb-12 md:pb-20 text-white">
+      {stats.map((s) => (
+        <div class="bg-dark border border-dark rounded-2xl p-5 text-center shadow-[0px_4px_0px_#191a23]">
+          <span class={`text-3xl sm:text-4xl font-extrabold ${s.highlight ? 'text-accent' : 'text-white'}`} set:html={s.value}></span>
+          <p class="text-xs text-white/50 mt-1">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- PAIN POINTS -->
+  <Section id="pain-points">
+    <div class="pb-20 md:pb-32">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            {painEyebrow}
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            Sound <span class="text-accent">familiar?</span>
+          </h2>
+        </div>
+        <p class="max-w-md text-dark/60">{painDescription}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 pb-2">
+        {painItems.map((p, i) => {
+          const style = painBg[i % painBg.length];
+          return (
+            <div class={`${style.wrap} rounded-2xl p-6 md:p-7 border border-dark shadow-[0px_4px_0px_#191a23] group hover:-translate-y-1 transition-transform duration-300`}>
+              <span class={`text-3xl font-extrabold ${style.num} transition-colors`}>{String(i + 1).padStart(2, '0')}</span>
+              <h3 class={`text-lg font-bold mt-3 mb-2 ${style.title}`}>{p.title}</h3>
+              <p class={`leading-relaxed text-sm ${style.body}`}>{p.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </Section>
+
+  <!-- FEATURES (Bento) -->
+  <Section id="features">
+    <div class="pb-20 md:pb-32">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            {featuresEyebrow}
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            {featuresTitleLead} <span class="text-accent">{featuresTitleAccent}</span>
+          </h2>
+        </div>
+        <p class="max-w-md text-dark/60">{featuresDescription}</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 pb-2">
+        {features.map((f) => {
+          const span = f.size === 'wide' ? 'lg:col-span-2' : '';
+          let wrap = '';
+          let tag = '';
+          let title = '';
+          let desc = '';
+          let chip = '';
+          let chipHi = '';
+          if (f.tone === 'dark') {
+            wrap = 'bg-dark text-white';
+            tag = 'bg-accent/20 text-accent';
+            title = 'text-white';
+            desc = 'text-white/60';
+            chip = 'bg-white/10 text-white/70';
+            chipHi = 'bg-accent/20 text-accent';
+          } else if (f.tone === 'accent') {
+            wrap = 'bg-accent text-white';
+            tag = 'bg-white/20 text-white';
+            title = 'text-white';
+            desc = 'text-white/80';
+            chip = 'bg-white/20 text-white/90';
+            chipHi = 'bg-white/30 text-white';
+          } else {
+            wrap = 'bg-gray';
+            tag = 'bg-dark/10 text-dark';
+            title = 'text-dark';
+            desc = 'text-dark/60';
+            chip = 'bg-dark text-white';
+            chipHi = 'bg-accent text-white';
+          }
+          return (
+            <div class={`${span} ${wrap} rounded-2xl p-6 md:p-8 border border-dark shadow-[0px_4px_0px_#191a23] relative overflow-hidden`}>
+              {f.tone === 'dark' && (
+                <div class="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              )}
+              <div class="relative flex flex-col md:flex-row md:items-stretch md:justify-between gap-5">
+                <div class="flex-1 flex flex-col">
+                  <span class={`inline-block px-3 py-1 rounded-full ${tag} text-xs font-semibold mb-4 w-fit`}>{f.tag}</span>
+                  <h3 class={`text-xl ${f.size === 'wide' ? 'sm:text-2xl' : ''} font-bold mb-3 ${title}`}>{f.title}</h3>
+                  <p class={`leading-relaxed mb-5 text-sm max-w-xl ${desc}`}>{f.description}</p>
+                  <div class="flex flex-wrap gap-2 mt-auto">
+                    {f.chips.map((c) => (
+                      <span class={`text-[11px] px-3 py-1.5 rounded-full ${c.highlight ? chipHi : chip}`}>{c.label}</span>
+                    ))}
+                  </div>
+                </div>
+                {f.stats && f.stats.length > 0 && (
+                  <div class="flex flex-row md:flex-col gap-3 shrink-0">
+                    {f.stats.map((st, idx) => (
+                      <div class={`${f.tone === 'gray' ? 'bg-white border border-dark/10' : 'bg-white/5 border border-white/10'} rounded-xl px-4 py-3 text-center`}>
+                        <span class={`text-xl font-extrabold ${idx === 0 ? 'text-accent' : (f.tone === 'gray' ? 'text-dark' : 'text-white')}`}>{st.value}</span>
+                        <p class={`text-[10px] mt-0.5 ${f.tone === 'gray' ? 'text-dark/50' : 'text-white/40'}`}>{st.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </Section>
+
+  <!-- PROCESS (optional) -->
+  {processSteps && processSteps.length > 0 && (
+    <Section id="process">
+      <div class="pb-20 md:pb-32">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+          <div class="flex flex-col gap-5 max-w-2xl">
+            <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+              <span class="h-2 w-2 rounded-full bg-accent"></span>
+              {processEyebrow}
+            </span>
+            <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+              {processTitleLead} <span class="text-accent">{processTitleAccent}</span>
+            </h2>
+          </div>
+          {processDescription && <p class="max-w-md text-dark/60">{processDescription}</p>}
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {processSteps.map((s, i) => (
+            <div class="relative p-6 rounded-2xl bg-white border border-dark shadow-[0px_4px_0px_#191a23]">
+              <div class="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-accent text-white font-extrabold flex items-center justify-center shadow-[0px_3px_0px_#191a23] border border-dark">{i + 1}</div>
+              <h3 class="text-lg font-extrabold tracking-tight text-dark mb-2 mt-2">{s.title}</h3>
+              <p class="text-sm text-dark/65 leading-snug">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  <!-- TESTIMONIALS -->
+  <Section id="testimonials">
+    <div class="pb-20 md:pb-32">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            Social proof
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            {testimonialsTitleLead} <span class="text-accent">{testimonialsTitleAccent}</span> teams
+          </h2>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-dark p-6 md:p-10 border border-dark shadow-[0px_4px_0px_#191a23] mb-2">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+          {testimonials.map((t) => (
+            <div class="relative">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="text-accent/30 mb-4"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p class="text-white/80 leading-relaxed mb-8">"{t.quoteBefore}<span class="text-accent font-semibold">{t.highlight}</span>{t.quoteAfter}"</p>
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center text-sm font-bold text-accent">{t.initials}</div>
+                <div>
+                  <p class="text-sm font-semibold text-white">{t.name}</p>
+                  <p class="text-xs text-white/40">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ -->
+  <Section id="faq">
+    <div class="pb-20 md:pb-20">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            FAQ
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight">
+            Got <span class="text-accent">questions?</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="space-y-4 pb-2">
+        {faqs.map((f, i) => (
+          <details class="group bg-gray rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 md:px-8 py-5 font-bold text-base md:text-lg">
+              <div class="flex items-center gap-4">
+                <span class="hidden sm:block text-2xl text-dark/10 group-open:text-accent/30 transition-colors">{String(i + 1).padStart(2, '0')}</span>
+                {f.question}
+              </div>
+              <div class="bg-white w-9 h-9 flex justify-center items-center rounded-full border border-dark shrink-0 ml-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-dark group-open:rotate-180 transition-transform duration-300" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </summary>
+            <div class="px-6 md:px-8 pb-6 text-dark/70 leading-relaxed text-sm border-t border-dark/10 pt-4 sm:ml-12">
+              {f.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- LEAD FORM -->
+  <Section id="lead-form">
+    <div class="pb-28 md:pb-10">
+      <div class="bg-dark rounded-2xl p-6 md:p-10 lg:p-12 border border-dark shadow-[0px_4px_0px_#191a23] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div class="text-white space-y-6">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              Free consultation
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight">
+              {formTitleLead} <span class="text-accent">{formTitleAccent}</span>
+            </h2>
+            <p class="text-white/60 leading-relaxed max-w-md">{formDescription}</p>
+
+            <div class="space-y-4 pt-4">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <p class="text-white/70 text-sm">Free 30-min strategy call with an engineer</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <p class="text-white/70 text-sm">Custom workflow audit for your team</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <p class="text-white/70 text-sm">No commitment — just expert advice</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 md:p-8">
+            <form id="ind-lead-form" data-source={formSourceTag} class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="ind-name" class="block text-sm font-medium text-dark mb-2">Full Name*</label>
+                  <input type="text" id="ind-name" name="name" required placeholder="John Smith" class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors" />
+                </div>
+                <div>
+                  <label for="ind-email" class="block text-sm font-medium text-dark mb-2">Business Email*</label>
+                  <input type="email" id="ind-email" name="email" required placeholder="john@company.com" class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="ind-company" class="block text-sm font-medium text-dark mb-2">{formCompanyLabel}</label>
+                  <input type="text" id="ind-company" name="company" placeholder={formCompanyPlaceholder} class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors" />
+                </div>
+                <div>
+                  <label for="ind-team-size" class="block text-sm font-medium text-dark mb-2">{formTeamSizeLabel}</label>
+                  <select id="ind-team-size" name="team_size" class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors bg-white">
+                    <option value="">Select...</option>
+                    {formTeamSizeOptions.map((o) => <option value={o.value}>{o.label}</option>)}
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="ind-message" class="block text-sm font-medium text-dark mb-2">Biggest Challenge*</label>
+                <textarea id="ind-message" name="message" required rows="3" placeholder={formChallengePlaceholder} class="w-full px-5 py-4 border border-dark/10 rounded-xl text-dark outline-none focus:border-accent transition-colors resize-none"></textarea>
+              </div>
+              <input type="hidden" name="checkbox1" value="on" />
+              <button type="submit" class="w-full px-8 py-4 bg-accent hover:bg-dark text-white rounded-xl text-base font-semibold transition-all duration-200 shadow-[0px_4px_0px_rgba(229,57,53,.4)] hover:shadow-[0px_4px_0px_#191a23]">
+                Book My Free Consultation
+              </button>
+              <p class="text-center text-xs text-dark/40">No commitment. We typically respond within 1 business day.</p>
+              <p id="ind-lead-status" class="mt-3 text-center text-sm hidden"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <script>
+    const form = document.getElementById('ind-lead-form') as HTMLFormElement | null;
+    const status = document.getElementById('ind-lead-status') as HTMLParagraphElement | null;
+    if (form && status) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        status.classList.add('hidden');
+
+        try {
+          const fd = new FormData(form);
+          const company = fd.get('company')?.toString().trim();
+          const teamSize = fd.get('team_size')?.toString().trim();
+          const source = form.getAttribute('data-source') || 'Industry Landing Page';
+          let msg = fd.get('message')?.toString() || '';
+          if (company) msg += `\n\nCompany: ${company}`;
+          if (teamSize) msg += `\nTeam size: ${teamSize}`;
+          msg += `\n\n[Source: ${source}]`;
+          fd.set('message', msg);
+
+          const res = await fetch('/api/contact', { method: 'POST', body: fd });
+          const json = await res.json();
+
+          if (res.ok) {
+            status.textContent = 'Thank you! We\'ll reach out within 1 business day.';
+            status.className = 'mt-3 text-center text-sm text-green-600';
+            status.classList.remove('hidden');
+            form.reset();
+          } else {
+            status.textContent = json.error || 'Something went wrong. Please try again.';
+            status.className = 'mt-3 text-center text-sm text-red-500';
+            status.classList.remove('hidden');
+          }
+        } catch {
+          status.textContent = 'Network error. Please try again.';
+          status.className = 'mt-3 text-center text-sm text-red-500';
+          status.classList.remove('hidden');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Book My Free Consultation';
+        }
+      });
+    }
+  </script>
+</MainLayout>
+
+<style>
+  @keyframes ind-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .ind-float-card {
+    animation: ind-float 4s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ind-float-card { animation: none; }
+  }
+</style>

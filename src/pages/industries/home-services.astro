@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Home Services — GlobalTechSignal"
+  metaDescription="Dispatch, sell and bill smarter. A connected operations system for HVAC, plumbing, electrical, pest, cleaning and home service companies."
+  industryName="Home-Services"
+  eyebrow="Home Services · Dispatch & Revenue Operations"
+  heroTitleLead="Stop bleeding revenue between calls."
+  heroTitleAccent="Run the truck on a connected system."
+  heroIntro="Call-takers, dispatchers, techs and the office shouldn't be in different apps. We design a connected operations system that captures every booking, dispatches the right tech to the right job, and turns every truck roll into reviewed, paid revenue."
+  feedTitle="Live Dispatch Board"
+  feedBadge="11 Techs Dispatched"
+  feedItems={[
+    { tone: "accent", icon: "message", title: "Booking — AC Not Cooling", subtitle: "Routed to Same-day · Mike ETA 2:15" },
+    { tone: "blue", icon: "wrench", title: "Tech Dispatched — Job #2841", subtitle: "Parts pre-staged · GPS en route" },
+    { tone: "amber", icon: "doc", title: "Estimate Sent — $1,840", subtitle: "Customer texted · 1-click approve" },
+    { tone: "highlight", icon: "money", title: "Job Complete · 5★ Review", subtitle: "Payment captured · review posted" },
+  ]}
+  stats={[
+    { value: "+22%", label: "Average ticket", highlight: true },
+    { value: "<2m", label: "Call-to-booking" },
+    { value: "4★+", label: "Avg. review score" },
+    { value: "8h+", label: "Saved per office / week" },
+  ]}
+  painDescription="What home services operators fight every day without a connected dispatch and sales spine."
+  painItems={[
+    { title: "Calls go to voicemail at 4:55pm", description: "After-hours and overflow calls vanish, and the customer books with whichever competitor answered first." },
+    { title: "Dispatchers stare at a whiteboard", description: "Same-day routing depends on who knows which tech is where. New techs get lost; veterans burn out." },
+    { title: "Techs sell, but it stays in their heads", description: "Add-ons and recommendations happen verbally — no estimate, no follow-up, no upsell pipeline." },
+    { title: "Reviews don't show up", description: "Happy customers don't think to leave a review unless asked at the right moment. Local search rankings stall." },
+    { title: "Recurring service / maintenance plans go cold", description: "PM agreements sit in a binder, nobody schedules them, and the recurring revenue you sold quietly churns." },
+    { title: "You can't see truck profitability", description: "Hours, parts and revenue per tech, per truck, per type of call live in scattered spreadsheets. Coaching is gut feel." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="home services"
+  featuresDescription="Sits on ServiceTitan, Housecall Pro, FieldEdge, Jobber — connects what runs the truck."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Front office",
+      title: "Call → booking → dispatch flow",
+      description: "Every call (and after-hours overflow) becomes a booked job. Smart dispatch routes the right tech with the right parts to the right job by drive time and skill.",
+      chips: [{ label: "After-hours capture" }, { label: "Skill + parts routing" }, { label: "Customer ETA SMS" }, { label: "Live tracking", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Field sales",
+      title: "Good / Better / Best estimates",
+      description: "Techs build tiered estimates on a tablet with photos, financing and approve-by-text — average ticket goes up without selling harder.",
+      chips: [{ label: "Tablet flow" }, { label: "1-tap financing" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Reviews",
+      title: "Auto review engine",
+      description: "Happy customers get a review request at the right moment — local SEO and brand both compound.",
+      chips: [{ label: "Smart timing" }, { label: "Google + FB" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Insight",
+      title: "Truck, tech & call dashboards",
+      description: "Revenue per truck, per tech, per call type. Conversion of estimates. PM plan health. Which CSRs convert best on the phone. Coaching becomes obvious.",
+      chips: [{ label: "Revenue per truck" }, { label: "Estimate conversion" }, { label: "PM plan health", highlight: true }],
+      stats: [{ value: "Today", label: "revenue per tech" }, { value: "ROI", label: "per call source" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Sequenced for"
+  processTitleAccent="dispatcher adoption."
+  processDescription="The dispatch board is the hardest seat in the building. We build for that seat first."
+  processSteps={[
+    { title: "Ride along", description: "We sit on the phone, ride in the truck and stand at the dispatch board for a week." },
+    { title: "Wire the spine", description: "Booking → dispatch → invoice wired around your FSM platform or as a full custom build." },
+    { title: "Pilot one trade", description: "Launch with one trade or one shift first. Iron out the edge cases." },
+    { title: "Roll out & coach", description: "Dispatchers, CSRs, techs and the owner all get role-based playbooks and dashboards." },
+  ]}
+  testimonialsTitleAccent="home services"
+  testimonials={[
+    { initials: "JC", name: "Jen Calloway", role: "Owner, Calloway HVAC", quoteBefore: "Same-day capacity used to depend on whoever was answering. With GTS's call → dispatch flow, ", highlight: "we booked 32 extra calls per month", quoteAfter: " without adding headcount." },
+    { initials: "DH", name: "Devon Holcomb", role: "GM, Pure Pro Plumbing", quoteBefore: "Techs were great but estimates lived in their heads. With good-better-best on a tablet, ", highlight: "average ticket went up 22%", quoteAfter: " in the first quarter." },
+    { initials: "BG", name: "Brittany Garza", role: "Owner, Garza Pest Solutions", quoteBefore: "Our PM plan revenue was leaking because nobody scheduled them. Now ", highlight: "we recovered $96K in annual recurring revenue", quoteAfter: " just by re-engaging old plans." },
+  ]}
+  faqs={[
+    { question: "Do you replace ServiceTitan or Housecall Pro?", answer: "Usually no — we wrap them. We integrate via API to fix the spots where FSM platforms don't quite fit your business: call-handling flow, reviews, PM scheduling, custom dashboards. For smaller shops we sometimes build a custom FSM from scratch." },
+    { question: "Can it handle after-hours and overflow calls?", answer: "Yes. We integrate with answering services or build a custom AI-assisted overflow flow that captures the booking, gathers the right info and pushes it to dispatch ready for morning." },
+    { question: "Will dispatchers actually use it?", answer: "We design the dispatch board around how your dispatchers actually think — by drive time, tech skill, parts availability — not a generic Kanban. We onboard dispatchers personally during pilot." },
+    { question: "Does it sync to QuickBooks?", answer: "Yes. Invoices, payments, deposits and parts cost sync to QuickBooks Online or Desktop. Bookkeepers keep their flow." },
+    { question: "How long to go live?", answer: "Most home services rollouts are 5–10 weeks: 1–2 weeks discovery, 3–6 weeks build, 1–2 weeks pilot. Multi-trade or multi-location operations skew longer." },
+    { question: "What does it cost?", answer: "Home services operations builds typically range $10K–$40K depending on FSM platform, integrations and number of trades. Scoped after the operational assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="home services operations system"
+  formDescription="Tell us about your trades, your call volume and where revenue or capacity is leaking. We'll show you what a connected system looks like."
+  formChallengePlaceholder="E.g., We're missing same-day calls because dispatch can't see who's where, and our PM plans haven't been re-scheduled in months..."
+  formCompanyLabel="Company"
+  formCompanyPlaceholder="Calloway HVAC"
+  formTeamSizeLabel="Crew + Office Size"
+  formTeamSizeOptions={[
+    { value: "1-10", label: "1–10" },
+    { value: "11-30", label: "11–30" },
+    { value: "31-100", label: "31–100" },
+    { value: "100+", label: "100+" },
+  ]}
+  formSourceTag="Home Services Landing Page"
+/>

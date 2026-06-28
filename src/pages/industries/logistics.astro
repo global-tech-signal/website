@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Logistics & 3PL Companies — GlobalTechSignal"
+  metaDescription="Shipments, fleet, dispatch, POD and customer comms in one connected system. Built for 3PLs, fleet operators and freight brokers."
+  industryName="Logistics"
+  eyebrow="Logistics · Fleet & Shipment Operations"
+  heroTitleLead="Stop running freight on whiteboards."
+  heroTitleAccent="Run the fleet on a connected system."
+  heroIntro="Dispatch, drivers, customers, brokers and accounting shouldn't be in 10 disconnected tools. We design a connected operations system that takes a shipment from booking to POD to settlement — with live customer visibility, automated proof and clean cost-per-mile math."
+  feedTitle="Live Fleet Operations"
+  feedBadge="42 Loads in Transit"
+  feedItems={[
+    { tone: "blue", icon: "truck", title: "Load Tendered — DEN → KCM", subtitle: "Auto-assigned to Driver #14" },
+    { tone: "amber", icon: "calendar", title: "Pickup Confirmed", subtitle: "On-time · ETA pushed to customer" },
+    { tone: "accent", icon: "check", title: "POD Captured", subtitle: "Signed BOL · invoice draft ready" },
+    { tone: "highlight", icon: "money", title: "Settlement Cleared", subtitle: "Driver paid · margin posted" },
+  ]}
+  stats={[
+    { value: "+11%", label: "On-time delivery", highlight: true },
+    { value: "<60s", label: "Load → driver" },
+    { value: "100%", label: "Electronic POD" },
+    { value: "12h+", label: "Saved per dispatcher / week" },
+  ]}
+  painDescription="What freight, fleet and 3PL ops fight every day."
+  painItems={[
+    { title: "Dispatch lives on a whiteboard", description: "Loads, drivers and trailers are tracked in a spreadsheet and a head. New dispatchers take months to ramp." },
+    { title: "Customers call asking 'where's my freight?'", description: "There's no live tracking link, no automated ETA, no proactive update — so the phone never stops." },
+    { title: "POD chases get pushed to invoicing", description: "Drivers forget to upload signed BOLs. Billing chases for days. DSO grows." },
+    { title: "Driver pay is reconciled by email", description: "Hours, miles, deadhead, accessorials — all reconciled manually. Drivers leave when pay is wrong twice." },
+    { title: "Cost-per-mile is a quarterly mystery", description: "Fuel, maintenance, tolls, driver pay live in different systems. You make pricing decisions on gut." },
+    { title: "Broker boards and customer portals are silos", description: "Loads come from DAT, Truckstop, customer EDI, customer portals — and your team rekeys all of it." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="freight & fleet"
+  featuresDescription="Sits on McLeod, TMW, Samsara, Motive, Trimble — connects what runs the fleet."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Dispatch",
+      title: "Tender → dispatch → POD flow",
+      description: "Loads land from EDI, brokers and customers into one board. Smart assignment matches HOS, lane, equipment and driver preference. POD capture and BOL flow into invoicing automatically.",
+      chips: [{ label: "EDI ingest" }, { label: "HOS-aware routing" }, { label: "Smart matching" }, { label: "Photo POD", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Driver",
+      title: "Driver mobile + tracking",
+      description: "Drivers see the load, capture POD, scan BOLs and report exceptions — all from a phone app that's built around an actual cab.",
+      chips: [{ label: "iOS + Android" }, { label: "ELD-aware" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Customer",
+      title: "Live customer portal",
+      description: "Customers self-serve ETAs, status, POD downloads and re-orders — your phones stop ringing for status calls.",
+      chips: [{ label: "Branded tracking" }, { label: "POD download" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Finance",
+      title: "Cost-per-mile & settlement",
+      description: "Driver settlement, customer invoicing, broker margin and live cost-per-mile by lane, equipment and customer — pricing decisions stop being gut.",
+      chips: [{ label: "Auto settlement" }, { label: "Cost-per-mile live" }, { label: "Margin by customer", highlight: true }],
+      stats: [{ value: "$/mi", label: "live" }, { value: "Margin", label: "by lane" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Adoption-first,"
+  processTitleAccent="cab-tested."
+  processDescription="A sequenced rollout your dispatch and drivers actually adopt."
+  processSteps={[
+    { title: "Ride along", description: "We sit in dispatch, ride in a cab and walk the yard for a week to map every handoff." },
+    { title: "Wire the spine", description: "Dispatch board, driver app and invoicing wired around your TMS or as full custom build." },
+    { title: "Pilot one lane", description: "Launch with one customer or one lane. Validate ETAs, POD and settlement before scaling." },
+    { title: "Roll out & train", description: "Dispatch, drivers, billing and customers each get role-based onboarding and quick-reference docs." },
+  ]}
+  testimonialsTitleAccent="freight"
+  testimonials={[
+    { initials: "SR", name: "Sam Reilly", role: "VP Ops, Reliant Freight", quoteBefore: "We were rekeying loads from three broker boards. With GTS's EDI ingest and smart matching, ", highlight: "dispatch capacity jumped 35% without adding dispatchers", quoteAfter: "." },
+    { initials: "MN", name: "Marcia Nguyen", role: "COO, Coastline Logistics", quoteBefore: "Customers called all day asking 'where's my freight?'. With the live portal ", highlight: "WISMO calls dropped 60%", quoteAfter: " and CSAT went up." },
+    { initials: "ET", name: "Ethan Taylor", role: "President, Hardline Trucking", quoteBefore: "I never knew which lanes actually made money until we saw cost-per-mile live. ", highlight: "We dropped 3 unprofitable lanes and added margin", quoteAfter: " — first time pricing felt informed." },
+  ]}
+  faqs={[
+    { question: "Do you replace McLeod, TMW or Tailwind?", answer: "Usually no — we wrap them. We sit on top and integrate via API/EDI to fix the seams between dispatch, drivers, customers and finance. For smaller 3PLs we sometimes build a custom TMS." },
+    { question: "Can you handle EDI 204, 214, 990, 210?", answer: "Yes. We support standard EDI transactions with brokers and shippers, plus custom APIs where partners offer them. EDI complexity is normalized into clean events for ops." },
+    { question: "What about ELD / GPS integration?", answer: "We integrate with Samsara, Motive, Geotab, Verizon Connect and most major ELD/GPS providers. HOS-aware dispatch and live tracking come from real signals, not driver self-report." },
+    { question: "How does the driver app work offline?", answer: "POD capture, BOL scans and exception reporting all work offline and sync when the driver has signal. Drivers in dead zones don't lose paperwork." },
+    { question: "How long to go live?", answer: "Most logistics rollouts are 8–14 weeks: 2 weeks discovery, 5–10 weeks build, 2 weeks pilot. Multi-customer EDI setups skew longer." },
+    { question: "What does it cost?", answer: "Logistics operations builds typically range $20K–$80K depending on TMS, EDI partners and fleet size. We scope after the operational assessment." },
+  ]}
+  formTitleLead="Let's wire your"
+  formTitleAccent="fleet operations system"
+  formDescription="Tell us about your fleet, customers and where dispatch or billing is leaking. We'll show you what a connected system looks like for your operation."
+  formChallengePlaceholder="E.g., Dispatch is on a whiteboard, customers call all day for ETAs, and we never get POD back in time to invoice cleanly..."
+  formCompanyLabel="Company"
+  formCompanyPlaceholder="Reliant Freight"
+  formTeamSizeLabel="Fleet Size"
+  formTeamSizeOptions={[
+    { value: "1-15", label: "1–15 trucks" },
+    { value: "16-50", label: "16–50 trucks" },
+    { value: "51-200", label: "51–200 trucks" },
+    { value: "200+", label: "200+ trucks / brokerage" },
+  ]}
+  formSourceTag="Logistics Landing Page"
+/>

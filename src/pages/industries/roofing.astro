@@ -1,0 +1,113 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Roofing Contractors — GlobalTechSignal"
+  metaDescription="Book more jobs, dispatch crews faster and keep job cost, claims and photos in one connected system. Operational intelligence built for roofing contractors."
+  industryName="Roofing"
+  eyebrow="Roofing · Field & Sales Operations"
+  heroTitleLead="Stop losing jobs to slow follow-up."
+  heroTitleAccent="Run roofing on a connected system."
+  heroIntro="Storm leads, inspection photos, insurance claims, change orders and crew schedules don't have to live in five different apps. We build a connected business system that captures every lead, tracks every job from inspection to invoice, and gives the office real-time visibility on every crew in the field."
+  feedTitle="Live Job Pipeline"
+  feedBadge="14 Active Jobs"
+  feedItems={[
+    { tone: "accent", icon: "bolt", title: "Storm Lead — Hail Map Zone 3", subtitle: "Auto-assigned to Mike · 12s ago" },
+    { tone: "blue", icon: "calendar", title: "Inspection Booked", subtitle: "Tomorrow 9:00 AM · 21 Maple Ln" },
+    { tone: "amber", icon: "doc", title: "Claim Filed — State Farm", subtitle: "Photos + scope uploaded" },
+    { tone: "highlight", icon: "money", title: "Job Closed — $18,400", subtitle: "Deposit collected · crew scheduled" },
+  ]}
+  stats={[
+    { value: "3x", label: "Estimate-to-close ratio", highlight: true },
+    { value: "<5m", label: "Storm lead response" },
+    { value: "10h+", label: "Saved per office / week" },
+    { value: "40%", label: "Faster claim cycle" },
+  ]}
+  painDescription="The operational chaos roofing crews and offices fight every storm season."
+  painItems={[
+    { title: "Storm leads vanish into voicemail", description: "Door-knockers, web forms and ad clicks all land somewhere different — and slow follow-up means competitors get the contract first." },
+    { title: "Insurance claims drag on for weeks", description: "Photos sit on a phone, supplements get emailed back and forth, adjusters chase paperwork. Cash flow stalls and crews wait." },
+    { title: "Crews show up to the wrong job", description: "Schedules change, customers reschedule, materials run late — but the office can't push updates to the truck in real time." },
+    { title: "Job cost is a guess until close-out", description: "Materials, labor, change orders and supplier invoices live in spreadsheets that get reconciled weeks after the job ships." },
+    { title: "No visibility into which reps actually close", description: "You can't see who is producing, what's stuck in proposal, or which neighborhoods convert — so coaching and ad spend are blind." },
+    { title: "Customers forget you exist after close", description: "No automated maintenance follow-up, no review ask, no referral nurture — and that's where most repeat revenue gets left." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="roofing contractors"
+  featuresDescription="A system that knows the difference between an estimate, a job and a claim."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Core",
+      title: "Lead → Inspection → Job pipeline",
+      description: "Capture leads from canvassers, web, Google Ads, storm-map vendors and 3rd-party platforms into a single roofing-shaped pipeline with stages built for inspection, scope, claim and close.",
+      chips: [
+        { label: "Door-knock app" }, { label: "Storm map sync" }, { label: "Duplicate dedupe" }, { label: "Auto round-robin", highlight: true },
+      ],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Field",
+      title: "Photo & job docs from the truck",
+      description: "Crews capture roof photos, measurements and damage notes from the field — instantly attached to the job, ready for supplements.",
+      chips: [{ label: "iOS + Android" }, { label: "Offline capture" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Claims",
+      title: "Insurance claim workflow",
+      description: "Supplement requests, scope sheets and Xactimate exports tracked alongside the job. Cash flow finally becomes predictable.",
+      chips: [{ label: "Xactimate-ready" }, { label: "Adjuster portal" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Reporting",
+      title: "Sales & crew dashboards",
+      description: "Office sees rep production, neighborhood conversion, average ticket and job cost variance in real time — no more Sunday-night spreadsheets to compile.",
+      chips: [{ label: "Per-rep KPIs" }, { label: "Job cost variance" }, { label: "Pipeline forecast", highlight: true }],
+      stats: [
+        { value: "ROI", label: "per ad source" },
+        { value: "#1", label: "rep ranking" },
+      ],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="From chaos to"
+  processTitleAccent="a system."
+  processDescription="A pragmatic rollout your office and crews actually adopt."
+  processSteps={[
+    { title: "Assess the operation", description: "We ride along with sales, inspectors and the office to map every handoff and broken seam." },
+    { title: "Design the pipeline", description: "Stages, fields and automations modeled around your actual sales motion — retail vs. insurance." },
+    { title: "Wire field + office", description: "Mobile capture, photo uploads, scheduling and dispatch live in one connected system." },
+    { title: "Train & coach", description: "Reps and crews get onboarded with role-based docs, then we coach the office on dashboards." },
+  ]}
+  testimonialsTitleAccent="roofing"
+  testimonials={[
+    { initials: "TG", name: "Tom Garcia", role: "Owner, Apex Roofing Co.", quoteBefore: "We were losing 30% of storm leads to voicemail. After GTS rebuilt our system, every lead gets a call inside 5 minutes. ", highlight: "We closed an extra 14 jobs last quarter", quoteAfter: " — that's six figures we used to throw away." },
+    { initials: "DS", name: "Dana Singh", role: "Office Manager, Sterling Exteriors", quoteBefore: "Claims used to take weeks because adjuster docs lived in three different folders. Now everything sits on the job. ", highlight: "Claim cycle dropped 40%", quoteAfter: " and crews aren't waiting on paperwork." },
+    { initials: "RB", name: "Ryan Bell", role: "VP Sales, Northwind Roofing", quoteBefore: "I finally see which reps actually close versus which ones look busy. ", highlight: "Per-rep coaching is a 10-minute Monday meeting now", quoteAfter: " instead of an Excel project." },
+  ]}
+  faqs={[
+    { question: "Can it ingest storm-map / weather lead vendors?", answer: "Yes. We integrate with HailTrace, Weather Decision Technologies, CompanyCam, Hover and most storm-lead vendors via API or webhook. Leads land in your pipeline with the storm event already tagged." },
+    { question: "Do you replace AccuLynx or JobNimbus?", answer: "We can either replace them with a custom build or integrate on top — depends on what your team uses. Custom usually wins when your sales motion is unique or your claim workflow is complex." },
+    { question: "Will my crews actually use it?", answer: "We design the field app to be 3 taps from photo to job. If a crew lead can text a customer, they can use it. We also onboard crews in-person or over video to make sure adoption sticks." },
+    { question: "Can we keep using QuickBooks for accounting?", answer: "Yes. We sync deposits, invoices, supplier bills and job cost back to QuickBooks (Online or Desktop) so your bookkeeper keeps the same workflow." },
+    { question: "How long until we go live?", answer: "Most roofing rollouts are live in 4–8 weeks: 2 weeks discovery + design, 3–4 weeks build, 1–2 weeks pilot and training. Insurance-heavy operations skew toward the longer end." },
+    { question: "What does it cost?", answer: "Custom roofing systems typically start around $8K–$25K for the build, plus a small monthly for hosting + support. We scope after the operational assessment so you know exactly what you're getting before committing." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="roofing operations system"
+  formDescription="Tell us about your office, your crews and how leads come in. We'll show you exactly how a connected system pays for itself."
+  formChallengePlaceholder="E.g., We get a storm spike every spring and lose half the leads to voicemail and missed callbacks..."
+  formCompanyLabel="Company"
+  formCompanyPlaceholder="Apex Roofing Co."
+  formTeamSizeLabel="Crew + Office Size"
+  formTeamSizeOptions={[
+    { value: "1-10", label: "1–10" },
+    { value: "11-30", label: "11–30" },
+    { value: "31-75", label: "31–75" },
+    { value: "75+", label: "75+" },
+  ]}
+  formSourceTag="Roofing Landing Page"
+/>

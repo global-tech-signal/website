@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for E-Commerce Brands — GlobalTechSignal"
+  metaDescription="Inventory, orders, returns, CX and growth in one connected system. Operational intelligence for DTC and multi-channel ecommerce brands."
+  industryName="E-Commerce"
+  eyebrow="E-Commerce · Growth & Ops Systems"
+  heroTitleLead="Stop running 12 dashboards."
+  heroTitleAccent="Run the brand on a connected system."
+  heroIntro="Shopify, Klaviyo, the 3PL, the helpdesk, the ad platforms, the returns portal — your team is paying tabs taxes every day. We design a connected operations system that ties orders, inventory, customer experience and growth data into one place — so you ship faster, churn less and grow with fewer humans in the loop."
+  feedTitle="Live Store Operations"
+  feedBadge="312 Orders Today"
+  feedItems={[
+    { tone: "accent", icon: "package", title: "Order Shipped — #58341", subtitle: "Tracking pushed · CX notified" },
+    { tone: "blue", icon: "chart", title: "Inventory Low — SKU-RT42", subtitle: "Reorder draft created · vendor pinged" },
+    { tone: "amber", icon: "message", title: "Return Initiated", subtitle: "Auto-RMA · refund holding for QC" },
+    { tone: "highlight", icon: "money", title: "Subscription Renewed", subtitle: "$74 · LTV updated to $612" },
+  ]}
+  stats={[
+    { value: "+18%", label: "Repeat purchase rate", highlight: true },
+    { value: "-42%", label: "Time on CX tickets" },
+    { value: "<2h", label: "Pick → ship SLA" },
+    { value: "100%", label: "Live inventory accuracy" },
+  ]}
+  painDescription="Where DTC brands lose hours, margin and customers."
+  painItems={[
+    { title: "Inventory truth is 3 places at once", description: "Shopify says one number, the 3PL says another, the wholesale platform says a third. Oversells and stockouts both hurt." },
+    { title: "CX is drowning in copy-paste", description: "Helpdesk agents bounce between Shopify, the 3PL portal and the returns tool to answer 'where is my order?' — for the 100th time today." },
+    { title: "Returns and refunds leak margin", description: "RMAs are manually processed, restocking is uncertain, and refund timing is unpredictable for the customer." },
+    { title: "Marketing spend isn't tied to LTV", description: "Ad platforms optimize on attributed last-click revenue. You can't see which campaigns build customers vs. burn cash." },
+    { title: "Wholesale orders break the system", description: "B2B orders land in email, get re-keyed into Shopify, and screw up the D2C inventory flow." },
+    { title: "Promo and bundle logic is fragile", description: "Every campaign requires a workaround in a different tool, and Black Friday becomes a fire drill across 5 platforms." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="modern e-commerce"
+  featuresDescription="Sits on Shopify, BigCommerce, Klaviyo, Gorgias, ShipBob, ShipHero — connects orders, inventory, CX and growth."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Orders",
+      title: "Order & inventory single source of truth",
+      description: "Real-time inventory across D2C, wholesale, retail and 3PL. Orders flow with the right rules — preorders, splits, holds — and CX always sees the truth.",
+      chips: [{ label: "Multi-channel sync" }, { label: "Preorders + drops" }, { label: "Split shipments" }, { label: "Oversell guards", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "CX",
+      title: "1-screen helpdesk",
+      description: "Agents see order, shipment, returns, payment and history in one screen — instead of switching tabs.",
+      chips: [{ label: "Gorgias / Zendesk" }, { label: "Macros + AI draft" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Returns",
+      title: "Self-serve RMA",
+      description: "Customers initiate returns, choose store credit, and refunds clear automatically once items pass QC at the 3PL.",
+      chips: [{ label: "Auto store credit" }, { label: "3PL QC trigger" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Growth",
+      title: "LTV-aware growth dashboards",
+      description: "Cohort LTV, channel ROAS, repeat rate, AOV by segment and inventory-aware ad pacing — so growth and ops finally use the same numbers.",
+      chips: [{ label: "Cohort LTV" }, { label: "Channel ROAS" }, { label: "Inventory-aware pacing", highlight: true }],
+      stats: [{ value: "LTV", label: "by cohort" }, { value: "ROAS", label: "live" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Built for"
+  processTitleAccent="peak season."
+  processDescription="No Black Friday surprises. We rehearse before we ship."
+  processSteps={[
+    { title: "Audit the stack", description: "We map every tool you use, every place data lives, every manual handoff your team does daily." },
+    { title: "Wire the spine", description: "Inventory, orders, CX and growth data tied into one operations layer." },
+    { title: "Dry-run peak", description: "Simulate peak-season load and edge cases before customers hit it." },
+    { title: "Roll out & monitor", description: "Phased rollout with monitoring. We're on standby for the first peak event." },
+  ]}
+  testimonialsTitleAccent="DTC brand"
+  testimonials={[
+    { initials: "AB", name: "Ashley Brooks", role: "COO, Northcoast Apparel", quoteBefore: "Inventory used to be wrong in three places. CX was apologizing every day. After GTS wired the system, ", highlight: "oversells dropped to zero and CX volume fell 40%", quoteAfter: " in the first 60 days." },
+    { initials: "RP", name: "Ravi Pillai", role: "Founder, Hearth & Hide", quoteBefore: "We were spending on ads blind. Now ", highlight: "we pace spend against live inventory and cohort LTV", quoteAfter: " — our blended ROAS jumped 1.6× without changing creative." },
+    { initials: "JK", name: "Jordan Kemp", role: "Director of Ops, Bay Goods Co.", quoteBefore: "Black Friday used to be a fire drill across five tools. This year ", highlight: "we shipped 4× volume with the same team", quoteAfter: " and went home on time." },
+  ]}
+  faqs={[
+    { question: "Do you replace Shopify?", answer: "No. We sit on top of Shopify (or BigCommerce / WooCommerce) and integrate with your 3PL, helpdesk, ESP and ad platforms. Shopify keeps doing what it's great at — we fix the seams between everything else." },
+    { question: "Can you integrate our 3PL?", answer: "Yes — ShipBob, ShipHero, Deliverr, ShipMonk and most warehouse APIs. For 3PLs without APIs we build EDI/SFTP integrations and reconcile inventory automatically." },
+    { question: "What about B2B / wholesale orders?", answer: "We build dedicated B2B order flows with tiered pricing, NET terms, PO references and approval workflows — separate inventory pools or shared, your choice." },
+    { question: "Can you handle subscriptions / replenishment?", answer: "Yes. We integrate with Recharge, Skio, Loop Returns and similar — or build custom subscription logic with churn-prevention flows." },
+    { question: "How long to go live?", answer: "Most DTC rollouts are 6–12 weeks: 2 weeks discovery, 4–8 weeks build, 2 weeks dry-run and pilot. Brands with complex 3PL or wholesale flows skew longer." },
+    { question: "What does it cost?", answer: "DTC operations builds typically range $15K–$60K depending on integrations, channels and complexity. We scope after the operational assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="e-commerce operations system"
+  formDescription="Tell us about your brand, channels and where ops or CX is breaking. We'll show you what a connected operations layer looks like for your stack."
+  formChallengePlaceholder="E.g., Inventory is wrong in Shopify vs. our 3PL, CX is drowning in WISMO tickets, and growth doesn't have LTV by channel..."
+  formCompanyLabel="Brand"
+  formCompanyPlaceholder="Northcoast Apparel"
+  formTeamSizeLabel="Team Size"
+  formTeamSizeOptions={[
+    { value: "1-5", label: "1–5" },
+    { value: "6-15", label: "6–15" },
+    { value: "16-50", label: "16–50" },
+    { value: "50+", label: "50+" },
+  ]}
+  formSourceTag="E-Commerce Landing Page"
+/>

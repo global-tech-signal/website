@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Law Firms — GlobalTechSignal"
+  metaDescription="Intake to retainer to billing to outcome — one connected system for law firms. Track matters, capture every billable minute and give partners real visibility."
+  industryName="Legal"
+  eyebrow="Legal · Matter & Intake Operations"
+  heroTitleLead="Stop losing matters in the inbox."
+  heroTitleAccent="Run the firm on a connected system."
+  heroIntro="Lead intake, conflict checks, engagement letters, matter management, time tracking and billing don't have to live in five disconnected tools. We design a connected operations system that captures every qualified lead, opens matters cleanly, and gives partners real-time visibility into utilization, WIP and realization."
+  feedTitle="Live Firm Operations"
+  feedBadge="22 Active Matters"
+  feedItems={[
+    { tone: "accent", icon: "scale", title: "New Matter — Patel v. Acme", subtitle: "Conflict-checked · routed to Lee" },
+    { tone: "blue", icon: "doc", title: "Engagement Letter Signed", subtitle: "DocuSign returned · retainer invoiced" },
+    { tone: "amber", icon: "calendar", title: "Filing Deadline — 4 days", subtitle: "Calendared for K. Reyes" },
+    { tone: "highlight", icon: "money", title: "Billable Logged — 3.4h", subtitle: "Reviewed · added to draft invoice" },
+  ]}
+  stats={[
+    { value: "+12%", label: "Realization rate", highlight: true },
+    { value: "2h", label: "From inquiry to retainer" },
+    { value: "97%", label: "Time captured" },
+    { value: "0", label: "Missed conflicts" },
+  ]}
+  painDescription="What firms fight every week without a connected intake and matter spine."
+  painItems={[
+    { title: "Qualified leads die in the inbox", description: "Inquiries land with the receptionist, the website form, an attorney's email — and follow-up depends on whoever's free. Good cases slip to competitors." },
+    { title: "Conflict checks are still manual", description: "A spreadsheet check, a couple of emails — and the firm carries malpractice risk on every new matter." },
+    { title: "Billable minutes go uncaptured", description: "Attorneys reconstruct timesheets on Fridays. Realization drops because actual work is forgotten or rounded down." },
+    { title: "Matter status is opaque", description: "Clients call asking 'where is my case?' and staff has to dig through emails, the DMS, the case manager and the calendar to answer." },
+    { title: "WIP and aging surprise partners", description: "Pre-bills sit in attorneys' inboxes for weeks, A/R grows past 90 days, and partners only see it on quarterly reports." },
+    { title: "Onboarding new associates is painful", description: "There's no documented playbook. Every associate learns the firm's quirks by breaking them once." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="modern law firms"
+  featuresDescription="Sits on Clio, MyCase, PracticePanther, Filevine, NetDocuments — connects intake, matter, time and billing."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Intake",
+      title: "Lead → conflict → retainer flow",
+      description: "Web, phone, referral and PPC leads land in one pipeline with automated conflict checks, engagement letter generation and e-sign retainer routing — partner approval gates included.",
+      chips: [{ label: "Auto conflict check" }, { label: "DocuSign / Adobe Sign" }, { label: "Retainer invoicing" }, { label: "Partner approval", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Time",
+      title: "Frictionless time capture",
+      description: "Pull billables from email, calendar, phone and document activity. Attorneys review and approve instead of reconstructing.",
+      chips: [{ label: "Email + calendar" }, { label: "Daily review" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Matter",
+      title: "Matter operations",
+      description: "Deadlines, tasks, documents and client comms organized per matter. Status is one click away.",
+      chips: [{ label: "Calendaring" }, { label: "Client portal" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Partner",
+      title: "Utilization, WIP & realization",
+      description: "Partners see attorney utilization, matter WIP, aging A/R, realization rate and origination credit live — not on a quarterly report.",
+      chips: [{ label: "Utilization live" }, { label: "WIP aging" }, { label: "Realization rate", highlight: true }],
+      stats: [{ value: "Live", label: "WIP per matter" }, { value: "%", label: "realization" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Confidential rollout,"
+  processTitleAccent="real adoption."
+  processDescription="Built around your existing DMS and PM platform."
+  processSteps={[
+    { title: "Map intake to invoice", description: "We sit with intake, paralegals, attorneys and billing to map every handoff." },
+    { title: "Wire the spine", description: "Intake, conflict, matter and time capture wired around your DMS and PM platform." },
+    { title: "Pilot one practice group", description: "Launch with one practice group first. Refine workflows before firm-wide rollout." },
+    { title: "Roll out & train", description: "Role-based onboarding for intake, paralegals, attorneys, billing and partners." },
+  ]}
+  testimonialsTitleAccent="law firm"
+  testimonials={[
+    { initials: "AS", name: "Amelia Stone", role: "Managing Partner, Stone & Reyes", quoteBefore: "Intake used to depend on whoever was at the desk. With GTS's system, ", highlight: "we convert 38% more qualified leads", quoteAfter: " — and the partners actually see the pipeline now." },
+    { initials: "RL", name: "Robert Liu", role: "Partner, Liu Patent Law", quoteBefore: "Attorneys reconstructing time on Fridays was costing us money. Now ", highlight: "we capture 97% of billable activity automatically", quoteAfter: " — realization is up 12 points." },
+    { initials: "NK", name: "Nadia Karim", role: "Director of Operations, Harborview Legal", quoteBefore: "I used to chase pre-bills by email for weeks. With the new workflow ", highlight: "pre-bills clear in under 5 business days", quoteAfter: " and A/R aging stopped creeping." },
+  ]}
+  faqs={[
+    { question: "Do you replace Clio / MyCase / Filevine?", answer: "Usually no — we wrap them. The PM platform stays, and we sit on top to fix intake, partner visibility, automated docs and billing workflows. For specialty firms we sometimes build a custom matter spine instead." },
+    { question: "How do you handle conflict checks?", answer: "We hook into your DMS and PM database to run automated conflict checks at intake. The intake team gets a clear pass/fail with the conflicting parties surfaced for partner review." },
+    { question: "Is it secure and confidential?", answer: "Yes. SOC 2-aligned infrastructure, role-based access, audit logging, encryption in transit and at rest. We sign confidentiality agreements before discovery." },
+    { question: "Will the e-sign retainer flow work for our state bar requirements?", answer: "Yes. We support DocuSign, Adobe Sign and other compliant providers. Engagement letter templates are versioned and audit-tracked." },
+    { question: "How long to go live?", answer: "Most firm rollouts are 8–14 weeks: 2 weeks discovery, 6–10 weeks build, 2 weeks pilot. Larger firms with multiple practice groups skew longer." },
+    { question: "What does it cost?", answer: "Firm operations builds typically range $12K–$50K depending on scope and integrations. We scope after the operational assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="firm operations system"
+  formDescription="Tell us about your firm, practice areas and where intake or billing is leaking. We'll show you what a connected operations layer looks like."
+  formChallengePlaceholder="E.g., We use Clio but intake still depends on whichever attorney picks up first, and pre-bills sit in inboxes for weeks..."
+  formCompanyLabel="Firm"
+  formCompanyPlaceholder="Stone & Reyes LLP"
+  formTeamSizeLabel="Firm Size"
+  formTeamSizeOptions={[
+    { value: "1-5", label: "Solo / 1–5 attorneys" },
+    { value: "6-15", label: "6–15 attorneys" },
+    { value: "16-50", label: "16–50 attorneys" },
+    { value: "50+", label: "50+ attorneys" },
+  ]}
+  formSourceTag="Legal Landing Page"
+/>

@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Insurance Agencies — GlobalTechSignal"
+  metaDescription="Quote-to-bind, renewals, claims and producer visibility in one connected system. Built for independent agencies, MGAs and brokers."
+  industryName="Insurance"
+  eyebrow="Insurance · Agency Operations Systems"
+  heroTitleLead="Stop letting renewals slip."
+  heroTitleAccent="Run the agency on a connected system."
+  heroIntro="Quote requests, carrier portals, AMS, renewal lists, retention emails and producer pipelines don't have to be silos. We design a connected operations system that captures every quote opportunity, surfaces renewals early, and gives owners real-time visibility into book health and producer performance."
+  feedTitle="Live Agency Pipeline"
+  feedBadge="48 Open Quotes"
+  feedItems={[
+    { tone: "amber", icon: "shield", title: "Quote Requested — GL + WC", subtitle: "Routed to 3 carriers · ETA 24h" },
+    { tone: "accent", icon: "check", title: "Policy Bound — Commercial Auto", subtitle: "Premium $4,820 · auto-invoiced" },
+    { tone: "blue", icon: "calendar", title: "Renewal Due — 60 days", subtitle: "Workflow started for J. Owens" },
+    { tone: "highlight", icon: "money", title: "Endorsement Commissioned", subtitle: "Producer split applied · ledger updated" },
+  ]}
+  stats={[
+    { value: "+9pt", label: "Retention rate", highlight: true },
+    { value: "<24h", label: "Quote turnaround" },
+    { value: "35%", label: "Less CSR admin time" },
+    { value: "100%", label: "Renewal coverage" },
+  ]}
+  painDescription="Where independent agencies and brokers leak premium and producer hours."
+  painItems={[
+    { title: "Quote requests live in 6 different inboxes", description: "Producers, CSRs and the website each see different leads — duplicates, missed quotes and slow turnaround cost you premium." },
+    { title: "Renewals get noticed at 30 days", description: "By the time a renewal hits the top of the list, the client has already gotten a competing quote. Retention dies in the calendar." },
+    { title: "AMS data is stale by lunch", description: "Producers update AMS when they remember. Reports pulled at 9am are wrong by noon. Owners can't trust the numbers." },
+    { title: "Claims status is unknown to producers", description: "Clients call about claims, producers don't have the carrier status, and the experience feels like 1998." },
+    { title: "Commission tracking is a spreadsheet", description: "Splits, overrides and contingents are calculated manually — and producers don't trust the numbers." },
+    { title: "Carrier downloads and BORs are manual", description: "CSRs re-key data from carrier portals into the AMS, day after day, just to keep the book accurate." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="independent agencies"
+  featuresDescription="Sits on Applied, AMS360, EZLynx, NowCerts, Vertafore — connects what your CSRs already use."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Pipeline",
+      title: "Unified quote pipeline",
+      description: "Every quote — web form, referral, producer, cross-sell — lands in one pipeline with carrier dispatch, follow-up cadence and conversion tracking by line and producer.",
+      chips: [{ label: "Multi-carrier dispatch" }, { label: "Dedupe + dedupe" }, { label: "Cross-sell triggers" }, { label: "Auto follow-up", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Renewals",
+      title: "Renewal radar",
+      description: "Renewals enter a 90-day workflow with shop-or-stay logic, retention emails and producer alerts — you save the book before it gets a competing quote.",
+      chips: [{ label: "90 / 60 / 30 cadence" }, { label: "Auto retention" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Service",
+      title: "Client portal & service",
+      description: "Clients pull policies, COIs, claims status and pay invoices online. CSRs stop being switchboards.",
+      chips: [{ label: "COI on-demand" }, { label: "Claims tracker" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Insight",
+      title: "Book health & producer dashboards",
+      description: "Live retention, premium per line, producer pipeline conversion, lost-business reasons and renewal forecast — on one screen for owners.",
+      chips: [{ label: "Retention live" }, { label: "Premium per line" }, { label: "Lost-business reasons", highlight: true }],
+      stats: [{ value: "Retention", label: "live %" }, { value: "Book", label: "premium $" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Adoption-first,"
+  processTitleAccent="zero AMS disruption."
+  processDescription="A sequenced rollout your CSRs and producers actually use."
+  processSteps={[
+    { title: "Map the book", description: "We map quote → bind → renewal → claim around your actual AMS, carriers and producers." },
+    { title: "Wire pipeline + renewals", description: "Quote pipeline and renewal radar wired to AMS with carrier downloads handled." },
+    { title: "Pilot one line", description: "Launch with one line of business (often Commercial) first to validate workflow." },
+    { title: "Roll out & train", description: "CSRs, producers and owners get role-based onboarding and quick-reference dashboards." },
+  ]}
+  testimonialsTitleAccent="insurance agency"
+  testimonials={[
+    { initials: "MK", name: "Marcus Klein", role: "Owner, Klein Insurance Group", quoteBefore: "Renewals used to be a fire drill at 30 days. With the renewal radar, ", highlight: "our retention is up 9 points year-over-year", quoteAfter: " — that's a meaningful book of premium saved." },
+    { initials: "ER", name: "Elena Romero", role: "Agency Principal, Sunset Risk Partners", quoteBefore: "Quote turnaround was 3–5 days because requests bounced between inboxes. Now ", highlight: "every quote goes out in under 24 hours", quoteAfter: " — and we convert 22% more of them." },
+    { initials: "TW", name: "Trent Walters", role: "COO, Anchor Commercial Lines", quoteBefore: "I never trusted the AMS reports because data was stale. Now ", highlight: "I see book health and producer performance live", quoteAfter: " — and my coaching calls finally have real numbers." },
+  ]}
+  faqs={[
+    { question: "Do you replace our AMS?", answer: "No. We wrap Applied, AMS360, EZLynx, NowCerts, Vertafore or HawkSoft — pulling data via API/integration and pushing back where the AMS allows. CSRs don't relearn the system they already know." },
+    { question: "Can you handle carrier downloads / IVANS?", answer: "Yes. We work with your existing IVANS downloads or build supplementary integrations with carriers that offer APIs. Cleaner data lands in the AMS automatically." },
+    { question: "How do you handle commissions and producer splits?", answer: "We build a commission engine that mirrors your agreements — splits, overrides, contingents, sub-codes — and reconciles against carrier statements. Producers see live, accurate numbers." },
+    { question: "Will it work for personal and commercial lines?", answer: "Yes. We design distinct workflows: personal lines tends to be high-volume / lower-touch, commercial is lower-volume / higher-touch. Same operations system handles both with different pipelines." },
+    { question: "How long to go live?", answer: "Typical rollouts are 6–10 weeks: 2 weeks discovery, 4–6 weeks build, 2 weeks pilot. Multi-location agencies skew longer." },
+    { question: "What does it cost?", answer: "Insurance agency operations builds typically range $12K–$45K depending on AMS, carrier count and scope. Scoped after the operational assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="agency operations system"
+  formDescription="Tell us about your book, your AMS and where retention or producer time is leaking. We'll show you what a connected operations layer looks like."
+  formChallengePlaceholder="E.g., Our renewals always feel like a scramble, and quote turnaround takes 3–5 days because requests bounce between inboxes..."
+  formCompanyLabel="Agency"
+  formCompanyPlaceholder="Klein Insurance Group"
+  formTeamSizeLabel="Agency Size"
+  formTeamSizeOptions={[
+    { value: "1-5", label: "1–5 staff" },
+    { value: "6-20", label: "6–20 staff" },
+    { value: "21-75", label: "21–75 staff" },
+    { value: "75+", label: "75+ staff" },
+  ]}
+  formSourceTag="Insurance Landing Page"
+/>

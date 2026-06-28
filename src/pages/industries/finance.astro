@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Finance & Wealth Firms — GlobalTechSignal"
+  metaDescription="Client onboarding, KYC, reporting, compliance and CRM in one connected system. Built for wealth managers, RIAs, brokers and finance teams."
+  industryName="Finance"
+  eyebrow="Finance · Client & Compliance Operations"
+  heroTitleLead="Stop running on email and PDFs."
+  heroTitleAccent="Run the firm on a connected system."
+  heroIntro="Client onboarding, KYC/AML, portfolio reviews, document collection, reporting and compliance shouldn't be 10 disconnected tools. We design a connected operations system that takes a prospect from inquiry to onboarded to reviewed — with audit-trailed compliance baked in."
+  feedTitle="Live Firm Operations"
+  feedBadge="86 Active Clients"
+  feedItems={[
+    { tone: "blue", icon: "briefcase", title: "Prospect Inquiry — High Net Worth", subtitle: "Routed to Advisor · KYC initiated" },
+    { tone: "amber", icon: "doc", title: "Document Collected — Tax Return", subtitle: "Auto-verified · routed to ops" },
+    { tone: "accent", icon: "check", title: "Client Onboarded", subtitle: "Accounts opened · welcome packet sent" },
+    { tone: "highlight", icon: "chart", title: "Quarterly Review Auto-Generated", subtitle: "Performance + commentary · ready for advisor" },
+  ]}
+  stats={[
+    { value: "-58%", label: "Onboarding time", highlight: true },
+    { value: "100%", label: "Audit-trail coverage" },
+    { value: "+22%", label: "Advisor capacity" },
+    { value: "0", label: "Missed KYC steps" },
+  ]}
+  painDescription="Where wealth firms, RIAs and finance teams lose time, compliance peace of mind and clients."
+  painItems={[
+    { title: "Onboarding takes 3 weeks of email tag", description: "KYC, AML, forms, ID verification and account opening all bounce between client and advisor in PDFs. Half the prospects ghost mid-flow." },
+    { title: "Compliance lives in a binder", description: "Audit trails are reconstructed at exam time. Reviews, communication logs and supervisory approvals are scattered." },
+    { title: "Quarterly reviews eat advisor hours", description: "Advisors hand-build review decks in PowerPoint. Same data, same charts, every quarter — but no time saved." },
+    { title: "Client data lives in 4 systems", description: "CRM, custodian, planning software, document storage — and the advisor can't see one truth without 5 tabs open." },
+    { title: "Referrals don't get systematic follow-up", description: "Warm introductions stall because nobody owns the next step. The best lead source goes underused." },
+    { title: "Service requests slip through cracks", description: "RMD instructions, beneficiary changes, transfer requests — emailed in, sometimes acted on, sometimes lost." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="finance firms"
+  featuresDescription="Sits on Redtail, Wealthbox, Salesforce FSC, eMoney, Orion, Black Diamond — connects the firm."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Onboarding",
+      title: "Prospect → onboarded flow",
+      description: "Digital intake, KYC verification, e-sign forms, account opening and welcome packet — all sequenced with advisor approvals and a clean audit trail.",
+      chips: [{ label: "ID verification" }, { label: "E-sign forms" }, { label: "Custodian sync" }, { label: "Audit trail", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Reviews",
+      title: "Auto review prep",
+      description: "Quarterly reviews assembled automatically from custodian and planning data, with commentary placeholders for the advisor.",
+      chips: [{ label: "Custodian pull" }, { label: "Advisor commentary" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Compliance",
+      title: "Compliance & comms log",
+      description: "Every email, call note and document is logged against the client with supervisory review queues built in.",
+      chips: [{ label: "SEC / FINRA ready" }, { label: "Supervisory review" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Firm",
+      title: "Advisor & firm dashboards",
+      description: "AUM growth, advisor capacity, pipeline health, referral source ROI, service ticket aging — partners see the firm live, not on a quarterly report.",
+      chips: [{ label: "AUM live" }, { label: "Advisor capacity" }, { label: "Referral ROI", highlight: true }],
+      stats: [{ value: "AUM", label: "live $" }, { value: "Cap", label: "per advisor" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Audit-ready, "
+  processTitleAccent="advisor-friendly."
+  processDescription="Built around your custodian, planning and CRM stack."
+  processSteps={[
+    { title: "Map the firm", description: "We sit with advisors, ops and compliance to map every client touchpoint and supervisory step." },
+    { title: "Wire the spine", description: "Onboarding, reviews and compliance logged around your existing CRM and custodian." },
+    { title: "Pilot one advisor", description: "Launch with one advisor or one segment. Refine before firm-wide rollout." },
+    { title: "Roll out & train", description: "Advisors, ops, compliance and partners get role-based onboarding and quick-reference docs." },
+  ]}
+  testimonialsTitleAccent="wealth firm"
+  testimonials={[
+    { initials: "AC", name: "Annika Chen", role: "Managing Partner, Cedar Wealth", quoteBefore: "Onboarding used to take 3 weeks and we'd lose 1 in 4 prospects mid-flow. With the digital onboarding system ", highlight: "we onboard in under 6 business days", quoteAfter: " and prospects stop ghosting." },
+    { initials: "DJ", name: "Derrick Jones", role: "COO, Northgate RIA", quoteBefore: "Compliance exam used to be a 6-week scramble pulling logs together. Now ", highlight: "every interaction is audit-trailed in real time", quoteAfter: " — our last exam was the cleanest we've ever had." },
+    { initials: "HM", name: "Hadley Morgan", role: "Senior Advisor, Meridian Capital", quoteBefore: "Quarterly reviews used to eat 2 days per advisor per quarter. Now ", highlight: "review decks generate automatically", quoteAfter: " — I spend the time on client conversation, not slides." },
+  ]}
+  faqs={[
+    { question: "Do you replace our CRM (Redtail / Wealthbox / Salesforce FSC)?", answer: "Usually no — we wrap them. The advisor's daily home base stays the same; we fix the seams between CRM, planning, custodian, document storage and compliance." },
+    { question: "How do you handle KYC / AML and ID verification?", answer: "We integrate with providers like Persona, Onfido, Plaid Identity Verification or industry-specific KYC tools. The flow is fully audit-trailed and CIP-compliant." },
+    { question: "Is it SEC / FINRA compliant?", answer: "Yes. We architect for WORM-compliant record retention, supervisory review workflows, communication archiving (Smarsh / Global Relay integration) and audit logging. We can also align to SOC 2 controls." },
+    { question: "What custodians do you support?", answer: "Schwab, Fidelity, Pershing, LPL, Apex and most major custodians — via direct API, file-based feeds or aggregation through ByAllAccounts / Plaid." },
+    { question: "How long to go live?", answer: "Most firm rollouts are 8–14 weeks: 2 weeks discovery, 6–10 weeks build, 2 weeks pilot. Multi-custodian or large advisor counts skew longer." },
+    { question: "What does it cost?", answer: "Finance firm operations builds typically range $15K–$75K depending on custodians, compliance scope and integrations. We scope after the operational assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="firm operations system"
+  formDescription="Tell us about your firm, your AUM and where onboarding or compliance is leaking. We'll show you what a connected operations layer looks like."
+  formChallengePlaceholder="E.g., Onboarding takes 3 weeks of email tag, compliance logs are scattered across systems, and quarterly reviews eat 2 days per advisor..."
+  formCompanyLabel="Firm"
+  formCompanyPlaceholder="Cedar Wealth Partners"
+  formTeamSizeLabel="Firm Size"
+  formTeamSizeOptions={[
+    { value: "1-5", label: "1–5 advisors" },
+    { value: "6-15", label: "6–15 advisors" },
+    { value: "16-50", label: "16–50 advisors" },
+    { value: "50+", label: "50+ advisors / multi-office" },
+  ]}
+  formSourceTag="Finance Landing Page"
+/>

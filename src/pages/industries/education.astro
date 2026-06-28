@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Education & Training Providers — GlobalTechSignal"
+  metaDescription="Lead-to-enrollment, student lifecycle, retention and outcomes in one connected system. Built for schools, training providers, coaching companies and ed-tech."
+  industryName="Education"
+  eyebrow="Education · Enrollment & Lifecycle Systems"
+  heroTitleLead="Stop losing students at every step."
+  heroTitleAccent="Run the program on a connected system."
+  heroIntro="Marketing, admissions, enrollment, student success and outcomes don't have to live in 8 different tools. We design a connected operations system that captures every inquiry, qualifies and enrolls fast, and tracks the student lifecycle from first click to graduation — so leadership sees what's working."
+  feedTitle="Live Student Operations"
+  feedBadge="124 Active Students"
+  feedItems={[
+    { tone: "blue", icon: "cap", title: "Inquiry — Spring Cohort", subtitle: "Routed to Advisor · qualification flow started" },
+    { tone: "amber", icon: "calendar", title: "Discovery Call Booked", subtitle: "Auto-confirmed · prep email sent" },
+    { tone: "accent", icon: "check", title: "Student Enrolled", subtitle: "Welcome packet + first lesson scheduled" },
+    { tone: "highlight", icon: "chart", title: "Module Completed — 92% score", subtitle: "Progress synced · advisor notified" },
+  ]}
+  stats={[
+    { value: "+34%", label: "Inquiry → enrolled", highlight: true },
+    { value: "<10m", label: "Inquiry response" },
+    { value: "92%", label: "Completion rate" },
+    { value: "12h+", label: "Saved per advisor / week" },
+  ]}
+  painDescription="Where schools, training providers and coaching businesses leak students."
+  painItems={[
+    { title: "Inquiries die before a human responds", description: "Form fills land in an inbox over the weekend, and by Monday the prospect has enrolled somewhere else." },
+    { title: "Admissions can't see the funnel", description: "Calls happen, emails get sent, applications stall — and no one has one view of the prospect to follow up." },
+    { title: "Enrollment paperwork eats hours", description: "Forms, agreements, payment plans, transcripts — all collected manually, often re-keyed into the SIS." },
+    { title: "Student success is reactive", description: "By the time you know a student is struggling, they've already disengaged. Retention dies in silence." },
+    { title: "Outcomes aren't tied back to marketing", description: "Which channel produces students who actually complete? You can't see it — so spend is guesswork." },
+    { title: "Coach / instructor calendars are chaos", description: "Sessions move, no-shows pile up, and rebooking is a Slack thread instead of a workflow." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="modern education"
+  featuresDescription="Sits on Salesforce EDA, HubSpot, Slate, Anthology, custom SIS or LMS — connects the lifecycle."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Admissions",
+      title: "Inquiry → enrolled flow",
+      description: "Every inquiry gets a fast human + automated nurture. Qualification, calls booked, paperwork e-signed, deposit collected — all sequenced, all tracked.",
+      chips: [{ label: "Speed-to-lead" }, { label: "Auto nurture" }, { label: "E-sign agreements" }, { label: "Deposit capture", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Student",
+      title: "Student success ops",
+      description: "Engagement, attendance and progress signals trigger advisor outreach before students disengage. Retention becomes a system.",
+      chips: [{ label: "Early-warning signals" }, { label: "Auto outreach" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Calendar",
+      title: "Smart scheduling",
+      description: "Coaches, instructors and advisors share a real calendar with rules, reminders and rebooking flows — no-shows drop sharply.",
+      chips: [{ label: "Smart reminders" }, { label: "Easy rebooking" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Outcomes",
+      title: "Outcomes & marketing ROI",
+      description: "Channel → inquiry → enrolled → completed → outcome. Marketing finally optimizes on completion and outcomes, not just clicks and form fills.",
+      chips: [{ label: "Channel-to-outcome attribution" }, { label: "Cohort completion" }, { label: "Career outcome tracking", highlight: true }],
+      stats: [{ value: "%", label: "completion" }, { value: "ROI", label: "by channel" }],
+    },
+  ]}
+  processEyebrow="How we build it"
+  processTitleLead="Term-by-term"
+  processTitleAccent="rollout."
+  processDescription="A sequenced build that respects your cohort or term calendar."
+  processSteps={[
+    { title: "Map the lifecycle", description: "We sit with admissions, instructors and student success to map every stage from inquiry to alumni." },
+    { title: "Wire the spine", description: "Admissions and enrollment workflow wired to your SIS/LMS as a clean operations layer." },
+    { title: "Pilot one cohort", description: "Launch with one program or cohort. Iron out edges before scaling across programs." },
+    { title: "Roll out & train", description: "Admissions, advisors, instructors and leadership each get role-based playbooks and dashboards." },
+  ]}
+  testimonialsTitleAccent="education"
+  testimonials={[
+    { initials: "MA", name: "Maya Acharya", role: "Director of Admissions, BrightPath Academy", quoteBefore: "Inquiries used to sit for 48 hours over weekends. With the new system ", highlight: "we respond in under 10 minutes 24/7", quoteAfter: " — and our inquiry-to-enrolled rate jumped 34%." },
+    { initials: "TF", name: "Tomás Fernandez", role: "COO, Skillforge Training", quoteBefore: "Student success was reactive. We'd find out a student was gone after they were already gone. Now ", highlight: "we catch disengagement 2 weeks early", quoteAfter: " and completion rates are above 90%." },
+    { initials: "RW", name: "Renee Wallace", role: "President, Cascade Coaching Co.", quoteBefore: "I used to spend on ads with no idea which channel produced students who actually finished. Now ", highlight: "I see completion rate by channel", quoteAfter: " — and my ad budget is twice as productive." },
+  ]}
+  faqs={[
+    { question: "Do you replace our SIS / LMS?", answer: "No. We wrap them. We integrate with Salesforce EDA, Anthology, Canvas, Moodle, Thinkific, Teachable and custom SIS/LMS systems — pulling student events into one operations layer." },
+    { question: "Can you handle FERPA-protected data?", answer: "Yes. We design with FERPA boundaries in mind: role-based access, audit logging, separation of directory vs. educational records, and parent/student consent flows where needed." },
+    { question: "Does it work for cohort-based or self-paced programs?", answer: "Both. For cohorts we model term cycles, application deadlines and cohort assignment. For self-paced we model progress milestones, engagement and pacing alerts." },
+    { question: "Can you integrate with payment plans / Stripe / financing partners?", answer: "Yes. We integrate Stripe, Affirm, Climb, Meritize, internal payment plans and standard SIS billing — so deposits, tuition and refunds flow cleanly." },
+    { question: "How long to go live?", answer: "Most education rollouts are 6–12 weeks: 2 weeks discovery, 4–8 weeks build, 2 weeks pilot. Multi-program institutions skew longer." },
+    { question: "What does it cost?", answer: "Education operations builds typically range $12K–$60K depending on SIS/LMS, programs and scope. We scope after the operational assessment." },
+  ]}
+  formTitleLead="Let's build your"
+  formTitleAccent="enrollment & lifecycle system"
+  formDescription="Tell us about your programs, enrollment volume and where students leak. We'll show you what a connected lifecycle system looks like."
+  formChallengePlaceholder="E.g., Inquiries die over weekends, admissions can't see the funnel, and we don't know which channel produces students who actually finish..."
+  formCompanyLabel="Institution"
+  formCompanyPlaceholder="BrightPath Academy"
+  formTeamSizeLabel="Program Size"
+  formTeamSizeOptions={[
+    { value: "small", label: "<200 students" },
+    { value: "mid", label: "200–1,000 students" },
+    { value: "large", label: "1,000–5,000 students" },
+    { value: "enterprise", label: "5,000+ students" },
+  ]}
+  formSourceTag="Education Landing Page"
+/>

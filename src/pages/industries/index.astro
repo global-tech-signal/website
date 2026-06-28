@@ -1,0 +1,122 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Section from "../../components/sections/Section.astro";
+
+interface Industry {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  icon: string;
+  accent: 'dark' | 'gray' | 'accent' | 'red-soft';
+  size: 'wide' | 'narrow';
+}
+
+const industries: Industry[] = [
+  { slug: 'real-estate', name: 'Real Estate', tagline: 'CRM & automation for brokerages and agents', description: 'Lead capture, automated follow-up, pipeline and reporting for brokerages and teams.', icon: 'home', accent: 'dark', size: 'wide' },
+  { slug: 'roofing', name: 'Roofing', tagline: 'Sales, dispatch & claims for contractors', description: 'Storm leads, inspections, claim workflows, crew scheduling and job cost in one system.', icon: 'bolt', accent: 'gray', size: 'narrow' },
+  { slug: 'clinics', name: 'Clinics', tagline: 'Patient ops for medical & dental practices', description: 'Intake, scheduling, recall, billing follow-up wrapped around your EHR.', icon: 'stethoscope', accent: 'red-soft', size: 'narrow' },
+  { slug: 'construction', name: 'Construction', tagline: 'Project & field operations for GCs', description: 'RFI, change order, daily log and job cost tied to your PM platform and accounting.', icon: 'wrench', accent: 'gray', size: 'narrow' },
+  { slug: 'legal', name: 'Legal', tagline: 'Intake to billing for modern firms', description: 'Conflict checks, engagement letters, time capture and partner-level firm visibility.', icon: 'scale', accent: 'dark', size: 'narrow' },
+  { slug: 'insurance', name: 'Insurance', tagline: 'Quote, bind & renew for agencies', description: 'Unified quote pipeline, renewal radar, claims status and producer dashboards.', icon: 'shield', accent: 'accent', size: 'wide' },
+  { slug: 'home-services', name: 'Home Services', tagline: 'Dispatch & sales for HVAC, plumbing, electrical', description: 'Call → booking → dispatch → invoice, with tiered estimates and PM plan rescue.', icon: 'wrench', accent: 'gray', size: 'narrow' },
+  { slug: 'ecommerce', name: 'E-Commerce', tagline: 'Orders, inventory, CX & growth for DTC', description: 'One source of truth for inventory, orders and CX — peak season without fire drills.', icon: 'package', accent: 'red-soft', size: 'narrow' },
+  { slug: 'logistics', name: 'Logistics', tagline: 'Dispatch, POD & settlement for fleets', description: 'Tender → dispatch → POD → invoice with live tracking and cost-per-mile insight.', icon: 'truck', accent: 'dark', size: 'wide' },
+  { slug: 'finance', name: 'Finance', tagline: 'Client lifecycle for RIAs & wealth firms', description: 'Digital onboarding, compliance trails, auto reviews and advisor capacity dashboards.', icon: 'briefcase', accent: 'gray', size: 'narrow' },
+  { slug: 'education', name: 'Education', tagline: 'Inquiry → enrolled → completed', description: 'Speed-to-lead admissions, retention triggers and channel-to-outcome attribution.', icon: 'cap', accent: 'gray', size: 'narrow' },
+  { slug: 'agencies', name: 'Agencies', tagline: 'New business, delivery & profitability', description: 'Live utilization, project margin, auto client reports and retainer health.', icon: 'briefcase', accent: 'accent', size: 'narrow' },
+];
+
+const toneClass = (t: Industry['accent']) => {
+  if (t === 'dark') return { wrap: 'bg-dark text-white', body: 'text-white/65', tag: 'bg-accent/20 text-accent', cta: 'text-accent', iconBg: 'bg-accent/15 text-accent' };
+  if (t === 'accent') return { wrap: 'bg-accent text-white', body: 'text-white/80', tag: 'bg-white/20 text-white', cta: 'text-white', iconBg: 'bg-white/20 text-white' };
+  if (t === 'red-soft') return { wrap: 'bg-red-soft text-dark', body: 'text-dark/65', tag: 'bg-dark/10 text-dark', cta: 'text-dark', iconBg: 'bg-white text-dark' };
+  return { wrap: 'bg-gray text-dark', body: 'text-dark/65', tag: 'bg-dark/10 text-dark', cta: 'text-dark', iconBg: 'bg-white text-dark' };
+};
+---
+
+<MainLayout
+  title="Industries We Serve — GlobalTechSignal"
+  description="Connected operations systems designed for the way each industry actually runs. Real Estate, Roofing, Clinics, Construction, Legal, Insurance, Home Services, E-Commerce, Logistics, Finance, Education and Agencies."
+>
+  <Section id="industries-hero">
+    <div class="pt-10 pb-16">
+      <div class="flex flex-col gap-6 max-w-3xl mb-12">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark w-fit">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          Industries
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+          Connected operations, <span class="text-accent">tuned to your industry</span>.
+        </h1>
+        <p class="text-lg text-dark/70 leading-relaxed">
+          The systems we build are designed around how your industry actually runs — not a generic CRM dropped on top of a unique business. Pick the closest match below; if you don't see it, we've probably built it.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="industries-grid">
+    <div class="pb-28">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {industries.map((ind) => {
+          const tone = toneClass(ind.accent);
+          const span = ind.size === 'wide' ? 'md:col-span-2' : '';
+          return (
+            <a href={`/industries/${ind.slug}`} class={`${span} group relative rounded-[28px] border border-dark shadow-[0px_4px_0px_#191a23] p-7 md:p-8 ${tone.wrap} hover:-translate-y-1 transition-transform duration-300 overflow-hidden`}>
+              <div class="absolute top-0 right-0 w-40 h-40 bg-white/[0.04] rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div class="relative flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-5">
+                  <span class={`inline-flex items-center justify-center h-11 w-11 rounded-xl ${tone.iconBg} shrink-0`}>
+                    {ind.icon === 'home' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>)}
+                    {ind.icon === 'bolt' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>)}
+                    {ind.icon === 'stethoscope' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4v6a4 4 0 0 0 8 0V4"/><path d="M8 14v3a4 4 0 0 0 8 0v-2"/><circle cx="18" cy="13" r="2"/></svg>)}
+                    {ind.icon === 'wrench' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>)}
+                    {ind.icon === 'scale' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 9h14M5 9l-3 7h6l-3-7zM19 9l-3 7h6l-3-7z"/></svg>)}
+                    {ind.icon === 'shield' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>)}
+                    {ind.icon === 'package' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>)}
+                    {ind.icon === 'truck' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>)}
+                    {ind.icon === 'briefcase' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>)}
+                    {ind.icon === 'cap' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>)}
+                  </span>
+                  <span class={`inline-block px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest ${tone.tag}`}>{ind.tagline}</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-3">{ind.name}</h3>
+                <p class={`text-sm leading-relaxed mb-6 ${tone.body}`}>{ind.description}</p>
+                <span class={`mt-auto inline-flex items-center gap-2 text-sm font-semibold ${tone.cta} group-hover:translate-x-1 transition-transform`}>
+                  Explore {ind.name}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="not-listed">
+    <div class="pb-28">
+      <div class="relative rounded-[32px] bg-dark text-white p-10 md:p-16 text-center overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
+        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative max-w-2xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-widest text-white/70 mb-6">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+            Don't see your industry?
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+            We've probably <span class="text-accent">built it</span>.
+          </h2>
+          <p class="text-lg text-white/70 mb-8">
+            Manufacturing, non-profit, professional services, hospitality, fitness, SaaS internal ops — connected operations systems aren't industry-specific at heart. The shape is.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Operational Assessment</a>
+            <a href="/case-studies" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">See real outcomes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</MainLayout>

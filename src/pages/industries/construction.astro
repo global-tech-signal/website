@@ -1,0 +1,108 @@
+---
+import IndustryLayout from "../../layouts/IndustryLayout.astro";
+---
+
+<IndustryLayout
+  metaTitle="Operations Systems for Construction Companies — GlobalTechSignal"
+  metaDescription="Tie estimating, project, field, RFI and finance into one connected system. Operational intelligence for general contractors, subs and developers."
+  industryName="Construction"
+  eyebrow="Construction · Project Operations Systems"
+  heroTitleLead="Stop running projects on email."
+  heroTitleAccent="Wire the company on a connected system."
+  heroIntro="Estimates live in Procore, RFIs live in email, change orders live in a binder, and finance lives in QuickBooks. We design a connected operations system that ties bid, project, field and finance together — so PMs stop chasing PDFs and leadership sees margin in real time."
+  feedTitle="Live Project Pulse"
+  feedBadge="9 Active Projects"
+  feedItems={[
+    { tone: "amber", icon: "doc", title: "RFI Submitted — Bldg 4 Slab", subtitle: "Awaiting architect · clock running" },
+    { tone: "accent", icon: "check", title: "Milestone Hit — Foundation Pour", subtitle: "Auto-billing draft #3 generated" },
+    { tone: "blue", icon: "package", title: "PO Approved — Rebar #5", subtitle: "Routed to Steel Pros · ETA Friday" },
+    { tone: "highlight", icon: "money", title: "Change Order Signed — $34,200", subtitle: "Margin protected · variance logged" },
+  ]}
+  stats={[
+    { value: "18%", label: "Margin recovery on COs", highlight: true },
+    { value: "2.3x", label: "Faster RFI turnaround" },
+    { value: "60%", label: "Less PM admin time" },
+    { value: "100%", label: "Real-time job cost" },
+  ]}
+  painDescription="What construction operators fight on every project without a connected layer."
+  painItems={[
+    { title: "RFIs and submittals stall in email", description: "Architects, GCs and subs CC each other on threads that everyone ignores — and the schedule slips while no one is officially responsible." },
+    { title: "Change orders eat margin quietly", description: "Field changes happen, paperwork follows weeks later, and by the time you bill it, the customer disputes scope or pricing." },
+    { title: "Job cost is always one month behind", description: "Labor, materials, equipment and subs hit accounting late. PMs steer projects on stale numbers." },
+    { title: "Estimating and operations are disconnected", description: "What was bid never gets compared to what was actually built. Lessons learned die in a folder no one opens." },
+    { title: "Field crews don't have today's plans", description: "Drawing revisions, daily log requirements and safety checklists live on someone's laptop instead of every phone on site." },
+    { title: "Leadership sees the truth at close-out", description: "Owners see margin slip only when the job closes — too late to coach the PM or adjust the bid model." },
+  ]}
+  featuresTitleLead="Built for"
+  featuresTitleAccent="construction operators"
+  featuresDescription="Sits on top of Procore, Buildertrend, Sage, QuickBooks — connects what already runs the business."
+  features={[
+    {
+      size: "wide", tone: "dark",
+      tag: "Project",
+      title: "RFI, submittal & change order workflow",
+      description: "Email-trapped questions become tracked items with owners, due dates and impact tagged to the job. Change orders flow from field markup to signed CO automatically.",
+      chips: [{ label: "Email → RFI capture" }, { label: "Owner & due date" }, { label: "Impact tagged" }, { label: "Signed CO automation", highlight: true }],
+    },
+    {
+      size: "narrow", tone: "accent",
+      tag: "Field",
+      title: "Daily logs from the jobsite",
+      description: "Crews log hours, weather, photos, deliveries and incidents from a phone — feeding job cost and the daily report automatically.",
+      chips: [{ label: "Mobile-first" }, { label: "Offline" }],
+    },
+    {
+      size: "narrow", tone: "gray",
+      tag: "Finance",
+      title: "Live job cost",
+      description: "Labor, PO, subs and equipment hit the job in real time. PMs see committed vs. actual vs. budgeted without waiting for accounting.",
+      chips: [{ label: "Committed vs actual" }, { label: "QuickBooks / Sage" }],
+    },
+    {
+      size: "wide", tone: "dark",
+      tag: "Insight",
+      title: "Portfolio & margin dashboards",
+      description: "Owners see every active project's schedule risk, margin trend and RFI/CO load on one screen. Bid history is wired to actuals so the estimating model improves every year.",
+      chips: [{ label: "Schedule risk" }, { label: "Margin trend" }, { label: "Estimating loop", highlight: true }],
+      stats: [{ value: "Live", label: "margin per job" }, { value: "WIP", label: "by PM" }],
+    },
+  ]}
+  processEyebrow="How we roll it out"
+  processTitleLead="Pragmatic build,"
+  processTitleAccent="real adoption."
+  processDescription="Sequenced so field, office and finance actually use it."
+  processSteps={[
+    { title: "Walk the project", description: "We shadow estimating, a PM, a super and the controller to map every handoff and broken seam." },
+    { title: "Wire the spine", description: "RFI, change order, job cost and daily log workflows wired to your existing PM tool and accounting." },
+    { title: "Pilot one job", description: "We launch with one live project. Iron out the field workflow before scaling." },
+    { title: "Roll out & train", description: "Role-based training: estimators, PMs, supers, field crews, finance. Onsite + virtual." },
+  ]}
+  testimonialsTitleAccent="construction"
+  testimonials={[
+    { initials: "RM", name: "Rick Martinez", role: "Owner, Cornerstone GC", quoteBefore: "Change orders used to eat margin we never recovered. With GTS's CO workflow, ", highlight: "we recovered 18% of margin we used to lose to scope creep", quoteAfter: " — on the first three jobs alone." },
+    { initials: "PD", name: "Priya Desai", role: "PM, Vertex Builders", quoteBefore: "RFI turnaround used to be 9 days. We weren't sure where they got stuck. Now ", highlight: "average RFI cycle is under 3 days", quoteAfter: " and we can see exactly who's holding things up." },
+    { initials: "CW", name: "Carlos Wei", role: "CFO, Highland Construction", quoteBefore: "I used to see job margin a month after close-out. Now ", highlight: "every PM sees their margin live", quoteAfter: " — and we caught two overruns this quarter before they got bad." },
+  ]}
+  faqs={[
+    { question: "Do you replace Procore or Buildertrend?", answer: "Usually no — we wrap them. We integrate via API and webhooks to centralize the workflows that span tools (RFIs, COs, job cost). Replacing the PM platform is an option for smaller GCs who want a fully custom build." },
+    { question: "Can it sync to QuickBooks or Sage 300 CRE?", answer: "Yes. We sync PO, invoice, time and job cost data with QuickBooks Online/Desktop, Sage Intacct or Sage 300 CRE. Bookkeepers keep their flow; PMs get live numbers." },
+    { question: "Will field crews actually use it?", answer: "Yes — we design the field UX to be 3 taps from photo to log. Crews on big jobs already use a phone for plans; we make the daily log capture part of that flow." },
+    { question: "What about owner / architect / subcontractor access?", answer: "Each role gets a scoped portal. Architects answer RFIs in a clean UI without learning Procore. Subs upload daily progress without seeing your margin." },
+    { question: "How long until we go live?", answer: "Most construction rollouts are 6–12 weeks: 2 weeks discovery, 4–8 weeks build, 2 weeks pilot. Larger GCs with multiple PM tools skew longer." },
+    { question: "What does it cost?", answer: "Construction operations builds typically range $15K–$60K depending on scope, integrations and number of project tools to tie together. We scope after the operational assessment." },
+  ]}
+  formTitleLead="Let's wire your"
+  formTitleAccent="construction operation"
+  formDescription="Tell us about your projects, PM stack and where margin is leaking. We'll show you what a connected operations system looks like for your jobs."
+  formChallengePlaceholder="E.g., We use Procore for projects but RFIs and COs still happen in email, and our job cost is a month behind in QuickBooks..."
+  formCompanyLabel="Company"
+  formCompanyPlaceholder="Cornerstone GC"
+  formTeamSizeLabel="Company Size"
+  formTeamSizeOptions={[
+    { value: "1-15", label: "1–15" },
+    { value: "16-50", label: "16–50" },
+    { value: "51-150", label: "51–150" },
+    { value: "150+", label: "150+" },
+  ]}
+  formSourceTag="Construction Landing Page"
+/>

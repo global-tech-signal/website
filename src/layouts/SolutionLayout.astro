@@ -49,8 +49,11 @@ const {
     <!-- HERO -->
     <section class="relative px-4 mx-auto max-w-screen-xl lg:px-6">
       <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-accent/[0.06] blur-3xl pointer-events-none"></div>
-      <div class="relative grid lg:grid-cols-12 gap-10 items-end">
-        <div class="lg:col-span-8 flex flex-col gap-8">
+      <div class="absolute top-40 -right-32 w-[400px] h-[400px] rounded-full bg-accent/[0.04] blur-3xl pointer-events-none"></div>
+
+      <div class="relative grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        {/* Left — copy */}
+        <div class="lg:col-span-7 flex flex-col gap-8">
           <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-white text-xs font-medium text-dark shadow-[0px_2px_0px_rgba(0,0,0,0.06)] w-fit">
             <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
             <span class="font-mono uppercase tracking-widest">{eyebrow}</span>
@@ -60,9 +63,105 @@ const {
             <span class="text-accent">{titleAccent}</span>
           </h1>
           <p class="text-lg font-normal leading-8 text-dark/70 max-w-2xl">{intro}</p>
+
+          {/* First symptom as a "what this looks like" snapshot, when available */}
+          {symptoms[0] && (
+            <div class="relative w-fit max-w-xl">
+              <div class="absolute -inset-3 bg-red-soft/30 blur-2xl rounded-full pointer-events-none"></div>
+              <div class="relative flex flex-wrap items-center gap-3 px-4 py-3 rounded-xl bg-white border border-dark shadow-[0px_4px_0px_#191a23]">
+                <span class="text-[11px] font-mono uppercase tracking-widest text-dark/40">Today</span>
+                <span class="h-4 w-px bg-dark/15"></span>
+                <span class="inline-flex items-center gap-2 text-sm font-semibold text-dark">
+                  <span class="h-2 w-2 rounded-full bg-red"></span>
+                  {symptoms[0].title}
+                </span>
+                <svg class="w-4 h-4 text-dark/30" fill="currentColor" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+                <span class="inline-flex items-center gap-2 text-sm font-semibold text-dark">
+                  <span class="h-2 w-2 rounded-full bg-accent"></span>
+                  {systemName}
+                </span>
+              </div>
+            </div>
+          )}
+
           <div class="flex flex-col sm:flex-row gap-4">
             <a href={primaryCta.href} class="px-8 py-4 bg-dark hover:bg-accent text-white rounded-xl text-base font-medium transition-all duration-300 text-center hover:-translate-y-0.5 shadow-[0px_4px_0px_#191a23] hover:shadow-[0px_6px_0px_#191a23]">{primaryCta.label}</a>
             <a href={secondaryCta.href} class="px-8 py-4 bg-white text-dark border border-dark/15 rounded-xl text-base font-medium hover:bg-dark hover:text-white transition-colors text-center">{secondaryCta.label}</a>
+          </div>
+        </div>
+
+        {/* Right — system preview stack (data-driven from props) */}
+        <div class="lg:col-span-5 relative">
+          <div class="relative flex flex-col gap-5 max-w-md mx-auto lg:max-w-none">
+            {/* Card 1 — System badge */}
+            <div class="sol-float-card relative bg-dark text-white rounded-[28px] p-6 border border-dark shadow-[0px_5px_0px_#191a23]">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-white/40">The system</span>
+                <span class="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-accent">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+                  Live
+                </span>
+              </div>
+              <div class="text-2xl font-extrabold leading-tight">{systemName}</div>
+              <p class="text-[13px] text-white/60 mt-2 leading-snug">{systemDescription}</p>
+            </div>
+
+            {/* Card 2 — Capabilities */}
+            {systemCapabilities.length > 0 && (
+              <div class="sol-float-card relative bg-white rounded-[28px] p-6 border border-dark shadow-[0px_5px_0px_#191a23]" style="animation-delay: 0.4s;">
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="h-2 w-2 rounded-full bg-accent"></span>
+                  <span class="text-[11px] font-mono uppercase tracking-widest text-dark/60">What it does</span>
+                </div>
+                <ul class="space-y-2.5">
+                  {systemCapabilities.slice(0, 4).map((cap) => (
+                    <li class="flex items-start gap-3">
+                      <span class="mt-0.5 inline-flex items-center justify-center h-5 w-5 rounded-full bg-accent/10 text-accent shrink-0">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      </span>
+                      <span class="text-sm text-dark/85 leading-snug">{cap}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Card 3 — Proof metric (when caseRef exists) or technology preview */}
+            {caseRef ? (
+              <a
+                href={caseRef.href}
+                class="sol-float-card group relative bg-red-soft rounded-[28px] p-5 border border-dark shadow-[0px_5px_0px_#191a23] flex items-center gap-4 hover:-translate-y-0.5 transition-transform"
+                style="animation-delay: 0.8s;"
+              >
+                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-white border border-dark shrink-0">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-lg font-extrabold leading-tight text-dark">{caseRef.metric}</div>
+                  <p class="text-xs text-dark/60 mt-1 truncate">{caseRef.title}</p>
+                </div>
+                <svg class="w-5 h-5 text-dark/40 shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+            ) : (
+              technologies.length > 0 && (
+                <div class="sol-float-card relative bg-gray rounded-[28px] p-5 border border-dark shadow-[0px_5px_0px_#191a23]" style="animation-delay: 0.8s;">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="h-2 w-2 rounded-full bg-accent"></span>
+                    <span class="text-[11px] font-mono uppercase tracking-widest text-dark/60">Stack</span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    {technologies.slice(0, 6).map((t) => (
+                      <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-white border border-dark/15 text-dark">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -74,7 +173,7 @@ const {
         <div class="flex flex-col gap-5 max-w-2xl">
           <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
             <span class="h-2 w-2 rounded-full bg-red"></span>
-            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">The Problem</span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">The Problem &middot; Sound familiar?</span>
           </span>
           <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
             What this <span class="text-accent">actually looks like</span>.
@@ -85,10 +184,11 @@ const {
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {symptoms.map((s, i) => (
-          <div class={`group relative p-7 rounded-[28px] border border-dark transition-all duration-300 hover:-translate-y-1 shadow-[0px_4px_0px_#191a23] ${i % 2 === 0 ? 'bg-white' : 'bg-gray'}`}>
+          <div class={`group relative p-7 rounded-[28px] border border-dark transition-all duration-300 hover:-translate-y-1 shadow-[0px_4px_0px_#191a23] overflow-hidden ${i % 2 === 0 ? 'bg-white' : 'bg-gray'}`}>
+            <div class="absolute top-0 left-0 h-1 w-12 bg-red rounded-br-full group-hover:w-24 transition-all duration-300"></div>
             <div class="flex items-start justify-between mb-5">
               <span class="text-sm font-mono text-dark/40">{s.num}</span>
-              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-red/10 text-red">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-red/10 text-red group-hover:bg-red group-hover:text-white transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               </span>
             </div>
@@ -97,21 +197,69 @@ const {
           </div>
         ))}
       </div>
+
+      <div class="mt-10 flex justify-center">
+        <div class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white border border-dark shadow-[0px_4px_0px_#191a23]">
+          <span class="h-2 w-2 rounded-full bg-red"></span>
+          <span class="text-sm font-semibold text-dark">These aren't bugs.</span>
+          <svg class="w-4 h-4 text-dark/30" fill="currentColor" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          <span class="text-sm font-semibold text-dark">They're symptoms of a <span class="text-accent">missing system</span>.</span>
+        </div>
+      </div>
     </section>
 
     <!-- IMPACT -->
     <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
       <div class="rounded-[32px] bg-dark text-white p-10 md:p-16 relative overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
         <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-red/15 blur-3xl"></div>
-        <div class="relative max-w-3xl">
-          <span class="inline-flex items-center gap-2 text-sm font-medium mb-5">
-            <span class="h-2 w-2 rounded-full bg-accent"></span>
-            <span class="font-mono uppercase tracking-widest text-xs text-white/60">Business Impact</span>
-          </span>
-          <h2 class="text-3xl md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-6">
-            Why this is costing the business <span class="text-accent">more than it looks</span>.
-          </h2>
-          <p class="text-lg text-white/75 leading-relaxed">{impact}</p>
+        <div class="absolute -bottom-32 -left-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
+
+        <div class="relative grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div class="lg:col-span-7">
+            <span class="inline-flex items-center gap-2 text-sm font-medium mb-5">
+              <span class="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+              <span class="font-mono uppercase tracking-widest text-xs text-white/60">Business Impact</span>
+            </span>
+            <h2 class="text-3xl md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-6">
+              Why this is costing the business <span class="text-accent">more than it looks</span>.
+            </h2>
+            <p class="text-base md:text-lg text-white/75 leading-relaxed">{impact}</p>
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col gap-3">
+            <div class="group flex items-center gap-4 p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-accent/40 hover:bg-white/[0.06] transition-colors">
+              <div class="h-11 w-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono uppercase tracking-widest text-white/40">Cost &middot; 01</div>
+                <div class="font-semibold text-white">Speed lost</div>
+                <div class="text-xs text-white/60 leading-snug">Decisions wait for data to be assembled.</div>
+              </div>
+            </div>
+
+            <div class="group flex items-center gap-4 p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-red/40 hover:bg-white/[0.06] transition-colors">
+              <div class="h-11 w-11 rounded-xl bg-red/20 text-red flex items-center justify-center shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono uppercase tracking-widest text-white/40">Cost &middot; 02</div>
+                <div class="font-semibold text-white">Revenue leaked</div>
+                <div class="text-xs text-white/60 leading-snug">Deals stall in the cracks between tools.</div>
+              </div>
+            </div>
+
+            <div class="group flex items-center gap-4 p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-accent/40 hover:bg-white/[0.06] transition-colors">
+              <div class="h-11 w-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono uppercase tracking-widest text-white/40">Cost &middot; 03</div>
+                <div class="font-semibold text-white">Team energy</div>
+                <div class="text-xs text-white/60 leading-snug">Smart people stuck doing manual work.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -119,7 +267,7 @@ const {
     <!-- SYSTEM -->
     <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div class="space-y-7">
+        <div class="space-y-7 lg:sticky lg:top-24">
           <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
             <span class="h-2 w-2 rounded-full bg-red"></span>
             <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Recommended Business System</span>
@@ -128,6 +276,17 @@ const {
             {systemName}
           </h2>
           <p class="text-lg text-dark/70 leading-relaxed">{systemDescription}</p>
+
+          <div class="rounded-2xl bg-gray border border-dark/10 p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-dark text-white shrink-0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </span>
+              <div class="text-sm font-semibold text-dark">A system, not a tool.</div>
+            </div>
+            <p class="text-xs text-dark/65 leading-snug">Designed end-to-end: data model, automations, dashboards, handoffs &mdash; all wired together so the business runs itself.</p>
+          </div>
+
           <a href="/services" class="inline-flex items-center gap-2 text-dark font-medium border-b border-dark/30 pb-1 hover:text-accent hover:border-accent transition-colors w-fit">
             See how this system is built
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -135,12 +294,18 @@ const {
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {systemCapabilities.map((cap) => (
-            <div class="group flex items-center gap-3 p-4 rounded-2xl bg-gray border border-dark/10 hover:border-dark transition-all duration-300 hover:-translate-y-0.5">
-              <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-accent/10 shrink-0 group-hover:bg-accent transition-colors">
-                <svg class="w-4 h-4 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              </span>
-              <span class="text-sm font-medium text-dark">{cap}</span>
+          {systemCapabilities.map((cap, i) => (
+            <div class="group relative p-5 rounded-2xl bg-white border border-dark/10 hover:border-dark hover:shadow-[0px_4px_0px_#191a23] transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+              <div class="absolute top-0 right-0 h-12 w-12 bg-accent/[0.06] rounded-bl-[28px] group-hover:bg-accent/15 transition-colors"></div>
+              <div class="relative flex items-start gap-3">
+                <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-accent/10 shrink-0 group-hover:bg-accent transition-colors">
+                  <svg class="w-4 h-4 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <div class="min-w-0">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-dark/40 block mb-0.5">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="text-sm font-semibold text-dark leading-snug">{cap}</span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -149,19 +314,62 @@ const {
 
     <!-- TECHNOLOGY -->
     <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
-      <div class="text-center mb-10 max-w-2xl mx-auto">
-        <span class="inline-flex items-center gap-2 text-sm font-medium mb-4">
-          <span class="h-2 w-2 rounded-full bg-red"></span>
-          <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Enabling Technology</span>
-        </span>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-          Technology supports the system &mdash; not the other way around.
-        </h2>
-      </div>
-      <div class="flex flex-wrap gap-3 justify-center max-w-3xl mx-auto">
-        {technologies.map((t) => (
-          <span class="text-sm px-4 py-2 rounded-full bg-white border border-dark/15 text-dark/80">{t}</span>
-        ))}
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div class="lg:col-span-5">
+          <span class="inline-flex items-center gap-2 text-sm font-medium mb-5 w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Enabling Technology</span>
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-5">
+            Technology supports the system <span class="text-accent">&mdash; not the other way around</span>.
+          </h2>
+          <p class="text-base md:text-lg text-dark/70 leading-relaxed mb-5">
+            We pick the right tool for the job, not the loudest one in the market. Your business system is portable, replaceable and owned by you.
+          </p>
+          <ul class="space-y-2 text-sm text-dark/75">
+            <li class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-accent/10 text-accent shrink-0">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              No vendor lock-in &mdash; every component is replaceable.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-accent/10 text-accent shrink-0">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Documented, handover-ready architecture.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-accent/10 text-accent shrink-0">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Scales from one team to the whole company.
+            </li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-7 relative">
+          <div class="absolute inset-0 -m-6 bg-accent/[0.06] blur-3xl rounded-full pointer-events-none"></div>
+          <div class="relative rounded-[28px] bg-dark text-white p-7 md:p-9 border border-dark shadow-[0px_5px_0px_#191a23]">
+            <div class="flex items-center justify-between mb-6 pb-5 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="h-2.5 w-2.5 rounded-full bg-red"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-accent"></span>
+              </div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-white/40">~/stack &middot; {technologies.length} components</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {technologies.map((t) => (
+                <span class="text-xs font-mono uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 text-white/85 hover:bg-white/10 hover:border-accent/40 transition-colors">{t}</span>
+              ))}
+            </div>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-2 text-xs text-white/50 font-mono">
+              <span class="text-accent">$</span>
+              <span class="truncate">wired into your business system &mdash; not bolted on top of it.</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -187,12 +395,32 @@ const {
         <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl"></div>
         <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
         <div class="relative max-w-2xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-widest text-white/70 mb-6">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+            Operational Assessment
+          </span>
           <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
             Ready to design the system?
           </h2>
-          <p class="text-lg text-white/70 mb-8">
+          <p class="text-lg text-white/70 mb-7">
             Book an operational assessment. We'll map the friction, propose the business system and show you what outcomes are realistic.
           </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mb-8 text-xs text-white/60 font-mono uppercase tracking-widest">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              60-min call
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              No obligation
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Custom blueprint
+            </span>
+          </div>
+
           <div class="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Operational Assessment</a>
             <a href="/case-studies" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">See real outcomes</a>
@@ -202,3 +430,16 @@ const {
     </section>
   </main>
 </MainLayout>
+
+<style>
+  @keyframes sol-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .sol-float-card {
+    animation: sol-float 5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sol-float-card { animation: none; }
+  }
+</style>
