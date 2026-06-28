@@ -699,6 +699,33 @@ const layerServices = [
       roadmapCta.href = `/contact?type=operational-roadmap&stage=${stage.idx}&weak=${weakest[0]}`;
     }
 
+    // Google Analytics — fire a `scorecard_submit` event so we can track
+    // assessment completions, score distribution, and which layers are
+    // most often the weakest. Safe-guarded so it never throws if gtag is
+    // unavailable (ad-block, dev, etc.).
+    try {
+      const gtag = (window as any).gtag;
+      if (typeof gtag === 'function') {
+        gtag('event', 'scorecard_submit', {
+          event_category: 'engagement',
+          event_label: stage.name,
+          value: total,
+          score_total: total,
+          stage_idx: stage.idx,
+          stage_name: stage.name,
+          strongest_layer: strongest[0],
+          strongest_score: strongest[1],
+          weakest_layer: weakest[0],
+          weakest_score: weakest[1],
+          capture_score: byDim.capture,
+          connect_score: byDim.connect,
+          automate_score: byDim.automate,
+          intelligence_score: byDim.intelligence,
+          optimize_score: byDim.optimize,
+        });
+      }
+    } catch {}
+
     // Hide form, show results
     form.classList.add('hidden');
     results.classList.remove('hidden');
