@@ -1,0 +1,369 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Section from "../components/sections/Section.astro";
+
+interface Assessment {
+  slug: string;
+  name: string;
+  tag: string;
+  duration: string;
+  pitch: string;
+  forWho: string[];
+  youGet: string[];
+  outcome: string;
+  tone: 'dark' | 'accent' | 'red' | 'red-soft' | 'gray' | 'white';
+  size: 'wide' | 'narrow';
+  icon: string;
+  recommended?: boolean;
+}
+
+const assessments: Assessment[] = [
+  {
+    slug: "operational-assessment",
+    name: "Operational Assessment",
+    tag: "Start here",
+    duration: "60-min working session · Free",
+    pitch:
+      "A focused conversation that maps where revenue, time and visibility are actually leaking — across people, processes, data and tools. The best first step into Operational Intelligence.",
+    forWho: [
+      "You sense operations are breaking but can't articulate where",
+      "You have 3+ disconnected tools and growing pain",
+      "You want a partner, not a one-shot project",
+    ],
+    youGet: [
+      "Operational friction map (top 3–5 leak points)",
+      "Recommended next system or workflow to fix",
+      "Honest read on whether AI/automation will help",
+      "No deck. No pitch. A working session.",
+    ],
+    outcome: "A clear, ordered list of what to fix first — and what to leave alone.",
+    tone: 'dark',
+    size: 'wide',
+    icon: 'compass',
+    recommended: true,
+  },
+  {
+    slug: "ai-readiness",
+    name: "AI Readiness Assessment",
+    tag: "AI fit-check",
+    duration: "90-min deep dive",
+    pitch:
+      "Cut through the AI noise. We map the workflows where AI will actually move a business metric — and the ones where it won't — based on your data, systems and team reality.",
+    forWho: [
+      "You're being pushed to 'do something with AI'",
+      "You have pilots that haven't shipped",
+      "You want an honest read before investing",
+    ],
+    youGet: [
+      "AI opportunity map across your operations",
+      "Workflow-by-workflow ROI estimates",
+      "Data & system readiness scorecard",
+      "Top 3 use-cases ranked by feasibility × impact",
+    ],
+    outcome: "A 1-page brief you can take to leadership — with or without us as the implementation partner.",
+    tone: 'accent',
+    size: 'narrow',
+    icon: 'spark',
+  },
+  {
+    slug: "workflow-audit",
+    name: "Workflow Audit",
+    tag: "Deep dive",
+    duration: "2-week engagement",
+    pitch:
+      "Pick the workflow that's costing you the most hours, revenue or NPS. We map it end-to-end, find every leak and handoff, and design the connected, automated replacement.",
+    forWho: [
+      "One process is clearly the bottleneck",
+      "You've outgrown the spreadsheet/Slack version",
+      "You want a build-ready spec, not theory",
+    ],
+    youGet: [
+      "Current-state workflow map with leak points",
+      "Future-state design with automation & ownership",
+      "Tool / integration recommendations",
+      "Build estimate & phased rollout plan",
+    ],
+    outcome: "A documented workflow your team can ship — in-house or with us.",
+    tone: 'gray',
+    size: 'narrow',
+    icon: 'flow',
+  },
+  {
+    slug: "revenue-systems",
+    name: "Revenue Systems Assessment",
+    tag: "Pipeline review",
+    duration: "2-week engagement",
+    pitch:
+      "A full review of your lead-to-cash motion: CRM data model, lead capture, scoring, routing, follow-up automation, sales-to-finance handoff and pipeline reporting.",
+    forWho: [
+      "Pipeline numbers nobody trusts",
+      "CRM adoption is mediocre at best",
+      "Leads are leaking between marketing, sales and ops",
+    ],
+    youGet: [
+      "End-to-end revenue process map",
+      "CRM data model & adoption audit",
+      "Lead-leakage report with revenue impact",
+      "Recommended Revenue System blueprint",
+    ],
+    outcome: "A revenue operating model your CRO can defend — and your CFO can measure.",
+    tone: 'red',
+    size: 'narrow',
+    icon: 'chart',
+  },
+  {
+    slug: "executive-strategy",
+    name: "Executive Strategy Session",
+    tag: "Leadership working session",
+    duration: "Half-day on-site or remote",
+    pitch:
+      "A working session with your leadership team to align operations and growth strategy. We facilitate; you leave with a 12-month operational roadmap your team actually owns.",
+    forWho: [
+      "Leadership disagrees on what's broken",
+      "You're planning the next funding / growth phase",
+      "You need alignment before a big tech investment",
+    ],
+    youGet: [
+      "Pre-session interviews with 3–5 leaders",
+      "Facilitated half-day working session",
+      "Operational priorities ranked & owned",
+      "12-month roadmap with quarterly milestones",
+    ],
+    outcome: "Leadership aligned on what to build, what to fix and what to ignore — for the next year.",
+    tone: 'white',
+    size: 'narrow',
+    icon: 'flag',
+  },
+];
+
+const process = [
+  { n: "01", title: "Pick an entry point", desc: "Choose the assessment that matches your situation. Not sure? Start with the free Operational Assessment." },
+  { n: "02", title: "Pre-work", desc: "We send a short prep doc and request access to a few systems so we don't waste your time asking obvious questions." },
+  { n: "03", title: "Working session(s)", desc: "We work with your team — operators, leaders, engineers — not just on a deck. The output is built collaboratively." },
+  { n: "04", title: "Deliverable & next step", desc: "You walk out with the agreed deliverable, a recommendation, and zero pressure to engage further." },
+];
+
+const faqs = [
+  {
+    q: "Do I have to pick one — can I just talk to you?",
+    a: "Yes. The free Operational Assessment exists for exactly that. We'll talk for 60 minutes, map your friction, and recommend whether a deeper assessment is even warranted.",
+  },
+  {
+    q: "Are paid assessments credited toward implementation?",
+    a: "Several are, in part. We'll be explicit about scope, fees and any credits up front — before you commit. The Operational Assessment is always free.",
+  },
+  {
+    q: "Who runs the assessment?",
+    a: "A senior practitioner — never a generic salesperson, never an account manager. The person scoping the work is someone who has actually built these systems.",
+  },
+  {
+    q: "Can I do this without buying anything else?",
+    a: "Absolutely. Every assessment is designed to produce a deliverable you can act on alone or with another partner. Operational Intelligence is a way of thinking — we sell the work, not the lock-in.",
+  },
+  {
+    q: "What if my situation doesn't fit any of these?",
+    a: "Tell us in the form. We custom-scope when the standard offers don't match — usually still on a fixed-fee basis so there's no surprise.",
+  },
+];
+
+const toneClass = (t: Assessment['tone']) => {
+  if (t === 'dark') return { wrap: 'bg-dark text-white border-dark', tag: 'bg-accent/20 text-accent', body: 'text-white/70', bullet: 'text-accent', divider: 'bg-white/10', metaLabel: 'text-white/50', metaValue: 'text-white', cta: 'bg-accent text-white hover:bg-white hover:text-dark', iconBg: 'bg-accent/15 text-accent' };
+  if (t === 'accent') return { wrap: 'bg-accent text-white border-accent', tag: 'bg-white/20 text-white', body: 'text-white/85', bullet: 'text-white', divider: 'bg-white/15', metaLabel: 'text-white/70', metaValue: 'text-white', cta: 'bg-white text-dark hover:bg-dark hover:text-white', iconBg: 'bg-white/20 text-white' };
+  if (t === 'red') return { wrap: 'bg-red text-white border-red', tag: 'bg-white/20 text-white', body: 'text-white/85', bullet: 'text-white', divider: 'bg-white/15', metaLabel: 'text-white/70', metaValue: 'text-white', cta: 'bg-white text-dark hover:bg-dark hover:text-white', iconBg: 'bg-white/20 text-white' };
+  if (t === 'red-soft') return { wrap: 'bg-red-soft text-dark border-dark/10', tag: 'bg-dark/10 text-dark', body: 'text-dark/70', bullet: 'text-accent', divider: 'bg-dark/10', metaLabel: 'text-dark/50', metaValue: 'text-dark', cta: 'bg-dark text-white hover:bg-accent', iconBg: 'bg-white text-dark' };
+  if (t === 'white') return { wrap: 'bg-white text-dark border-dark/10', tag: 'bg-dark/5 text-dark', body: 'text-dark/70', bullet: 'text-accent', divider: 'bg-dark/10', metaLabel: 'text-dark/50', metaValue: 'text-dark', cta: 'bg-dark text-white hover:bg-accent', iconBg: 'bg-accent/10 text-accent' };
+  return { wrap: 'bg-gray text-dark border-dark/10', tag: 'bg-white text-dark', body: 'text-dark/70', bullet: 'text-accent', divider: 'bg-dark/10', metaLabel: 'text-dark/50', metaValue: 'text-dark', cta: 'bg-dark text-white hover:bg-accent', iconBg: 'bg-white text-dark' };
+};
+---
+
+<MainLayout
+  title="Assessments & Advisory Offers | GlobalTechSignal"
+  description="Five entry points into Operational Intelligence — Operational Assessment, AI Readiness, Workflow Audit, Revenue Systems Assessment and Executive Strategy Session."
+>
+  <!-- HERO -->
+  <Section id="ass-hero">
+    <div class="pt-10 pb-16">
+      <div class="grid lg:grid-cols-12 gap-10 items-end">
+        <div class="lg:col-span-8 space-y-6">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-gray text-xs font-mono uppercase tracking-widest text-dark">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            Assessments &amp; advisory offers
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            Five ways to <span class="text-accent">start</span>. Pick the one that fits.
+          </h1>
+          <p class="text-lg text-dark/70 leading-relaxed max-w-2xl">
+            You don't have to commit to a transformation to start. Each entry point produces a concrete deliverable you can act on — alone, with us, or with someone else.
+          </p>
+        </div>
+        <div class="lg:col-span-4">
+          <div class="rounded-[24px] bg-dark text-white p-6 border border-dark shadow-[0px_5px_0px_#191a23]">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+              <span class="text-[11px] font-mono uppercase tracking-widest text-white/60">Not sure?</span>
+            </div>
+            <p class="text-base text-white/80 mb-4 leading-relaxed">
+              Start with the free <strong class="text-white">Operational Assessment</strong>. 60 minutes, no obligation, ends with an honest recommendation.
+            </p>
+            <a href="/contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-white transition-colors">
+              Schedule the free one
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ASSESSMENT CARDS -->
+  <Section id="ass-grid">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-2 gap-5">
+        {assessments.map((a) => {
+          const t = toneClass(a.tone);
+          const span = a.size === 'wide' ? 'lg:col-span-2' : '';
+          return (
+            <article id={a.slug} class={`scroll-mt-32 ${span} rounded-[28px] border ${t.wrap} p-8 md:p-10 shadow-[0px_5px_0px_#191a23] relative overflow-hidden`}>
+              {a.recommended && (
+                <div class="absolute top-5 right-5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-white text-[10px] font-mono uppercase tracking-widest">
+                  <span class="h-1.5 w-1.5 rounded-full bg-white"></span>
+                  Recommended
+                </div>
+              )}
+              <div class={`absolute -top-10 -right-10 h-40 w-40 rounded-full ${a.tone === 'dark' ? 'bg-accent/10' : a.tone === 'accent' || a.tone === 'red' ? 'bg-white/10' : 'bg-accent/5'} blur-3xl`}></div>
+
+              <div class="relative">
+                <div class="flex items-center gap-3 mb-5">
+                  <span class={`inline-flex items-center justify-center h-11 w-11 rounded-xl ${t.iconBg} shrink-0`}>
+                    {a.icon === 'compass' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>)}
+                    {a.icon === 'spark' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M5 19l4-4M15 9l4-4"/></svg>)}
+                    {a.icon === 'flow' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9"/></svg>)}
+                    {a.icon === 'chart' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>)}
+                    {a.icon === 'flag' && (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>)}
+                  </span>
+                  <span class={`inline-block px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest ${t.tag}`}>{a.tag}</span>
+                </div>
+
+                <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-3">{a.name}</h2>
+                <p class={`text-base ${t.body} leading-relaxed mb-6 max-w-2xl`}>{a.pitch}</p>
+
+                <!-- Meta strip -->
+                <div class={`py-4 my-6 border-y ${t.divider.replace('bg-', 'border-')}`}>
+                  <span class={`block text-[10px] font-mono uppercase tracking-widest ${t.metaLabel} mb-1`}>Duration</span>
+                  <span class={`text-sm font-semibold ${t.metaValue}`}>{a.duration}</span>
+                </div>
+
+                <!-- Who / Get grid -->
+                <div class="grid md:grid-cols-2 gap-6 mb-7">
+                  <div>
+                    <h3 class={`text-xs font-mono uppercase tracking-widest ${t.metaLabel} mb-3`}>Right for you if</h3>
+                    <ul class="space-y-2">
+                      {a.forWho.map((w) => (
+                        <li class={`flex items-start gap-2 text-sm ${t.body}`}>
+                          <svg class={`w-4 h-4 mt-0.5 shrink-0 ${t.bullet}`} fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span>{w}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 class={`text-xs font-mono uppercase tracking-widest ${t.metaLabel} mb-3`}>What you get</h3>
+                    <ul class="space-y-2">
+                      {a.youGet.map((g) => (
+                        <li class={`flex items-start gap-2 text-sm ${t.body}`}>
+                          <svg class={`w-4 h-4 mt-0.5 shrink-0 ${t.bullet}`} fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span>{g}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Outcome -->
+                <div class={`mb-7 p-4 rounded-2xl ${a.tone === 'dark' || a.tone === 'accent' || a.tone === 'red' ? 'bg-white/5 border border-white/10' : 'bg-white border border-dark/10'}`}>
+                  <span class={`block text-[10px] font-mono uppercase tracking-widest ${t.metaLabel} mb-1.5`}>Outcome</span>
+                  <p class={`text-sm font-medium ${a.tone === 'dark' || a.tone === 'accent' || a.tone === 'red' ? 'text-white' : 'text-dark'}`}>{a.outcome}</p>
+                </div>
+
+                <!-- CTA -->
+                <a href={`/contact?type=${a.slug}`} class={`inline-flex items-center gap-2 px-6 py-3 rounded-xl transition-colors font-medium text-sm ${t.cta}`}>
+                  Request this assessment
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </Section>
+
+  <!-- PROCESS -->
+  <Section id="ass-process">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">How it works</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          What happens after you <span class="text-accent">request</span>.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {process.map((p) => (
+          <div class="rounded-2xl bg-gray border border-dark/10 p-6">
+            <span class="font-mono text-xs text-dark/50">{p.n}</span>
+            <h3 class="mt-3 text-lg font-extrabold tracking-tight">{p.title}</h3>
+            <p class="mt-2 text-sm text-dark/70 leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ -->
+  <Section id="ass-faq">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">FAQ</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">Common questions.</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-5">
+        {faqs.map((f) => (
+          <details class="group rounded-2xl bg-gray border border-dark/10 p-6 open:bg-white open:border-dark/30 transition-all">
+            <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+              <span class="text-lg font-extrabold tracking-tight text-dark">{f.q}</span>
+              <span class="shrink-0 mt-1 h-7 w-7 rounded-full bg-dark text-white flex items-center justify-center group-open:bg-accent transition-colors">
+                <svg class="w-3.5 h-3.5 group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-base text-dark/70 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section id="ass-cta">
+    <div class="pb-28">
+      <div class="relative rounded-[32px] bg-dark text-white p-10 md:p-16 text-center overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="relative max-w-2xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-widest text-white/70 mb-6">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+            Still not sure?
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+            Talk to us first. <span class="text-accent">It's free</span>.
+          </h2>
+          <p class="text-lg text-white/70 mb-8">
+            The Operational Assessment is built for exactly this moment. 60 minutes, no obligation, ends with an honest recommendation — even if that recommendation is "you don't need us".
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Operational Assessment · Free</a>
+            <a href="/operational-intelligence" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Read about the category</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</MainLayout>

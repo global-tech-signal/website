@@ -73,6 +73,31 @@ const currentSystems = [
       !qualify && "lg:max-w-lg",
     ]}
   >
+    {/* Selected-assessment banner — shown when ?type=<slug> is in the URL */}
+    <div
+      id="assessment-banner"
+      class="hidden mb-6 rounded-2xl border border-dark/15 bg-white p-4 flex items-start gap-3"
+    >
+      <span class="flex items-center justify-center h-8 w-8 rounded-full bg-accent/10 shrink-0">
+        <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </span>
+      <div class="flex-1 min-w-0">
+        <span class="block text-[10px] font-mono uppercase tracking-widest text-dark/50">You're requesting</span>
+        <span id="assessment-label" class="block text-sm font-semibold text-dark mt-0.5"></span>
+      </div>
+      <a
+        id="assessment-clear"
+        href="/contact"
+        class="text-[11px] font-mono uppercase tracking-widest text-dark/50 hover:text-accent shrink-0"
+      >Change</a>
+    </div>
+    {/* Hidden input — populated client-side when ?type= is present.
+        Maps to the existing `challenge` field so /api/contact picks it up
+        in the email subject as the inquiry type. */}
+    <input type="hidden" id="assessment-type-input" name="assessmentType" value="" />
+
     {!qualify && (
       <div class="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-white text-xs font-medium text-dark">
         <span class="w-2 h-2 rounded-full bg-accent"></span>
@@ -348,6 +373,44 @@ const currentSystems = [
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const status = document.getElementById('contact-status') as HTMLParagraphElement;
+
+  // Map assessment slugs → human-readable labels.
+  // Keep in sync with /src/pages/assessments.astro.
+  const ASSESSMENT_LABELS: Record<string, string> = {
+    'operational-assessment': 'Operational Assessment',
+    'ai-readiness': 'AI Readiness Assessment',
+    'workflow-audit': 'Workflow Audit',
+    'revenue-systems': 'Revenue Systems Assessment',
+    'executive-strategy': 'Executive Strategy Session',
+  };
+
+  // Read ?type=<slug> from URL and decorate the form.
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    if (type && ASSESSMENT_LABELS[type]) {
+      const banner = document.getElementById('assessment-banner');
+      const label = document.getElementById('assessment-label');
+      const hidden = document.getElementById('assessment-type-input') as HTMLInputElement | null;
+      if (banner) banner.classList.remove('hidden');
+      if (label) label.textContent = ASSESSMENT_LABELS[type];
+      if (hidden) hidden.value = ASSESSMENT_LABELS[type];
+
+      // Also pre-fill the visible "challenge" select if it exists on the page,
+      // so the chosen offer flows into the existing inquiry pipeline.
+      const challengeSelect = document.getElementById('challenge') as HTMLSelectElement | null;
+      if (challengeSelect) {
+        const exists = Array.from(challengeSelect.options).some((o) => o.value === ASSESSMENT_LABELS[type]);
+        if (!exists) {
+          const opt = document.createElement('option');
+          opt.value = ASSESSMENT_LABELS[type];
+          opt.textContent = ASSESSMENT_LABELS[type];
+          challengeSelect.appendChild(opt);
+        }
+        challengeSelect.value = ASSESSMENT_LABELS[type];
+      }
+    }
+  } catch {}
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();

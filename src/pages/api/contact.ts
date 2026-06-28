@@ -23,8 +23,10 @@ export const POST: APIRoute = async ({ request }) => {
     const challenge = data.get('challenge')?.toString().trim();
     const timeline = data.get('timeline')?.toString().trim();
     const currentSystems = data.getAll('currentSystems').map((v) => v.toString()).filter(Boolean);
+    const assessmentType = data.get('assessmentType')?.toString().trim();
 
     const inquiry =
+      assessmentType ||
       challenge ||
       [
         data.get('checkbox1') ? 'Operational Assessment' : '',
@@ -42,6 +44,7 @@ export const POST: APIRoute = async ({ request }) => {
       challenge,
       timeline,
       currentSystems,
+      assessmentType,
       messageLength: message?.length ?? 0,
       inquiry,
     };
@@ -67,6 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
       ['Phone', phone || ''],
       ['Company size', companySize || ''],
       ['Industry', industry || ''],
+      ['Requested offer', assessmentType || ''],
       ['Biggest challenge', challenge || ''],
       ['Preferred timeline', timeline || ''],
       ['Current systems', currentSystems.join(', ')],
