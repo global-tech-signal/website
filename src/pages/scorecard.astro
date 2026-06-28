@@ -1,0 +1,499 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Section from "../components/sections/Section.astro";
+
+interface Option { label: string; points: number; }
+interface Question {
+  id: string;
+  dimension: 'capture' | 'connect' | 'automate' | 'intelligence' | 'optimize';
+  prompt: string;
+  options: Option[];
+}
+
+const dimensions = [
+  { key: 'capture',      label: 'Capture',      desc: 'Where lead, customer, order and operational signal actually lands.' },
+  { key: 'connect',      label: 'Connect',      desc: 'How well your systems exchange the same trusted record.' },
+  { key: 'automate',     label: 'Automate',     desc: 'Repetitive handoffs running as systems, not human checklists.' },
+  { key: 'intelligence', label: 'Intelligence', desc: 'AI, scoring and decision support embedded in real workflows.' },
+  { key: 'optimize',     label: 'Optimize',     desc: 'Live KPIs and telemetry so leadership can see and act.' },
+];
+
+const questions: Question[] = [
+  {
+    id: 'q1', dimension: 'capture',
+    prompt: 'When a new lead or customer signal arrives, where does it land?',
+    options: [
+      { label: 'A shared inbox, spreadsheet or someone\'s head', points: 0 },
+      { label: 'Sometimes the CRM, sometimes not — depends on the rep', points: 1 },
+      { label: 'In the CRM, but key context lives elsewhere', points: 2 },
+      { label: 'In one system, fully attributed, every time', points: 3 },
+    ],
+  },
+  {
+    id: 'q2', dimension: 'capture',
+    prompt: 'A customer just contacted support — can the AE see it within a minute?',
+    options: [
+      { label: 'They\'ll find out next quarter, if at all', points: 0 },
+      { label: 'Only if support remembers to forward it', points: 1 },
+      { label: 'Yes, via a manual lookup in another tool', points: 2 },
+      { label: 'Yes — it surfaces on their pipeline view automatically', points: 3 },
+    ],
+  },
+  {
+    id: 'q3', dimension: 'connect',
+    prompt: 'How many tools hold pieces of the same customer or order record?',
+    options: [
+      { label: '5+ and none agree', points: 0 },
+      { label: '3–4, with a weekly reconciliation job', points: 1 },
+      { label: '2–3, but kept in sync by integrations', points: 2 },
+      { label: 'One source of truth, others read from it', points: 3 },
+    ],
+  },
+  {
+    id: 'q4', dimension: 'connect',
+    prompt: 'Can a non-engineer get a real-time cross-system answer in 5 minutes?',
+    options: [
+      { label: 'No — even with help, it takes days', points: 0 },
+      { label: 'Only the analyst can, and they\'re booked out', points: 1 },
+      { label: 'Mostly — for the questions we anticipated', points: 2 },
+      { label: 'Yes — anyone can self-serve any cross-system view', points: 3 },
+    ],
+  },
+  {
+    id: 'q5', dimension: 'automate',
+    prompt: 'What share of customer & operational handoffs run automatically?',
+    options: [
+      { label: 'Almost none — handoffs are Slack, email and memory', points: 0 },
+      { label: 'A few "happy path" automations, the rest manual', points: 1 },
+      { label: 'Most core flows automated, edges are manual', points: 2 },
+      { label: 'Automated end-to-end with clear ownership at each step', points: 3 },
+    ],
+  },
+  {
+    id: 'q6', dimension: 'automate',
+    prompt: 'When an automated process fails, who finds out first?',
+    options: [
+      { label: 'The customer, in a complaint email', points: 0 },
+      { label: 'The team, once someone spots the gap', points: 1 },
+      { label: 'A dashboard flags it within the day', points: 2 },
+      { label: 'An alert fires the moment a SLA is at risk', points: 3 },
+    ],
+  },
+  {
+    id: 'q7', dimension: 'intelligence',
+    prompt: 'Where does AI live in your operations today?',
+    options: [
+      { label: 'Nowhere yet — or only in personal ChatGPT use', points: 0 },
+      { label: 'A few isolated demos, none in production', points: 1 },
+      { label: 'In 1–2 production workflows with measurable impact', points: 2 },
+      { label: 'Embedded across pipeline, support and ops, with guardrails', points: 3 },
+    ],
+  },
+  {
+    id: 'q8', dimension: 'intelligence',
+    prompt: 'How are operational decisions made?',
+    options: [
+      { label: 'Gut and the loudest voice in the room', points: 0 },
+      { label: 'A monthly report nobody fully trusts', points: 1 },
+      { label: 'Live dashboards, manually reviewed', points: 2 },
+      { label: 'Models / scoring trigger or recommend actions in the workflow', points: 3 },
+    ],
+  },
+  {
+    id: 'q9', dimension: 'optimize',
+    prompt: 'Can leadership see real-time operational KPIs without asking anyone?',
+    options: [
+      { label: 'KPIs are assembled in a deck each quarter', points: 0 },
+      { label: 'A weekly export goes to leadership', points: 1 },
+      { label: 'Live dashboards exist but data quality is uneven', points: 2 },
+      { label: 'Yes — trusted live dashboards by team and by outcome', points: 3 },
+    ],
+  },
+  {
+    id: 'q10', dimension: 'optimize',
+    prompt: 'How often do you retire workflows that no longer earn their keep?',
+    options: [
+      { label: 'Never — every workflow accumulates', points: 0 },
+      { label: 'Once a year, in an ops cleanup', points: 1 },
+      { label: 'Quarterly — but only the most visible ones', points: 2 },
+      { label: 'Continuously, against measurable operational KPIs', points: 3 },
+    ],
+  },
+];
+
+const tiers = [
+  { min: 0,  max: 7,  name: 'Founding chaos',  blurb: 'Your operations run on heroics, shared inboxes and memory. That\'s normal at the start — and the biggest single leverage point for the next year of growth.' },
+  { min: 8,  max: 15, name: 'Patchwork ops',   blurb: 'You\'ve bolted together tools and automations, but the seams are showing. Connecting them into a real operating system unlocks compounding gains.' },
+  { min: 16, max: 22, name: 'Connected ops',   blurb: 'Your systems mostly talk to each other and key handoffs are automated. The next chapter is intelligence — embedding AI and live KPIs where decisions get made.' },
+  { min: 23, max: 30, name: 'Intelligent ops', blurb: 'You already run a real operating system. Optimization, governance and category-level decision intelligence are how you stay there.' },
+];
+---
+
+<MainLayout
+  title="Operational Intelligence Scorecard | GlobalTechSignal"
+  description="A 10-question self-serve diagnostic that scores your business across the five layers of Operational Intelligence — and tells you what to fix first."
+>
+  <!-- HERO -->
+  <Section id="sc-hero">
+    <div class="pt-10 pb-12">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-gray text-xs font-mono uppercase tracking-widest text-dark">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            Self-serve diagnostic
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            Operational Intelligence <span class="text-accent">Scorecard</span>.
+          </h1>
+          <p class="text-lg text-dark/70 leading-relaxed max-w-2xl">
+            Ten honest questions. Two minutes. You walk out with a score across the five layers of Operational Intelligence — and a clear recommendation on what to fix first.
+          </p>
+          <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-dark/70 pt-2">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>10 questions</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>~2 minutes</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>No email required</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Instant result</li>
+          </ul>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="absolute inset-0 bg-accent/5 blur-3xl rounded-[45px]"></div>
+            <div class="relative grid grid-cols-5 gap-2">
+              {dimensions.map((d, i) => (
+                <div class={`sc-float-card flex flex-col items-center justify-end p-3 rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] ${i === 4 ? 'bg-accent text-white' : i === 3 ? 'bg-dark text-white' : 'bg-white text-dark'}`} style={`height: ${80 + i * 20}px; animation-delay: ${i * 0.15}s;`}>
+                  <span class={`text-[10px] font-mono uppercase tracking-widest ${i >= 3 ? 'text-white/70' : 'text-dark/60'}`}>{d.label}</span>
+                </div>
+              ))}
+            </div>
+            <p class="mt-4 text-center text-xs font-mono uppercase tracking-widest text-dark/50">The 5 layers of operational intelligence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FORM + RESULTS -->
+  <Section id="sc-tool">
+    <div class="pb-24">
+      <div class="rounded-[32px] bg-gray border border-dark/10 p-6 md:p-10 lg:p-14 relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+
+        <!-- Form -->
+        <form id="sc-form" class="relative space-y-8" data-questions={JSON.stringify(questions.map(q => ({ id: q.id, dim: q.dimension })))}>
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Scorecard</span>
+              <h2 class="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight">Answer honestly. Nobody sees this but you.</h2>
+            </div>
+            <div class="flex items-center gap-3 text-sm text-dark/60">
+              <span id="sc-progress-label">0 / {questions.length} answered</span>
+              <div class="w-32 h-1.5 bg-dark/10 rounded-full overflow-hidden">
+                <div id="sc-progress-bar" class="h-full bg-accent transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          {questions.map((q, idx) => (
+            <fieldset class="sc-q rounded-2xl bg-white border border-dark/10 p-6 md:p-7" data-qid={q.id} data-dim={q.dimension}>
+              <legend class="px-3 py-1 rounded-full bg-dark text-white text-[10px] font-mono uppercase tracking-widest">
+                Q{idx + 1} · {dimensions.find(d => d.key === q.dimension)?.label}
+              </legend>
+              <p class="text-base md:text-lg font-semibold text-dark mt-3 mb-5">{q.prompt}</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                {q.options.map((opt) => (
+                  <label class="sc-opt flex items-start gap-3 p-4 rounded-xl border border-dark/10 hover:border-dark cursor-pointer transition-all has-[input:checked]:border-dark has-[input:checked]:bg-dark has-[input:checked]:text-white">
+                    <input type="radio" name={q.id} value={opt.points} class="sc-input mt-1 accent-accent shrink-0" required />
+                    <span class="text-sm leading-relaxed">{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          ))}
+
+          <div class="flex flex-col sm:flex-row gap-3 items-center justify-between pt-4">
+            <p class="text-sm text-dark/50">Answer all 10 to reveal your score.</p>
+            <button type="submit" id="sc-submit" class="px-8 py-4 bg-dark text-white rounded-xl font-medium hover:bg-accent transition-colors disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+              Compute my score
+            </button>
+          </div>
+        </form>
+
+        <!-- Results (hidden until submit) -->
+        <div id="sc-results" class="hidden relative">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-8">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Your result</span>
+              <h2 class="mt-2 text-3xl md:text-5xl font-extrabold tracking-tight">
+                You are <span id="sc-tier-name" class="text-accent">—</span>.
+              </h2>
+              <p id="sc-tier-blurb" class="mt-4 max-w-2xl text-base md:text-lg text-dark/70 leading-relaxed"></p>
+            </div>
+            <div class="rounded-[24px] bg-dark text-white border border-dark p-6 text-center min-w-[180px] shadow-[0px_5px_0px_#191a23]">
+              <span class="block text-[10px] font-mono uppercase tracking-widest text-white/60">Total score</span>
+              <span class="block mt-2"><span id="sc-total" class="text-6xl font-extrabold leading-none">0</span><span class="text-white/40 text-2xl"> / 30</span></span>
+            </div>
+          </div>
+
+          <!-- Dimension breakdown -->
+          <div class="grid md:grid-cols-2 gap-4 mb-10">
+            {dimensions.map((d) => (
+              <div class="rounded-2xl bg-white border border-dark/10 p-5" data-dim-card={d.key}>
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-dark/50">Layer</span>
+                    <h3 class="text-lg font-extrabold tracking-tight">{d.label}</h3>
+                  </div>
+                  <span class="text-sm font-mono"><span class="sc-dim-score font-bold text-dark">0</span><span class="text-dark/40"> / 6</span></span>
+                </div>
+                <div class="h-2 bg-dark/5 rounded-full overflow-hidden">
+                  <div class="sc-dim-bar h-full bg-accent transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <p class="mt-3 text-xs text-dark/60 leading-relaxed">{d.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Strongest / weakest -->
+          <div class="grid md:grid-cols-2 gap-4 mb-10">
+            <div class="rounded-2xl bg-accent text-white p-6 border border-accent shadow-[0px_4px_0px_#191a23]">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-white/70">Strongest layer</span>
+              <h3 id="sc-strong-name" class="text-2xl font-extrabold tracking-tight mt-1">—</h3>
+              <p id="sc-strong-text" class="mt-3 text-sm text-white/85 leading-relaxed"></p>
+            </div>
+            <div class="rounded-2xl bg-dark text-white p-6 border border-dark shadow-[0px_4px_0px_#191a23]">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-accent">Biggest leverage</span>
+              <h3 id="sc-weak-name" class="text-2xl font-extrabold tracking-tight mt-1">—</h3>
+              <p id="sc-weak-text" class="mt-3 text-sm text-white/75 leading-relaxed"></p>
+            </div>
+          </div>
+
+          <!-- Recommended next steps -->
+          <div class="rounded-[28px] bg-white border border-dark/10 p-6 md:p-8 mb-10">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-dark/50">Recommended next steps</span>
+            <h3 class="mt-2 text-xl md:text-2xl font-extrabold tracking-tight mb-5">Based on where you scored lowest.</h3>
+            <ul id="sc-recs" class="space-y-3"></ul>
+          </div>
+
+          <!-- CTA -->
+          <div class="rounded-[28px] bg-dark text-white p-8 md:p-10 text-center relative overflow-hidden border border-dark shadow-[0px_5px_0px_#191a23]">
+            <div class="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-accent/20 blur-3xl"></div>
+            <div class="relative max-w-xl mx-auto">
+              <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-3">Want a senior practitioner to walk this through with you?</h3>
+              <p class="text-white/70 mb-6">The free <strong class="text-white">Operational Assessment</strong> takes your scorecard and turns it into an actionable map — typically within 60 minutes.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="/contact" class="px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Book the Operational Assessment</a>
+                <button type="button" id="sc-restart" class="px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Retake the scorecard</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- WHAT'S NEXT -->
+  <Section id="sc-next">
+    <div class="pb-28">
+      <div class="grid lg:grid-cols-3 gap-5">
+        <a href="/operational-intelligence" class="group rounded-[24px] bg-gray border border-dark/10 p-7 hover:-translate-y-1 hover:border-dark transition-all shadow-[0px_4px_0px_#191a23]">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Read more</span>
+          <h3 class="mt-3 text-xl font-extrabold tracking-tight">The Operational Intelligence category</h3>
+          <p class="mt-3 text-sm text-dark/70 leading-relaxed">Understand the framework behind the scorecard.</p>
+          <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-dark group-hover:text-accent transition-colors">
+            Read the playbook
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a href="/assessments" class="group rounded-[24px] bg-gray border border-dark/10 p-7 hover:-translate-y-1 hover:border-dark transition-all shadow-[0px_4px_0px_#191a23]">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Go deeper</span>
+          <h3 class="mt-3 text-xl font-extrabold tracking-tight">Pick a focused assessment</h3>
+          <p class="mt-3 text-sm text-dark/70 leading-relaxed">AI Readiness, Workflow Audit, Revenue Systems or Executive Strategy.</p>
+          <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-dark group-hover:text-accent transition-colors">
+            See assessments
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a href="/case-studies" class="group rounded-[24px] bg-dark text-white border border-dark p-7 hover:-translate-y-1 transition-all shadow-[0px_5px_0px_#191a23]">
+          <span class="text-xs font-mono uppercase tracking-widest text-accent">See outcomes</span>
+          <h3 class="mt-3 text-xl font-extrabold tracking-tight">Real systems we've shipped</h3>
+          <p class="mt-3 text-sm text-white/70 leading-relaxed">Revenue, time and visibility recovered — measured and named.</p>
+          <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+            Browse case studies
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </Section>
+</MainLayout>
+
+<style>
+  @keyframes sc-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .sc-float-card {
+    animation: sc-float 5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sc-float-card { animation: none; }
+  }
+  /* Hide native radio dot since the whole label becomes the indicator */
+  .sc-input { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #d4d4d4; background: transparent; }
+  .sc-opt:has(.sc-input:checked) .sc-input { border-color: #fff; background: #fff; }
+</style>
+
+<script>
+  type Dim = 'capture' | 'connect' | 'automate' | 'intelligence' | 'optimize';
+
+  const TIERS = [
+    { min: 0,  max: 7,  name: 'Founding chaos',  blurb: "Your operations run on heroics, shared inboxes and memory. That's normal at the start \u2014 and the biggest single leverage point for the next year of growth." },
+    { min: 8,  max: 15, name: 'Patchwork ops',   blurb: "You've bolted together tools and automations, but the seams are showing. Connecting them into a real operating system unlocks compounding gains." },
+    { min: 16, max: 22, name: 'Connected ops',   blurb: "Your systems mostly talk to each other and key handoffs are automated. The next chapter is intelligence \u2014 embedding AI and live KPIs where decisions get made." },
+    { min: 23, max: 30, name: 'Intelligent ops', blurb: "You already run a real operating system. Optimization, governance and category-level decision intelligence are how you stay there." },
+  ];
+
+  const DIM_LABELS: Record<Dim, string> = {
+    capture: 'Capture',
+    connect: 'Connect',
+    automate: 'Automate',
+    intelligence: 'Intelligence',
+    optimize: 'Optimize',
+  };
+
+  // Strength callouts when this layer is strongest
+  const STRONG_TEXT: Record<Dim, string> = {
+    capture: 'You catch operational signal cleanly. The leverage now is what you do with it downstream.',
+    connect: 'Your systems exchange data well. The leverage now is automating the handoffs you can already see.',
+    automate: 'Your workflows run without heroics. The leverage now is putting intelligence on top of them.',
+    intelligence: 'AI is already moving real business metrics for you. The leverage now is governance and reach.',
+    optimize: 'You measure what you ship and retire what doesn\'t work. The leverage now is intelligence + reach.',
+  };
+
+  // Recommendations when a layer is weakest
+  const RECS: Record<Dim, { title: string; desc: string; href: string }[]> = {
+    capture: [
+      { title: 'Workflow Audit', desc: 'Map your highest-leakage capture flow end-to-end and design the connected replacement.', href: '/assessments#workflow-audit' },
+      { title: 'Revenue Systems Assessment', desc: 'If most of your leak is sales-side, start here for a full lead-to-cash review.', href: '/assessments#revenue-systems' },
+      { title: 'Outgrowing spreadsheets?', desc: 'A common starting point when capture is fragmented across docs and sheets.', href: '/solutions/outgrowing-spreadsheets' },
+    ],
+    connect: [
+      { title: 'Operational Assessment', desc: 'Free 60-min session to map every disconnected system and recommend the connection plan.', href: '/contact' },
+      { title: 'Solutions: Disconnected systems', desc: 'How we connect CRM, finance, support and ops into one operational fabric.', href: '/solutions/disconnected-systems' },
+      { title: 'Revenue Systems Assessment', desc: 'When the worst disconnects are between marketing, sales and ops.', href: '/assessments#revenue-systems' },
+    ],
+    automate: [
+      { title: 'Workflow Audit', desc: 'Pick the workflow that costs you the most hours and we\'ll design the automated version.', href: '/assessments#workflow-audit' },
+      { title: 'Solutions: Manual processes', desc: 'Common automation patterns and where they pay back fastest.', href: '/solutions/manual-processes' },
+      { title: 'Operational Assessment', desc: 'Map every handoff to find the ones that justify automating first.', href: '/contact' },
+    ],
+    intelligence: [
+      { title: 'AI Readiness Assessment', desc: 'Where AI will actually move a business metric in your stack \u2014 and where it won\'t.', href: '/assessments#ai-readiness' },
+      { title: 'Solutions: AI without ROI', desc: 'Why most AI projects fail before they deliver \u2014 and how to avoid that.', href: '/solutions/ai-without-roi' },
+      { title: 'AI Operations service', desc: 'AI agents and copilots embedded inside business systems.', href: '/services#ai-operations' },
+    ],
+    optimize: [
+      { title: 'Solutions: Reporting', desc: 'Real dashboards leadership can trust \u2014 not exports nobody opens.', href: '/solutions/reporting' },
+      { title: 'Operational Assessment', desc: 'Free 60-min session to identify the 3 KPIs you should be watching live.', href: '/contact' },
+      { title: 'Executive Strategy Session', desc: 'Get leadership aligned on what to measure for the next 12 months.', href: '/assessments#executive-strategy' },
+    ],
+  };
+
+  const form = document.getElementById('sc-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('sc-submit') as HTMLButtonElement;
+  const progressBar = document.getElementById('sc-progress-bar') as HTMLDivElement;
+  const progressLabel = document.getElementById('sc-progress-label') as HTMLSpanElement;
+  const results = document.getElementById('sc-results') as HTMLDivElement;
+
+  const allQuestions = Array.from(document.querySelectorAll<HTMLFieldSetElement>('.sc-q'));
+
+  function updateProgress() {
+    const answered = allQuestions.filter((q) => q.querySelector<HTMLInputElement>('input:checked')).length;
+    const total = allQuestions.length;
+    progressLabel.textContent = `${answered} / ${total} answered`;
+    progressBar.style.width = `${(answered / total) * 100}%`;
+    submitBtn.disabled = answered < total;
+  }
+
+  form?.addEventListener('change', updateProgress);
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const byDim: Record<Dim, number> = { capture: 0, connect: 0, automate: 0, intelligence: 0, optimize: 0 };
+
+    allQuestions.forEach((q) => {
+      const dim = (q.dataset.dim as Dim);
+      const selected = q.querySelector<HTMLInputElement>('input:checked');
+      if (selected && dim) byDim[dim] += parseInt(selected.value, 10);
+    });
+
+    const total = Object.values(byDim).reduce((a, b) => a + b, 0);
+    const tier = TIERS.find((t) => total >= t.min && total <= t.max) || TIERS[0];
+
+    // Find strongest + weakest
+    const dimEntries = Object.entries(byDim) as [Dim, number][];
+    let strongest = dimEntries[0];
+    let weakest = dimEntries[0];
+    for (const e of dimEntries) {
+      if (e[1] > strongest[1]) strongest = e;
+      if (e[1] < weakest[1]) weakest = e;
+    }
+
+    // Populate results
+    (document.getElementById('sc-total') as HTMLSpanElement).textContent = String(total);
+    (document.getElementById('sc-tier-name') as HTMLSpanElement).textContent = tier.name;
+    (document.getElementById('sc-tier-blurb') as HTMLParagraphElement).textContent = tier.blurb;
+
+    // Per-dimension cards
+    dimEntries.forEach(([dim, score]) => {
+      const card = document.querySelector<HTMLDivElement>(`[data-dim-card="${dim}"]`);
+      if (!card) return;
+      const scoreEl = card.querySelector<HTMLSpanElement>('.sc-dim-score');
+      const barEl = card.querySelector<HTMLDivElement>('.sc-dim-bar');
+      if (scoreEl) scoreEl.textContent = String(score);
+      if (barEl) barEl.style.width = `${(score / 6) * 100}%`;
+    });
+
+    (document.getElementById('sc-strong-name') as HTMLHeadingElement).textContent = DIM_LABELS[strongest[0]];
+    (document.getElementById('sc-strong-text') as HTMLParagraphElement).textContent = STRONG_TEXT[strongest[0]];
+
+    (document.getElementById('sc-weak-name') as HTMLHeadingElement).textContent = DIM_LABELS[weakest[0]];
+    (document.getElementById('sc-weak-text') as HTMLParagraphElement).textContent = `Strengthening your ${DIM_LABELS[weakest[0]]} layer is where you\u2019ll get the most leverage next. Below are three focused ways to start.`;
+
+    // Recommendations
+    const recsList = document.getElementById('sc-recs') as HTMLUListElement;
+    recsList.innerHTML = '';
+    RECS[weakest[0]].forEach((r, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a href="${r.href}" class="group flex items-start gap-4 p-4 rounded-xl border border-dark/10 hover:border-dark hover:-translate-y-0.5 transition-all">
+          <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-dark text-white text-xs font-mono shrink-0">${String(i + 1).padStart(2, '0')}</span>
+          <div class="flex-1">
+            <h4 class="text-base font-extrabold tracking-tight text-dark">${r.title}</h4>
+            <p class="mt-1 text-sm text-dark/70 leading-relaxed">${r.desc}</p>
+          </div>
+          <svg class="w-5 h-5 text-dark/30 group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0 mt-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      `;
+      recsList.appendChild(li);
+    });
+
+    // Hide form, show results
+    form.classList.add('hidden');
+    results.classList.remove('hidden');
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.getElementById('sc-restart')?.addEventListener('click', () => {
+    form.reset();
+    results.classList.add('hidden');
+    form.classList.remove('hidden');
+    updateProgress();
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Initial state
+  updateProgress();
+</script>
+

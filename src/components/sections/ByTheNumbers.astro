@@ -1,0 +1,85 @@
+---
+import Section from "./Section.astro";
+
+// Quantitative trust strip. Every number reflects a verifiable
+// fact about the GTS practice and site content — not awards or
+// fabricated metrics.
+const stats = [
+  {
+    value: "12",
+    label: "Industries served",
+    note: "From real estate and roofing to clinics, legal, finance and beyond.",
+    href: "/industries",
+    tone: "dark",
+  },
+  {
+    value: "6",
+    label: "Business systems",
+    note: "Revenue, Operations, Customer, BI, AI Ops and Digital Experience.",
+    href: "/services",
+    tone: "white",
+  },
+  {
+    value: "5",
+    label: "Layers of OI",
+    note: "Capture → Connect → Automate → Intelligence → Optimize.",
+    href: "/operational-intelligence",
+    tone: "red-soft",
+  },
+  {
+    value: "4–8",
+    label: "Weeks to first system",
+    note: "First working business system shipped, then iterated in phases.",
+    href: "/case-studies",
+    tone: "white",
+  },
+  {
+    value: "< 24h",
+    label: "Response time",
+    note: "On every Operational Assessment request — no exceptions.",
+    href: "/contact",
+    tone: "accent",
+  },
+];
+
+const toneClass = (t: string) => {
+  if (t === 'dark') return { wrap: 'bg-dark text-white border-dark', value: 'text-white', label: 'text-accent', note: 'text-white/70', cta: 'text-accent' };
+  if (t === 'accent') return { wrap: 'bg-accent text-white border-accent', value: 'text-white', label: 'text-white', note: 'text-white/85', cta: 'text-white' };
+  if (t === 'red-soft') return { wrap: 'bg-red-soft text-dark border-dark/10', value: 'text-dark', label: 'text-accent', note: 'text-dark/70', cta: 'text-dark' };
+  return { wrap: 'bg-white text-dark border-dark/10', value: 'text-dark', label: 'text-accent', note: 'text-dark/70', cta: 'text-dark' };
+};
+---
+
+<Section id="by-the-numbers">
+  <div class="py-12 md:py-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">By the numbers</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05] max-w-2xl">
+          What an <span class="text-accent">operational intelligence</span> practice looks like.
+        </h2>
+      </div>
+      <p class="text-base text-dark/60 leading-relaxed max-w-md">
+        Concrete scope and pace — so you know what to expect before the first call.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
+      {stats.map((s) => {
+        const t = toneClass(s.tone);
+        return (
+          <a href={s.href} class={`group relative rounded-[24px] border ${t.wrap} p-6 md:p-7 shadow-[0px_4px_0px_#191a23] hover:-translate-y-1 transition-transform duration-300 overflow-hidden flex flex-col`}>
+            <div class="absolute top-0 right-0 h-16 w-16 bg-white/[0.06] rounded-bl-[40px]"></div>
+            <span class={`relative text-4xl md:text-5xl font-extrabold leading-none tracking-tight ${t.value}`}>{s.value}</span>
+            <span class={`mt-3 block text-[10px] font-mono uppercase tracking-widest ${t.label}`}>{s.label}</span>
+            <p class={`relative mt-2.5 text-xs md:text-sm leading-relaxed ${t.note}`}>{s.note}</p>
+            <span class={`mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-semibold ${t.cta} group-hover:translate-x-0.5 transition-transform`}>
+              See
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</Section>

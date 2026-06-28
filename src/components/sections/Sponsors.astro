@@ -13,32 +13,47 @@ const logoTools = [
   { logo: s6, alt: "AWS" },
 ];
 
-const textTools = [
-  "Stripe",
-  "Slack",
-  "OpenAI",
-  "Make",
-  "Zapier",
+// Platforms we wire into business systems. Framed as capability /
+// expertise — not as official partner certifications.
+const platforms = [
   "Salesforce",
+  "Microsoft 365",
   "Google Cloud",
+  "OpenAI",
+  "Anthropic",
+  "Stripe",
   "Twilio",
+  "Slack",
+  "Zapier",
+  "Make",
+  "n8n",
+  "Airtable",
+  "Pipedrive",
+  "Zoho",
+  "Intercom",
+  "ServiceNow",
 ];
 ---
 
 <Section id="sponsors">
   <div class="flex-col items-center">
-    <p class="text-center text-sm uppercase tracking-widest text-dark/60 mb-5">Connecting the tools your business already runs on</p>
-    <div class="flex justify-center gap-8 items-center flex-wrap mb-6">
+    <p class="text-center text-xs sm:text-sm font-mono uppercase tracking-widest text-dark/60 mb-6">
+      Platforms we wire into your business systems
+    </p>
+    <div class="flex justify-center gap-8 items-center flex-wrap mb-7">
       {logoTools.map((tool) => (
         <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
           <Image src={tool.logo} class="h-10 w-auto mx-auto" alt={tool.alt} loading="lazy" />
         </div>
       ))}
     </div>
-    <div class="flex justify-center gap-3 flex-wrap">
-      {textTools.map((tool) => (
-        <span class="px-4 py-2 rounded-full border border-dark/10 text-sm font-medium text-dark/70">{tool}</span>
+    <div class="flex justify-center gap-2.5 flex-wrap max-w-4xl mx-auto">
+      {platforms.map((tool) => (
+        <span class="px-3.5 py-1.5 rounded-full border border-dark/10 bg-white text-xs sm:text-sm font-medium text-dark/70 hover:border-dark hover:text-dark transition-colors">{tool}</span>
       ))}
     </div>
+    <p class="mt-5 text-center text-xs text-dark/45 max-w-xl mx-auto">
+      Capabilities and integration experience. We connect the stack you already run on — not a stack we resell.
+    </p>
   </div>
 </Section>
