@@ -371,7 +371,9 @@ const currentSystems = [
 </style>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
+  // Use a tag-qualified selector so we never accidentally pick up a non-form
+  // element that shares the id (e.g. a wrapper <section id="contact-form">).
+  const form = document.querySelector('form#contact-form') as HTMLFormElement | null;
   const status = document.getElementById('contact-status') as HTMLParagraphElement;
 
   // Map assessment / engagement slugs → human-readable labels.
@@ -424,13 +426,77 @@ const currentSystems = [
     }
   } catch {}
 
+  // Visible feedback when HTML5 validation blocks the submit
+  // (otherwise the user sees nothing — the browser's native tooltip is easy
+  // to miss, especially on long forms with off-screen required fields).
+  const ERROR_CLASS = '!border-red-500 !ring-2 !ring-red-500/30';
+  function clearFieldErrors() {
+    form?.querySelectorAll('[data-invalid]').forEach((el) => {
+      el.removeAttribute('data-invalid');
+      ERROR_CLASS.split(' ').forEach((c) => el.classList.remove(c));
+    });
+  }
+  function markInvalid(el: Element) {
+    el.setAttribute('data-invalid', 'true');
+    ERROR_CLASS.split(' ').forEach((c) => el.classList.add(c));
+  }
+
+  // Fires once per invalid field when the form attempts to submit.
+  form?.addEventListener(
+    'invalid',
+    (e) => {
+      const target = e.target as HTMLElement;
+      if (target) markInvalid(target);
+      // Show a single, prominent status message + scroll the first invalid
+      // field into view (the browser's built-in focus often lands above the
+      // fold but the user is looking at the submit button below).
+      if (status && status.classList.contains('hidden')) {
+        status.textContent =
+          'Please complete the highlighted required fields, then try again.';
+        status.className = 'mt-4 text-center text-sm text-red-500';
+      }
+      const first = form?.querySelector('[data-invalid]') as HTMLElement | null;
+      if (first && first === target) {
+        first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    },
+    true // capture phase so we see every invalid event (they don't bubble)
+  );
+
+  // Clear the error styling as soon as the user edits a field.
+  form?.addEventListener('input', (e) => {
+    const t = e.target as HTMLElement;
+    if (t && t.hasAttribute('data-invalid')) {
+      t.removeAttribute('data-invalid');
+      ERROR_CLASS.split(' ').forEach((c) => t.classList.remove(c));
+    }
+  });
+  form?.addEventListener('change', (e) => {
+    const t = e.target as HTMLElement;
+    if (t && t.hasAttribute('data-invalid')) {
+      t.removeAttribute('data-invalid');
+      ERROR_CLASS.split(' ').forEach((c) => t.classList.remove(c));
+    }
+  });
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    clearFieldErrors();
+    status?.classList.add('hidden');
+
+    // Astro's `required` attrs run HTML5 validation; if anything fails the
+    // `invalid` handler above will have already highlighted fields. Bail.
+    if (!form.checkValidity()) {
+      // Trigger native UI (tooltip + focus) so the user gets browser-level
+      // hints in addition to our highlighting + status banner.
+      form.reportValidity();
+      return;
+    }
+
     const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     const originalLabel = btn.textContent || 'Send';
     btn.disabled = true;
     btn.textContent = 'Sending...';
-    status.classList.add('hidden');
 
     try {
       const res = await fetch('/api/contact', {
@@ -441,7 +507,7 @@ const currentSystems = [
 
       if (res.ok) {
         status.textContent = "Message sent! We'll get back to you soon.";
-        status.className = 'mt-4 text-center text-sm text-red';
+        status.className = 'mt-4 text-center text-sm text-accent';
         form.reset();
       } else {
         status.textContent = json.error || 'Something went wrong.';
