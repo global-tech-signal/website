@@ -2,6 +2,8 @@ import Lenis from "lenis";
 
 document.addEventListener("DOMContentLoaded", function () {
   const lenis = new Lenis();
+  // Expose the instance so other scripts (e.g. scorecard submit handler) can drive smooth scrolls.
+  window.__lenis = lenis;
 
   function raf(time) {
     lenis.raf(time);

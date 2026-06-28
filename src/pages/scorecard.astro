@@ -121,17 +121,27 @@ const questions: Question[] = [
   },
 ];
 
-const tiers = [
-  { min: 0,  max: 7,  name: 'Founding chaos',  blurb: 'Your operations run on heroics, shared inboxes and memory. That\'s normal at the start — and the biggest single leverage point for the next year of growth.' },
-  { min: 8,  max: 15, name: 'Patchwork ops',   blurb: 'You\'ve bolted together tools and automations, but the seams are showing. Connecting them into a real operating system unlocks compounding gains.' },
-  { min: 16, max: 22, name: 'Connected ops',   blurb: 'Your systems mostly talk to each other and key handoffs are automated. The next chapter is intelligence — embedding AI and live KPIs where decisions get made.' },
-  { min: 23, max: 30, name: 'Intelligent ops', blurb: 'You already run a real operating system. Optimization, governance and category-level decision intelligence are how you stay there.' },
+const stages = [
+  { idx: 1, min: 0,  max: 6,  name: 'Patchwork Ops',   short: 'Patchwork',   blurb: 'Disconnected systems. Heavy manual work. Knowledge lives with people.' },
+  { idx: 2, min: 7,  max: 12, name: 'Connected Ops',   short: 'Connected',   blurb: 'Core systems communicate. Processes remain partially manual.' },
+  { idx: 3, min: 13, max: 18, name: 'Automated Ops',   short: 'Automated',   blurb: 'Routine operational work runs automatically. Humans focus on exceptions.' },
+  { idx: 4, min: 19, max: 24, name: 'Intelligent Ops', short: 'Intelligent', blurb: 'AI supports decisions. Insights are proactive. Leaders trust real-time visibility.' },
+  { idx: 5, min: 25, max: 30, name: 'Autonomous Ops',  short: 'Autonomous',  blurb: 'Systems continuously optimize. AI recommends and orchestrates actions. Operations scale with minimal manual intervention.' },
+];
+
+// What this layer covers in the GTS service catalog
+const layerServices = [
+  { key: 'capture',      label: 'Capture',      items: ['CRM', 'Lead Capture', 'Forms', 'Sales Intake'] },
+  { key: 'connect',      label: 'Connect',      items: ['Integrations', 'APIs', 'ERP', 'HubSpot · Salesforce'] },
+  { key: 'automate',     label: 'Automate',     items: ['Workflow Automation', 'Approvals', 'AI Agents', 'Orchestration'] },
+  { key: 'intelligence', label: 'Intelligence', items: ['Dashboards', 'Reporting', 'AI Insights', 'Decision Support'] },
+  { key: 'optimize',     label: 'Optimize',     items: ['Continuous Improvement', 'KPI Reviews', 'Process Optimization', 'Operational Consulting'] },
 ];
 ---
 
 <MainLayout
-  title="Operational Intelligence Scorecard | GlobalTechSignal"
-  description="A 10-question self-serve diagnostic that scores your business across the five layers of Operational Intelligence — and tells you what to fix first."
+  title="Business Operations Index™ | GlobalTechSignal"
+  description="A 10-question self-serve diagnostic that scores your business across the five layers of Operational Intelligence — and shows you the next stage of operational maturity."
 >
   <!-- HERO -->
   <Section id="sc-hero">
@@ -140,13 +150,13 @@ const tiers = [
         <div class="lg:col-span-7 space-y-6">
           <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-gray text-xs font-mono uppercase tracking-widest text-dark">
             <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-            Self-serve diagnostic
+            Business Operations Index™
           </span>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
-            Operational Intelligence <span class="text-accent">Scorecard</span>.
+            Where are you on the <span class="text-accent">maturity ladder</span>?
           </h1>
           <p class="text-lg text-dark/70 leading-relaxed max-w-2xl">
-            Ten honest questions. Two minutes. You walk out with a score across the five layers of Operational Intelligence — and a clear recommendation on what to fix first.
+            Ten honest questions. Two minutes. You walk out with your Business Operations Index™ across five layers — and the stage you're in today, the stage you're closest to, and how to get there.
           </p>
           <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-dark/70 pt-2">
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>10 questions</li>
@@ -158,14 +168,18 @@ const tiers = [
         <div class="lg:col-span-5">
           <div class="relative">
             <div class="absolute inset-0 bg-accent/5 blur-3xl rounded-[45px]"></div>
-            <div class="relative grid grid-cols-5 gap-2">
-              {dimensions.map((d, i) => (
-                <div class={`sc-float-card flex flex-col items-center justify-end p-3 rounded-2xl border border-dark shadow-[0px_4px_0px_#191a23] ${i === 4 ? 'bg-accent text-white' : i === 3 ? 'bg-dark text-white' : 'bg-white text-dark'}`} style={`height: ${80 + i * 20}px; animation-delay: ${i * 0.15}s;`}>
-                  <span class={`text-[10px] font-mono uppercase tracking-widest ${i >= 3 ? 'text-white/70' : 'text-dark/60'}`}>{d.label}</span>
-                </div>
-              ))}
+            <div class="relative p-5 rounded-[28px] bg-white border border-dark shadow-[0px_4px_0px_#191a23]">
+              <div class="font-mono text-[10px] uppercase tracking-widest text-dark/50 mb-3">5 stages of operational maturity</div>
+              <div class="space-y-2">
+                {stages.map((s, i) => (
+                  <div class={`sc-float-card flex items-center gap-3 p-3 rounded-xl border ${i === 4 ? 'bg-accent text-white border-accent' : i === 3 ? 'bg-dark text-white border-dark' : 'bg-gray text-dark border-dark/10'}`} style={`animation-delay: ${i * 0.12}s;`}>
+                    <span class={`font-mono text-[10px] ${i >= 3 ? 'text-white/60' : 'text-dark/50'} shrink-0`}>STAGE {s.idx}</span>
+                    <span class="text-sm font-bold tracking-tight">{s.name}</span>
+                    <div class={`ml-auto h-1.5 w-1.5 rounded-full ${i === 4 ? 'bg-white animate-pulse' : i >= 3 ? 'bg-accent' : 'bg-dark/20'}`}></div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <p class="mt-4 text-center text-xs font-mono uppercase tracking-widest text-dark/50">The 5 layers of operational intelligence</p>
           </div>
         </div>
       </div>
@@ -182,7 +196,7 @@ const tiers = [
         <form id="sc-form" class="relative space-y-8" data-questions={JSON.stringify(questions.map(q => ({ id: q.id, dim: q.dimension })))}>
           <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
             <div>
-              <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Scorecard</span>
+              <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Business Operations Index™</span>
               <h2 class="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight">Answer honestly. Nobody sees this but you.</h2>
             </div>
             <div class="flex items-center gap-3 text-sm text-dark/60">
@@ -222,8 +236,12 @@ const tiers = [
         <div id="sc-results" class="hidden relative">
           <div class="flex flex-wrap items-start justify-between gap-4 mb-8">
             <div>
-              <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Your result</span>
-              <h2 class="mt-2 text-3xl md:text-5xl font-extrabold tracking-tight">
+              <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Your Business Operations Index™</span>
+              <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dark text-white text-[10px] font-mono uppercase tracking-widest">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Stage <span id="sc-stage-idx">—</span> of 5
+              </div>
+              <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight">
                 You are <span id="sc-tier-name" class="text-accent">—</span>.
               </h2>
               <p id="sc-tier-blurb" class="mt-4 max-w-2xl text-base md:text-lg text-dark/70 leading-relaxed"></p>
@@ -231,6 +249,33 @@ const tiers = [
             <div class="rounded-[24px] bg-dark text-white border border-dark p-6 text-center min-w-[180px] shadow-[0px_5px_0px_#191a23]">
               <span class="block text-[10px] font-mono uppercase tracking-widest text-white/60">Total score</span>
               <span class="block mt-2"><span id="sc-total" class="text-6xl font-extrabold leading-none">0</span><span class="text-white/40 text-2xl"> / 30</span></span>
+            </div>
+          </div>
+
+          <!-- Current → Next Stage progression -->
+          <div id="sc-progression" class="rounded-[28px] bg-white border border-dark/10 p-6 md:p-8 mb-10 shadow-[0px_4px_0px_#191a23]">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-dark/50">Where you are → where you're going</span>
+            <div class="mt-4 grid md:grid-cols-12 gap-5 items-stretch">
+              <div class="md:col-span-5 rounded-2xl bg-gray border border-dark/10 p-5">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-dark/50">Current stage</span>
+                <h3 id="sc-current-stage" class="mt-2 text-2xl font-extrabold tracking-tight">—</h3>
+                <p id="sc-current-blurb" class="mt-2 text-sm text-dark/70 leading-relaxed"></p>
+              </div>
+              <div class="md:col-span-2 flex items-center justify-center">
+                <div class="hidden md:flex items-center justify-center h-10 w-10 rounded-full bg-accent text-white">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                <div class="md:hidden text-accent font-mono text-xs uppercase tracking-widest">↓ Next ↓</div>
+              </div>
+              <div class="md:col-span-5 rounded-2xl bg-dark text-white border border-dark p-5">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-accent">Next stage</span>
+                <h3 id="sc-next-stage" class="mt-2 text-2xl font-extrabold tracking-tight">—</h3>
+                <p id="sc-next-blurb" class="mt-2 text-sm text-white/75 leading-relaxed"></p>
+              </div>
+            </div>
+            <div class="mt-6">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-dark/50">Progress required</span>
+              <ul id="sc-progress-actions" class="mt-3 grid sm:grid-cols-3 gap-3"></ul>
             </div>
           </div>
 
@@ -275,18 +320,120 @@ const tiers = [
           </div>
 
           <!-- CTA -->
-          <div class="rounded-[28px] bg-dark text-white p-8 md:p-10 text-center relative overflow-hidden border border-dark shadow-[0px_5px_0px_#191a23]">
+          <div class="rounded-[28px] bg-dark text-white p-8 md:p-10 relative overflow-hidden border border-dark shadow-[0px_5px_0px_#191a23]">
             <div class="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-accent/20 blur-3xl"></div>
-            <div class="relative max-w-xl mx-auto">
-              <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-3">Want a senior practitioner to walk this through with you?</h3>
-              <p class="text-white/70 mb-6">The free <strong class="text-white">Operational Assessment</strong> takes your scorecard and turns it into an actionable map — typically within 60 minutes.</p>
-              <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <a href="/contact" class="px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Book the Operational Assessment</a>
-                <button type="button" id="sc-restart" class="px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Retake the scorecard</button>
+            <div class="relative grid lg:grid-cols-12 gap-8 items-start">
+              <div class="lg:col-span-7">
+                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] font-mono uppercase tracking-widest text-white/70 mb-5">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+                  Next step · Operational Roadmap
+                </span>
+                <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-[1.15] mb-3">
+                  Your score identifies the bottlenecks. <span class="text-accent">Your roadmap</span> shows you how to remove them.
+                </h3>
+                <p class="text-white/70 leading-relaxed mb-6">
+                  During a 60-minute Operational Roadmap session a senior practitioner will:
+                </p>
+                <ul class="space-y-3 mb-2">
+                  <li class="flex items-start gap-3 text-white/85">
+                    <span class="mt-1 h-5 w-5 rounded-full bg-accent flex items-center justify-center shrink-0"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span class="text-sm leading-relaxed">Review your Business Operations Index™ in detail</span>
+                  </li>
+                  <li class="flex items-start gap-3 text-white/85">
+                    <span class="mt-1 h-5 w-5 rounded-full bg-accent flex items-center justify-center shrink-0"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span class="text-sm leading-relaxed">Prioritize your highest-impact operational bottlenecks</span>
+                  </li>
+                  <li class="flex items-start gap-3 text-white/85">
+                    <span class="mt-1 h-5 w-5 rounded-full bg-accent flex items-center justify-center shrink-0"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span class="text-sm leading-relaxed">Design your first 90-day operational roadmap</span>
+                  </li>
+                  <li class="flex items-start gap-3 text-white/85">
+                    <span class="mt-1 h-5 w-5 rounded-full bg-accent flex items-center justify-center shrink-0"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span class="text-sm leading-relaxed">Recommend the systems, automation and AI that deliver the greatest impact at your stage</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="lg:col-span-5 space-y-3">
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-accent">Free · 60 minutes</span>
+                  <p class="mt-2 text-sm text-white/70 leading-relaxed">No prep required. No obligation. Walk out with a roadmap whether or not you work with us.</p>
+                </div>
+                <a id="sc-roadmap-cta" href="/contact?type=operational-roadmap" class="flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium w-full">
+                  Get My Operational Roadmap
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <button type="button" id="sc-restart" class="px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium w-full">Retake the Index</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 5 MATURITY STAGES (educational, always visible) -->
+  <Section id="sc-stages">
+    <div class="pb-24">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-mono uppercase tracking-widest text-dark/50">The maturity model</span>
+        <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+          The 5 stages of <span class="text-accent">operational maturity</span>.
+        </h2>
+        <p class="mt-5 text-lg text-dark/70 leading-relaxed">
+          Every business runs on an operating model. The Business Operations Index™ places you on one of five stages — and shows you what the next one looks like.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-5 gap-3">
+        {stages.map((s, i) => (
+          <div class={`relative rounded-[24px] p-6 border border-dark shadow-[0px_4px_0px_#191a23] ${i === 4 ? 'bg-accent text-white' : i === 3 ? 'bg-dark text-white' : 'bg-gray text-dark'}`}>
+            <div class={`font-mono text-[10px] uppercase tracking-widest ${i >= 3 ? 'text-white/60' : 'text-dark/50'} mb-2`}>Stage {s.idx}</div>
+            <h3 class="text-lg font-extrabold tracking-tight mb-3">{s.name}</h3>
+            <p class={`text-sm leading-relaxed ${i >= 3 ? 'text-white/80' : 'text-dark/70'}`}>{s.blurb}</p>
+            {i < 4 && (
+              <div class="hidden md:flex absolute top-1/2 -right-2.5 -translate-y-1/2 items-center justify-center h-5 w-5 rounded-full bg-white border border-dark/20 z-10">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-dark"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- 5 LAYERS → SERVICES MAP -->
+  <Section id="sc-layers">
+    <div class="pb-24">
+      <div class="grid lg:grid-cols-12 gap-10 mb-10">
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dark/50">The framework</span>
+          <h2 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+            Every system <span class="text-accent">maps to a layer</span>.
+          </h2>
+        </div>
+        <div class="lg:col-span-7">
+          <p class="text-lg text-dark/70 leading-relaxed">
+            The five layers aren't abstract — every Global Tech Signal service plugs into one of them. The Business Operations Index™ tells you which layer is your weakest, and which services move you to the next stage.
+          </p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-3">
+        {layerServices.map((l, i) => (
+          <div class="rounded-[24px] bg-white border border-dark/10 p-6 shadow-[0px_4px_0px_#191a23]">
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-[10px] uppercase tracking-widest text-dark/50">Layer 0{i + 1}</span>
+              <span class={`h-2 w-2 rounded-full ${i === 4 ? 'bg-accent animate-pulse' : 'bg-dark/20'}`}></span>
+            </div>
+            <h3 class="text-xl font-extrabold tracking-tight mb-4">{l.label}</h3>
+            <ul class="space-y-1.5">
+              {l.items.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-dark/70">
+                  <span class="mt-1.5 h-1 w-1 rounded-full bg-dark/30 shrink-0"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </Section>
@@ -298,7 +445,7 @@ const tiers = [
         <a href="/operational-intelligence" class="group rounded-[24px] bg-gray border border-dark/10 p-7 hover:-translate-y-1 hover:border-dark transition-all shadow-[0px_4px_0px_#191a23]">
           <span class="text-xs font-mono uppercase tracking-widest text-dark/50">Read more</span>
           <h3 class="mt-3 text-xl font-extrabold tracking-tight">The Operational Intelligence category</h3>
-          <p class="mt-3 text-sm text-dark/70 leading-relaxed">Understand the framework behind the scorecard.</p>
+          <p class="mt-3 text-sm text-dark/70 leading-relaxed">Understand the framework behind the Index.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-dark group-hover:text-accent transition-colors">
             Read the playbook
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -346,12 +493,23 @@ const tiers = [
 <script>
   type Dim = 'capture' | 'connect' | 'automate' | 'intelligence' | 'optimize';
 
-  const TIERS = [
-    { min: 0,  max: 7,  name: 'Founding chaos',  blurb: "Your operations run on heroics, shared inboxes and memory. That's normal at the start \u2014 and the biggest single leverage point for the next year of growth." },
-    { min: 8,  max: 15, name: 'Patchwork ops',   blurb: "You've bolted together tools and automations, but the seams are showing. Connecting them into a real operating system unlocks compounding gains." },
-    { min: 16, max: 22, name: 'Connected ops',   blurb: "Your systems mostly talk to each other and key handoffs are automated. The next chapter is intelligence \u2014 embedding AI and live KPIs where decisions get made." },
-    { min: 23, max: 30, name: 'Intelligent ops', blurb: "You already run a real operating system. Optimization, governance and category-level decision intelligence are how you stay there." },
+  interface Stage { idx: number; min: number; max: number; name: string; blurb: string; }
+
+  const STAGES: Stage[] = [
+    { idx: 1, min: 0,  max: 6,  name: 'Patchwork Ops',   blurb: 'Disconnected systems, heavy manual work, knowledge lives with people. Normal at the start — and the single biggest leverage point for the next year of growth.' },
+    { idx: 2, min: 7,  max: 12, name: 'Connected Ops',   blurb: "Core systems communicate. Processes remain partially manual. Connecting them into a real operating system unlocks compounding gains." },
+    { idx: 3, min: 13, max: 18, name: 'Automated Ops',   blurb: 'Routine operational work runs automatically. Humans focus on exceptions. The next chapter is putting intelligence on top.' },
+    { idx: 4, min: 19, max: 24, name: 'Intelligent Ops', blurb: 'AI supports decisions. Operational insights are proactive. Leaders trust real-time visibility.' },
+    { idx: 5, min: 25, max: 30, name: 'Autonomous Ops',  blurb: 'Systems continuously optimize. AI recommends and orchestrates actions. Operations scale with minimal manual intervention.' },
   ];
+
+  const NEXT_STAGE_ACTIONS: Record<number, string[]> = {
+    1: ['Centralize where every customer & operational signal lands', 'Integrate your top 3 systems so they share one record', 'Document your top 3 workflows end-to-end'],
+    2: ['Automate your highest-leverage workflows', 'Add alerting so you find process failures first', 'Move team handoffs into systems instead of Slack threads'],
+    3: ['Add trusted live dashboards for leadership', 'Embed AI in 1–2 production workflows with guardrails', 'Introduce next-best-action recommendations in the workflow'],
+    4: ['Add anomaly detection across operational KPIs', 'Orchestrate AI agents across multiple workflows', 'Run continuous improvement against measurable KPIs'],
+    5: ['Run quarterly score reviews to stay at the frontier', 'Benchmark against industry leaders annually', 'Publish your operating model as a competitive asset'],
+  };
 
   const DIM_LABELS: Record<Dim, string> = {
     capture: 'Capture',
@@ -370,32 +528,32 @@ const tiers = [
     optimize: 'You measure what you ship and retire what doesn\'t work. The leverage now is intelligence + reach.',
   };
 
-  // Recommendations when a layer is weakest
+  // Dynamic recommendations, keyed off the weakest layer
   const RECS: Record<Dim, { title: string; desc: string; href: string }[]> = {
     capture: [
-      { title: 'Workflow Audit', desc: 'Map your highest-leakage capture flow end-to-end and design the connected replacement.', href: '/assessments#workflow-audit' },
-      { title: 'Revenue Systems Assessment', desc: 'If most of your leak is sales-side, start here for a full lead-to-cash review.', href: '/assessments#revenue-systems' },
-      { title: 'Outgrowing spreadsheets?', desc: 'A common starting point when capture is fragmented across docs and sheets.', href: '/solutions/outgrowing-spreadsheets' },
+      { title: 'Workflow Audit', desc: 'Map your highest-leakage capture flow end-to-end and design the connected replacement.', href: '/contact?type=workflow-audit' },
+      { title: 'Revenue Systems Assessment', desc: 'When the worst capture leak is sales-side — start with a full lead-to-cash review.', href: '/contact?type=revenue-systems' },
+      { title: 'CRM Architecture Review', desc: 'Re-think the data model and capture surface so every signal lands cleanly the first time.', href: '/contact?type=crm-architecture-review' },
     ],
     connect: [
-      { title: 'Operational Assessment', desc: 'Free 60-min session to map every disconnected system and recommend the connection plan.', href: '/contact' },
-      { title: 'Solutions: Disconnected systems', desc: 'How we connect CRM, finance, support and ops into one operational fabric.', href: '/solutions/disconnected-systems' },
-      { title: 'Revenue Systems Assessment', desc: 'When the worst disconnects are between marketing, sales and ops.', href: '/assessments#revenue-systems' },
+      { title: 'Systems Integration Review', desc: 'Audit every system pair that should share data — and what currently fails between them.', href: '/contact?type=systems-integration-review' },
+      { title: 'Data Architecture Assessment', desc: 'Design the truth layer so every tool, dashboard and AI agent agrees on the record.', href: '/contact?type=data-architecture-assessment' },
+      { title: 'Integration Blueprint', desc: 'A prioritized integration roadmap with cost, complexity and ROI per connection.', href: '/contact?type=integration-blueprint' },
     ],
     automate: [
-      { title: 'Workflow Audit', desc: 'Pick the workflow that costs you the most hours and we\'ll design the automated version.', href: '/assessments#workflow-audit' },
-      { title: 'Solutions: Manual processes', desc: 'Common automation patterns and where they pay back fastest.', href: '/solutions/manual-processes' },
-      { title: 'Operational Assessment', desc: 'Map every handoff to find the ones that justify automating first.', href: '/contact' },
+      { title: 'Automation Opportunity Review', desc: 'Map every manual handoff and rank it by hours-saved per quarter.', href: '/contact?type=automation-opportunity-review' },
+      { title: 'Workflow Audit', desc: 'Pick the workflow that costs you the most hours and design the automated version.', href: '/contact?type=workflow-audit' },
+      { title: 'Process Engineering Session', desc: 'Working session to redesign one operational process from first principles.', href: '/contact?type=process-engineering-session' },
     ],
     intelligence: [
-      { title: 'AI Readiness Assessment', desc: 'Where AI will actually move a business metric in your stack \u2014 and where it won\'t.', href: '/assessments#ai-readiness' },
-      { title: 'Solutions: AI without ROI', desc: 'Why most AI projects fail before they deliver \u2014 and how to avoid that.', href: '/solutions/ai-without-roi' },
-      { title: 'AI Operations service', desc: 'AI agents and copilots embedded inside business systems.', href: '/services#ai-operations' },
+      { title: 'AI Readiness Workshop', desc: 'Where AI will actually move business metrics in your stack — and where it won\'t.', href: '/contact?type=ai-readiness' },
+      { title: 'Business Intelligence Review', desc: 'Audit your reporting layer and design the dashboards leadership can actually trust.', href: '/contact?type=business-intelligence-review' },
+      { title: 'Decision Intelligence Assessment', desc: 'Identify the decisions that should be model-driven — not gut-driven.', href: '/contact?type=decision-intelligence-assessment' },
     ],
     optimize: [
-      { title: 'Solutions: Reporting', desc: 'Real dashboards leadership can trust \u2014 not exports nobody opens.', href: '/solutions/reporting' },
-      { title: 'Operational Assessment', desc: 'Free 60-min session to identify the 3 KPIs you should be watching live.', href: '/contact' },
-      { title: 'Executive Strategy Session', desc: 'Get leadership aligned on what to measure for the next 12 months.', href: '/assessments#executive-strategy' },
+      { title: 'Executive KPI Review', desc: 'Align leadership on the 5–10 numbers that should drive the next 12 months.', href: '/contact?type=executive-kpi-review' },
+      { title: 'Continuous Improvement Plan', desc: 'Design the cadence and instrumentation that keeps your operating model improving.', href: '/contact?type=continuous-improvement-plan' },
+      { title: 'Operational Performance Workshop', desc: 'Working session to retire workflows that no longer earn their keep.', href: '/contact?type=operational-performance-workshop' },
     ],
   };
 
@@ -406,6 +564,19 @@ const tiers = [
   const results = document.getElementById('sc-results') as HTMLDivElement;
 
   const allQuestions = Array.from(document.querySelectorAll<HTMLFieldSetElement>('.sc-q'));
+
+  // Lenis-aware scroller. Falls back to native window.scrollTo if Lenis isn’t mounted.
+  // The offset (-120) clears the sticky navbar so the target lands below it instead of behind it.
+  function scrollToElement(el: HTMLElement) {
+    const NAV_OFFSET = 120;
+    const lenis = (window as any).__lenis;
+    if (lenis && typeof lenis.scrollTo === 'function') {
+      lenis.scrollTo(el, { offset: -NAV_OFFSET });
+      return;
+    }
+    const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+    window.scrollTo({ top: y < 0 ? 0 : y, behavior: 'smooth' });
+  }
 
   function updateProgress() {
     const answered = allQuestions.filter((q) => q.querySelector<HTMLInputElement>('input:checked')).length;
@@ -429,9 +600,10 @@ const tiers = [
     });
 
     const total = Object.values(byDim).reduce((a, b) => a + b, 0);
-    const tier = TIERS.find((t) => total >= t.min && total <= t.max) || TIERS[0];
+    const stage = STAGES.find((s) => total >= s.min && total <= s.max) || STAGES[0];
+    const nextStage = STAGES.find((s) => s.idx === stage.idx + 1) || stage;
 
-    // Find strongest + weakest
+    // Find strongest + weakest (deterministic — first match in declaration order)
     const dimEntries = Object.entries(byDim) as [Dim, number][];
     let strongest = dimEntries[0];
     let weakest = dimEntries[0];
@@ -440,10 +612,52 @@ const tiers = [
       if (e[1] < weakest[1]) weakest = e;
     }
 
-    // Populate results
+    // Sort layers ascending by score so we can pick the 2 weakest for personalized progress actions
+    const sortedAsc = [...dimEntries].sort((a, b) => a[1] - b[1]);
+
+    // Populate score + tier
     (document.getElementById('sc-total') as HTMLSpanElement).textContent = String(total);
-    (document.getElementById('sc-tier-name') as HTMLSpanElement).textContent = tier.name;
-    (document.getElementById('sc-tier-blurb') as HTMLParagraphElement).textContent = tier.blurb;
+    (document.getElementById('sc-tier-name') as HTMLSpanElement).textContent = stage.name;
+    (document.getElementById('sc-tier-blurb') as HTMLParagraphElement).textContent = stage.blurb;
+    (document.getElementById('sc-stage-idx') as HTMLSpanElement).textContent = String(stage.idx);
+
+    // Current → Next stage card
+    (document.getElementById('sc-current-stage') as HTMLHeadingElement).textContent = `Stage ${stage.idx} · ${stage.name}`;
+    (document.getElementById('sc-current-blurb') as HTMLParagraphElement).textContent = stage.blurb;
+    if (stage.idx === 5) {
+      (document.getElementById('sc-next-stage') as HTMLHeadingElement).textContent = 'You\u2019re at the frontier.';
+      (document.getElementById('sc-next-blurb') as HTMLParagraphElement).textContent = 'There is no next stage — only the discipline of staying here. Quarterly score reviews and benchmarking keep your operating model ahead of the market.';
+    } else {
+      (document.getElementById('sc-next-stage') as HTMLHeadingElement).textContent = `Stage ${nextStage.idx} · ${nextStage.name}`;
+      (document.getElementById('sc-next-blurb') as HTMLParagraphElement).textContent = nextStage.blurb;
+    }
+
+    // Progress required: 2 layer-personalized + 1 stage-generic
+    const progressActions: string[] = [];
+    if (stage.idx < 5) {
+      // Personalize first 2 with the user's lowest layers
+      progressActions.push(`Improve <strong>${DIM_LABELS[sortedAsc[0][0]]}</strong> — your weakest layer today.`);
+      if (sortedAsc[1][1] < 5) {
+        progressActions.push(`Reinforce <strong>${DIM_LABELS[sortedAsc[1][0]]}</strong> alongside it.`);
+      } else {
+        progressActions.push(NEXT_STAGE_ACTIONS[stage.idx][0]);
+      }
+      progressActions.push(NEXT_STAGE_ACTIONS[stage.idx][1]);
+    } else {
+      progressActions.push(...NEXT_STAGE_ACTIONS[5]);
+    }
+
+    const actionsList = document.getElementById('sc-progress-actions') as HTMLUListElement;
+    actionsList.innerHTML = '';
+    progressActions.forEach((text, i) => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start gap-3 p-4 rounded-xl bg-gray border border-dark/10';
+      li.innerHTML = `
+        <span class="flex items-center justify-center h-7 w-7 rounded-full bg-dark text-white text-[10px] font-mono shrink-0">${String(i + 1).padStart(2, '0')}</span>
+        <span class="text-sm text-dark leading-relaxed">${text}</span>
+      `;
+      actionsList.appendChild(li);
+    });
 
     // Per-dimension cards
     dimEntries.forEach(([dim, score]) => {
@@ -459,7 +673,7 @@ const tiers = [
     (document.getElementById('sc-strong-text') as HTMLParagraphElement).textContent = STRONG_TEXT[strongest[0]];
 
     (document.getElementById('sc-weak-name') as HTMLHeadingElement).textContent = DIM_LABELS[weakest[0]];
-    (document.getElementById('sc-weak-text') as HTMLParagraphElement).textContent = `Strengthening your ${DIM_LABELS[weakest[0]]} layer is where you\u2019ll get the most leverage next. Below are three focused ways to start.`;
+    (document.getElementById('sc-weak-text') as HTMLParagraphElement).textContent = `Strengthening your ${DIM_LABELS[weakest[0]]} layer is where you\u2019ll get the most leverage next. Below are three focused engagements to start.`;
 
     // Recommendations
     const recsList = document.getElementById('sc-recs') as HTMLUListElement;
@@ -479,10 +693,16 @@ const tiers = [
       recsList.appendChild(li);
     });
 
+    // Decorate the roadmap CTA with the user's stage so the form can show context
+    const roadmapCta = document.getElementById('sc-roadmap-cta') as HTMLAnchorElement | null;
+    if (roadmapCta) {
+      roadmapCta.href = `/contact?type=operational-roadmap&stage=${stage.idx}&weak=${weakest[0]}`;
+    }
+
     // Hide form, show results
     form.classList.add('hidden');
     results.classList.remove('hidden');
-    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToElement(results);
   });
 
   document.getElementById('sc-restart')?.addEventListener('click', () => {
@@ -490,7 +710,7 @@ const tiers = [
     results.classList.add('hidden');
     form.classList.remove('hidden');
     updateProgress();
-    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToElement(form);
   });
 
   // Initial state

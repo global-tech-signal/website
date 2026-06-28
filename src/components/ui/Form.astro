@@ -374,14 +374,26 @@ const currentSystems = [
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const status = document.getElementById('contact-status') as HTMLParagraphElement;
 
-  // Map assessment slugs → human-readable labels.
-  // Keep in sync with /src/pages/assessments.astro.
+  // Map assessment / engagement slugs → human-readable labels.
+  // Keep in sync with /src/pages/assessments.astro and /src/pages/scorecard.astro.
   const ASSESSMENT_LABELS: Record<string, string> = {
     'operational-assessment': 'Operational Assessment',
-    'ai-readiness': 'AI Readiness Assessment',
+    'operational-roadmap': 'Operational Roadmap Session',
+    'ai-readiness': 'AI Readiness Workshop',
     'workflow-audit': 'Workflow Audit',
     'revenue-systems': 'Revenue Systems Assessment',
     'executive-strategy': 'Executive Strategy Session',
+    'crm-architecture-review': 'CRM Architecture Review',
+    'systems-integration-review': 'Systems Integration Review',
+    'data-architecture-assessment': 'Data Architecture Assessment',
+    'integration-blueprint': 'Integration Blueprint',
+    'automation-opportunity-review': 'Automation Opportunity Review',
+    'process-engineering-session': 'Process Engineering Session',
+    'business-intelligence-review': 'Business Intelligence Review',
+    'decision-intelligence-assessment': 'Decision Intelligence Assessment',
+    'executive-kpi-review': 'Executive KPI Review',
+    'continuous-improvement-plan': 'Continuous Improvement Plan',
+    'operational-performance-workshop': 'Operational Performance Workshop',
   };
 
   // Read ?type=<slug> from URL and decorate the form.
