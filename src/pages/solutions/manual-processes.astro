@@ -1,0 +1,38 @@
+---
+import SolutionLayout from "../../layouts/SolutionLayout.astro";
+---
+
+<SolutionLayout
+  eyebrow="Solutions · AI Operations"
+  titleLead="Too Many"
+  titleAccent="Manual Processes?"
+  intro="Your team spends hours on repetitive work — copy-pasting between tools, chasing approvals and processing the same documents over and over — when most of it could run itself."
+  problem="As the business grew, more work was solved by adding people instead of redesigning the process. Now the operational bottlenecks are everywhere, and adding headcount no longer scales."
+  symptoms={[
+    { num: "01", title: "Repetitive Data Entry", desc: "The same information is rekeyed into CRM, billing, spreadsheets and documents every day." },
+    { num: "02", title: "Manual Approvals", desc: "Simple decisions wait days because they depend on an email chain finding the right person." },
+    { num: "03", title: "Document Wrangling", desc: "Quotes, contracts and reports are assembled by hand for every customer." },
+    { num: "04", title: "Operational Bottlenecks", desc: "Whole processes pause whenever one person is unavailable." },
+    { num: "05", title: "Error-Prone Handoffs", desc: "Information gets lost or distorted as it moves between teams and tools." },
+    { num: "06", title: "Hidden Workarounds", desc: "Every team has a spreadsheet, script or hack that nobody documented." },
+  ]}
+  impact="Manual processes don't just consume hours — they cap how fast the business can move. They make scaling expensive, onboarding slow, and quality unpredictable. Every manual step is a tax on growth and a risk to customer experience."
+  systemName="AI Operations"
+  systemDescription="We build an AI Operations layer that absorbs the repetitive work — AI copilots, workflow automation and document processing embedded into the way your business runs, so your team focuses on the work that actually requires humans."
+  systemCapabilities={[
+    "Workflow automation across tools",
+    "AI document extraction & generation",
+    "Approval workflows with audit trails",
+    "Internal AI copilots on your data",
+    "LLM-powered triage & classification",
+    "Observability for every automation",
+  ]}
+  technologies={["AI Automation", "LLM Workflows", "Zapier · n8n · Make", "Custom APIs", "Document AI", "Workflow Orchestration"]}
+  caseRef={{
+    metric: "15+ hours/week recovered",
+    title: "Recovering $40K/month in lost revenue with a unified scheduling and intake system",
+    href: "/case-studies#saas-scheduling-clinic",
+  }}
+  metaTitle="Too Many Manual Processes? | Global Tech Signal"
+  metaDescription="When manual work is everywhere and adding people doesn't scale, AI Operations replaces the repetitive work with intelligent systems."
+/>

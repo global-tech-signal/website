@@ -1,35 +1,628 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Form from "../components/ui/Form.astro";
+
+const fitYes = [
+  "Your business is growing faster than your operations.",
+  "Your team relies on spreadsheets or manual processes.",
+  "You use multiple systems that don't communicate.",
+  "You struggle with operational visibility.",
+  "You're looking to improve efficiency with AI and automation.",
+  "You want a long-term technology partner.",
+  "You value strategic thinking, not just software implementation.",
+  "You want measurable business outcomes.",
+];
+
+const fitNo = [
+  "You're only looking for the cheapest solution.",
+  "You need a simple brochure website with no operational requirements.",
+  "You're looking for a one-time freelancer.",
+  "You only need basic software installation.",
+  "You're not ready to improve internal processes.",
+  "You're looking for technology without a business strategy.",
+];
+
+const steps = [
+  {
+    index: "01",
+    title: "Operational Assessment",
+    description:
+      "We learn about your business, goals, existing systems, and operational challenges.",
+  },
+  {
+    index: "02",
+    title: "Business Systems Review",
+    description:
+      "We identify inefficiencies, disconnected workflows, manual processes, and opportunities for improvement.",
+  },
+  {
+    index: "03",
+    title: "Solution Roadmap",
+    description:
+      "We recommend practical solutions, priorities, implementation phases, and expected outcomes.",
+  },
+  {
+    index: "04",
+    title: "Implementation",
+    description:
+      "If we're a good fit, we work together to design, build, and optimize your business systems.",
+  },
+];
+
+const challenges = [
+  {
+    title: "Outgrowing Spreadsheets",
+    description:
+      "Spreadsheets are duplicating work, hiding mistakes, and slowing the team down.",
+    href: "/solutions/outgrowing-spreadsheets",
+  },
+  {
+    title: "Manual Workflows",
+    description:
+      "Repetitive tasks consume hours that should be spent on customers and revenue.",
+    href: "/solutions/manual-processes",
+  },
+  {
+    title: "Sales Operations Bottlenecks",
+    description:
+      "Lead handoffs are leaking pipeline. Reps spend more time updating systems than selling.",
+    href: "/solutions/sales-operations",
+  },
+  {
+    title: "Customer Follow-up Issues",
+    description:
+      "Customer information is fragmented across tools, so follow-ups slip and experience suffers.",
+    href: "/solutions/customer-information",
+  },
+  {
+    title: "Disconnected Business Systems",
+    description:
+      "CRM, finance, support, and operations don't talk to each other. Data lives in silos.",
+    href: "/solutions/disconnected-systems",
+  },
+  {
+    title: "Poor Reporting & Visibility",
+    description:
+      "Leadership can't see what's actually happening across sales, operations, and delivery.",
+    href: "/solutions/reporting",
+  },
+  {
+    title: "AI Without Business Results",
+    description:
+      "Pilots are running, but nothing reaches production or moves a business metric.",
+    href: "/solutions/ai-without-roi",
+  },
+  {
+    title: "Scaling Operations",
+    description:
+      "Growth keeps breaking the system. Every new customer adds operational drag.",
+    href: "/solutions/scaling-operations",
+  },
+];
+
+const faqs = [
+  {
+    q: "How much does an Operational Assessment cost?",
+    a: "The first conversation is free. It's a working session where we understand your business, your systems, and where operations are breaking down. If a deeper, paid assessment is the right next step, we'll scope it transparently before any commitment.",
+  },
+  {
+    q: "How long do projects usually take?",
+    a: "Most engagements ship a first working business system in 4–8 weeks, then iterate from there. Larger operational platforms run as connected phases so you see value early instead of waiting for a big-bang launch.",
+  },
+  {
+    q: "Do you work with existing software?",
+    a: "Yes. We design business systems around the tools you already use — HubSpot, Salesforce, Zoho, Microsoft, Google Workspace, your finance and operations stack — and only introduce new technology where it removes real friction.",
+  },
+  {
+    q: "Can you improve our current CRM?",
+    a: "Often the answer is to optimize what you already have: clean up the data model, fix adoption, automate handoffs, and connect it to the rest of the business. We'll only recommend replacing a CRM when the current one is genuinely the blocker.",
+  },
+  {
+    q: "Do we need AI before working with GTS?",
+    a: "No. We start with your business problem and only introduce AI where it produces a measurable outcome. If AI isn't the right answer, we'll say so.",
+  },
+  {
+    q: "Can we start with a small project?",
+    a: "Yes. A focused first engagement — one workflow, one team, one bottleneck — is usually the best way to build trust and prove value before scaling into a broader operational system.",
+  },
+  {
+    q: "Do you work with growing businesses?",
+    a: "Growing businesses are our core focus. We work best with organizations that are outgrowing their current operations and ready to invest in scalable, intelligent business systems.",
+  },
+];
 ---
 
 <MainLayout
-  title="Contact | GlobalTechSignal"
-  description="Get in touch with GlobalTechSignal. Tell us about your product, automation or CRM project — we usually reply within one business day."
+  title="Start Your Operational Assessment | GlobalTechSignal"
+  description="Every engagement begins with understanding your business — not selling technology. Start your Operational Assessment with Global Tech Signal."
 >
   <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
-    <div class="relative flex flex-col items-center">
-      <div class="row items-center py-5 md:pb-20 md:pt-10">
-        <div class="text-center space-y-8 max-w-3xl mx-auto">
-          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark">
-            <span class="w-2 h-2 rounded-full bg-accent"></span>
-            Contact
+    {/* Hero — two-column with decorative cards */}
+    <section class="relative">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-4 md:pt-10">
+        {/* Left — copy & CTAs */}
+        <div class="lg:col-span-7 space-y-7">
+          <span
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark"
+          >
+            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+            Operational Assessment · Free first conversation
           </span>
-          <h1 class="text-4xl font-medium leading-tight md:text-6xl tracking-tight">
-            Let's build <span class="redhead">something</span>.
+
+          <h1
+            class="text-4xl font-medium leading-[1.05] md:text-6xl tracking-tight"
+          >
+            Start Your
+            <span class="redhead">Operational Assessment</span>
           </h1>
-          <p class="text-lg font-normal leading-7 text-dark/70">
-            Tell us about your product, automation or CRM project — we usually reply within one business day.
+
+          <p class="text-lg leading-7 text-dark/70 max-w-xl">
+            Growing businesses eventually outgrow spreadsheets, disconnected
+            software, and manual processes. We help organizations identify
+            operational bottlenecks, connect business systems, and design
+            intelligent solutions powered by AI, automation, and modern
+            technology.
           </p>
+
+          <p class="text-base leading-7 text-dark/60 max-w-xl">
+            Whether you're exploring CRM improvements, workflow automation, AI,
+            or custom software, every engagement begins with understanding your
+            business — not selling technology.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a
+              href="#contact-form"
+              class="px-8 py-4 bg-dark hover:bg-accent rounded-xl text-center text-white text-base font-medium transition-colors"
+            >
+              Schedule an Operational Assessment
+            </a>
+            <a
+              href="#who-we-work-with"
+              class="px-8 py-4 bg-white hover:bg-dark hover:text-white rounded-xl text-center text-dark border border-dark/20 text-base font-medium transition-colors"
+            >
+              Are we a fit?
+            </a>
+          </div>
+
+          {/* Trust signals strip */}
+          <ul class="flex flex-wrap items-center gap-x-6 gap-y-3 pt-4 text-sm text-dark/70">
+            <li class="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-accent"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              No obligation
+            </li>
+            <li class="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-accent"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Reply within 1 business day
+            </li>
+            <li class="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-accent"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              NDA available
+            </li>
+          </ul>
+        </div>
+
+        {/* Right — decorative floating cards */}
+        <div class="lg:col-span-5 relative">
+          <div class="relative w-full max-w-md mx-auto lg:max-w-none">
+            {/* Soft accent glow */}
+            <div
+              class="absolute -inset-6 rounded-[60px] bg-accent/5 blur-3xl"
+              aria-hidden="true"
+            >
+            </div>
+
+            <div class="relative flex flex-col gap-5">
+              {/* Card 1 — response time */}
+              <div
+                class="hero-float-card bg-dark text-white rounded-[28px] p-6 border border-dark shadow-[0px_5px_0px_#191a23]"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex items-center justify-center h-12 w-12 rounded-full bg-accent/20 shrink-0"
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      class="text-accent"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-3xl font-extrabold leading-none">
+                      &lt; 24h
+                    </div>
+                    <p class="text-xs text-white/60 mt-1.5">
+                      Average response time
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2 — 4-step path */}
+              <div
+                class="hero-float-card bg-white rounded-[28px] p-6 border border-dark shadow-[0px_5px_0px_#191a23]"
+                style="animation-delay: 0.4s;"
+              >
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="h-2 w-2 rounded-full bg-accent"></span>
+                  <span
+                    class="text-[11px] font-semibold uppercase tracking-wider text-dark/50"
+                    >Your path</span
+                  >
+                </div>
+                <ol class="space-y-3">
+                  <li class="flex items-center gap-3">
+                    <span
+                      class="flex items-center justify-center h-6 w-6 rounded-full bg-dark text-white text-[11px] font-bold shrink-0"
+                      >1</span
+                    >
+                    <span class="text-sm text-dark/80"
+                      >Operational Assessment</span
+                    >
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span
+                      class="flex items-center justify-center h-6 w-6 rounded-full bg-dark text-white text-[11px] font-bold shrink-0"
+                      >2</span
+                    >
+                    <span class="text-sm text-dark/80"
+                      >Business Systems Review</span
+                    >
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span
+                      class="flex items-center justify-center h-6 w-6 rounded-full bg-dark text-white text-[11px] font-bold shrink-0"
+                      >3</span
+                    >
+                    <span class="text-sm text-dark/80">Solution Roadmap</span>
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span
+                      class="flex items-center justify-center h-6 w-6 rounded-full bg-accent text-white text-[11px] font-bold shrink-0"
+                      >4</span
+                    >
+                    <span class="text-sm text-dark/80">Implementation</span>
+                  </li>
+                </ol>
+              </div>
+
+              {/* Card 3 — guarantee */}
+              <div
+                class="hero-float-card bg-red-soft rounded-[28px] p-5 border border-dark shadow-[0px_5px_0px_#191a23]"
+                style="animation-delay: 0.8s;"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex items-center justify-center h-11 w-11 rounded-full bg-white border border-dark shrink-0"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-accent"
+                    >
+                      <path
+                        d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold leading-tight text-dark">
+                      If we're not the right fit
+                    </div>
+                    <p class="text-xs text-dark/60 mt-1">
+                      We'll tell you — no upsell, no pressure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="mt-10 max-w-6xl mx-auto">
-      <Form />
-    </div>
+    {/* Form — moved up, right after hero */}
+    <section id="contact-form" class="mt-16 md:mt-24 scroll-mt-24">
+      <div class="max-w-3xl mb-10">
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark mb-5"
+        >
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          Step 01 · Tell us about your operations
+        </span>
+        <h2 class="redhead text-3xl sm:text-4xl mb-6">
+          Tell us where operations are breaking down
+        </h2>
+        <p class="text-dark/70 text-lg leading-7">
+          A few details help us prepare a useful first conversation. Required
+          fields are marked with an asterisk. Everything you share stays
+          confidential.
+        </p>
+      </div>
 
-    <div class="grid md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
+      <div>
+        <Form qualify={true} />
+      </div>
+    </section>
+
+    {/* Section — Who We Work Best With */}
+    <section id="who-we-work-with" class="mt-20 md:mt-28 scroll-mt-24">
+      <div class="max-w-3xl mb-12">
+        <h2 class="redhead text-3xl sm:text-4xl mb-6">Who We Work Best With</h2>
+        <p class="text-dark/70 text-lg leading-7">
+          Global Tech Signal partners with organizations that are focused on
+          improving operations, increasing efficiency, and building scalable
+          business systems.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div
+          class="p-8 md:p-10 bg-gray rounded-[45px] border border-dark/10 shadow-[0px_5px_0px_#191a23]"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <span
+              class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-accent text-white text-sm font-bold"
+              >+</span
+            >
+            <h3 class="text-2xl font-semibold">We're a great fit if…</h3>
+          </div>
+          <ul class="space-y-4">
+            {
+              fitYes.map((item) => (
+                <li class="flex items-start gap-3 text-dark/80">
+                  <span class="mt-2 h-2 w-2 rounded-full bg-accent shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div
+          class="p-8 md:p-10 bg-dark text-white rounded-[45px] border border-dark shadow-[0px_5px_0px_#191a23]"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <span
+              class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-white/10 text-white text-sm font-bold"
+              >–</span
+            >
+            <h3 class="text-2xl font-semibold">
+              We may not be the best fit if…
+            </h3>
+          </div>
+          <ul class="space-y-4">
+            {
+              fitNo.map((item) => (
+                <li class="flex items-start gap-3 text-white/80">
+                  <span class="mt-2 h-2 w-2 rounded-full bg-white/40 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {/* Section 2 — What Happens After You Contact Us */}
+    <section class="mt-20 md:mt-28">
+      <div class="max-w-3xl mb-12">
+        <h2 class="redhead text-3xl sm:text-4xl mb-6">
+          What Happens After You Contact Us?
+        </h2>
+        <p class="text-dark/70 text-lg leading-7">
+          A clear, four-step path from first conversation to a working business
+          system — with no commitment required until we're both confident in the
+          direction.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          steps.map((step, i) => {
+            const isDark = i === 1;
+            const isRed = i === 3;
+            const cardClass = isDark
+              ? "bg-dark text-white border-dark"
+              : isRed
+              ? "bg-red-soft text-dark border-dark/10"
+              : "bg-gray text-dark border-dark/10";
+            const indexClass = isDark ? "text-white/40" : "text-dark/30";
+            const dividerClass = isDark ? "bg-white/15" : "bg-dark/10";
+            const bodyClass = isDark ? "text-white/75" : "text-dark/70";
+            return (
+              <div
+                class={`p-8 rounded-[32px] border shadow-[0px_5px_0px_#191a23] flex flex-col ${cardClass}`}
+              >
+                <span class={`text-5xl font-bold leading-none ${indexClass}`}>
+                  {step.index}
+                </span>
+                <div class={`h-px my-6 ${dividerClass}`} />
+                <h3 class="text-xl font-semibold mb-3">{step.title}</h3>
+                <p class={`text-sm leading-6 ${bodyClass}`}>
+                  {step.description}
+                </p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    {/* Section 3 — Common Challenges We Solve */}
+    <section class="mt-20 md:mt-28">
+      <div class="max-w-3xl mb-12">
+        <h2 class="redhead text-3xl sm:text-4xl mb-6">
+          Common Challenges We Solve
+        </h2>
+        <p class="text-dark/70 text-lg leading-7">
+          If any of these sound familiar, you're in the right place. Each one
+          maps to a business system we can design and operate with you.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          challenges.map((c) => (
+            <a
+              href={c.href}
+              class="group p-7 bg-gray rounded-[28px] border border-dark/10 shadow-[0px_5px_0px_#191a23] flex flex-col justify-between hover:bg-red-soft transition-colors"
+            >
+              <div>
+                <h3 class="text-lg font-semibold mb-3 leading-snug">
+                  {c.title}
+                </h3>
+                <p class="text-sm text-dark/70 leading-6">{c.description}</p>
+              </div>
+              <span class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-dark">
+                Read the solution
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform group-hover:translate-x-1"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    {/* Section 4 — FAQ */}
+    <section class="mt-20 md:mt-28">
+      <div class="max-w-3xl mb-12">
+        <h2 class="redhead text-3xl sm:text-4xl mb-6">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-dark/70 text-lg leading-7">
+          The questions growing businesses ask before starting an engagement
+          with Global Tech Signal.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {
+          faqs.map((item, i) => (
+            <details
+              class="group bg-gray rounded-[28px] border border-dark/10 shadow-[0px_5px_0px_#191a23] overflow-hidden"
+              open={i === 0}
+            >
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-6 p-6 md:p-8">
+                <h3 class="text-lg md:text-xl font-semibold pr-4">{item.q}</h3>
+                <span
+                  class="flex items-center justify-center h-10 w-10 rounded-full border border-dark bg-white shrink-0 transition-transform group-open:rotate-45"
+                  aria-hidden="true"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 md:px-8 pb-6 md:pb-8">
+                <div class="h-px bg-dark/10 mb-5" />
+                <p class="text-dark/75 leading-7">{item.a}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    {/* Final CTA — reassurance */}
+    <section class="mt-16 md:mt-20">
+      <div
+        class="p-8 md:p-12 bg-dark text-white rounded-[45px] border border-dark shadow-[0px_5px_0px_#191a23]"
+      >
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/5 text-xs font-medium text-white/80 mb-6"
+        >
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          No obligation
+        </span>
+        <h2 class="text-2xl md:text-4xl font-semibold leading-tight mb-4">
+          You're not committing to a project.
+        </h2>
+        <p class="text-white/75 text-lg leading-7 max-w-2xl">
+          Your first conversation is simply an opportunity for us to understand
+          your business, answer your questions, and determine whether we're the
+          right partner. If we're not the right fit, we'll tell you.
+        </p>
+      </div>
+    </section>
+
+    {/* Contact info strip */}
+    <div class="grid md:grid-cols-3 gap-6 mt-12 mb-4">
       <div class="p-8 bg-gray rounded-2xl border border-dark/5 text-center">
         <h3 class="text-xl font-medium mb-2">Email</h3>
         <p class="text-dark/70">hello@globaltechsignal.com</p>
@@ -45,3 +638,23 @@ import Form from "../components/ui/Form.astro";
     </div>
   </div>
 </MainLayout>
+
+<style>
+  @keyframes hero-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  .hero-float-card {
+    animation: hero-float 5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-float-card {
+      animation: none;
+    }
+  }
+</style>

@@ -1,56 +1,53 @@
 [
     {
-        "name": "Starter CRM Setup",
+        "name": "Foundational System",
         "price_usd": 2500,
         "starting_from": true,
-        "best_for": "Small teams getting started",
+        "best_for": "Teams escaping spreadsheets and disconnected tools",
         "features": [
-            "CRM setup & configuration",
-            "Lead pipeline management",
-            "Contact management",
-            "Dashboard setup",
-            "Basic workflow automation",
-            "Email templates",
-            "Property management setup",
-            "Lead capture forms"
+            "Operational assessment of your current stack",
+            "Revenue System foundation (CRM setup & pipeline)",
+            "Centralized lead and contact data",
+            "Core dashboards & visibility",
+            "Starter workflow automation",
+            "Email & template framework",
+            "Lead capture forms wired into CRM",
+            "Team training & adoption support"
         ]
     },
     {
-        "name": "Growth Automation",
+        "name": "Growth Operating System",
         "price_usd": 5000,
         "starting_from": true,
-        "best_for": "Growing businesses",
+        "best_for": "Growing businesses scaling sales and operations",
         "features": [
-            "Everything in Starter",
-            "Workflow automation",
-            "Dashboard reporting",
-            "Lead routing",
-            "Calendar integrations",
-            "Analytics & reporting",
-            "AI automation workflows",
-            "AI chatbot",
-            "Knowledge base integration",
-            "Third-party integrations"
+            "Everything in Foundational",
+            "Revenue + Operations Systems combined",
+            "Workflow automation across the stack",
+            "Lead routing & sales sequences",
+            "Calendar & communication integrations",
+            "Business Intelligence dashboards",
+            "AI Operations: copilots & assistants",
+            "Knowledge base & document workflows",
+            "Third-party API integrations"
         ],
         "badge": "Most Popular"
     },
     {
-        "name": "Enterprise Custom Solution",
+        "name": "Enterprise Operational Intelligence",
         "price_usd": 10000,
         "starting_from": true,
-        "best_for": "Teams needing custom operations",
+        "best_for": "Operators ready for a fully connected business system",
         "features": [
-            "Fully custom CRM",
-            "AI chatbot",
-            "Custom AI knowledge base",
-            "Advanced dashboards",
-            "API integrations",
-            "Custom reporting",
-            "Dedicated support",
-            "Scalable architecture",
-            "Advanced automation workflows",
-            "Custom AI agents",
-            "Multi-system integrations"
+            "Fully custom CRM & operations platform",
+            "Custom AI copilots & knowledge base",
+            "Executive & operational dashboards",
+            "End-to-end API & multi-system integrations",
+            "Custom reporting & data warehousing",
+            "Dedicated engineering support",
+            "Scalable, multi-tenant architecture",
+            "Advanced automation & AI agents",
+            "Operational Intelligence Framework rollout"
         ]
     }
 ]

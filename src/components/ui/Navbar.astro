@@ -8,25 +8,43 @@ type MenuItem = {
 };
 
 const menuitems: MenuItem[] = [
-  { href: '/articles', label: 'News' },
-  { href: '/case-studies', label: 'Case Studies' },
-  { href: '/services', label: 'Services' },
+  {
+    label: 'Business Systems',
+    children: [
+      { href: '/services#revenue-systems', label: 'Revenue Systems', description: 'CRM, sales automation & lead management built around how you sell.' },
+      { href: '/services#operations-systems', label: 'Operations Systems', description: 'Connected workflows that eliminate manual handoffs.' },
+      { href: '/services#customer-systems', label: 'Customer Systems', description: 'One source of truth for every customer interaction.' },
+      { href: '/services#business-intelligence', label: 'Business Intelligence', description: 'Dashboards & reporting leadership can actually trust.' },
+      { href: '/services#ai-operations', label: 'AI Operations', description: 'AI agents and copilots that remove operational work.' },
+      { href: '/services#digital-experience', label: 'Digital Experience', description: 'Web & product surfaces wired into your business systems.' },
+    ],
+  },
   {
     label: 'Solutions',
     children: [
-      {
-        href: '/solutions/outgrowing-spreadsheets',
-        label: 'CRM',
-        description: 'Outgrowing spreadsheets? Centralize sales & operations.',
-      },
+      { href: '/solutions/outgrowing-spreadsheets', label: 'Outgrowing Spreadsheets', description: 'Centralize sales & operations as you scale.' },
+      { href: '/solutions/sales-operations', label: 'Sales Operations Breaking Down', description: 'Lost leads, poor CRM adoption, manual follow-up.' },
+      { href: '/solutions/manual-processes', label: 'Too Many Manual Processes', description: 'Repetitive work and operational bottlenecks.' },
+      { href: '/solutions/disconnected-systems', label: 'Disconnected Business Systems', description: 'CRM, email, chat and docs that don\u2019t talk.' },
+      { href: '/solutions/reporting', label: 'Reporting Takes Days', description: 'Real-time visibility for leadership decisions.' },
+      { href: '/solutions/scaling-operations', label: 'Scaling Operations', description: 'Systems that scale without adding headcount.' },
+      { href: '/solutions/customer-information', label: 'Customer Info Everywhere', description: 'A unified customer record across your stack.' },
+      { href: '/solutions/ai-without-roi', label: 'AI Without ROI', description: 'Operational intelligence over isolated AI demos.' },
     ],
   },
-  { href: '/pricing', label: 'Pricing' },
+  {
+    label: 'Industries',
+    children: [
+      { href: '/industries/real-estate', label: 'Real Estate', description: 'CRM & automation for brokerages and agents.' },
+    ],
+  },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/articles', label: 'Insights' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
 
-const navButton = { href: 'https://calendly.com/abrar-globaltechsignal/30min', label: 'Book a Demo' };
+const navButton = { href: '/contact', label: 'Operational Assessment' };
 ---
 
 <div class="mt-20">
@@ -102,8 +120,6 @@ const navButton = { href: 'https://calendly.com/abrar-globaltechsignal/30min', l
               <a 
                 class="mobile-nav-link px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" 
                 href={navButton.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 data-close-menu="true"
               >
                 <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
@@ -115,7 +131,7 @@ const navButton = { href: 'https://calendly.com/abrar-globaltechsignal/30min', l
 
       <div>
         <div class="hidden lg:flex items-center gap-4">
-          <a class="px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" href={navButton.href} target="_blank" rel="noopener noreferrer">
+          <a class="px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" href={navButton.href}>
             <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
           </a>
         </div>

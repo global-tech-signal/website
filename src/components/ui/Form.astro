@@ -1,72 +1,279 @@
 ---
+type Props = {
+  qualify?: boolean;
+};
+
+const { qualify = false } = Astro.props;
+
+const inputClass =
+  "w-full px-[30px] py-[18px] border border-black rounded-[14px] text-black outline-none bg-white";
+const labelClass = "block text-black mb-2";
+
+const companySizes = [
+  "Just me / Founder",
+  "2-10",
+  "11-50",
+  "51-200",
+  "201-1,000",
+  "1,000+",
+];
+
+const industries = [
+  "Real Estate",
+  "Professional Services",
+  "Healthcare",
+  "Financial Services",
+  "Technology / SaaS",
+  "Manufacturing",
+  "Retail / E-commerce",
+  "Construction / Trades",
+  "Education",
+  "Other",
+];
+
+const challenges = [
+  "Manual Processes",
+  "CRM",
+  "Sales Operations",
+  "Customer Experience",
+  "Reporting & Visibility",
+  "AI",
+  "Integrations",
+  "Custom Software",
+  "Other",
+];
+
+const timelines = [
+  "Exploring options",
+  "Within 1-3 months",
+  "Within 3-6 months",
+  "6+ months",
+];
+
+const currentSystems = [
+  "HubSpot",
+  "Salesforce",
+  "Zoho",
+  "Microsoft",
+  "Google Workspace",
+  "Other",
+];
 ---
 
 <div
-  class="flex relative justify-start items-center p-7 md:p-[60px] bg-[#F3F3F3] rounded-[45px] overflow-hidden"
+  class:list={[
+    "flex relative justify-start items-center p-7 md:p-[60px] bg-[#F3F3F3] rounded-[45px] overflow-hidden",
+    qualify && "lg:items-start",
+  ]}
 >
-  <form id="contact-form" class="bg-gray sm:p-6 h-full w-full lg:max-w-lg">
-    <div class="flex flex-col sm:flex-row gap-[35px] sm:items-center mb-10">
-      <div class="flex items-center gap-[14px]">
-        <input
-          type="checkbox"
-          id="checkbox1"
-          name="checkbox1"
-          class="form-checkbox text-black"
-        />
-        <label for="checkbox1" class="text-black">Book a Demo</label>
+  <form
+    id="contact-form"
+    class:list={[
+      "bg-gray sm:p-6 h-full w-full",
+      !qualify && "lg:max-w-lg",
+    ]}
+  >
+    {!qualify && (
+      <div class="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-white text-xs font-medium text-dark">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>
+        Operational Assessment · Free first conversation
       </div>
-      <div class="flex items-center gap-[14px]">
-        <input
-          type="checkbox"
-          id="checkbox2"
-          name="checkbox2"
-          class="form-checkbox text-black"
-        />
-        <label for="checkbox2" class="flex items-center text-black"
-          >Start a Project</label
-        >
+    )}
+
+    {qualify ? (
+      <div class="grid sm:grid-cols-2 gap-x-5 gap-y-4 mb-4">
+        <div>
+          <label for="name" class={labelClass}>Name*</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Your full name"
+            class={inputClass}
+          />
+        </div>
+        <div>
+          <label for="company" class={labelClass}>Company*</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            required
+            placeholder="Company name"
+            class={inputClass}
+          />
+        </div>
+        <div>
+          <label for="email" class={labelClass}>Business Email*</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            class={inputClass}
+          />
+        </div>
+        <div>
+          <label for="phone" class={labelClass}>Phone (Optional)</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+1 (555) 555-5555"
+            class={inputClass}
+          />
+        </div>
+        <div>
+          <label for="companySize" class={labelClass}>Company Size*</label>
+          <select
+            id="companySize"
+            name="companySize"
+            required
+            class={inputClass}
+          >
+            <option value="">Select size</option>
+            {companySizes.map((size) => (
+              <option value={size}>{size}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="industry" class={labelClass}>Industry*</label>
+          <select id="industry" name="industry" required class={inputClass}>
+            <option value="">Select industry</option>
+            {industries.map((industry) => (
+              <option value={industry}>{industry}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="challenge" class={labelClass}>
+            Biggest Operational Challenge*
+          </label>
+          <select id="challenge" name="challenge" required class={inputClass}>
+            <option value="">Select the area causing the most friction</option>
+            {challenges.map((challenge) => (
+              <option value={challenge}>{challenge}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="timeline" class={labelClass}>Preferred Timeline</label>
+          <select id="timeline" name="timeline" class={inputClass}>
+            <option value="">Select timeline</option>
+            {timelines.map((timeline) => (
+              <option value={timeline}>{timeline}</option>
+            ))}
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="message" class={labelClass}>Tell us more*</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={5}
+            placeholder="Describe the operational bottleneck, the outcome you want, or the system you'd like to improve."
+            class={inputClass}
+          ></textarea>
+        </div>
+        <fieldset class="sm:col-span-2 mt-2">
+          <legend class={labelClass}>Current Systems (Optional)</legend>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+            {currentSystems.map((system) => (
+              <label class="flex items-center gap-2 text-sm text-black bg-white border border-black rounded-[10px] px-3 py-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="currentSystems"
+                  value={system}
+                  class="accent-red"
+                />
+                {system}
+              </label>
+            ))}
+          </div>
+        </fieldset>
       </div>
-    </div>
+    ) : (
+      <>
+        <div class="mb-4">
+          <label for="name" class={labelClass}>Name*</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Your full name"
+            class={inputClass}
+          />
+        </div>
 
-    <div class="mb-4">
-      <label for="name" class="block text-black mb-2">Name*</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        placeholder="Name"
-        class="w-full px-[30px] py-[18px] border border-black rounded-[14px] text-black outline-none"
-      />
-    </div>
+        <div class="mb-4">
+          <label for="company" class={labelClass}>Company</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            placeholder="Company name"
+            class={inputClass}
+          />
+        </div>
 
-    <div class="mb-4">
-      <label for="email" class="block text-black mb-2">Email*</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        placeholder="Email"
-        class="w-full px-[30px] py-[18px] border border-black rounded-[14px] text-black outline-none"
-      />
-    </div>
+        <div class="mb-4">
+          <label for="email" class={labelClass}>Business Email*</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            class={inputClass}
+          />
+        </div>
 
-    <div class="mb-4">
-      <label for="message" class="block text-black mb-2">Message*</label>
-      <textarea
-        id="message"
-        name="message"
-        required
-        placeholder="Message"
-        class="w-full px-[30px] py-[18px] border border-black rounded-[14px] text-black outline-none"
-      ></textarea>
-    </div>
+        <div class="mb-4">
+          <label for="challenge" class={labelClass}>
+            Biggest Operational Challenge
+          </label>
+          <select id="challenge" name="challenge" class={inputClass}>
+            <option value="">Where is operations breaking down?</option>
+            {challenges.map((c) => (
+              <option value={c}>{c}</option>
+            ))}
+          </select>
+        </div>
 
-    <button type="submit" name="submit" class="btn-primary w-full">Send</button>
+        <div class="mb-4">
+          <label for="message" class={labelClass}>Message*</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={4}
+            placeholder="Tell us where revenue is leaking, where teams are duplicating work, or where reporting takes days."
+            class={inputClass}
+          ></textarea>
+        </div>
+      </>
+    )}
+
+    <button type="submit" name="submit" class="btn-primary w-full">
+      {qualify ? "Schedule an Operational Assessment" : "Request Operational Assessment"}
+    </button>
+    {!qualify && (
+      <p class="mt-4 text-center text-xs text-dark/50">
+        Need to share more context?
+        <a href="/contact" class="underline hover:text-accent">
+          Use the full assessment form
+        </a>
+      </p>
+    )}
     <p id="contact-status" class="mt-4 text-center text-sm hidden"></p>
   </form>
 
+  {!qualify && (
   <!-- Decorative side panel -->
   <div class="absolute right-8 top-[5%] bottom-[5%] w-[320px] hidden lg:flex flex-col items-center justify-center gap-5">
     <!-- Accent glow -->
@@ -123,43 +330,18 @@
       </div>
     </div>
   </div>
+  )}
 </div>
 <style>
-  .form-checkbox {
-    appearance: none;
-    width: 28px;
-    height: 28px;
-    border: 1px solid #000;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .form-checkbox:before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--red);
-    transform: scale(0);
-    transition: transform 0.1s ease-in-out;
-  }
-
-  .form-checkbox:checked:before {
-    transform: scale(0.6);
-  }
-
   @keyframes form-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-6px); }
   }
   .form-float-card {
     animation: form-float 4s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .form-float-card { animation: none; }
   }
 </style>
 
@@ -170,6 +352,7 @@
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalLabel = btn.textContent || 'Send';
     btn.disabled = true;
     btn.textContent = 'Sending...';
     status.classList.add('hidden');
@@ -194,42 +377,7 @@
       status.className = 'mt-4 text-center text-sm text-red-500';
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Send';
+      btn.textContent = originalLabel;
     }
   });
-</script>
-<script>
-  function formSetup() {
-    var cb1 = document.getElementById("checkbox1") as HTMLInputElement;
-    var cb2 = document.getElementById("checkbox2") as HTMLInputElement;
-    var message = document.getElementById("message") as HTMLInputElement;
-
-    if (cb1 && cb2) {
-      cb1.checked = true;
-
-      cb2.addEventListener("change", function () {
-        if (cb2.checked) {
-          cb1.checked = false;
-          message.value =
-            "We'd like to start a software project with GlobalTechSignal. Here's what we're trying to build:";
-        } else {
-          message.value = "";
-          cb1.checked = true;
-        }
-      });
-      cb1.addEventListener("change", function () {
-        if (cb1.checked) {
-          cb2.checked = false;
-          message.value = "";
-        } else {
-          cb2.checked = true;
-          message.value =
-            "We'd like to start a software project with GlobalTechSignal. Here's what we're trying to build:";
-        }
-      });
-    }
-  }
-
-  formSetup();
-  document.addEventListener("astro:after-swap", formSetup);
 </script>

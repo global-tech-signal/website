@@ -1,0 +1,106 @@
+---
+import Section from "./Section.astro";
+
+const problems = [
+  {
+    num: "01",
+    title: "Outgrowing Spreadsheets",
+    desc: "What used to be a single sheet now lives across dozens of tabs nobody owns.",
+    href: "/solutions/outgrowing-spreadsheets",
+    variant: "light",
+  },
+  {
+    num: "02",
+    title: "Too Many Manual Tasks",
+    desc: "Your team spends hours on repetitive work that should run itself.",
+    href: "/solutions/manual-processes",
+    variant: "dark",
+  },
+  {
+    num: "03",
+    title: "Sales Operations Slowing Down",
+    desc: "Leads slip through. Follow-ups go cold. The pipeline isn\u2019t keeping up with growth.",
+    href: "/solutions/sales-operations",
+    variant: "red",
+  },
+  {
+    num: "04",
+    title: "Disconnected Software",
+    desc: "CRM, email, chat, docs and spreadsheets all hold pieces of the truth \u2014 and none of them agree.",
+    href: "/solutions/disconnected-systems",
+    variant: "light",
+  },
+  {
+    num: "05",
+    title: "Reporting Takes Days",
+    desc: "By the time leadership gets the numbers, the moment to act on them is gone.",
+    href: "/solutions/reporting",
+    variant: "dark",
+  },
+  {
+    num: "06",
+    title: "Lack of Visibility",
+    desc: "Nobody can answer simple questions about what\u2019s happening across the business in real time.",
+    href: "/solutions/scaling-operations",
+    variant: "light",
+  },
+];
+
+const variantClasses = {
+  dark: "bg-dark text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  red: "bg-red-soft text-white border-dark shadow-[0px_5px_0px_#191a23]",
+  light: "bg-gray text-dark border-dark shadow-[0px_5px_0px_#191a23]",
+};
+---
+
+<Section id="business-problems">
+  <div class="mt-10 md:mt-[140px]">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+      <div class="flex flex-col gap-5 max-w-2xl">
+        <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+          <span class="h-2 w-2 rounded-full bg-red"></span>
+          <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Business Problems We Solve</span>
+        </span>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+          Growth creates
+          <span class="text-accent">operational friction</span>.
+        </h2>
+      </div>
+      <p class="lg:max-w-sm text-base sm:text-lg text-dark/80">
+        Before we talk about technology, we look at the operational problems that quietly slow growing businesses down.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {problems.map((p) => (
+        <a
+          href={p.href}
+          class:list={[
+            "group relative flex flex-col justify-between p-7 rounded-[28px] border min-h-[220px] transition-all duration-300 hover:-translate-y-1",
+            variantClasses[p.variant as keyof typeof variantClasses],
+          ]}
+        >
+          <div class="flex items-start justify-between mb-6">
+            <span class:list={["text-sm font-mono", p.variant === "light" ? "text-dark/40" : "text-white/50"]}>{p.num}</span>
+            <span
+              class:list={[
+                "inline-flex h-9 w-9 items-center justify-center rounded-full border transition-transform duration-300 group-hover:rotate-[-45deg]",
+                p.variant === "light" ? "border-dark/20 text-dark" : "border-white/30 text-white",
+              ]}
+              aria-hidden="true"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </div>
+          <div>
+            <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight mb-2">{p.title}</h3>
+            <p class:list={["text-sm leading-snug", p.variant === "light" ? "text-dark/65" : "text-white/75"]}>{p.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Section>

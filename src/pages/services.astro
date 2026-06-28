@@ -3,94 +3,100 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 const services = [
   {
-    id: "ai-automation",
+    id: "revenue-systems",
     num: "01",
-    title: "AI Automation",
-    tagline: "Replace repetitive operations with intelligent agents.",
+    title: "Revenue Systems",
+    tagline: "CRM, lead management and sales automation built around how your team actually wins business.",
     description:
-      "We use LLMs, agents and workflow tooling to automate repetitive operations: lead qualification, document processing, support triage, internal copilots and back-office tasks. Fewer manual steps, faster cycles, leaner teams.",
-    benefits: [
-      "Hours saved per week per employee",
-      "Faster lead and ticket response times",
-      "Reduced manual data entry and errors",
-      "AI copilots tailored to your workflows",
-    ],
-    cta: "Automate a workflow",
-  },
-  {
-    id: "crm",
-    num: "02",
-    title: "CRM Systems",
-    tagline: "Pipelines built around how your team actually sells.",
-    description:
-      "Custom CRM platforms and deep integrations with HubSpot, Salesforce and Pipedrive — built around how your business actually sells. Pipelines, automations, scoring and reporting that match your real funnel.",
+      "Lost leads, slow follow-up and pipelines nobody trusts are operational problems, not CRM problems. We design connected revenue systems — custom CRM, integrations with HubSpot/Salesforce/Pipedrive, automated lead capture, scoring and routing — so your sales motion becomes predictable, observable and ready to scale.",
     benefits: [
       "Pipelines that match your real sales process",
-      "Automated lead routing and follow-up",
-      "Clean data and dashboards leadership trust",
-      "Native integrations with your stack",
+      "Lead capture, scoring & routing in seconds",
+      "Sales automation, sequences and follow-ups",
+      "Revenue dashboards leadership can trust",
     ],
-    cta: "Design my CRM",
+    includes: ["Custom CRM", "HubSpot · Salesforce · Pipedrive", "Lead Management", "Sales Automation"],
+    cta: "Assess my revenue system",
   },
   {
-    id: "saas",
-    num: "03",
-    title: "SaaS Development",
-    tagline: "Production-grade SaaS, from MVP to multi-tenant scale.",
+    id: "operations-systems",
+    num: "02",
+    title: "Operations Systems",
+    tagline: "Connected workflows that replace manual handoffs across the tools you already use.",
     description:
-      "End-to-end SaaS engineering: architecture, multi-tenant data models, billing, auth, dashboards, APIs and DevOps. We build SaaS products founders can actually scale and maintain.",
-    benefits: [
-      "Production-grade architecture from day one",
-      "Multi-tenant data, billing and auth",
-      "CI/CD, monitoring and observability",
-      "Code your team can own and extend",
-    ],
-    cta: "Build my SaaS",
-  },
-  {
-    id: "workflow",
-    num: "04",
-    title: "Workflow Automation",
-    tagline: "One automated flow across the tools you already use.",
-    description:
-      "Connect the tools you already use — CRM, email, billing, ops — into one automated workflow. We build with Zapier, n8n, Make, custom APIs and serverless functions, depending on what fits.",
+      "When CRM, email, billing, ops tools and spreadsheets don't talk to each other, your team becomes the integration. We build operations systems — workflow automation, API integrations and internal tooling — so processes run end-to-end without human glue.",
     benefits: [
       "Single source of truth across tools",
       "Automated handoffs between teams",
       "Reliable, observable workflows",
       "Faster onboarding for new hires",
     ],
-    cta: "Automate my ops",
+    includes: ["Workflow Automation", "Internal Tools", "API Integrations", "Zapier · n8n · Make · Custom"],
+    cta: "Map my operations",
   },
   {
-    id: "websites",
-    num: "05",
-    title: "Custom Websites",
-    tagline: "Fast, SEO-ready sites wired into your stack.",
+    id: "customer-systems",
+    num: "03",
+    title: "Customer Systems",
+    tagline: "A single source of truth for every customer interaction — from first touch to ongoing success.",
     description:
-      "High-performance marketing sites and product surfaces built with modern stacks (Astro, Next.js, Tailwind). Fast, SEO-friendly, and wired into your CRM and analytics from launch.",
+      "When customer information lives across CRM, support tools, chat, email and spreadsheets, nobody owns the relationship. We design customer systems that unify the customer record, automate onboarding and retention, and give every team the same view.",
+    benefits: [
+      "Unified customer record across the stack",
+      "Onboarding & retention automation",
+      "Support and success operations",
+      "Customer health & churn signals",
+    ],
+    includes: ["Customer Data Platform", "Support Ops", "Onboarding Automation", "Retention Workflows"],
+    cta: "Unify my customer data",
+  },
+  {
+    id: "business-intelligence",
+    num: "04",
+    title: "Business Intelligence",
+    tagline: "Dashboards and reporting leadership can actually trust — in real time, not after a week of spreadsheet wrangling.",
+    description:
+      "If reporting takes days, decisions slow down. We design business intelligence layers on top of your operational systems so revenue, pipeline, retention and operational KPIs are live, trusted and shared across the org.",
+    benefits: [
+      "Executive dashboards in real time",
+      "Operational KPIs and SLAs",
+      "Revenue & pipeline analytics",
+      "Self-service reporting for teams",
+    ],
+    includes: ["Executive Dashboards", "Operational KPIs", "Data Warehousing", "Custom Reporting"],
+    cta: "Light up my dashboards",
+  },
+  {
+    id: "ai-operations",
+    num: "05",
+    title: "AI Operations",
+    tagline: "AI agents, copilots and intelligent automations embedded in how your business actually runs.",
+    description:
+      "Most AI projects fail because they're built as demos, not systems. We embed AI inside business systems — qualifying leads, processing documents, summarizing meetings, drafting communications and surfacing operational insight — so it produces measurable outcomes instead of dashboards full of promise.",
+    benefits: [
+      "AI copilots trained on your SOPs & data",
+      "LLM workflows for documents & tickets",
+      "Lead qualification & support triage",
+      "Operational intelligence & next-best-actions",
+    ],
+    includes: ["AI Automation", "LLM Workflows", "Internal AI Copilots", "Document Processing"],
+    cta: "Apply AI to a workflow",
+  },
+  {
+    id: "digital-experience",
+    num: "06",
+    title: "Digital Experience",
+    tagline: "High-performance websites and product surfaces engineered for conversion and wired into your business systems.",
+    description:
+      "Your website and product UI are the front of your operations. We build digital experiences — marketing sites, SaaS platforms and customer-facing portals — that capture demand, integrate with your CRM and analytics from day one, and scale with you.",
     benefits: [
       "Excellent Core Web Vitals out of the box",
       "Tight CRM and analytics integration",
-      "SEO-ready content architecture",
+      "SaaS product UI and portals",
       "Easy for your team to update",
     ],
-    cta: "Plan my site",
-  },
-  {
-    id: "lead-management",
-    num: "06",
-    title: "Lead Management Systems",
-    tagline: "From web form to closed deal — automatically.",
-    description:
-      "Capture, enrich, score and route leads automatically — from web form to closed deal. Purpose-built for service businesses where speed-to-lead and follow-up discipline drive revenue.",
-    benefits: [
-      "Speed-to-lead measured in seconds",
-      "Automatic enrichment and scoring",
-      "Round-robin or rules-based routing",
-      "Clear pipeline visibility for leadership",
-    ],
-    cta: "Capture more leads",
+    includes: ["Custom Websites", "SaaS Development", "Astro · Next.js", "Multi-tenant Platforms"],
+    cta: "Plan my digital experience",
   },
 ];
 
@@ -111,21 +117,21 @@ const industries = [
 ---
 
 <MainLayout
-  title="Engineering Services | GlobalTechSignal"
-  description="AI automation, CRM systems, SaaS development, custom business software and lead management — engineered by GlobalTechSignal."
+  title="Business Systems | GlobalTechSignal"
+  description="Revenue, operations, customer, intelligence, AI and digital experience systems — designed by GlobalTechSignal to eliminate operational friction and help growing businesses scale."
 >
   <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6">
     <!-- Hero -->
     <div class="text-center mb-14 max-w-5xl mx-auto">
       <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark mb-6">
         <span class="w-2 h-2 rounded-full bg-accent"></span>
-        Engineering Services
+        Business Systems
       </span>
       <h1 class="mb-4 text-4xl font-medium leading-tight tracking-tight md:text-6xl">
-        Software, AI and automation <br/> built for <span class="redhead">operational impact</span>.
+        Connected systems for <br/> <span class="redhead">operational impact</span>.
       </h1>
       <p class="text-lg font-normal leading-7 text-dark/70 mt-6">
-        Custom CRM systems, SaaS platforms, AI automations and lead management software — engineered for modern businesses.
+        We design six categories of intelligent business systems — each combining CRM, automation, integrations, AI and custom software around the operational outcome you need.
       </p>
     </div>
 
@@ -166,7 +172,12 @@ const industries = [
 
             <!-- Content column -->
             <div class={`md:col-span-8 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
-              <p class="text-dark/80 text-lg leading-8 mb-8">{service.description}</p>
+              <p class="text-dark/80 text-lg leading-8 mb-6">{service.description}</p>
+              <div class="flex flex-wrap gap-2 mb-8">
+                {service.includes.map((tech) => (
+                  <span class="text-xs px-3 py-1.5 rounded-full border border-dark/15 text-dark/70 bg-white">{tech}</span>
+                ))}
+              </div>
               <ul class="grid sm:grid-cols-2 gap-3">
                 {service.benefits.map((benefit) => (
                   <li class="flex items-start gap-3 p-4 rounded-xl bg-gray/60 border border-dark/5">
@@ -189,7 +200,7 @@ const industries = [
     <div class="mt-28">
       <div class="text-center mb-10">
         <h2 class="text-3xl md:text-4xl font-medium tracking-tight">Industries we serve</h2>
-        <p class="text-dark/60 mt-3 max-w-xl mx-auto">Engineering tailored to operational realities — not generic agency playbooks.</p>
+        <p class="text-dark/60 mt-3 max-w-xl mx-auto">Business systems tailored to operational realities — not generic agency playbooks.</p>
       </div>
       <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
         {industries.map((industry) => (
@@ -206,16 +217,16 @@ const industries = [
         <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl"></div>
         <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
         <div class="relative">
-          <h2 class="text-3xl md:text-4xl font-medium mb-5 tracking-tight">Need custom software for your business?</h2>
+          <h2 class="text-3xl md:text-4xl font-medium mb-5 tracking-tight">Not sure which system you need?</h2>
           <p class="mb-8 text-lg max-w-2xl mx-auto text-white/70">
-            Tell us about your CRM, SaaS or AI automation project. We usually reply within one business day.
+            Start with an operational assessment. We'll review your stack, map the friction and recommend the system that solves it.
           </p>
           <div class="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">
-              Book a Demo
+              Operational Assessment
             </a>
-            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">
-              Start a Project
+            <a href="/solutions/outgrowing-spreadsheets" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">
+              Explore Solutions
             </a>
           </div>
         </div>

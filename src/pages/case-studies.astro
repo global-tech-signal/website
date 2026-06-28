@@ -1,69 +1,79 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import { Image } from "astro:assets";
-import larrow from "../assets/icon3.svg";
 
 const caseStudies = [
   {
     id: "ai-lead-routing-roofing",
-    title: "AI-Powered Lead Routing & CRM Workflow",
+    headlineMetric: "Reduced lead response time by 92%",
+    title: "From hours-long lead response to under 2 minutes — and 38% more booked inspections",
     client: "Regional Roofing Company",
+    system: "Revenue System · AI Operations",
     summary:
-      "We shipped an AI-powered lead routing and CRM workflow that cut response time from hours to minutes and increased booked inspections by 38%.",
-    challenge:
-      "The company relied on manual lead assignment and spreadsheet tracking. Response times averaged 4–6 hours, and leads were frequently lost between reps.",
-    solution:
-      "We built an automated intake pipeline that scores and routes inbound leads to the nearest available rep in under 60 seconds — integrated with their CRM, calendar, and notification stack.",
+      "A regional roofing company was losing inbound leads to slow follow-up and spreadsheet handoffs. We replaced the manual process with a connected revenue system that captures, scores and routes every inbound lead in under 60 seconds — and the operational outcome was immediate.",
+    problem:
+      "The team relied on manual lead assignment and spreadsheet tracking. Response times averaged 4–6 hours, leads slipped between reps, and the owner had no visibility into what was happening day-to-day.",
+    impact:
+      "Slow follow-up was directly suppressing booked inspections, and competitors were winning deals on speed alone. Adding headcount wasn't fixing the underlying operational problem.",
+    system_solution:
+      "We designed an intake → scoring → routing → notification system on top of their CRM, with AI handling first-pass qualification and the workflow assigning leads to the nearest available rep instantly.",
+    technologies: ["AI Automation", "CRM", "Lead Routing", "Workflow Automation"],
     results: [
       "Response time reduced from hours to under 2 minutes",
       "Booked inspections up 38%",
       "Lead leakage eliminated",
       "Zero added headcount",
     ],
-    tags: ["AI Automation", "CRM", "Lead Management"],
   },
   {
     id: "saas-scheduling-clinic",
-    title: "SaaS Scheduling Platform with Automated Intake",
+    headlineMetric: "27% fewer no-shows · 15+ hours/week recovered",
+    title: "Recovering $40K/month in lost revenue with a unified scheduling and intake system",
     client: "Multi-Location Clinic Group",
+    system: "Operations System · Customer System",
     summary:
-      "We built a SaaS scheduling platform with automated reminders and intake, reducing no-shows by 27% and saving the front-desk team 15+ hours per week.",
-    challenge:
-      "Five clinic locations used different scheduling tools and manual reminder calls. No-shows were costing the group $40K+ per month in lost revenue.",
-    solution:
-      "We designed a unified scheduling platform with SMS/email reminders, digital intake forms, and real-time availability sync across all locations.",
+      "Five clinic locations were using different scheduling tools and manual reminder calls. We unified them under one operations system that automated reminders, digitized intake and gave leadership real-time visibility across every location.",
+    problem:
+      "Each location used a different scheduling tool. Reminders were manual, intake was paper-based, and no two locations could see each other's availability or capacity.",
+    impact:
+      "No-shows were costing the group $40K+ per month, the front-desk team was burning hours on reminder calls, and patients were experiencing inconsistent service across locations.",
+    system_solution:
+      "We built a unified scheduling platform with automated SMS/email reminders, digital intake forms, real-time availability sync across all five clinics, and a single dashboard for leadership.",
+    technologies: ["SaaS Platform", "Workflow Automation", "Customer Data"],
     results: [
       "No-shows reduced by 27%",
       "Front-desk team saved 15+ hours/week",
       "Patient intake time cut in half",
-      "Unified dashboard for all 5 locations",
+      "Unified dashboard across 5 locations",
     ],
-    tags: ["SaaS", "Automation", "Healthcare"],
   },
   {
     id: "lead-enrichment-real-estate",
-    title: "Automated Lead Enrichment & Pipeline Syncing",
+    headlineMetric: "Doubled qualified pipeline with zero added headcount",
+    title: "From hours of manual research to a self-running revenue and customer system",
     client: "B2B Real-Estate Firm",
+    system: "Revenue System · Customer System · AI Operations",
     summary:
-      "We automated lead enrichment and pipeline syncing across CRM and email tools, doubling qualified opportunities without adding headcount.",
-    challenge:
-      "The sales team spent hours manually researching leads and copying data between CRM, email sequences, and spreadsheets. Qualified pipeline was stagnant.",
-    solution:
-      "We built a lead enrichment engine that pulls firmographic and intent data at ingestion, scores leads, and syncs pipeline state across CRM and email tools in real time.",
+      "The sales team was drowning in manual research and disconnected tools. We built a customer system that enriches, scores and syncs every lead the moment it enters the funnel — doubling qualified opportunities without adding a single hire.",
+    problem:
+      "Reps spent hours manually researching leads and copying data between CRM, email sequences and spreadsheets. Qualified pipeline was stagnant despite steady inbound volume.",
+    impact:
+      "Selling time was being consumed by data entry and research, so reps were touching fewer accounts and missing follow-ups. Leadership couldn't trust pipeline reports.",
+    system_solution:
+      "We built a lead enrichment engine that pulls firmographic and intent data at ingestion, scores every lead and keeps CRM, email sequences and pipeline state in sync in real time.",
+    technologies: ["AI Enrichment", "CRM", "Workflow Automation", "Lead Scoring"],
     results: [
       "Qualified opportunities doubled",
       "Manual research hours eliminated",
       "CRM and email always in sync",
       "No additional headcount required",
     ],
-    tags: ["AI Automation", "CRM", "Lead Management"],
   },
 ];
 ---
 
 <MainLayout
   title="Case Studies | GlobalTechSignal"
-  description="Real engineering work — AI automation, SaaS systems and CRM platforms shipped to production for growing businesses."
+  description="Measurable business outcomes from intelligent business systems — revenue, time and visibility recovered for growing companies."
 >
   <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
     <div class="relative flex flex-col items-center">
@@ -74,10 +84,10 @@ const caseStudies = [
             Case Studies
           </span>
           <h1 class="text-4xl font-medium leading-tight md:text-6xl tracking-tight">
-            Real work, <span class="redhead">real results</span>
+            Real outcomes, <span class="redhead">real systems</span>
           </h1>
           <p class="text-lg font-normal leading-7 text-dark/70">
-            AI automation, SaaS systems and CRM platforms shipped to production for growing businesses. Here's what we built — and the outcomes it delivered.
+            Each case study below leads with the business outcome — then walks through the operational problem, the system we designed and the technology underneath. Outcomes first, technology second.
           </p>
         </div>
       </div>
@@ -86,30 +96,40 @@ const caseStudies = [
     <div class="space-y-12 mt-10">
       {caseStudies.map((study) => (
         <article id={study.id} class="p-8 md:p-12 bg-dark text-white rounded-[30px]">
-          <div class="flex flex-wrap gap-2 mb-4">
-            {study.tags.map((tag) => (
-              <span class="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-red">
-                {tag}
-              </span>
-            ))}
-          </div>
+          <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-4">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            {study.headlineMetric}
+          </span>
           <h2 class="text-2xl md:text-3xl font-medium mb-2">{study.title}</h2>
-          <p class="text-white/60 text-sm mb-6">Client: {study.client}</p>
+          <p class="text-white/60 text-sm mb-6">{study.client} · {study.system}</p>
           <p class="text-white/80 text-lg mb-8">{study.summary}</p>
 
-          <div class="grid md:grid-cols-2 gap-8">
+          <div class="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 class="text-red font-medium mb-2">Challenge</h3>
-              <p class="text-white/70">{study.challenge}</p>
+              <h3 class="text-red font-medium mb-2">Operational Problem</h3>
+              <p class="text-white/70">{study.problem}</p>
             </div>
             <div>
-              <h3 class="text-red font-medium mb-2">Solution</h3>
-              <p class="text-white/70">{study.solution}</p>
+              <h3 class="text-red font-medium mb-2">Business Impact</h3>
+              <p class="text-white/70">{study.impact}</p>
+            </div>
+            <div>
+              <h3 class="text-red font-medium mb-2">Business System</h3>
+              <p class="text-white/70">{study.system_solution}</p>
             </div>
           </div>
 
-          <div class="mt-8">
-            <h3 class="text-red font-medium mb-3">Results</h3>
+          <div class="mb-8">
+            <h3 class="text-red font-medium mb-3">Enabling Technology</h3>
+            <div class="flex flex-wrap gap-2">
+              {study.technologies.map((t) => (
+                <span class="text-xs px-3 py-1.5 rounded-full bg-white/10 text-white/80 border border-white/10">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-red font-medium mb-3">Measurable Results</h3>
             <ul class="grid sm:grid-cols-2 gap-3">
               {study.results.map((result) => (
                 <li class="flex items-start gap-2 text-white/80">
@@ -125,7 +145,7 @@ const caseStudies = [
 
     <div class="text-center mt-16">
       <a href="/contact" class="px-8 py-4 bg-dark hover:bg-accent text-white rounded-xl text-base font-medium transition-colors inline-block">
-        Start your project
+        Book an Operational Assessment
       </a>
     </div>
   </div>

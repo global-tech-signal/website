@@ -6,20 +6,23 @@ import Section from "./Section.astro";
 const cards = [
   {
     index: 0,
+    metric: "92% faster lead response",
     title:
-      "For a regional roofing company, we shipped an AI-powered lead routing and CRM workflow that cut response time from hours to minutes and increased booked inspections by 38%.",
+      "A regional roofing company eliminated lost leads and booked 38% more inspections after we replaced spreadsheet-based lead handling with a connected revenue system.",
     link: "/case-studies#ai-lead-routing-roofing",
   },
   {
     index: 1,
+    metric: "27% fewer no-shows · 15+ hrs/week saved",
     title:
-      "For a multi-location clinic group, we built a SaaS scheduling platform with automated reminders and intake, reducing no-shows by 27% and saving the front-desk team 15+ hours per week.",
+      "A multi-location clinic group recovered front-desk capacity and lifted patient throughput after we unified scheduling, intake and reminders into one operations system.",
     link: "/case-studies#saas-scheduling-clinic",
   },
   {
     index: 1,
+    metric: "2x qualified pipeline",
     title:
-      "For a B2B real-estate firm, we automated lead enrichment and pipeline syncing across CRM and email tools, doubling qualified opportunities without adding headcount.",
+      "A B2B real-estate firm doubled qualified opportunities without adding headcount after we built a customer system that enriched, scored and synced every lead in real time.",
     link: "/case-studies#lead-enrichment-real-estate",
   },
 ];
@@ -32,7 +35,7 @@ import SectionTitle from "../ui/SectionTitle.astro";
   <div class="mt-24">
     <SectionTitle
       sectionTitle="Case Studies"
-      description="Real engineering work — AI automation, SaaS systems and CRM platforms shipped to production for growing businesses."
+      description="Real outcomes from intelligent business systems we've designed and shipped — measured in revenue, response time and hours saved."
     />
     <div class="flex flex-col lg:flex-row justify-between rounded-[45px] p-1">
       {
@@ -40,9 +43,13 @@ import SectionTitle from "../ui/SectionTitle.astro";
           <Card>
             <div class="flex p-[60px] h-full bg-dark text-gray rounded-[45px] m-[1px]">
               <div class="flex flex-col gap-5">
+                <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent">
+                  <span class="h-2 w-2 rounded-full bg-accent"></span>
+                  {card.metric}
+                </span>
                 <p>{card.title}</p>
-                  <a href={card.link} class="flex items-center gap-[15px]">
-                  <span class="text-red">Read case study</span>
+                <a href={card.link} class="flex items-center gap-[15px]">
+                  <span class="text-red">Read the outcome</span>
                   <picture>
                     <Image src={larrow} alt="Arrow pointing up right" />
                   </picture>

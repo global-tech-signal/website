@@ -1,0 +1,204 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+export interface Symptom { num: string; title: string; desc: string }
+export interface Tech { label: string }
+export interface CaseRef { metric: string; title: string; href: string }
+
+export interface Props {
+  eyebrow: string;
+  titleLead: string;
+  titleAccent: string;
+  intro: string;
+  problem: string;
+  symptoms: Symptom[];
+  impact: string;
+  systemName: string;
+  systemDescription: string;
+  systemCapabilities: string[];
+  technologies: string[];
+  caseRef?: CaseRef;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  metaTitle: string;
+  metaDescription: string;
+}
+
+const {
+  eyebrow,
+  titleLead,
+  titleAccent,
+  intro,
+  problem,
+  symptoms,
+  impact,
+  systemName,
+  systemDescription,
+  systemCapabilities,
+  technologies,
+  caseRef,
+  primaryCta = { label: "Operational Assessment", href: "/contact" },
+  secondaryCta = { label: "Explore Business Systems", href: "/services" },
+  metaTitle,
+  metaDescription,
+} = Astro.props;
+---
+
+<MainLayout title={metaTitle} description={metaDescription}>
+  <main class="space-y-32 md:space-y-44 mb-24 pt-8 md:pt-12 overflow-x-clip">
+    <!-- HERO -->
+    <section class="relative px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-accent/[0.06] blur-3xl pointer-events-none"></div>
+      <div class="relative grid lg:grid-cols-12 gap-10 items-end">
+        <div class="lg:col-span-8 flex flex-col gap-8">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dark/10 bg-white text-xs font-medium text-dark shadow-[0px_2px_0px_rgba(0,0,0,0.06)] w-fit">
+            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+            <span class="font-mono uppercase tracking-widest">{eyebrow}</span>
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight">
+            {titleLead}<br/>
+            <span class="text-accent">{titleAccent}</span>
+          </h1>
+          <p class="text-lg font-normal leading-8 text-dark/70 max-w-2xl">{intro}</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={primaryCta.href} class="px-8 py-4 bg-dark hover:bg-accent text-white rounded-xl text-base font-medium transition-all duration-300 text-center hover:-translate-y-0.5 shadow-[0px_4px_0px_#191a23] hover:shadow-[0px_6px_0px_#191a23]">{primaryCta.label}</a>
+            <a href={secondaryCta.href} class="px-8 py-4 bg-white text-dark border border-dark/15 rounded-xl text-base font-medium hover:bg-dark hover:text-white transition-colors text-center">{secondaryCta.label}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div class="flex flex-col gap-5 max-w-2xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">The Problem</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            What this <span class="text-accent">actually looks like</span>.
+          </h2>
+        </div>
+        <p class="lg:max-w-md text-base sm:text-lg text-dark/70">{problem}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {symptoms.map((s, i) => (
+          <div class={`group relative p-7 rounded-[28px] border border-dark transition-all duration-300 hover:-translate-y-1 shadow-[0px_4px_0px_#191a23] ${i % 2 === 0 ? 'bg-white' : 'bg-gray'}`}>
+            <div class="flex items-start justify-between mb-5">
+              <span class="text-sm font-mono text-dark/40">{s.num}</span>
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-red/10 text-red">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold tracking-tight text-dark mb-2">{s.title}</h3>
+            <p class="text-sm text-dark/65 leading-snug">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="rounded-[32px] bg-dark text-white p-10 md:p-16 relative overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
+        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-red/15 blur-3xl"></div>
+        <div class="relative max-w-3xl">
+          <span class="inline-flex items-center gap-2 text-sm font-medium mb-5">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-white/60">Business Impact</span>
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-6">
+            Why this is costing the business <span class="text-accent">more than it looks</span>.
+          </h2>
+          <p class="text-lg text-white/75 leading-relaxed">{impact}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYSTEM -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="space-y-7">
+          <span class="inline-flex items-center gap-2 text-sm font-medium w-fit">
+            <span class="h-2 w-2 rounded-full bg-red"></span>
+            <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Recommended Business System</span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+            {systemName}
+          </h2>
+          <p class="text-lg text-dark/70 leading-relaxed">{systemDescription}</p>
+          <a href="/services" class="inline-flex items-center gap-2 text-dark font-medium border-b border-dark/30 pb-1 hover:text-accent hover:border-accent transition-colors w-fit">
+            See how this system is built
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {systemCapabilities.map((cap) => (
+            <div class="group flex items-center gap-3 p-4 rounded-2xl bg-gray border border-dark/10 hover:border-dark transition-all duration-300 hover:-translate-y-0.5">
+              <span class="flex items-center justify-center h-9 w-9 rounded-xl bg-accent/10 shrink-0 group-hover:bg-accent transition-colors">
+                <svg class="w-4 h-4 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span class="text-sm font-medium text-dark">{cap}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="text-center mb-10 max-w-2xl mx-auto">
+        <span class="inline-flex items-center gap-2 text-sm font-medium mb-4">
+          <span class="h-2 w-2 rounded-full bg-red"></span>
+          <span class="font-mono uppercase tracking-widest text-xs text-dark/60">Enabling Technology</span>
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+          Technology supports the system &mdash; not the other way around.
+        </h2>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-center max-w-3xl mx-auto">
+        {technologies.map((t) => (
+          <span class="text-sm px-4 py-2 rounded-full bg-white border border-dark/15 text-dark/80">{t}</span>
+        ))}
+      </div>
+    </section>
+
+    {caseRef && (
+      <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+        <a href={caseRef.href} class="block p-10 md:p-16 rounded-[32px] bg-gray border border-dark shadow-[0px_5px_0px_#191a23] hover:-translate-y-1 transition-transform duration-300">
+          <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent mb-4">
+            <span class="h-2 w-2 rounded-full bg-accent"></span>
+            Outcome &middot; {caseRef.metric}
+          </span>
+          <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight max-w-3xl">{caseRef.title}</h3>
+          <span class="mt-6 inline-flex items-center gap-2 text-dark font-medium border-b border-dark/30 pb-1">
+            Read the case study
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </span>
+        </a>
+      </section>
+    )}
+
+    <!-- CTA -->
+    <section class="px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class="rounded-[32px] bg-dark text-white p-10 md:p-16 text-center relative overflow-hidden shadow-[0px_5px_0px_#191a23] border border-dark">
+        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="relative max-w-2xl mx-auto">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+            Ready to design the system?
+          </h2>
+          <p class="text-lg text-white/70 mb-8">
+            Book an operational assessment. We'll map the friction, propose the business system and show you what outcomes are realistic.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">Operational Assessment</a>
+            <a href="/case-studies" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white border border-white/30 rounded-xl hover:bg-white hover:text-dark transition-colors font-medium">See real outcomes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>

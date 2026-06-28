@@ -1,0 +1,99 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const solutions = [
+  {
+    href: "/solutions/outgrowing-spreadsheets",
+    title: "Outgrowing Spreadsheets",
+    problem: "What started as one sheet now lives across dozens of tabs nobody owns.",
+    system: "Revenue System",
+  },
+  {
+    href: "/solutions/sales-operations",
+    title: "Sales Operations Breaking Down",
+    problem: "Lost leads, poor CRM adoption, manual follow-up — the pipeline isn't keeping up.",
+    system: "Revenue System",
+  },
+  {
+    href: "/solutions/manual-processes",
+    title: "Too Many Manual Processes",
+    problem: "Repetitive work, manual approvals and operational bottlenecks at every step.",
+    system: "AI Operations",
+  },
+  {
+    href: "/solutions/disconnected-systems",
+    title: "Disconnected Business Systems",
+    problem: "CRM, Excel, email, Slack and WhatsApp all hold pieces of the truth — and none agree.",
+    system: "Operations System",
+  },
+  {
+    href: "/solutions/reporting",
+    title: "Reporting Takes Days",
+    problem: "By the time leadership gets the numbers, the moment to act on them is gone.",
+    system: "Business Intelligence",
+  },
+  {
+    href: "/solutions/scaling-operations",
+    title: "Scaling Operations",
+    problem: "Every new customer adds work that the business can't absorb without more headcount.",
+    system: "Operations System",
+  },
+  {
+    href: "/solutions/customer-information",
+    title: "Customer Information Everywhere",
+    problem: "Nobody owns the customer record — and every team has a slightly different version.",
+    system: "Customer System",
+  },
+  {
+    href: "/solutions/ai-without-roi",
+    title: "AI Without ROI",
+    problem: "AI projects that demo well but never produce measurable business outcomes.",
+    system: "Operational Intelligence",
+  },
+];
+---
+
+<MainLayout
+  title="Solutions | GlobalTechSignal"
+  description="Operational problems we solve every day — outgrowing spreadsheets, broken sales operations, manual processes, disconnected systems, slow reporting, scaling pains, customer data sprawl and AI without ROI."
+>
+  <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark mb-6">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>
+        Solutions
+      </span>
+      <h1 class="mb-4 text-4xl font-medium leading-tight tracking-tight md:text-6xl">
+        Operational problems we <span class="redhead">solve every day</span>.
+      </h1>
+      <p class="text-lg font-normal leading-7 text-dark/70 mt-6">
+        Each solution page starts with the operational problem, explains the business impact, then introduces the connected system that fixes it. Technology comes last.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {solutions.map((s) => (
+        <a href={s.href} class="group flex flex-col justify-between p-7 rounded-[28px] border border-dark bg-white hover:bg-dark hover:text-white transition-colors duration-300 shadow-[0px_4px_0px_#191a23] hover:-translate-y-1">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-dark/60 group-hover:text-accent mb-4">
+              <span class="h-2 w-2 rounded-full bg-accent"></span>
+              {s.system}
+            </span>
+            <h2 class="text-2xl font-extrabold tracking-tight mb-3">{s.title}</h2>
+            <p class="text-sm text-dark/70 group-hover:text-white/70 leading-snug">{s.problem}</p>
+          </div>
+          <span class="mt-6 inline-flex items-center gap-2 text-sm font-medium">
+            Read the solution
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-20 text-center">
+      <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-dark text-white rounded-xl hover:bg-accent transition-colors font-medium">
+        Book an Operational Assessment
+      </a>
+    </div>
+  </div>
+</MainLayout>
