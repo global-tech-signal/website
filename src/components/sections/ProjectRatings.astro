@@ -1,0 +1,108 @@
+---
+import Section from "./Section.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+
+const projects = [
+  {
+    name: "Reem AI",
+    region: "Canada",
+    dateRange: "Jan 2025 – Jan 2026",
+    summary:
+      "Built the backend and delivery foundation for high-volume asynchronous workflows.",
+    highlights: [
+      "Architected microservices with NestJS and RabbitMQ",
+      "Improved reliability and fault tolerance with distributed system design",
+      "Led Kubernetes deployments to improve scalability and reduce downtime",
+      "Built CI/CD pipelines for faster, more stable releases",
+    ],
+    impactLabel: "Architecture · Reliability · Delivery",
+  },
+  {
+    name: "Premier Roofing",
+    region: "USA",
+    dateRange: "Apr 2024 – Dec 2024",
+    summary:
+      "Shipped a CRM that covered the full customer lifecycle from inquiry to job completion.",
+    highlights: [
+      "Designed the system architecture around business workflows",
+      "Improved operational efficiency through automation",
+      "Structured data handling to support consistent execution",
+    ],
+    impactLabel: "CRM · Automation · Operations",
+  },
+  {
+    name: "Property Reporting Services",
+    region: "UK",
+    dateRange: "Feb 2023 – Apr 2023",
+    summary:
+      "Delivered and maintained a Laravel-based CRM platform with a focus on platform health.",
+    highlights: [
+      "Architected and maintained the core CRM platform",
+      "Managed backend services and infrastructure",
+      "Delivered features while keeping scalability and reliability in view",
+    ],
+    impactLabel: "Laravel · Infrastructure · Scale",
+  },
+  {
+    name: "Intermedius",
+    region: "Malaysia",
+    dateRange: "Jun 2019 – Apr 2021",
+    summary:
+      "Helped build core modules and POS applications for a large-scale platform used by multiple clients.",
+    highlights: [
+      "Designed and implemented user, merchant and inventory modules",
+      "Built POS web applications that integrated hardware and database APIs",
+      "Partnered with the CTO on architecture and technical decisions",
+      "Delivered systems used by 20+ clients across Malaysia",
+    ],
+    impactLabel: "Platform · POS · Multi-client",
+  },
+];
+---
+
+<Section id="project-ratings">
+  <div class="mt-24">
+    <SectionTitle
+      sectionTitle="Project Ratings"
+      description="Selected engagements rated by the kind of impact they delivered: architecture, reliability, automation, scalability and delivery quality."
+    />
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        projects.map((project, index) => (
+          <article class="relative overflow-hidden rounded-[28px] border border-dark/10 bg-dark p-7 md:p-8 text-gray shadow-[0px_5px_0px_#191a23]">
+            <div class="absolute -top-12 -right-12 h-36 w-36 rounded-full bg-accent/10 blur-3xl"></div>
+            <div class="relative flex flex-col gap-5">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-white/70">
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                    Project {index + 1}
+                  </div>
+                  <h3 class="mt-4 text-2xl font-extrabold tracking-tight text-white">{project.name}</h3>
+                  <p class="mt-1 text-sm text-white/60">{project.region} · {project.dateRange}</p>
+                </div>
+
+                <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right">
+                  <div class="text-[10px] font-mono uppercase tracking-widest text-white/45">Impact profile</div>
+                  <div class="mt-2 text-sm font-semibold text-white">{project.impactLabel}</div>
+                </div>
+              </div>
+
+              <p class="max-w-2xl text-base leading-relaxed text-white/75">{project.summary}</p>
+
+              <ul class="grid gap-3 sm:grid-cols-2">
+                {project.highlights.map((highlight) => (
+                  <li class="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm leading-relaxed text-white/80">
+                    <span class="mt-1 h-2 w-2 rounded-full bg-accent shrink-0"></span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Section>
