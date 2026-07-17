@@ -68,6 +68,7 @@ const currentSystems = [
 >
   <form
     id="contact-form"
+    data-qualify={qualify ? 'true' : 'false'}
     class:list={[
       "bg-gray sm:p-6 h-full w-full",
       !qualify && "lg:max-w-lg",
@@ -375,6 +376,28 @@ const currentSystems = [
   // element that shares the id (e.g. a wrapper <section id="contact-form">).
   const form = document.querySelector('form#contact-form') as HTMLFormElement | null;
   const status = document.getElementById('contact-status') as HTMLParagraphElement;
+  const formVariant = form?.dataset.qualify === 'true' ? 'qualified' : 'standard';
+
+  function trackContactFormSubmit(submittedForm: HTMLFormElement) {
+    try {
+      const gtag = (window as any).gtag;
+      if (typeof gtag !== 'function') return;
+
+      const formData = new FormData(submittedForm);
+      const assessmentType = String(formData.get('assessmentType') || '').trim();
+      const challenge = String(formData.get('challenge') || '').trim();
+      const company = String(formData.get('company') || '').trim();
+      const inquiryType = assessmentType || challenge || 'general';
+
+      gtag('event', 'contact_form_submit', {
+        event_category: 'lead',
+        event_label: inquiryType,
+        form_variant: formVariant,
+        inquiry_type: inquiryType,
+        has_company: company.length > 0,
+      });
+    } catch {}
+  }
 
   // Map assessment / engagement slugs → human-readable labels.
   // Keep in sync with /src/pages/assessments.astro and /src/pages/scorecard.astro.
@@ -506,6 +529,7 @@ const currentSystems = [
       const json = await res.json();
 
       if (res.ok) {
+        trackContactFormSubmit(form);
         status.textContent = "Message sent! We'll get back to you soon.";
         status.className = 'mt-4 text-center text-sm text-accent';
         form.reset();
