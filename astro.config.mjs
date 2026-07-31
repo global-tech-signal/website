@@ -7,6 +7,7 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://globaltechsignal.com',
+  trailingSlash: 'never',
   //site: 'http://localhost:4321',
   integrations: [tailwind(), sitemap()],
   adapter: netlify(),

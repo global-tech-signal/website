@@ -22,6 +22,13 @@ const {
 
 const siteUrl = import.meta.env.SITE || "https://globaltechsignal.com";
 
+const rawUrl = url ? url.toString() : Astro.url.toString();
+const canonicalUrlObj = new URL(rawUrl, siteUrl);
+if (canonicalUrlObj.pathname.length > 1 && canonicalUrlObj.pathname.endsWith("/")) {
+  canonicalUrlObj.pathname = canonicalUrlObj.pathname.slice(0, -1);
+}
+const canonicalUrl = canonicalUrlObj.toString();
+
 const getAbsoluteUrl = (path?: string) => {
   if (!path) return siteUrl;
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
@@ -34,18 +41,18 @@ const ogImage = getAbsoluteUrl(rawImageSrc);
 const jsonLD = jsonLDGenerator({
   type: frontmatter ? "post" : "website",
   post: frontmatter,
-  url,
+  url: canonicalUrl,
 });
 ---
 
 <!-- SEO -->
-<link rel="canonical" href={url} />
+<link rel="canonical" href={canonicalUrl} />
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="GlobalTechSignal" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:url" content={url} />
+<meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:url" content={ogImage} />
 <meta property="og:image:secure_url" content={ogImage} />

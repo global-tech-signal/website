@@ -1,0 +1,5 @@
+# Netlify Redirects for Canonical Trailing Slash Normalization
+
+# Redirect trailing slashes to non-trailing slash URLs (301 Permanent Redirect)
+# Exceptions: root path '/' stays as is
+/*/  /:splat  301!
