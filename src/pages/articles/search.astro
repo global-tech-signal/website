@@ -29,8 +29,8 @@ const searchResults = allBlogArticles.filter(article => {
 });
 ---
 
-<MainLayout title="Search Results">
-	<main class="space-y-20">
+<MainLayout title={`Search results for "${query || ''}" | GlobalTechSignal`} description={`Search results for ${query || ''} on GlobalTechSignal.`}>
+	<div class="space-y-20">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
             <a href="/articles" class="inline-flex items-center font-medium text-black hover:text-red my-4">
@@ -44,12 +44,12 @@ const searchResults = allBlogArticles.filter(article => {
             <br>
             <SearchForm />
             <br>
-            <h2 class="text-2xl pb-3 mt-6">Results For <strong>{query}</strong></h2>
+            <h1 class="text-2xl pb-3 mt-6">Results For <strong>{query}</strong></h1>
             <div class="grid gap-8 lg:grid-cols-2">
               {searchResults.map(article => (
                 <ArticleCard article={article} />
               ))}
             </div>  
         </div>
-	</main>
+	</div>
 </MainLayout>

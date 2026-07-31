@@ -8,12 +8,12 @@ const { title, description, image, frontmatter, robots } = Astro.props;
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-  <!-- iOS 
-  <link rel="apple-touch-icon" sizes="256x256" href="/path/to/your/icon.png" />
-  -->
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
+
+  <!-- Preload core fonts for layout stability -->
+  <link rel="preload" href="/fonts/grotesk/SpaceGrotesk-Regular.woff" as="font" type="font/woff" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/grotesk/SpaceGrotesk-Medium.woff" as="font" type="font/woff" crossorigin="anonymous" />
 
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -26,6 +26,4 @@ const { title, description, image, frontmatter, robots } = Astro.props;
     {frontmatter}
     {robots}
   />
-
-  <!-- Preconnect fonts, images... -->
 </head>

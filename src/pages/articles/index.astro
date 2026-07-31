@@ -13,14 +13,14 @@ const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
 ---
 
 <MainLayout title="Tech News & Insights | GlobalTechSignal" description="AI, SaaS, automation, CRM and startup engineering — covered by the GlobalTechSignal newsroom.">
-	<main class="space-y-20">
+	<div class="space-y-20">
             <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
                 <div class="mx-auto max-w-screen-md text-center lg:mb-16 mb-8">
                     <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/10 bg-gray text-xs font-medium text-dark mb-6">
                         <span class="w-2 h-2 rounded-full bg-accent"></span>
                         Tech News & Insights
                     </span>
-                    <h2 class="mb-4 text-3xl lg:text-5xl tracking-tight font-extrabold">The GlobalTechSignal <span class="greenhead">Newsroom</span></h2>
+                    <h1 class="mb-4 text-3xl lg:text-5xl tracking-tight font-extrabold">The GlobalTechSignal <span class="greenhead">Newsroom</span></h1>
                     <p class="font-light sm:text-xl text-dark/70">Daily coverage of AI, SaaS, automation, CRM systems and startup engineering — written by builders for builders.</p>
                 </div> 
                 <br>
@@ -32,5 +32,5 @@ const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
                     ))}
                 </div>  
             </div>
-	</main>
+	</div>
 </MainLayout>

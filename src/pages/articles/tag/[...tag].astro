@@ -19,8 +19,8 @@ const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
 const tagArticles = allBlogArticles.filter(article => article.data.tags.includes(tag));
 ---
 
-<MainLayout title="Search Results">
-	<main class="space-y-20">
+<MainLayout title={`${capitalize(tag)} Articles | GlobalTechSignal`} description={`Read all articles tagged under #${capitalize(tag)} on GlobalTechSignal.`}>
+	<div class="space-y-20">
       <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-3">
 
           <a href="/articles" class="inline-flex items-center font-medium text-black hover:text-red my-4">
@@ -31,12 +31,12 @@ const tagArticles = allBlogArticles.filter(article => article.data.tags.includes
             <span class="ml-1 font-bold text-lg">All Articles</span>
           </a>
 
-          <h2 class="text-2xl pb-3">#{capitalize(tag)}</h2>
+          <h1 class="text-2xl pb-3">#{capitalize(tag)}</h1>
           <div class="grid gap-8 lg:grid-cols-2">
             {tagArticles.map(article => (
               <ArticleCard article={article} />
             ))}
           </div>  
       </div>
-	</main>
+	</div>
 </MainLayout>
