@@ -1,5 +1,8 @@
-# Netlify Redirects for Canonical Trailing Slash Normalization
+# Netlify Redirects
+# Astro is configured with `trailingSlash: 'never'` (see astro.config.mjs),
+# so URLs are canonicalized at build time. Do NOT add a generic
+# trailing-slash normalization rule like `/*/ /:splat 301!` here — in
+# Netlify's _redirects syntax the splat `*` is intended for use at the end
+# of the source path, and using it mid-path also matches paths WITHOUT a
+# trailing slash, producing an infinite redirect loop (ERR_TOO_MANY_REDIRECTS).
 
-# Redirect trailing slashes to non-trailing slash URLs (301 Permanent Redirect)
-# Exceptions: root path '/' stays as is
-/*/  /:splat  301!
